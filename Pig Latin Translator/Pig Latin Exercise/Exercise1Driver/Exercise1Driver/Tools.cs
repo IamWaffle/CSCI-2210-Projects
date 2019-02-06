@@ -22,7 +22,7 @@ namespace Exercise1Driver
     ///  This class has methods to assist the translator to complete translation. Such as formatting
     //   and preparing for translation
     /// </summary>
-    internal static class Tools
+    static class Tools
     {
         #region Tokenize
 

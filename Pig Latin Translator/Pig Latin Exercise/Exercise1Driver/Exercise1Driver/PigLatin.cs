@@ -18,7 +18,7 @@ namespace Exercise1Driver
     /// <summary>
     ///  This class handles the translation and formatting.
     /// </summary>
-    internal class PigLatin
+    class PigLatin
     {
         public string Original { get; set; }
         public string delimiters = " .,;:!?";

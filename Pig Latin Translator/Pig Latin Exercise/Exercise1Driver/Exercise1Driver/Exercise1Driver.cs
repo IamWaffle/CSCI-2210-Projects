@@ -22,7 +22,7 @@ namespace Exercise1Driver
     //   class and user input to display a translated word or sentence.
     //
     /// </summary>
-    internal class Program
+    class Program
     {
         #region Main
 
