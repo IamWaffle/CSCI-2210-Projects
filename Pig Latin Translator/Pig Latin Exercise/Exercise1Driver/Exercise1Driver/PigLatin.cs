@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace Exercise1Driver
 {
    class PigLatin
-        {
+   {
             public string Original { get; set; }
             public string delimiters = " .,;:!?";
             public string translatedString = "";
 
-            public PigLatin(String inString)
+        public PigLatin(String inString)
             {
                 Original = inString;
                 translatedString = Tools.Format(Translate(Tools.Tokenize(Original, delimiters)));
@@ -23,41 +23,43 @@ namespace Exercise1Driver
             static List<string> Translate(List<String> original)
             {
                 List<string> results = new List<string>();
+                string vowelsList = "aeiouAEIOU";
 
-
-                for (int i = 0; i < original.Count; i++)
+            for (int i = 0; i < original.Count; i++)
                 {
-                    int vowelLocation = -2;
                     string word = "";
 
-                    char[] vowelsList = new char[] { 'A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u' };
+                int j = 0;
+                int vowelLocation = -1;
+                 while (j < original[i].Length && vowelLocation < 0)
+                {
+                 if (vowelsList.Contains(original[i].Substring(j, 1)))
+                     vowelLocation = j;
+                 else
+                  j += 1;
+                 }
 
-                    foreach (char vowel in vowelsList)
-                    {
-                        if (original[i].Contains(vowel))
+                 if (original[i] == ".")
+                 {
+                     original[i] += "\n";
+                 }
+
+                if (vowelLocation == 0)
                         {
-                            vowelLocation = original[i].IndexOf(vowel);
-
+                            word = original[i] += "lay";
+                            results.Add(word);
                         }
-                    }
-
-                    if (vowelLocation == 0)
-                    {
-                        word = original[i] += "lay";
-                        results.Add(word);
-                    }
-                    else if (vowelLocation > 0)
-                    {
-                        string tempword1 = original[i].Substring(0, vowelLocation);
-                        string tempword2 = original[i].Substring(vowelLocation);
-                        word = tempword2 + tempword1 + "ay";
-                        results.Add(word);
-                    }
-                    else
-                    {
-
-                        results.Add(original[i]);
-                    }
+                   else if (vowelLocation > 0)
+                        {
+                            string tempword1 = original[i].Substring(0, vowelLocation);
+                            string tempword2 = original[i].Substring(vowelLocation);
+                            word = tempword2 + tempword1 + "ay";
+                            results.Add(word);
+                        }
+                   else
+                        {
+                            results.Add(original[i]);
+                        }
                 }
 
                 return results;
@@ -70,6 +72,6 @@ namespace Exercise1Driver
             }
 
 
-        }
+   }
 }
 
