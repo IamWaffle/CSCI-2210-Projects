@@ -39,7 +39,7 @@ namespace Exercise1Driver
                         break;
 
                     case Choices.EDIT:
-                        Console.WriteLine("Please type the sentence or word you would like to translate:");
+                        Console.WriteLine("Please type the sentence you would like to translate:");
                         sentence = Console.ReadLine();
                         translator = new PigLatin(sentence);
                         Console.WriteLine("The sentence: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
@@ -51,9 +51,6 @@ namespace Exercise1Driver
                         System.Environment.Exit(1);
                         break;
                 }  // end of switch
-
-                Console.WriteLine(sentence);
-
                 choice = (Choices)menu.GetChoice();
             }  // end of while
 
