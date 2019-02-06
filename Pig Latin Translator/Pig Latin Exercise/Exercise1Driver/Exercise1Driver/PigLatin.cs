@@ -15,9 +15,9 @@ using System.Collections.Generic;
 
 namespace Exercise1Driver
 {
-    /// <summary>  
-    ///  This class handles the translation and formatting. 
-    /// </summary> 
+    /// <summary>
+    ///  This class handles the translation and formatting.
+    /// </summary>
     internal class PigLatin
     {
         public string Original { get; set; }
@@ -25,16 +25,16 @@ namespace Exercise1Driver
         public string translatedString = "";
 
         #region Constructors
+
         /// <summary>
         /// Constructor - basic non loaded constructor that can be used.
         /// </summary>
         public PigLatin()
         {
-
         }
 
         /// <summary>
-        /// Translate - translate passed list and return a new translated one. 
+        /// Translate - translate passed list and return a new translated one.
         /// </summary>
         /// <param name="inString">the original String to be translated</param>
         public PigLatin(String inString)
@@ -42,13 +42,16 @@ namespace Exercise1Driver
             Original = inString;
             translatedString = Tools.Format(Translate(Tools.Tokenize(Original, delimiters)));
         }
-        #endregion
+
+        #endregion Constructors
+
         #region Translate
+
         /// <summary>
-        /// Translate - translate passed list and return a new translated one. 
+        /// Translate - translate passed list and return a new translated one.
         /// </summary>
         /// <param name="original">the original non translated list.</param>
-        /// <return name ="results">Translated List</return> 
+        /// <return name ="results">Translated List</return>
         private static List<string> Translate(List<String> original)
         {
             List<string> results = new List<string>();
@@ -93,17 +96,21 @@ namespace Exercise1Driver
 
             return results;
         }
-        #endregion
+
+        #endregion Translate
+
         #region ToString
+
         /// <summary>
-        /// ToString - creates a string from the translated string and returns it. 
+        /// ToString - creates a string from the translated string and returns it.
         /// </summary>
-        /// <return name ="outString">Translated String</return> 
+        /// <return name ="outString">Translated String</return>
         public override string ToString()
         {
             string outString = translatedString;
             return outString;
         }
-#endregion
+
+        #endregion ToString
     }
 }

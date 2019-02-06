@@ -16,25 +16,29 @@ using System.Collections.Generic;
 
 namespace Exercise1Driver
 {
-    /// <summary>  
-    ///  This class creates a simple menu in the console  
-    /// </summary> 
+    /// <summary>
+    ///  This class creates a simple menu in the console
+    /// </summary>
     internal class Menu
     {
         private List<string> Items = new List<string>();
         public string Title { get; set; }
 
         #region Constructor
+
         /// <summary>
-        /// Constructor 
+        /// Constructor
         /// </summary>
         /// <param name="title">the title to be displayed above menu</param>
         public Menu(string title)
         {
             Title = title;
         }
-        #endregion
+
+        #endregion Constructor
+
         #region Plus and Minus Operators
+
         /// <summary>
         /// Operator + adds a choice to the menu
         /// </summary>
@@ -59,8 +63,11 @@ namespace Exercise1Driver
                 m.Items.RemoveAt(n - 1);
             return m;
         }
-        #endregion
+
+        #endregion Plus and Minus Operators
+
         #region Display and GetChoice methods
+
         /// <summary>
         /// Display the menu on the console window
         /// </summary>
@@ -82,7 +89,6 @@ namespace Exercise1Driver
             for (int n = 0; n < Items.Count; n++)
                 Console.WriteLine("\t{0}. {1}", (n + 1), Items[n]);
         }
-
 
         /// <summary>
         /// Obtain the user's selection, verify it is valid, and return it
@@ -124,6 +130,7 @@ namespace Exercise1Driver
                 }
             }
         }
-        #endregion
+
+        #endregion Display and GetChoice methods
     }
 }

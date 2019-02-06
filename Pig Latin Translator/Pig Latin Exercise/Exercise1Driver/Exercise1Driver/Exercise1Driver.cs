@@ -17,16 +17,17 @@ using System.Windows.Forms;
 
 namespace Exercise1Driver
 {
-    /// <summary>  
+    /// <summary>
     ///  This class is the main part of the program. It interacts with the Pig Latin
     //   class and user input to display a translated word or sentence.
     //
     /// </summary>
-    class Program
+    internal class Program
     {
         #region Main
+
         /// <summary>
-        /// Main - The method that drives the program. 
+        /// Main - The method that drives the program.
         /// </summary>
         /// <param name="string[] args"></param>
         [STAThread]
@@ -72,10 +73,13 @@ namespace Exercise1Driver
                 choice = (Choices)menu.GetChoice();
             }  // end of while
         }
-        #endregion
+
+        #endregion Main
+
         #region FileHandler
+
         /// <summary>
-        /// File handler - Opens and reads a file. 
+        /// File handler - Opens and reads a file.
         /// </summary>
         /// <param></param>
         /// <returns name="sentence"> returns the contents of the file</returns>
@@ -114,6 +118,7 @@ namespace Exercise1Driver
 
             return sentence;
         }
-        #endregion
+
+        #endregion FileHandler
     }
 }

@@ -12,8 +12,8 @@
 
 namespace Exercise1Driver
 {
-    /// <summary>  
-    ///  This class implements a set of choices for the menu class. 
+    /// <summary>
+    ///  This class implements a set of choices for the menu class.
     /// </summary>
     internal enum Choices
     {
