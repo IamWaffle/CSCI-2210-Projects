@@ -18,8 +18,19 @@ using System.Text;
 
 namespace Exercise1Driver
 {
-    internal static class Tools
+    /// <summary>  
+    ///  This class has methods to assist the translator to complete translation. Such as formatting
+    //   and preparing for translation  
+    /// </summary> 
+    static class Tools
     {
+        #region Tokenize
+        /// <summary>
+        /// Tokenize -  accepts a string, find the delimiters, returns list with each word/delimiter split
+        /// </summary>
+        /// <param name="strIn">the string that is sent in to be formatted into a list</param>
+        /// <param name="strDelims">the delimiters that are used to format the string</param>
+        /// <return name = "outList">Output List</return> 
         public static List<String> Tokenize(string strIn, string strDelims)
         {
             StringBuilder builder = new StringBuilder(strIn);
@@ -48,10 +59,19 @@ namespace Exercise1Driver
             return outList;
         }
 
+        #endregion
+        #region Format
+        /// <summary>
+        /// Format  Method 
+        /// </summary>
+        /// <param name="listIn">the list that is sent in to be formatted into one string</param>
+        /// <return name = "formString">Formatted String</return> 
+
         public static String Format(List<String> listIn)
         {
             String formString = string.Join("", listIn);
             return formString;
         }
+#endregion
     }
 }

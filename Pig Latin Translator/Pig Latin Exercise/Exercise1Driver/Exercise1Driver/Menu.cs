@@ -16,29 +16,54 @@ using System.Collections.Generic;
 
 namespace Exercise1Driver
 {
+    /// <summary>  
+    ///  This class creates a simple menu in the console  
+    /// </summary> 
     internal class Menu
     {
         private List<string> Items = new List<string>();
         public string Title { get; set; }
 
+        #region Constructor
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="title">the title to be displayed above menu</param>
         public Menu(string title)
         {
             Title = title;
         }
-
+        #endregion
+        #region Plus and Minus Operators
+        /// <summary>
+        /// Operator + adds a choice to the menu
+        /// </summary>
+        /// <param name="m">the menu to which the choice is added</param>
+        /// <param name="item">the choice to be added</param>
+        /// <returns></returns>
         public static Menu operator +(Menu m, string item)
         {
             m.Items.Add(item);
             return m;
         }
 
+        /// <summary>
+        /// Operator  - removes a choice from the menu
+        /// </summary>
+        /// <param name="m">the menu from which the choice is removed</param>
+        /// <param name="item">the number of the choice to be removed</param>
+        /// <returns></returns>
         public static Menu operator -(Menu m, int n)
         {
             if (n > 0 && n <= m.Items.Count)
                 m.Items.RemoveAt(n - 1);
             return m;
         }
-
+        #endregion
+        #region Display and GetChoice methods
+        /// <summary>
+        /// Display the menu on the console window
+        /// </summary>
         public void Display()
         {
             string str = "";
@@ -58,6 +83,11 @@ namespace Exercise1Driver
                 Console.WriteLine("\t{0}. {1}", (n + 1), Items[n]);
         }
 
+
+        /// <summary>
+        /// Obtain the user's selection, verify it is valid, and return it
+        /// </summary>
+        /// <returns>the number of the user's valid selection</returns>
         public int GetChoice()
         {
             int choice = -1;
@@ -94,5 +124,6 @@ namespace Exercise1Driver
                 }
             }
         }
+        #endregion
     }
 }
