@@ -42,7 +42,7 @@ namespace Exercise1Driver
 
         public static String Format(List<String> listIn)
         {
-            String formString = string.Join(",", listIn);
+            String formString = string.Join("", listIn);
             return formString;
         }
     }

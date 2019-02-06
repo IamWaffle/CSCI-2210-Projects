@@ -33,6 +33,8 @@ namespace Exercise1Driver
                     case Choices.OPEN:
                         sentence = FileHandler();
                         translator = new PigLatin(sentence);
+                        Console.WriteLine("The sentence: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
+                        Console.WriteLine("Press any key to go back to the menu...");
                         Console.ReadKey();
                         break;
 
@@ -40,6 +42,8 @@ namespace Exercise1Driver
                         Console.WriteLine("Please type the sentence or word you would like to translate:");
                         sentence = Console.ReadLine();
                         translator = new PigLatin(sentence);
+                        Console.WriteLine("The sentence: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
+                        Console.WriteLine("Press any key to go back to the menu...");
                         Console.ReadKey();
                         break;
 

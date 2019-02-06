@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,17 +11,18 @@ namespace Exercise1Driver
         {
             public string Original { get; set; }
             public string delimiters = " .,;:!?";
+            public string translatedString = "";
 
             public PigLatin(String inString)
             {
                 Original = inString;
-                Console.WriteLine(Translate(Tools.Tokenize(Original, delimiters)));
+                translatedString = Tools.Format(Translate(Tools.Tokenize(Original, delimiters)));
 
             }
 
-            static string Translate(List<String> original)
+            static List<string> Translate(List<String> original)
             {
-                List<string> newWords = new List<string>();
+                List<string> results = new List<string>();
 
 
                 for (int i = 0; i < original.Count; i++)
@@ -42,26 +44,29 @@ namespace Exercise1Driver
                     if (vowelLocation == 0)
                     {
                         word = original[i] += "lay";
-                        newWords.Add(word);
+                        results.Add(word);
                     }
                     else if (vowelLocation > 0)
                     {
                         string tempword1 = original[i].Substring(0, vowelLocation);
                         string tempword2 = original[i].Substring(vowelLocation);
                         word = tempword2 + tempword1 + "ay";
-                        newWords.Add(word);
+                        results.Add(word);
                     }
                     else
                     {
 
-                        newWords.Add(original[i]);
+                        results.Add(original[i]);
                     }
-
-                    Console.WriteLine(newWords[i]);
                 }
 
-                string hey = "f";
-                return hey;
+                return results;
+            }
+
+            public override string ToString()
+            {
+                string outString = translatedString;
+                return outString;
             }
 
 
