@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Solution/Project:  PigLatin_Exercise/PigLatin_Exercise
+//	File Name:         Exercise1Driver.cs
+//	Description:       The driver class is where the main method is stored. It interacts with the Pig Latin
+//                     class and user input to display a translated word or sentence.
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Monday, Feb 04 2019
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Exercise1Driver
 {
-    class Program
+    internal class Program
     {
-
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
@@ -33,16 +40,17 @@ namespace Exercise1Driver
                     case Choices.OPEN:
                         sentence = FileHandler();
                         translator = new PigLatin(sentence);
-                        Console.WriteLine("The sentence: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
+                        Console.WriteLine("The files contents: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
                         Console.WriteLine("Press any key to go back to the menu...");
                         Console.ReadKey();
                         break;
 
                     case Choices.EDIT:
-                        Console.WriteLine("Please type the sentence you would like to translate:");
-                        sentence = Console.ReadLine();
+                        Console.WriteLine("Please type the sentence/word you would like to translate:");
+                        sentence = Console.ReadLine() + " ";
+                        Console.Clear();
                         translator = new PigLatin(sentence);
-                        Console.WriteLine("The sentence: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
+                        Console.WriteLine("The sentence/word: \n\n" + sentence + "\n\ntranslates into: \n\n" + translator.ToString() + "\n\n");
                         Console.WriteLine("Press any key to go back to the menu...");
                         Console.ReadKey();
                         break;
@@ -53,10 +61,9 @@ namespace Exercise1Driver
                 }  // end of switch
                 choice = (Choices)menu.GetChoice();
             }  // end of while
-
         }
 
-        static string FileHandler()
+        private static string FileHandler()
         {
             StreamReader rdr = null;
 
@@ -87,7 +94,6 @@ namespace Exercise1Driver
             }
             else
             {
-
             }
 
             return sentence;

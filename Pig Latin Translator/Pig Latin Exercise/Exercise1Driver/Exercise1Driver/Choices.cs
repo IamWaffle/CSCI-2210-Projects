@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Solution/Project:  PigLatin_Exercise/PigLatin_Exercise
+//	File Name:         Choices.cs
+//	Description:       A set of choices for a Menu in the Exercise2Driver
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Don Bailes, bailes@etsu.edu, Dept. of Computing, East Tennessee State University
+//	Created:           Monday, February 23, 2015
+//	Modified:          Monday February 04, 2019 by Ryan Shupe, shuper@etsu.edu
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace Exercise1Driver
 {
-    enum Choices
+    internal enum Choices
     {
-            OPEN = 1, EDIT, CLOSE, QUIT
+        OPEN = 1, EDIT, CLOSE, QUIT
     }
-    
 }

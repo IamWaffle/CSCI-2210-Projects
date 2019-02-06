@@ -1,12 +1,22 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Solution/Project:  PigLatin_Exercise/PigLatin_Exercise
+//	File Name:         Menu.cs
+//	Description:       Define a Menu class that will allow a menu to be displayed in a Console window.
+//                          The user's choice is obtained and verified.
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Don Bailes, bailes@etsu.edu, Dept. of Computing, East Tennessee State University
+//	Created:           Monday, February 23, 2015
+//	Modified:          Monday February 04, 2019 by Ryan Shupe, shuper@etsu.edu
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise1Driver
 {
-    class Menu
+    internal class Menu
     {
         private List<string> Items = new List<string>();
         public string Title { get; set; }
@@ -47,6 +57,7 @@ namespace Exercise1Driver
             for (int n = 0; n < Items.Count; n++)
                 Console.WriteLine("\t{0}. {1}", (n + 1), Items[n]);
         }
+
         public int GetChoice()
         {
             int choice = -1;
