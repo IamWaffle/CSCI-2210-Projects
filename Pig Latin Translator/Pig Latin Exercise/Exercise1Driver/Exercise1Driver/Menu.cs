@@ -63,7 +63,7 @@ namespace Exercise1Driver
                 Console.ForegroundColor = ConsoleColor.White;
                 if (!Int32.TryParse(line, out choice))
                 {
-                    Console.WriteLine("\n\t   Your choice is not a number between 1 and {0}.  Please try again.",
+                    Console.WriteLine("\n\t   Your choice is not a number between 1 and {0}.  Press any key to return to the menu.",
                         Items.Count);
                     Console.ReadKey();
                 }
@@ -71,7 +71,7 @@ namespace Exercise1Driver
                 {
                     if (choice < 1 || choice > Items.Count)
                     {
-                        Console.WriteLine("\n\t   Your choice is not a number between 1 and {0}.  Please try again.",
+                        Console.WriteLine("\n\t   Your choice is not a number between 1 and {0}.  Press any key to return to the menu.",
                             Items.Count);
                         Console.ReadKey();
                     }
