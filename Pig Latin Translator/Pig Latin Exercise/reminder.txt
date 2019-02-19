@@ -1,0 +1,2 @@
+delete obj bin files
+delete per user options files?
