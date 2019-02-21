@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Name.cs
-//	Description:       
+//	Description:
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
@@ -16,9 +11,11 @@ using System.Threading.Tasks;
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project1
-{   
-    class Name : IEquatable<Name> , IComparable<Name>
+{
+    internal class Name : IEquatable<Name>, IComparable<Name>
     {
+        private String _personNameFull;
+
         public String personNameFull
         {
             get;
@@ -38,10 +35,10 @@ namespace Project1
             personNameFull = original.personNameFull;
         }
 
-       public Name(string inName)
-       {
+        public Name(string inName)
+        {
             personNameFull = inName;
-       }
+        }
 
         public bool Equals(Name other)
         {
@@ -62,7 +59,9 @@ namespace Project1
         {
             return null;
         }
+
+        public void nameBreakdown(String nameFull)
+        {
+        }
     }
-
-
 }

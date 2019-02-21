@@ -18,7 +18,7 @@ namespace Project1
     /// <summary>
     ///  This class creates a simple menu in the console
     /// </summary>
-    class Menu
+    internal class Menu
     {
         private List<string> Items = new List<string>();
         public string Title { get; set; }

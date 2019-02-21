@@ -21,7 +21,7 @@ namespace Project1
     //   class and user input to display a translated word or sentence.
     //
     /// </summary>
-    class Program
+    internal class Program
     {
         #region Main
 

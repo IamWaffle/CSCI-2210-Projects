@@ -22,7 +22,7 @@ namespace Project1
     ///  This class has methods to assist the translator to complete translation. Such as formatting
     //   and preparing for translation
     /// </summary>
-    static class Tools
+    internal static class Tools
     {
         #region Tokenize
 
@@ -79,6 +79,7 @@ namespace Project1
         #endregion Format
 
         #region PressAnyKey
+
         /// <summary>
         /// Display a Press Any Key to ... message at the bottom of the screen
         /// </summary>
@@ -95,10 +96,12 @@ namespace Project1
             Console.ReadKey();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Blue;
-        } // End PressAnyKey 
+        } // End PressAnyKey
+
         #endregion PressAnyKey
 
         #region Skip
+
         /// <summary>
         /// Skip n lines in the console window
         /// </summary>
@@ -110,7 +113,7 @@ namespace Project1
                 Console.WriteLine();
             }
         }
-        #endregion Skip
 
+        #endregion Skip
     }
 }

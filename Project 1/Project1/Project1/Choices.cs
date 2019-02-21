@@ -14,7 +14,7 @@ namespace Project1
     /// <summary>
     ///  This class implements a set of choices for the menu class.
     /// </summary>
-    enum Choices
+    internal enum Choices
     {
         OPEN = 1, EDIT, CLOSE, QUIT
     }
