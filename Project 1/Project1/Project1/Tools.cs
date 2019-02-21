@@ -86,7 +86,7 @@ namespace Project1
         /// <param name="strVerb">term in the Press Any Key to ... message; default: "continue . . ."</param>
         public static void PressAnyKey(string strVerb = "continue ...")
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
             if (Console.CursorTop < Console.WindowHeight - 1)
                 Console.SetCursorPosition(0, Console.WindowHeight - 1);
             else

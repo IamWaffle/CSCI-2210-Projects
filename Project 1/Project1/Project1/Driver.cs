@@ -6,7 +6,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Tuesday, Feb 19 2019
-//  Modified:          Tuesday, Feb 19 2019
+//  Modified:          Thursday, Feb 21 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,6 +37,7 @@ namespace Project1
             Console.Title = "Project 1";
 
             string names = "";
+            NameList nameList;
 
             Menu menu = new Menu("Project 1");
             menu = menu + "Open a file." + "Option 2" + "Quit";
@@ -48,6 +49,9 @@ namespace Project1
                 {
                     case Choices.OPEN:
                         names = FileHandler();
+                        nameList = new NameList(names);
+                        Tools.PressAnyKey();
+                        Tools.Skip();
                         break;
 
                     case Choices.EDIT:
@@ -70,16 +74,16 @@ namespace Project1
         /// File handler - Opens and reads a file.
         /// </summary>
         /// <param></param>
-        /// <returns name="sentence"> returns the contents of the file</returns>
+        /// <returns name="names"> returns the contents of the file</returns>
         private static string FileHandler()
         {
             StreamReader rdr = null;
 
-            string sentence = "";
+            string names = "";
             OpenFileDialog OpenDlg = new OpenFileDialog();
             OpenDlg.Filter = "text files|*.txt;*.text";
             OpenDlg.InitialDirectory = Application.StartupPath;
-            OpenDlg.Title = "Select a text file to translate the contents.";
+            OpenDlg.Title = "Select a text file to insert into the list";
             if (DialogResult.Cancel != OpenDlg.ShowDialog())
             {
                 try
@@ -88,7 +92,7 @@ namespace Project1
 
                     while (!rdr.EndOfStream)
                     {
-                        sentence += rdr.ReadLine();
+                        names += rdr.ReadLine();
                     }
                 }
                 finally
@@ -104,7 +108,7 @@ namespace Project1
             {
             }
 
-            return sentence;
+            return names;
         }
 
         #endregion FileHandler

@@ -7,7 +7,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
-//  Modified:          Tuesday, Feb 21 2019
+//  Modified:          Thursday, Feb 21 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project1
@@ -37,26 +37,35 @@ namespace Project1
 
         public Name(string inName)
         {
-            personNameFull = inName;
+            nameBreakdown(inName);
         }
 
         public bool Equals(Name other)
         {
-            throw new NotImplementedException();
+            if (other.last.ToLower() == last.ToLower() && other.middle.ToLower() == middle.ToLower() && other.suffix.ToLower() == suffix.ToLower())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public int CompareTo(Name other)
         {
-            throw new NotImplementedException();
+            return 3;
         }
 
         public String firstNameFirst()
         {
+            String output;
             return null;
         }
 
         public String lastNameFirst()
         {
+            String output;
             return null;
         }
 

@@ -36,27 +36,32 @@ namespace Exercise1Driver
         {
             StringBuilder builder = new StringBuilder(strIn);
             string newString = "";
+            char[] delims = strDelims.ToCharArray();
 
-            int y = 0;
-            while (y < strIn.Length)
+            // int y = 0;
+            // while (y < strIn.Length)
+            // {
+            //     int i = 0;
+            //    while (i < strDelims.Length)
+            //    {
+            //        string a = strIn[y].ToString();
+            //        string b = strDelims[i].ToString();
+            //
+            //        if (a == b)
+            //       {
+            //           builder.Replace(a, "|" + a + "|");
+            //           newString = builder.ToString();
+            //       }
+            //       i++;
+            //   }
+            //   y++;
+            // }
+            List<string> outList = newString.Split(delims).ToList();
+
+            for (int x = 0; x < outList.Count; x++)
             {
-                int i = 0;
-                while (i < strDelims.Length)
-                {
-                    string a = strIn[y].ToString();
-                    string b = strDelims[i].ToString();
-
-                    if (a == b)
-                    {
-                        builder.Replace(a, "|" + a + "|");
-                        newString = builder.ToString();
-                    }
-                    i++;
-                }
-                y++;
+                Console.WriteLine(outList[x]);
             }
-            List<string> outList = newString.Split('|').ToList();
-
             return outList;
         }
 
