@@ -34,32 +34,53 @@ namespace Project1
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Title = "Project 1";
+            Console.Title = "Project 1: NameList";
 
             string names = "";
             NameList nameList;
+            char save;
 
-            Menu menu = new Menu("Project 1");
-            menu = menu + "Open a file." + "Option 2" + "Quit";
+            Menu menu = new Menu("Project 1: NameList");
+            menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "View the list" + "Quit";
 
             Choices choice = (Choices)menu.GetChoice();
-            while (choice != Choices.QUIT)
+            while (choice != Choices.END)
             {
                 switch (choice)
                 {
                     case Choices.OPEN:
-                        names = FileHandler();
+                        names = OpenFileHandler();
                         nameList = new NameList(names);
                         Tools.PressAnyKey();
                         Tools.Skip();
                         break;
 
-                    case Choices.EDIT:
+                    case Choices.ADD:
 
                         break;
 
-                    case Choices.CLOSE:
-                        System.Environment.Exit(1);
+                    case Choices.REMOVE:
+
+                        break;
+
+                    case Choices.VIEW:
+                        break;
+
+                    case Choices.QUIT:
+                        Console.WriteLine("Would you like to save the name list? Y/N");
+                        save = Char.Parse(Console.ReadLine().ToLower());
+
+                            if (save == 'y')
+                            {
+                                SaveFileHandler();
+                                Tools.PressAnyKey();
+                                System.Environment.Exit(1);
+                        }
+                        
+                        else
+                        {
+                            System.Environment.Exit(1);
+                        }
                         break;
                 }  // end of switch
                 choice = (Choices)menu.GetChoice();
@@ -68,14 +89,14 @@ namespace Project1
 
         #endregion Main
 
-        #region FileHandler
+        #region FileHandlers
 
         /// <summary>
         /// File handler - Opens and reads a file.
         /// </summary>
         /// <param></param>
         /// <returns name="names"> returns the contents of the file</returns>
-        private static string FileHandler()
+        private static string OpenFileHandler()
         {
             StreamReader rdr = null;
 
@@ -111,6 +132,12 @@ namespace Project1
             return names;
         }
 
-        #endregion FileHandler
+        private static void SaveFileHandler()
+        {
+
+        }
+
+
+        #endregion FileHandlers
     }
 }

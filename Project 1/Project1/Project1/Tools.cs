@@ -95,7 +95,7 @@ namespace Project1
             Console.Write("Press any key to " + strVerb);
             Console.ReadKey();
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
         } // End PressAnyKey
 
         #endregion PressAnyKey

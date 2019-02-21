@@ -16,6 +16,6 @@ namespace Project1
     /// </summary>
     internal enum Choices
     {
-        OPEN = 1, EDIT, CLOSE, QUIT
+        OPEN = 1, ADD, REMOVE, VIEW, QUIT, END
     }
 }
