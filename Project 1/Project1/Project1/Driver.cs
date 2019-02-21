@@ -12,6 +12,7 @@
 
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Project1
 {
@@ -35,10 +36,10 @@ namespace Project1
             Console.ForegroundColor = ConsoleColor.White;
             Console.Title = "Project 1";
 
-            string sentence = "";
+            string names = "";
 
             Menu menu = new Menu("Project 1");
-            menu = menu + "Option 1" + "Option 2" + "Quit";
+            menu = menu + "Open a file." + "Option 2" + "Quit";
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.QUIT)
@@ -46,7 +47,7 @@ namespace Project1
                 switch (choice)
                 {
                     case Choices.OPEN:
-
+                        names = FileHandler();
                         break;
 
                     case Choices.EDIT:
@@ -62,5 +63,50 @@ namespace Project1
         }
 
         #endregion Main
+
+        #region FileHandler
+
+        /// <summary>
+        /// File handler - Opens and reads a file.
+        /// </summary>
+        /// <param></param>
+        /// <returns name="sentence"> returns the contents of the file</returns>
+        private static string FileHandler()
+        {
+            StreamReader rdr = null;
+
+            string sentence = "";
+            OpenFileDialog OpenDlg = new OpenFileDialog();
+            OpenDlg.Filter = "text files|*.txt;*.text";
+            OpenDlg.InitialDirectory = Application.StartupPath;
+            OpenDlg.Title = "Select a text file to translate the contents.";
+            if (DialogResult.Cancel != OpenDlg.ShowDialog())
+            {
+                try
+                {
+                    rdr = new StreamReader(OpenDlg.FileName);
+
+                    while (!rdr.EndOfStream)
+                    {
+                        sentence += rdr.ReadLine();
+                    }
+                }
+                finally
+                {
+                    if (rdr != null)
+                    {
+                        rdr.Close();
+                    }
+                }
+                string fileName = OpenDlg.FileName;
+            }
+            else
+            {
+            }
+
+            return sentence;
+        }
+
+        #endregion FileHandler
     }
 }
