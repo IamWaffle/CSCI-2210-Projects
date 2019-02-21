@@ -72,5 +72,10 @@ namespace Project1
         public void nameBreakdown(String nameFull)
         {
         }
+
+        public String ToString()
+        {
+            return personNameFull;
+        }
     }
 }

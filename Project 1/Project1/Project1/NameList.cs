@@ -15,12 +15,14 @@ namespace Project1
 {
     internal class NameList
     {
-        List<string> nameList;
+        private List<string> nameList = new List<string>();
+        private Name owner = new Name();
+
         public string delimiters = " .,;:!?-    ";
 
         public NameList()
         {
-            nameList = new List<string>();
+            setOwnerName("Default Owner Name");
         }
 
         public NameList(string inNames)
@@ -29,6 +31,88 @@ namespace Project1
         }
 
         public NameList(NameList original)
+        {
+            setOwnerName(original.getOwnerName());
+
+            for (int i = 0; i < nameList.Count; i++)
+            {
+                nameList.Add(original.getName(i));
+            }
+
+        }
+
+        public void add(Name n)
+        {
+            nameList.Add(n.ToString());
+        }
+
+        public void remove(int i)
+        {
+            nameList.Remove(nameList[i]);
+        }
+
+        public String get(int i)
+        {
+            string s = nameList[i].ToString();
+            return s;
+        }
+
+
+        public string getName(int i)
+        {
+            string output;
+            output = nameList[i].ToString();
+            return output;
+        }
+
+        public void addName()
+        {
+            
+        }
+
+        public void removeName()
+        {
+            Console.WriteLine("Enter the name of the contact you wish to remove:");
+            String name = Console.ReadLine().ToLower();
+            bool found = true;
+
+            for (int i = 0; i < nameList.Count; i++)
+            {
+                if (nameList[i].ToLower() == name)
+                {
+                    nameList.Remove(nameList[i]);
+                    found = true;
+                    Console.WriteLine("Name Removed!");
+                }
+                else
+                {
+                    found = false;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("Unable to find name in the list!/n");
+            }
+
+        }
+
+
+        public void setOwnerName(string input)
+        {
+
+        }
+        public string getOwnerName()
+        {
+            return null;
+        }
+
+        public void setOwnerPhone(string input)
+        {
+
+        }
+
+        public void setOwnerEmail(string input)
         {
 
         }

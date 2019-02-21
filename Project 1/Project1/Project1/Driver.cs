@@ -23,14 +23,14 @@ namespace Project1
     /// </summary>
     internal class Program
     {
-        #region Main
+  #region Main
 
         /// <summary>
         /// Main - The method that drives the program.
         /// </summary>
         /// <param name="string[] args"></param>
         [STAThread]
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
@@ -39,9 +39,14 @@ namespace Project1
             string names = "";
             NameList nameList;
             char save;
+            string userName, userEmail, userPhone;
 
             Menu menu = new Menu("Project 1: NameList");
             menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "View the list" + "Quit";
+
+            Console.WriteLine("Welcome to the program!\n Please enter your name..");
+            nameList = new NameList();
+            nameList.setOwnerName(Console.ReadLine());
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.END)
@@ -88,6 +93,7 @@ namespace Project1
         }
 
         #endregion Main
+
 
         #region FileHandlers
 
@@ -139,5 +145,6 @@ namespace Project1
 
 
         #endregion FileHandlers
+
     }
 }
