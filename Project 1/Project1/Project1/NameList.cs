@@ -27,7 +27,6 @@ namespace Project1
 
         public NameList(string inNames)
         {
-
         }
 
         public NameList(NameList original)
@@ -38,7 +37,6 @@ namespace Project1
             {
                 nameList.Add(original.getName(i));
             }
-
         }
 
         public void add(Name n)
@@ -57,7 +55,6 @@ namespace Project1
             return s;
         }
 
-
         public string getName(int i)
         {
             string output;
@@ -67,7 +64,6 @@ namespace Project1
 
         public void addName()
         {
-            
         }
 
         public void removeName()
@@ -94,14 +90,12 @@ namespace Project1
             {
                 Console.WriteLine("Unable to find name in the list!/n");
             }
-
         }
-
 
         public void setOwnerName(string input)
         {
-
         }
+
         public string getOwnerName()
         {
             return null;
@@ -109,12 +103,10 @@ namespace Project1
 
         public void setOwnerPhone(string input)
         {
-
         }
 
         public void setOwnerEmail(string input)
         {
-
         }
 
         public void populateList(String inNames)

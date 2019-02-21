@@ -23,7 +23,7 @@ namespace Project1
     /// </summary>
     internal class Program
     {
-  #region Main
+        #region Main
 
         /// <summary>
         /// Main - The method that drives the program.
@@ -75,13 +75,12 @@ namespace Project1
                         Console.WriteLine("Would you like to save the name list? Y/N");
                         save = Char.Parse(Console.ReadLine().ToLower());
 
-                            if (save == 'y')
-                            {
-                                SaveFileHandler();
-                                Tools.PressAnyKey();
-                                System.Environment.Exit(1);
+                        if (save == 'y')
+                        {
+                            SaveFileHandler();
+                            Tools.PressAnyKey();
+                            System.Environment.Exit(1);
                         }
-                        
                         else
                         {
                             System.Environment.Exit(1);
@@ -93,7 +92,6 @@ namespace Project1
         }
 
         #endregion Main
-
 
         #region FileHandlers
 
@@ -140,11 +138,31 @@ namespace Project1
 
         private static void SaveFileHandler()
         {
+            SaveFileDialog dlg = new SaveFileDialog();
 
+            dlg.InitialDirectory = Application.StartupPath;
+            dlg.Title = "Save this name list";
+            dlg.Filter = "text files|*.txt|all files|*.*";
+
+            if (dlg.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            StreamWriter writer = null;
+            try
+            {
+                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+            }
         }
 
-
         #endregion FileHandlers
-
     }
 }
