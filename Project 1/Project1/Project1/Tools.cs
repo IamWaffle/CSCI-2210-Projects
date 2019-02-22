@@ -86,7 +86,7 @@ namespace Project1
 
         public static String Format(List<String> listIn)
         {
-            String formString = string.Join("", listIn);
+            String formString = string.Join(" \n", listIn);
             return formString;
         }
 

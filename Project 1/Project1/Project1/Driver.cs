@@ -63,7 +63,7 @@ namespace Project1
 
                     case Choices.ADD:
                         Console.WriteLine("What is the name you would like to add?:");
-                        nameList.addName(Console.ReadLine());
+                        nameList += (Console.ReadLine());
                         Console.WriteLine("Name added!");
                         Tools.PressAnyKey();
                         Tools.Skip();

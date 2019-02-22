@@ -19,7 +19,7 @@ namespace Project1
         private List<string> nameList = new List<string>();
         private Name owner = new Name();
 
-        public string delimiters = "., -_   '";
+        public string delimiters = "., -_   ''\n";
 
         public NameList()
         {
@@ -62,11 +62,6 @@ namespace Project1
             string output;
             output = nameList[i].ToString();
             return output;
-        }
-
-        public void addName(string n)
-        {
-            nameList.Add(n);
         }
 
         public void removeName()
