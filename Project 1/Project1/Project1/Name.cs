@@ -23,6 +23,8 @@ namespace Project1
         public String lastName, firstName, middle;
         public String last, rest, suffix;
 
+        public string delimiters = "., -_   ''\n";
+
         public Name()
         {
             personNameFull = null;
@@ -31,6 +33,7 @@ namespace Project1
         public Name(Name original)
         {
             personNameFull = original.personNameFull;
+            Tools.Tokenize(original.personNameFull, delimiters);
         }
 
         public Name(string inName)

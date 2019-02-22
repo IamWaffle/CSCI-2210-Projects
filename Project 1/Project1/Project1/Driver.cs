@@ -37,6 +37,7 @@ namespace Project1
 
             string names = "";
             NameList nameList;
+            NameList fileList;
             char save;
 
             Menu menu = new Menu("Project 1: NameList");
@@ -56,8 +57,9 @@ namespace Project1
                 {
                     case Choices.OPEN:
                         names = OpenFileHandler();
-                        nameList = new NameList(names);
-                        Tools.PressAnyKey();
+                        fileList = new NameList(names);
+                        nameList += fileList;
+                        
                         Tools.Skip();
                         break;
 

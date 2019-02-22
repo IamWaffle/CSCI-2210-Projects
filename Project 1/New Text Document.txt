@@ -1,0 +1,4 @@
+add entire name to the name list
+when applicable take a single name and tokenize it.
+
+add name then inside name will have tokenized name into differet vars

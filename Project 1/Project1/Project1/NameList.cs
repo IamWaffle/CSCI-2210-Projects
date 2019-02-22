@@ -19,7 +19,7 @@ namespace Project1
         private List<string> nameList = new List<string>();
         private Name owner = new Name();
 
-        public string delimiters = "., -_   ''\n";
+
 
         public NameList()
         {
@@ -28,7 +28,7 @@ namespace Project1
 
         public NameList(string inNames)
         {
-            nameList = Tools.Tokenize(inNames,delimiters);
+            nameList = Tools.Tokenize(inNames, "#");
         }
 
         public NameList(NameList original)
@@ -116,13 +116,18 @@ namespace Project1
 
         public void populateList(String inNames)
         {
-            nameList = Tools.Tokenize(inNames, delimiters);
+            //nameList = Tools.Tokenize(inNames, delimiters);
         }
 
         public String ToString()
         {
             String output = Tools.Format(nameList);
             return output;
+        }
+
+        public int Count()
+        {
+            return nameList.Count;
         }
 
         #region Plus and Minus Operators
@@ -136,6 +141,21 @@ namespace Project1
         public static NameList operator +(NameList m, string name)
         {
             m.nameList.Add(name);
+            return m;
+        }
+
+        /// <summary>
+        /// Operator + adds a choice to the menu
+        /// </summary>
+        /// <param name="m">the menu to which the choice is added</param>
+        /// <param name="name">the choice to be added</param>
+        /// <returns></returns>
+        public static NameList operator +(NameList m, NameList n)
+        {
+            for (int i = 0; i < n.Count(); i++)
+            {
+                m.nameList.Add(n.getName(i));
+            }    
             return m;
         }
 

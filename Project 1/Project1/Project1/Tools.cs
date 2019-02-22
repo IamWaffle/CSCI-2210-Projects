@@ -35,41 +35,39 @@ namespace Project1
         /// <return name = "outList">Output List</return>
         public static List<String> Tokenize(string strIn, string strDelims)
         {
-            List<String> Tokens = new List<String>();
-            String Work = strIn.Trim(" /t".ToCharArray());
+            StringBuilder builder = new StringBuilder(strIn);
+            string newString = "";
+            char[] delims = strDelims.ToCharArray();
 
-            while (!String.IsNullOrEmpty(Work))
+            int y = 0;
+            while (y < strDelims.Length)
+             {
+                 int i = 0;
+                while (i < strIn.Length)
+               {
+                    string a = strIn[i].ToString();
+                    string b = strDelims[y].ToString();
+
+                    if (a == b)
+                    {
+                        builder.Replace(a, "|" + a + "|");
+                        newString = builder.ToString();
+                    }
+
+                    i++;
+             }
+              y++;
+            }
+            List<string> outList = newString.Split('|').ToList();
+            outList = outList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+
+
+            for (int i = 0; i < outList.Count; i++)
             {
-                int Col = Work.IndexOfAny(strDelims.ToCharArray());
-                if (Col == -1)
-                {
-                    Tokens.Add(Work);
-                    Work = "";
-                }
-                else
-                {
-                    if (Col < 0 || Col > 0)
-                    {
-                        Tokens.Add(Work.Substring(0, Col));
-                    }
-
-                    if (Col + 1 < Work.Length)
-                    {
-                        Work = Work.Substring(Col + 1);
-                    }
-                    else
-                    {
-                        Work = "";
-                    }
-                }
-
-                for (int i = 0; i < Tokens.Count; i++)
-                {
-                    Console.WriteLine(Tokens[i]);
-                }
+                Console.WriteLine(outList[i].ToString());
             }
 
-            return Tokens;
+            return outList;
         }
     
 
@@ -137,59 +135,81 @@ namespace Project1
             Console.WriteLine("Welcome to the program!\n");
             Console.WriteLine("Please enter your name.. ");
             name = (Console.ReadLine());
+            phone = null;
+            email = null;
+
+            bool phoneVerification = true;
+            while (phoneVerification == true)
+            {
             Console.WriteLine("Please enter your phone number: ");
             tempphone = (Console.ReadLine());
-            Console.WriteLine("Please enter your email address: ");
-            tempemail = (Console.ReadLine());
 
-            try
-            {
-                if (string.IsNullOrEmpty(tempphone))
+                try
                 {
-                    phone = "(XXX)-XXX-XXXX";
-                }
-                else
-                {
-                    var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
-                    if (r.IsMatch(tempphone) == true)
-                    {
-                        phone = tempphone;
-                    }
-                    else
+                    if (string.IsNullOrEmpty(tempphone))
                     {
                         phone = "(XXX)-XXX-XXXX";
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            try
-            {
-                if (string.IsNullOrEmpty(tempemail))
-                {
-                    email = "default@email.com";
-                }
-                else
-                {
-                    var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
-                    if (r.IsMatch(tempemail) == true)
-                    {
-                        email = tempemail;
+                        Console.WriteLine("Please enter a valid phone number.");
+                        phoneVerification = true;
                     }
                     else
                     {
-                        email = "default@email.com";
+                        var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
+                        if (r.IsMatch(tempphone) == true)
+                        {
+                            phone = tempphone;
+                            phoneVerification = false;
+                        }
+                        else
+                        {
+                            phone = "(XXX)-XXX-XXXX";
+                            Console.WriteLine("Please enter a valid phone number.");
+                            phoneVerification = true;
+                        }
                     }
-                }
 
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
-            catch (Exception)
+
+            bool emailVerification = true;
+            while (emailVerification == true)
             {
-                throw;
+                Console.WriteLine("Please enter your email address: ");
+                tempemail = (Console.ReadLine());
+
+                try
+                {
+                    if (string.IsNullOrEmpty(tempemail))
+                    {
+                        email = "default@email.com";
+                        Console.WriteLine("Please enter a valid email.");
+                        emailVerification = true;
+                    }
+                    else
+                    {
+                        var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
+                        if (r.IsMatch(tempemail) == true)
+                        {
+                            email = tempemail;
+                            emailVerification = false;
+                        }
+                        else
+                        {
+                            email = "default@email.com";
+                            Console.WriteLine("Please enter a valid email.");
+                            emailVerification = true;
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
 
