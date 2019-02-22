@@ -77,8 +77,7 @@ namespace Project1
             str = DateTime.Today.ToLongDateString();
             Console.SetCursorPosition(Console.WindowWidth - str.Length, 0);
             Console.WriteLine(str);
-            Console.ForegroundColor = ConsoleColor.White;
-
+            Console.ForegroundColor = ConsoleColor.White; 
             Console.WriteLine("\n\n\t   " + Title);
             Console.Write("\t   ");
             for (int n = 0; n < Title.Length; n++)

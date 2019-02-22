@@ -39,14 +39,22 @@ namespace Project1
             string names = "";
             NameList nameList;
             char save;
-            string userName, userEmail, userPhone;
 
             Menu menu = new Menu("Project 1: NameList");
             menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "View the list" + "Quit";
 
-            Console.WriteLine("Welcome to the program!\n Please enter your name..");
+            Tools.displayWelcome();
             nameList = new NameList();
+            Console.WriteLine("Please enter your name.. ");
             nameList.setOwnerName(Console.ReadLine());
+            Console.WriteLine("Please enter your phone number: ");
+            nameList.setOwnerPhone(Console.ReadLine());
+            Console.WriteLine("Please enter your email address: ");
+            nameList.setOwnerEmail(Console.ReadLine());
+
+
+            Console.WriteLine(nameList.getOwnerName()+ "\n" + nameList.getOwnerPhone() + "\n" + nameList.getOwnerEmail());
+            Tools.PressAnyKey();
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.END)
@@ -61,14 +69,56 @@ namespace Project1
                         break;
 
                     case Choices.ADD:
-
+                        Console.WriteLine("What is the name you would like to add?:");
+                        nameList.addName(Console.ReadLine());
+                        Console.WriteLine("Name added!");
+                        Tools.PressAnyKey();
+                        Tools.Skip();
                         break;
 
                     case Choices.REMOVE:
-
+                        nameList.removeName();
+                        Tools.PressAnyKey();
+                        Tools.Skip();
                         break;
 
                     case Choices.VIEW:
+                        bool bchoice = true;
+                        while (bchoice == true)
+                        {
+                            int vchoice;
+                            Console.WriteLine(
+                                "How would you like to view the list?\n1. First Name First\n2. Last Name First\n3. Order added\n\n\n4. Go Back");
+                            int.TryParse(Console.ReadLine(), out vchoice);
+                            if (vchoice == 1)
+                            {
+                                Tools.Skip();
+                            }
+                            else if (vchoice == 2)
+                            {
+                                Tools.Skip();
+                            }
+                            else if (vchoice == 3)
+                            {
+                                Tools.Skip();
+                                Console.WriteLine(nameList.ToString());
+                                Tools.PressAnyKey();
+                                bchoice = false;
+                                Tools.Skip();
+                            }
+                            else if (vchoice == 4)
+                            {
+                                bchoice = false;
+                                Tools.Skip();
+                            }
+                            else
+                            {
+                                Console.WriteLine("An error happened, please try again..");
+                                Tools.PressAnyKey();
+                                bchoice = true;
+                                Tools.Skip();
+                            }
+                        }  
                         break;
 
                     case Choices.QUIT:

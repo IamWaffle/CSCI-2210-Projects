@@ -14,13 +14,11 @@ namespace Project1
 {
     internal class Name : IEquatable<Name>, IComparable<Name>
     {
-        private String _personNameFull;
 
-        public String personNameFull
-        {
-            get;
-            set;
-        }
+
+        public String personNameFull;
+        public String phoneNumber;
+        public String email;
 
         public String lastName, firstName, middle;
         public String last, rest, suffix;

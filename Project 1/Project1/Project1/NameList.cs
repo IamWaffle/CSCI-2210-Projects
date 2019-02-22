@@ -10,6 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Project1
 {
@@ -18,7 +19,7 @@ namespace Project1
         private List<string> nameList = new List<string>();
         private Name owner = new Name();
 
-        public string delimiters = " .,;:!?-    ";
+        public string delimiters = "., -_   ";
 
         public NameList()
         {
@@ -27,6 +28,7 @@ namespace Project1
 
         public NameList(string inNames)
         {
+            nameList = Tools.Tokenize(inNames,delimiters);
         }
 
         public NameList(NameList original)
@@ -62,56 +64,116 @@ namespace Project1
             return output;
         }
 
-        public void addName()
+        public void addName(string n)
         {
+            nameList.Add(n);
         }
 
         public void removeName()
         {
             Console.WriteLine("Enter the name of the contact you wish to remove:");
             String name = Console.ReadLine().ToLower();
-            bool found = true;
 
             for (int i = 0; i < nameList.Count; i++)
             {
                 if (nameList[i].ToLower() == name)
                 {
                     nameList.Remove(nameList[i]);
-                    found = true;
                     Console.WriteLine("Name Removed!");
                 }
                 else
                 {
-                    found = false;
+                    Console.WriteLine("Unable to find name in the list!/n");
                 }
             }
 
-            if (!found)
-            {
-                Console.WriteLine("Unable to find name in the list!/n");
-            }
         }
 
         public void setOwnerName(string input)
         {
+            owner.personNameFull = input;
         }
 
         public string getOwnerName()
         {
-            return null;
+            return owner.personNameFull;
         }
 
         public void setOwnerPhone(string input)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(input))
+                {
+                    owner.phoneNumber = "(XXX)-XXX-XXXX";
+                }
+                else
+                {
+                    var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
+                    if (r.IsMatch(input) == true)
+                    {
+                        owner.phoneNumber = input;
+                    }
+                    else
+                    {
+                        owner.phoneNumber = "(XXX)-XXX-XXXX";
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string getOwnerPhone()
+        {
+            return owner.phoneNumber;
         }
 
         public void setOwnerEmail(string input)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(input))
+                {
+                    owner.email = "default@email.com";
+                }
+                else
+                {
+                    var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
+                    if (r.IsMatch(input) == true)
+                    {
+                        owner.email = input;
+                    }
+                    else
+                    {
+                        owner.email = "default@email.com";
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string getOwnerEmail()
+        {
+            return owner.email;
         }
 
         public void populateList(String inNames)
         {
             nameList = Tools.Tokenize(inNames, delimiters);
+        }
+
+        public String ToString()
+        {
+            String output = Tools.Format(nameList);
+            return output;
         }
 
         #region Plus and Minus Operators

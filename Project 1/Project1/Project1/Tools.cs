@@ -34,33 +34,29 @@ namespace Project1
         /// <return name = "outList">Output List</return>
         public static List<String> Tokenize(string strIn, string strDelims)
         {
-            StringBuilder builder = new StringBuilder(strIn);
-            string newString = "";
+            List<String> Tokens = new List<String>();
+            String Work = strIn.Trim(" /t".ToCharArray());
 
-            int y = 0;
-            while (y < strIn.Length)
+            while (!String.IsNullOrEmpty(Work))
             {
-                int i = 0;
-                while (i < strDelims.Length)
+                int Col = Work.IndexOfAny(strDelims.ToCharArray());
+                if (Col == -1)
                 {
-                    string a = strIn[y].ToString();
-                    string b = strDelims[i].ToString();
-
-                    if (a == b)
-                    {
-                        builder.Replace(a, "|" + a + "|");
-                        newString = builder.ToString();
-                    }
-                    i++;
+                    Tokens.Add(Work);
                 }
-                y++;
+                else
+                {
+                    
+                }
+
             }
-            List<string> outList = newString.Split('|').ToList();
 
-            return outList;
+            return Tokens;
         }
+    
 
-        #endregion Tokenize
+
+#endregion Tokenize
 
         #region Format
 
@@ -115,5 +111,10 @@ namespace Project1
         }
 
         #endregion Skip
+
+        public static void displayWelcome()
+        {
+            Console.WriteLine("Welcome to the program!\n");
+        }
     }
 }
