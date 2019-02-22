@@ -101,30 +101,7 @@ namespace Project1
 
         public void setOwnerPhone(string input)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(input))
-                {
-                    owner.phoneNumber = "(XXX)-XXX-XXXX";
-                }
-                else
-                {
-                    var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
-                    if (r.IsMatch(input) == true)
-                    {
-                        owner.phoneNumber = input;
-                    }
-                    else
-                    {
-                        owner.phoneNumber = "(XXX)-XXX-XXXX";
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            owner.phoneNumber = input;
         }
 
         public string getOwnerPhone()
@@ -134,30 +111,7 @@ namespace Project1
 
         public void setOwnerEmail(string input)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(input))
-                {
-                    owner.email = "default@email.com";
-                }
-                else
-                {
-                    var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
-                    if (r.IsMatch(input) == true)
-                    {
-                        owner.email = input;
-                    }
-                    else
-                    {
-                        owner.email = "default@email.com";
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            owner.email = input;
         }
 
         public string getOwnerEmail()

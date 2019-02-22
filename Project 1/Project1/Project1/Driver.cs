@@ -17,8 +17,7 @@ using System.Windows.Forms;
 namespace Project1
 {
     /// <summary>
-    ///  This class is the main part of the program. It interacts with the Pig Latin
-    //   class and user input to display a translated word or sentence.
+    ///  This class is the main part of the program. It interacts with multiple classes to make an editable list of names
     //
     /// </summary>
     internal class Program
@@ -43,17 +42,11 @@ namespace Project1
             Menu menu = new Menu("Project 1: NameList");
             menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "View the list" + "Quit";
 
-            Tools.displayWelcome();
+            Tools.displayWelcome(out string name, out string phone, out string email);
             nameList = new NameList();
-            Console.WriteLine("Please enter your name.. ");
-            nameList.setOwnerName(Console.ReadLine());
-            Console.WriteLine("Please enter your phone number: ");
-            nameList.setOwnerPhone(Console.ReadLine());
-            Console.WriteLine("Please enter your email address: ");
-            nameList.setOwnerEmail(Console.ReadLine());
-
-
-            Console.WriteLine(nameList.getOwnerName()+ "\n" + nameList.getOwnerPhone() + "\n" + nameList.getOwnerEmail());
+            nameList.setOwnerEmail(email);
+            nameList.setOwnerPhone(phone);
+            nameList.setOwnerName(name);
             Tools.PressAnyKey();
 
             Choices choice = (Choices)menu.GetChoice();
@@ -128,11 +121,14 @@ namespace Project1
                         if (save == 'y')
                         {
                             SaveFileHandler();
+                            Tools.displayExit(nameList.getOwnerName(), nameList.getOwnerPhone(), nameList.getOwnerEmail());
                             Tools.PressAnyKey();
                             System.Environment.Exit(1);
                         }
                         else
                         {
+                            Tools.displayExit(nameList.getOwnerName(), nameList.getOwnerPhone(), nameList.getOwnerEmail());
+                            Tools.PressAnyKey();
                             System.Environment.Exit(1);
                         }
                         break;

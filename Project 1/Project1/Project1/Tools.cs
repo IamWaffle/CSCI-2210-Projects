@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Project1
 {
@@ -112,9 +113,75 @@ namespace Project1
 
         #endregion Skip
 
-        public static void displayWelcome()
+        public static void displayWelcome(out string name, out string phone, out string email)
         {
+            string tempphone;
+            string tempemail;
             Console.WriteLine("Welcome to the program!\n");
+            Console.WriteLine("Please enter your name.. ");
+            name = (Console.ReadLine());
+            Console.WriteLine("Please enter your phone number: ");
+            tempphone = (Console.ReadLine());
+            Console.WriteLine("Please enter your email address: ");
+            tempemail = (Console.ReadLine());
+
+            try
+            {
+                if (string.IsNullOrEmpty(tempphone))
+                {
+                    phone = "(XXX)-XXX-XXXX";
+                }
+                else
+                {
+                    var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
+                    if (r.IsMatch(tempphone) == true)
+                    {
+                        phone = tempphone;
+                    }
+                    else
+                    {
+                        phone = "(XXX)-XXX-XXXX";
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            try
+            {
+                if (string.IsNullOrEmpty(tempemail))
+                {
+                    email = "default@email.com";
+                }
+                else
+                {
+                    var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
+                    if (r.IsMatch(tempemail) == true)
+                    {
+                        email = tempemail;
+                    }
+                    else
+                    {
+                        email = "default@email.com";
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void displayExit(string name, string phone, string email)
+        {
+            Skip();
+            Console.WriteLine("Goodbye " + name +
+                              "\nThank you for using the program!\n\n\n\nYour credentials:\nName: " + name +
+                              "\nPhone: " + phone + "\nEmail: " + email);
         }
     }
 }
