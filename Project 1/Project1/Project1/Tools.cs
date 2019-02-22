@@ -44,12 +44,29 @@ namespace Project1
                 if (Col == -1)
                 {
                     Tokens.Add(Work);
+                    Work = "";
                 }
                 else
                 {
-                    
+                    if (Col < 0 || Col > 0)
+                    {
+                        Tokens.Add(Work.Substring(0, Col));
+                    }
+
+                    if (Col + 1 < Work.Length)
+                    {
+                        Work = Work.Substring(Col + 1);
+                    }
+                    else
+                    {
+                        Work = "";
+                    }
                 }
 
+                for (int i = 0; i < Tokens.Count; i++)
+                {
+                    Console.WriteLine(Tokens[i]);
+                }
             }
 
             return Tokens;

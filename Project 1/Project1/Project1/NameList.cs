@@ -19,7 +19,7 @@ namespace Project1
         private List<string> nameList = new List<string>();
         private Name owner = new Name();
 
-        public string delimiters = "., -_   ";
+        public string delimiters = "., -_   '";
 
         public NameList()
         {
