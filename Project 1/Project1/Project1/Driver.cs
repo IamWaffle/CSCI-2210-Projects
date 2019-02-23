@@ -11,6 +11,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace Project1
             Console.Title = "Project 1: NameList";
 
             string names = "";
-            NameList nameList;
+            NameList nameList = new NameList();
             NameList fileList;
             Name temp;
             char save;
@@ -45,11 +46,10 @@ namespace Project1
             menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "View the list" + "Quit";
 
             Tools.displayWelcome(out string name, out string phone, out string email);
-            nameList = new NameList();
             nameList.setOwnerEmail(email);
             nameList.setOwnerPhone(phone);
             nameList.setOwnerName(name);
-            Tools.PressAnyKey();
+            
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.END)
@@ -124,7 +124,35 @@ namespace Project1
 
                         if (save == 'y')
                         {
-                            SaveFileHandler();
+                            SaveFileDialog dlg = new SaveFileDialog();
+
+                            dlg.InitialDirectory = Application.StartupPath;
+                            dlg.Title = "Save this name list";
+                            dlg.Filter = "text files|*.txt|all files|*.*";
+
+                            if (dlg.ShowDialog() == DialogResult.Cancel)
+                            {
+                                return;
+                            }
+
+                            StreamWriter writer = null;
+                            try
+                            {
+                                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
+
+                                for (int i = 0; i < nameList.Count(); i++)
+                                {
+                                    writer.WriteLine(nameList.getName(i) + "#");
+                                }
+                            }
+                            finally
+                            {
+                                if (writer != null)
+                                {
+                                    writer.Close();
+                                }
+                            }
+
                             Tools.displayExit(nameList.getOwnerName(), nameList.getOwnerPhone(), nameList.getOwnerEmail());
                             Tools.PressAnyKey();
                             System.Environment.Exit(1);
@@ -184,33 +212,6 @@ namespace Project1
             }
 
             return names;
-        }
-
-        private static void SaveFileHandler()
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-
-            dlg.InitialDirectory = Application.StartupPath;
-            dlg.Title = "Save this name list";
-            dlg.Filter = "text files|*.txt|all files|*.*";
-
-            if (dlg.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-
-            StreamWriter writer = null;
-            try
-            {
-                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
-            }
-            finally
-            {
-                if (writer != null)
-                {
-                    writer.Close();
-                }
-            }
         }
 
         #endregion FileHandlers

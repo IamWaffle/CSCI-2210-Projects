@@ -42,7 +42,10 @@ namespace Project1
 
         public bool Equals(Name other)
         {
-            if (other.firstName == firstName && other.middle == middle && other.lastName == lastName && other.end == end)
+            if (other.firstName.ToLower() == firstName.ToLower() 
+                && other.middle.ToLower() == middle.ToLower()
+                && other.lastName.ToLower() == lastName.ToLower() 
+                && other.end.ToLower() == end.ToLower())
             {
                 return true;
             }
@@ -59,13 +62,13 @@ namespace Project1
 
         public String firstNameFirst()
         {
-            String output;
-            return null;
+            String output = firstName + middle + lastName + end;
+            return output;
         }
 
         public String lastNameFirst()
         {
-            String output;
+            String output = lastName + firstName + middle + end;
             return null;
         }
 

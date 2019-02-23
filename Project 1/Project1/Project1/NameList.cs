@@ -16,7 +16,7 @@ namespace Project1
 {
     internal class NameList
     {
-        private List<string> nameList = new List<string>();
+        private List<Name> nameList = new List<Name>();
         private Name owner = new Name();
 
 
@@ -28,7 +28,7 @@ namespace Project1
 
         public NameList(string inNames)
         {
-            nameList = Tools.Tokenize(inNames, "#");
+            nameList = populateList(Tools.Tokenize(inNames, "#"));
         }
 
         public NameList(NameList original)
@@ -41,9 +41,35 @@ namespace Project1
             }
         }
 
+        public List<Name> populateList(List<String> inNames)
+        {
+            List<Name> outNames = new List<Name>();
+            Name temp;
+
+            for (int i = 0; i < inNames.Count; i ++)
+            {
+                temp = new Name(inNames[i]);
+                outNames.Add(temp);
+            }
+
+            for (int y = 0;
+            y < outNames.Count; y++)
+            {
+                Console.WriteLine(outNames[y]);
+            }
+            
+            return outNames;
+        }
+
         public void add(Name n)
         {
-            nameList.Add(n.ToString());
+            nameList.Add(n);
+        }
+
+        public void addName(string n)
+        {
+            Name temp = new Name(n);
+            nameList.Add(temp);
         }
 
         public void remove(int i)
@@ -57,12 +83,12 @@ namespace Project1
             return s;
         }
 
-        public string getName(int i)
+        public Name getName(int i)
         {
-            string output;
-            output = nameList[i].ToString();
-            return output;
+            return nameList[i];
+
         }
+
 
         public void removeName()
         {
@@ -71,7 +97,7 @@ namespace Project1
 
             for (int i = 0; i < nameList.Count; i++)
             {
-                if (nameList[i].ToLower() == name)
+                if (nameList[i].personNameFull.ToLower() == name)
                 {
                     nameList.Remove(nameList[i]);
                     Console.WriteLine("Name Removed!");
@@ -83,7 +109,6 @@ namespace Project1
             }
 
         }
-
         public void setOwnerName(string input)
         {
             owner.personNameFull = input;
@@ -116,7 +141,11 @@ namespace Project1
 
         public String ToString()
         {
-            String output = Tools.Format(nameList);
+            String output = "";
+            for (int i = 0; i < nameList.Count; i++)
+            {
+                output += (nameList[i].personNameFull + "\n");
+            }
             return output;
         }
 
@@ -124,6 +153,8 @@ namespace Project1
         {
             return nameList.Count;
         }
+
+       
 
         #region Plus and Minus Operators
 
@@ -135,7 +166,7 @@ namespace Project1
         /// <returns></returns>
         public static NameList operator +(NameList m, Name name)
         {
-            m.nameList.Add(name.ToString());
+            m.nameList.Add(name);
             return m;
         }
 
@@ -160,10 +191,20 @@ namespace Project1
         /// <param name="m">the menu from which the choice is removed</param>
         /// <param name="item">the number of the choice to be removed</param>
         /// <returns></returns>
-        public static NameList operator -(NameList m, int n)
+        public static NameList operator -(NameList m, Name n)
         {
-            if (n > 0 && n <= m.nameList.Count)
-                m.nameList.RemoveAt(n - 1);
+            for (int i = 0; i < m.Count(); i++)
+            {
+                if (m.getName(i).ToString().ToLower() == n.personNameFull.ToLower())
+                {
+                    m.remove(i);
+                    return m;
+                }
+                else
+                {
+                    Console.WriteLine("Unable to find name in the list!/n");
+                }
+            }
             return m;
         }
 

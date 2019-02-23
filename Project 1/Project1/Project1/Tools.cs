@@ -63,10 +63,16 @@ namespace Project1
 
             return outList;
         }
-    
 
 
-#endregion Tokenize
+
+        #endregion Tokenize
+
+        public static void ForEach<T>(this IEnumerable<T> items, Action<T> action)
+        {
+            foreach (var item in items)
+                action(item);
+        }
 
         #region Format
 
@@ -76,9 +82,9 @@ namespace Project1
         /// <param name="listIn">the list that is sent in to be formatted into one string</param>
         /// <return name = "formString">Formatted String</return>
 
-        public static String Format(List<String> listIn)
+        public static String Format(List<Name> listIn)
         {
-            String formString = string.Join(" \n", listIn);
+            String formString = string.Join(" \n", listIn.ToString());
             return formString;
         }
 
