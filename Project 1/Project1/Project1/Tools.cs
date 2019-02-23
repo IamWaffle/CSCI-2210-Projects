@@ -59,7 +59,7 @@ namespace Project1
               y++;
             }
             List<string> outList = newString.Split('|').ToList();
-            outList = outList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+            outList = outList.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
 
             return outList;
         }
@@ -67,12 +67,6 @@ namespace Project1
 
 
         #endregion Tokenize
-
-        public static void ForEach<T>(this IEnumerable<T> items, Action<T> action)
-        {
-            foreach (var item in items)
-                action(item);
-        }
 
         #region Format
 

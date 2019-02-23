@@ -28,7 +28,7 @@ namespace Project1
 
         public NameList(string inNames)
         {
-            nameList = populateList(Tools.Tokenize(inNames, "#"));
+            nameList = populateList(Tools.Tokenize(inNames, "#,"));
         }
 
         public NameList(NameList original)
@@ -66,6 +66,10 @@ namespace Project1
             nameList.Add(n);
         }
 
+        public void clear()
+        {
+            nameList.Clear();
+        }
         public void addName(string n)
         {
             Name temp = new Name(n);

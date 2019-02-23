@@ -43,13 +43,13 @@ namespace Project1
             char save;
 
             Menu menu = new Menu("Project 1: NameList");
-            menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "View the list" + "Quit";
+            menu = menu + "Open a file." + "Add a Name" + "Remove a Name"  + "Clear the list" + "View the list" + "Quit";
 
             Tools.displayWelcome(out string name, out string phone, out string email);
             nameList.setOwnerEmail(email);
             nameList.setOwnerPhone(phone);
             nameList.setOwnerName(name);
-            
+           
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.END)
@@ -78,6 +78,13 @@ namespace Project1
                         Tools.Skip();
                         break;
 
+                    case Choices.CLEAR:
+                        nameList.clear();
+                        Console.WriteLine("List Cleared!");
+                        Tools.PressAnyKey();
+                        Tools.Skip();
+                        break;
+
                     case Choices.VIEW:
                         bool bchoice = true;
                         while (bchoice == true)
@@ -89,9 +96,23 @@ namespace Project1
                             if (vchoice == 1)
                             {
                                 Tools.Skip();
+                                for (int i = 0; i < nameList.Count(); i++)
+                                {
+                                    Console.WriteLine(nameList.getName(i).firstNameFirst());
+                                }
+                                Tools.PressAnyKey();
+                                bchoice = false;
+                                Tools.Skip();
                             }
                             else if (vchoice == 2)
                             {
+                                Tools.Skip();
+                                for (int i = 0; i < nameList.Count(); i++)
+                                {
+                                    Console.WriteLine(nameList.getName(i).lastNameFirst());
+                                }
+                                Tools.PressAnyKey();
+                                bchoice = false;
                                 Tools.Skip();
                             }
                             else if (vchoice == 3)
