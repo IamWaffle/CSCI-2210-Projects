@@ -38,6 +38,7 @@ namespace Project1
             string names = "";
             NameList nameList;
             NameList fileList;
+            Name temp;
             char save;
 
             Menu menu = new Menu("Project 1: NameList");
@@ -65,7 +66,7 @@ namespace Project1
 
                     case Choices.ADD:
                         Console.WriteLine("What is the name you would like to add?:");
-                        nameList += (Console.ReadLine());
+                        nameList = nameList + (temp = new Name(Console.ReadLine()));
                         Console.WriteLine("Name added!");
                         Tools.PressAnyKey();
                         Tools.Skip();
@@ -95,6 +96,7 @@ namespace Project1
                             }
                             else if (vchoice == 3)
                             {
+                                Tools.Skip();
                                 Tools.Skip();
                                 Console.WriteLine(nameList.ToString());
                                 Tools.PressAnyKey();

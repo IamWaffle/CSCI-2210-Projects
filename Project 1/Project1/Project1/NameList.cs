@@ -114,11 +114,6 @@ namespace Project1
             return owner.email;
         }
 
-        public void populateList(String inNames)
-        {
-            //nameList = Tools.Tokenize(inNames, delimiters);
-        }
-
         public String ToString()
         {
             String output = Tools.Format(nameList);
@@ -138,9 +133,9 @@ namespace Project1
         /// <param name="m">the menu to which the choice is added</param>
         /// <param name="name">the choice to be added</param>
         /// <returns></returns>
-        public static NameList operator +(NameList m, string name)
+        public static NameList operator +(NameList m, Name name)
         {
-            m.nameList.Add(name);
+            m.nameList.Add(name.ToString());
             return m;
         }
 

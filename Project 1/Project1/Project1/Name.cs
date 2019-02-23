@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -14,16 +15,13 @@ namespace Project1
 {
     internal class Name : IEquatable<Name>, IComparable<Name>
     {
-
-
         public String personNameFull;
         public String phoneNumber;
         public String email;
 
-        public String lastName, firstName, middle;
-        public String last, rest, suffix;
+        public String firstName, middle, lastName, end;
 
-        public string delimiters = "., -_   ''\n";
+        private List<string> nameParts = new List<string>();
 
         public Name()
         {
@@ -33,17 +31,18 @@ namespace Project1
         public Name(Name original)
         {
             personNameFull = original.personNameFull;
-            Tools.Tokenize(original.personNameFull, delimiters);
+            Tools.Tokenize(original.personNameFull, " ");
         }
 
         public Name(string inName)
         {
+            personNameFull = inName;
             nameBreakdown(inName);
         }
 
         public bool Equals(Name other)
         {
-            if (other.last.ToLower() == last.ToLower() && other.middle.ToLower() == middle.ToLower() && other.suffix.ToLower() == suffix.ToLower())
+            if (other.firstName == firstName && other.middle == middle && other.lastName == lastName && other.end == end)
             {
                 return true;
             }
@@ -72,6 +71,35 @@ namespace Project1
 
         public void nameBreakdown(String nameFull)
         {
+            nameParts = Tools.Tokenize(nameFull, " ");
+
+            if (nameParts.Count == 1)
+            {
+                firstName = nameParts[0];
+            }
+            else if (nameParts.Count == 2)
+            {
+                firstName = nameParts[0];
+                lastName = nameParts[1];
+            }
+            else if (nameParts.Count == 3)
+            {
+                firstName = nameParts[0];
+                middle = nameParts[1];
+                lastName = nameParts[2];
+
+            }
+            else if (nameParts.Count == 4)
+            {
+                firstName = nameParts[0];
+                middle = nameParts[1];
+                lastName = nameParts[2];
+                end = nameParts[3];
+            }
+            else
+            {
+                
+            }
         }
 
         public String ToString()

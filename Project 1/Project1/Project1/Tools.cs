@@ -50,7 +50,7 @@ namespace Project1
 
                     if (a == b)
                     {
-                        builder.Replace(a, "|" + a + "|");
+                        builder.Replace(a, "|");
                         newString = builder.ToString();
                     }
 
@@ -60,12 +60,6 @@ namespace Project1
             }
             List<string> outList = newString.Split('|').ToList();
             outList = outList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
-
-
-            for (int i = 0; i < outList.Count; i++)
-            {
-                Console.WriteLine(outList[i].ToString());
-            }
 
             return outList;
         }
