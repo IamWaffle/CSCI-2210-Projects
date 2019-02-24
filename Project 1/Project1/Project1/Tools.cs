@@ -218,7 +218,7 @@ namespace Project1
         }
 
         /// <summary>
-        /// displayExit - displays a message that takes in a name phone and email
+        /// displayExit - displays a message that shows the credentials. a name phone and email
         /// 
         /// </summary>
         /// <param name>the string that contains a persons name</param>

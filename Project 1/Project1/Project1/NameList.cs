@@ -20,17 +20,28 @@ namespace Project1
         private Name owner = new Name();
 
         #region Constructors
-
+        /// <summary>
+        ///  Basic constructor that does not take any parameters
+        /// </summary>
         public NameList()
         {
             setOwnerName("Default Owner Name");
         }
 
+        /// <summary>
+        ///  Basic constructor  that takes in a string of names and fills the list with names
+        /// <param String inNames>string of names with a delimiter</param>
+        /// </summary>
         public NameList(string inNames)
         {
             nameList = populateList(Tools.Tokenize(inNames, "#,"));
         }
 
+
+        /// <summary>
+        ///  Basic copy constructor. Takes in a name list and creates an identical new one. 
+        /// <param NameList original>the NameList to be copied</param>
+        /// </summary>
         public NameList(NameList original)
         {
             setOwnerName(original.getOwnerName());
@@ -44,6 +55,11 @@ namespace Project1
         #endregion Constructors
 
         #region NameList Methods
+        /// <summary>
+        /// populateList - take in a string list and convert it into a name list.
+        /// </summary>
+        /// <param name="inNames"> a string list filled with names</param>
+        /// <returns name="List<Name>"> returns a list of name objects</returns>
         public List<Name> populateList(List<String> inNames)
         {
             List<Name> outNames = new List<Name>();
@@ -63,20 +79,39 @@ namespace Project1
             
             return outNames;
         }
+
+        /// <summary>
+        /// clear - Clears the list.
+        /// </summary>
+
         public void clear()
         {
             nameList.Clear();
         }
+        /// <summary>
+        /// remove - remove an item from the list.
+        /// </summary>
+        /// <param name="i"> the position of which to be removed</param>
+
         public void remove(int i)
         {
             nameList.Remove(nameList[i]);
         }
 
+        /// <summary>
+        /// getName- returns a name object at a position i.
+        /// </summary>
+        /// <param name="i"> the position at which to get the name object</param>
+        /// <returns name="Name"> returns the name object at that position i</returns>
         public Name getName(int i)
         {
             return nameList[i];
 
         }
+
+        /// <summary>
+        /// removeName - asks which contact to be removed, checks to see if the name is in the list, then removes the name from the list.
+        /// </summary>
 
         public void removeName()
         {
@@ -97,44 +132,19 @@ namespace Project1
             }
 
         }
-
+        /// <summary>
+        /// Count - returns the count of the nameList.
+        /// </summary>
+        /// <return name="count"> the count of the name list</return>
         public int Count()
         {
             return nameList.Count;
         }
-        #endregion NameList Methods
 
-        #region OwnerMethods
-        public void setOwnerName(string input)
-        {
-            owner.personNameFull = input;
-        }
-
-        public string getOwnerName()
-        {
-            return owner.personNameFull;
-        }
-
-        public void setOwnerPhone(string input)
-        {
-            owner.phoneNumber = input;
-        }
-
-        public string getOwnerPhone()
-        {
-            return owner.phoneNumber;
-        }
-
-        public void setOwnerEmail(string input)
-        {
-            owner.email = input;
-        }
-
-        public string getOwnerEmail()
-        {
-            return owner.email;
-        }
-
+        /// <summary>
+        /// ToString - returns a formatted string of all the names in the current list.
+        /// </summary>
+        /// <return name="output"> the entire string list of names</return>
         public String ToString()
         {
             String output = "";
@@ -145,6 +155,60 @@ namespace Project1
             return output;
         }
 
+        #endregion NameList Methods
+
+        #region OwnerMethods
+
+        /// <summary>
+        /// setOwnerName - sets the name of the owner of the list.
+        /// </summary>
+        /// <param name="input">the string to be set</param>
+
+        public void setOwnerName(string input)
+        {
+            owner.personNameFull = input;
+        }
+
+        /// <summary>
+        /// getOwnerName- returns the full name of the owner of the list.
+        /// </summary>
+        /// <returns name="personNameFull"> returns the full name of the owner</returns>
+        public string getOwnerName()
+        {
+            return owner.personNameFull;
+        }
+        /// <summary>
+        /// setOwnerPhone - sets the phone number of the owner of the list.
+        /// </summary>
+        /// <param name="input">the string to be set</param>
+        public void setOwnerPhone(string input)
+        {
+            owner.phoneNumber = input;
+        }
+        /// <summary>
+        /// getOwnerPhone- gets the phone number of the owner in the list.
+        /// </summary>
+        /// <returns name="phoneNumber"> returns the phone number of the owner</returns>
+        public string getOwnerPhone()
+        {
+            return owner.phoneNumber;
+        }
+        /// <summary>
+        /// setOwnerPhone - sets the email address of the owner of the list.
+        /// </summary>
+        /// <param name="input">the string to be set</param>
+        public void setOwnerEmail(string input)
+        {
+            owner.email = input;
+        }
+        /// <summary>
+        /// getOwnerEmail- gets the email of the owner in the list.
+        /// </summary>
+        /// <returns name="email"> returns the email of the owner</returns>
+        public string getOwnerEmail()
+        {
+            return owner.email;
+        }
         #endregion OwnerMethods
 
         #region Plus and Minus Operators
