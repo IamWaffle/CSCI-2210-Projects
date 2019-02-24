@@ -7,7 +7,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
-//  Modified:          Tuesday, Feb 19 2019
+//  Modified:          Sunday, Feb 24 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -122,6 +122,16 @@ namespace Project1
 
         #endregion Skip
 
+        #region DisplayWelcomeExit
+
+        /// <summary>
+        /// displayWelcome - displays a welcome message asking for user credentials, then verifies
+        /// and returns the name phone and email of the person
+        /// 
+        /// </summary>
+        /// <out name>the string that contains a persons name</out>
+        /// <out phone>the phone number string</out>
+        /// <out email>the email string</out>
         public static void displayWelcome(out string name, out string phone, out string email)
         {
             string tempphone;
@@ -207,6 +217,13 @@ namespace Project1
             }
         }
 
+        /// <summary>
+        /// displayExit - displays a message that takes in a name phone and email
+        /// 
+        /// </summary>
+        /// <param name>the string that contains a persons name</param>
+        /// <param phone>the phone number string</param>
+        /// <param email>the email string</param>
         public static void displayExit(string name, string phone, string email)
         {
             Skip();
@@ -215,4 +232,5 @@ namespace Project1
                               "\nPhone: " + phone + "\nEmail: " + email);
         }
     }
+    #endregion DisplayWelcomeExit
 }

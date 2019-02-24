@@ -5,7 +5,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
-//  Modified:          Thursday, Feb 21 2019
+//  Modified:          Sunday, Feb 24 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using System;
@@ -19,7 +19,7 @@ namespace Project1
         private List<Name> nameList = new List<Name>();
         private Name owner = new Name();
 
-
+        #region Constructors
 
         public NameList()
         {
@@ -41,6 +41,9 @@ namespace Project1
             }
         }
 
+        #endregion Constructors
+
+        #region NameList Methods
         public List<Name> populateList(List<String> inNames)
         {
             List<Name> outNames = new List<Name>();
@@ -60,31 +63,13 @@ namespace Project1
             
             return outNames;
         }
-
-        public void add(Name n)
-        {
-            nameList.Add(n);
-        }
-
         public void clear()
         {
             nameList.Clear();
         }
-        public void addName(string n)
-        {
-            Name temp = new Name(n);
-            nameList.Add(temp);
-        }
-
         public void remove(int i)
         {
             nameList.Remove(nameList[i]);
-        }
-
-        public String get(int i)
-        {
-            string s = nameList[i].ToString();
-            return s;
         }
 
         public Name getName(int i)
@@ -92,7 +77,6 @@ namespace Project1
             return nameList[i];
 
         }
-
 
         public void removeName()
         {
@@ -113,6 +97,14 @@ namespace Project1
             }
 
         }
+
+        public int Count()
+        {
+            return nameList.Count;
+        }
+        #endregion NameList Methods
+
+        #region OwnerMethods
         public void setOwnerName(string input)
         {
             owner.personNameFull = input;
@@ -153,12 +145,7 @@ namespace Project1
             return output;
         }
 
-        public int Count()
-        {
-            return nameList.Count;
-        }
-
-       
+        #endregion OwnerMethods
 
         #region Plus and Minus Operators
 

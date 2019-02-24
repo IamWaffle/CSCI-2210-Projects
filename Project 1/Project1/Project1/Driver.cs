@@ -66,7 +66,7 @@ namespace Project1
 
                     case Choices.ADD:
                         Console.WriteLine("What is the name you would like to add?:");
-                        nameList = nameList + (temp = new Name(Console.ReadLine()));
+                        nameList += (temp = new Name(Console.ReadLine()));
                         Console.WriteLine("Name added!");
                         Tools.PressAnyKey();
                         Tools.Skip();

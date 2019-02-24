@@ -15,9 +15,9 @@ namespace Project1
 {
     internal class Name : IEquatable<Name>, IComparable<Name>
     {
-        public String personNameFull;
-        public String phoneNumber;
-        public String email;
+        public String personNameFull { get; set; }
+        public String phoneNumber { get; set; }
+        public String email { get; set; }
 
         public String firstName, middle, lastName, end;
 
@@ -54,6 +54,12 @@ namespace Project1
 
         public int CompareTo(Name other)
         {
+            int output;
+
+            if (personNameFull.Length > other.personNameFull.Length)
+            {
+                output = 1;
+            }
             return 3;
         }
 
