@@ -227,7 +227,7 @@ namespace Project1
         public static void displayExit(string name, string phone, string email)
         {
             Skip();
-            Console.WriteLine("Goodbye " + name +
+            Console.WriteLine("Goodbye " + name + "!"+ 
                               "\nThank you for using the program!\n\n\n\nYour credentials:\nName: " + name +
                               "\nPhone: " + phone + "\nEmail: " + email);
         }

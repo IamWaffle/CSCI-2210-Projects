@@ -139,17 +139,28 @@ namespace Project1
             Console.WriteLine("Enter the name of the contact you wish to remove:");
             String name = Console.ReadLine().ToLower();
 
-            for (int i = 0; i < nameList.Count; i++)
+            bool found = false;
+            int i = 0;
+
+            while (!found)
             {
                 if (nameList[i].personNameFull.ToLower() == name)
                 {
                     nameList.Remove(nameList[i]);
-                    Console.WriteLine("Name Removed!");
+                    found = true;
                 }
                 else
                 {
-                    Console.WriteLine("Unable to find name in the list!/n");
+                   i++;
                 }
+            }
+            if (found == true)
+            {
+                Console.WriteLine("Name Removed!");
+            }
+            else
+            {
+                Console.WriteLine("Unable to find name in the list!");
             }
 
         }
@@ -166,7 +177,7 @@ namespace Project1
         /// ToString - returns a formatted string of all the names in the current list.
         /// </summary>
         /// <return name="output"> the entire string list of names</return>
-        public String ToString()
+        public override String ToString()
         {
             String output = "";
             for (int i = 0; i < nameList.Count; i++)
@@ -235,22 +246,34 @@ namespace Project1
         #region Plus and Minus Operators
 
         /// <summary>
-        /// Operator + adds a choice to the menu
+        /// Operator + adds a name to the list
         /// </summary>
-        /// <param name="m">the menu to which the choice is added</param>
-        /// <param name="name">the choice to be added</param>
+        /// <param name="m">the name list to which the name will be added to</param>
+        /// <param name="name">the name to be added</param>
         /// <returns></returns>
         public static NameList operator +(NameList m, Name name)
         {
             m.nameList.Add(name);
             return m;
         }
+        /// <summary>
+        /// Operator + adds a name to the list
+        /// </summary>
+        /// <param name="m">the name list to which the name will be added to</param>
+        /// <param name="name">the name to be added</param>
+        /// <returns></returns>
+        public static NameList operator +(NameList m, String name)
+        {
+            Name nametemp = new Name(name);
+            m.nameList.Add(nametemp);
+            return m;
+        }
 
         /// <summary>
-        /// Operator + adds a choice to the menu
+        /// Operator + adds a name to the list
         /// </summary>
-        /// <param name="m">the menu to which the choice is added</param>
-        /// <param name="name">the choice to be added</param>
+        /// <param name="m">the name list to which the name will be added to</param>
+        /// <param name="name">the name to be added</param>
         /// <returns></returns>
         public static NameList operator +(NameList m, NameList n)
         {
@@ -262,10 +285,10 @@ namespace Project1
         }
 
         /// <summary>
-        /// Operator  - removes a choice from the menu
+        /// Operator  - removes a name from the list
         /// </summary>
-        /// <param name="m">the menu from which the choice is removed</param>
-        /// <param name="item">the number of the choice to be removed</param>
+        /// <param name="m">the name list from which the choice is removed</param>
+        /// <param name="n">the name to be removed</param>
         /// <returns></returns>
         public static NameList operator -(NameList m, Name n)
         {
