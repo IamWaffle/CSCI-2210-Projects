@@ -70,22 +70,34 @@ namespace Project1
                 temp = new Name(inNames[i]);
                 outNames.Add(temp);
             }
-
-            for (int y = 0;
-            y < outNames.Count; y++)
-            {
-                Console.WriteLine(outNames[y]);
-            }
-            
             return outNames;
         }
-
+        /// <summary>
+        /// SortFNF - converts the list into a list string and returns the names sorted first name first.
+        /// </summary>
+        /// <returns name="List<String>"> returns a list of sorted names</returns>
         public List<String> SortFNF()
         {
             List<String> output = new List<String>();
 
-            
+            for (int i = 0; i < nameList.Count; i++)
+            {
+                output.Add(nameList[i].firstNameFirst());
+            }
+            return output;
+        }
+        /// <summary>
+        /// SortLNF - converts the list into a list string and returns the names sorted last name first.
+        /// </summary>
+        /// <returns name="List<String>"> returns a list of sorted names</returns>
+        public List<String> SortLNF()
+        {
+            List<String> output = new List<String>();
 
+            for (int i = 0; i < nameList.Count; i++)
+            {
+                output.Add(nameList[i].lastNameFirst());
+            }
             return output;
         }
 

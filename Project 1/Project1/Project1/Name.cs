@@ -61,7 +61,7 @@ namespace Project1
         ///  Equals - method that determines if a name equals another name 
         /// </summary>
         /// <param name="other">the name passed in to be determined if it is equal</param>
-        public bool Equals(Name other)
+        public  bool Equals(Name other)
         {
             if (other.personNameFull == personNameFull)
             {
@@ -79,14 +79,19 @@ namespace Project1
         /// <param name="other">the name passed in</param>
         public int CompareTo(Name other)
         {
-            int output;
-
             if (personNameFull.Length > other.personNameFull.Length)
             {
-                output = 1;
+                return -1;
             }
 
-            return 3;
+            if (personNameFull == other.personNameFull)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         /// <summary>
@@ -174,6 +179,11 @@ namespace Project1
         public override String ToString()
         {
             return personNameFull;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         #endregion Methods
     }

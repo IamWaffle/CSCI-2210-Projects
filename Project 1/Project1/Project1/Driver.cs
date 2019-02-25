@@ -58,7 +58,8 @@ namespace Project1
                         names = OpenFileHandler();
                         fileList = new NameList(names);
                         nameList += fileList;
-
+                        Console.WriteLine("Names added to the list!");
+                        Tools.PressAnyKey();
                         Tools.Skip();
                         break;
 
@@ -107,9 +108,11 @@ namespace Project1
                             else if (vchoice == 2)
                             {
                                 Tools.Skip();
-                                for (int i = 0; i < nameList.Count(); i++)
+                                List<String> tempSortedList = new List<String>();
+                                tempSortedList = nameList.SortLNF();
+                                for (int i = 0; i < tempSortedList.Count; i++)
                                 {
-                                    Console.WriteLine(nameList.getName(i).lastNameFirst());
+                                    Console.WriteLine(tempSortedList[i].ToString());
                                 }
                                 Tools.PressAnyKey();
                                 bchoice = false;
