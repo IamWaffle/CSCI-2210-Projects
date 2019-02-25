@@ -1,6 +1,6 @@
 ﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//	File Name:         Exercise1Driver.cs
+//	File Name:         Driver.cs
 //	Description:       The driver class is where the main method is stored.
 //
 //	Course:            CSCI 2210 - Data Structures
@@ -42,13 +42,12 @@ namespace Project1
             char save;
 
             Menu menu = new Menu("Project 1: NameList");
-            menu = menu + "Open a file." + "Add a Name" + "Remove a Name"  + "Clear the list" + "View the list" + "Quit";
+            menu = menu + "Open a file." + "Add a Name" + "Remove a Name" + "Clear the list" + "View the list" + "Quit";
 
             Tools.displayWelcome(out string name, out string phone, out string email);
             nameList.setOwnerEmail(email);
             nameList.setOwnerPhone(phone);
             nameList.setOwnerName(name);
-           
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.END)
@@ -59,7 +58,7 @@ namespace Project1
                         names = OpenFileHandler();
                         fileList = new NameList(names);
                         nameList += fileList;
-                        
+
                         Tools.Skip();
                         break;
 
@@ -95,9 +94,11 @@ namespace Project1
                             if (vchoice == 1)
                             {
                                 Tools.Skip();
-                                for (int i = 0; i < nameList.Count(); i++)
+                                List<String> tempSortedList = new List<String>();
+                                tempSortedList = nameList.SortFNF();
+                                for (int i = 0; i < tempSortedList.Count; i++)
                                 {
-                                    Console.WriteLine(nameList.getName(i).firstNameFirst());
+                                    Console.WriteLine(tempSortedList[i].ToString());
                                 }
                                 Tools.PressAnyKey();
                                 bchoice = false;
@@ -135,7 +136,7 @@ namespace Project1
                                 bchoice = true;
                                 Tools.Skip();
                             }
-                        }  
+                        }
                         break;
 
                     case Choices.QUIT:

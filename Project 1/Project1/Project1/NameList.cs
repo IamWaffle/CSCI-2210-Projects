@@ -80,6 +80,15 @@ namespace Project1
             return outNames;
         }
 
+        public List<String> SortFNF()
+        {
+            List<String> output = new List<String>();
+
+            
+
+            return output;
+        }
+
         /// <summary>
         /// clear - Clears the list.
         /// </summary>
