@@ -19,7 +19,6 @@ namespace Project1
 {
     /// <summary>
     ///  This class is the main part of the program. It interacts with multiple classes to make an editable list of names
-    //
     /// </summary>
     internal class Program
     {

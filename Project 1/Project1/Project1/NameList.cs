@@ -34,7 +34,7 @@ namespace Project1
         /// </summary>
         public NameList(string inNames)
         {
-            nameList = populateList(Tools.Tokenize(inNames, "#,"));
+            nameList = populateList(Tools.Tokenize(inNames, "#"));
         }
 
 
