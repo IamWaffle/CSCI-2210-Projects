@@ -5,12 +5,11 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
-//  Modified:          Sunday, Feb 24 2019
+//  Modified:          Monday, Feb 25 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Project1
 {
@@ -20,6 +19,7 @@ namespace Project1
         private Name owner = new Name();
 
         #region Constructors
+
         /// <summary>
         ///  Basic constructor that does not take any parameters
         /// </summary>
@@ -37,9 +37,8 @@ namespace Project1
             nameList = populateList(Tools.Tokenize(inNames, "#"));
         }
 
-
         /// <summary>
-        ///  Basic copy constructor. Takes in a name list and creates an identical new one. 
+        ///  Basic copy constructor. Takes in a name list and creates an identical new one.
         /// <param NameList original>the NameList to be copied</param>
         /// </summary>
         public NameList(NameList original)
@@ -55,6 +54,7 @@ namespace Project1
         #endregion Constructors
 
         #region NameList Methods
+
         /// <summary>
         /// populateList - take in a string list and convert it into a name list.
         /// </summary>
@@ -65,13 +65,14 @@ namespace Project1
             List<Name> outNames = new List<Name>();
             Name temp;
 
-            for (int i = 0; i < inNames.Count; i ++)
+            for (int i = 0; i < inNames.Count; i++)
             {
                 temp = new Name(inNames[i]);
                 outNames.Add(temp);
             }
             return outNames;
         }
+
         /// <summary>
         /// SortFNF - converts the list into a list string and returns the names sorted first name first.
         /// </summary>
@@ -86,6 +87,7 @@ namespace Project1
             }
             return output;
         }
+
         /// <summary>
         /// SortLNF - converts the list into a list string and returns the names sorted last name first.
         /// </summary>
@@ -109,6 +111,7 @@ namespace Project1
         {
             nameList.Clear();
         }
+
         /// <summary>
         /// remove - remove an item from the list.
         /// </summary>
@@ -127,7 +130,6 @@ namespace Project1
         public Name getName(int i)
         {
             return nameList[i];
-
         }
 
         /// <summary>
@@ -140,18 +142,26 @@ namespace Project1
             String name = Console.ReadLine().ToLower();
 
             bool found = false;
+            int looking = 1;
             int i = 0;
 
-            while (!found)
+            while (looking == 1)
             {
-                if (nameList[i].personNameFull.ToLower() == name)
+                if (i < nameList.Count)
                 {
-                    nameList.Remove(nameList[i]);
-                    found = true;
+                    if (nameList[i].personNameFull.ToLower() == name)
+                    {
+                        nameList.Remove(nameList[i]);
+                        found = true;
+                    }
+                    else
+                    {
+                        i++;
+                    }
                 }
                 else
                 {
-                   i++;
+                    looking = 0;
                 }
             }
             if (found == true)
@@ -162,8 +172,8 @@ namespace Project1
             {
                 Console.WriteLine("Unable to find name in the list!");
             }
-
         }
+
         /// <summary>
         /// Count - returns the count of the nameList.
         /// </summary>
@@ -209,6 +219,7 @@ namespace Project1
         {
             return owner.personNameFull;
         }
+
         /// <summary>
         /// setOwnerPhone - sets the phone number of the owner of the list.
         /// </summary>
@@ -217,6 +228,7 @@ namespace Project1
         {
             owner.phoneNumber = input;
         }
+
         /// <summary>
         /// getOwnerPhone- gets the phone number of the owner in the list.
         /// </summary>
@@ -225,6 +237,7 @@ namespace Project1
         {
             return owner.phoneNumber;
         }
+
         /// <summary>
         /// setOwnerPhone - sets the email address of the owner of the list.
         /// </summary>
@@ -233,6 +246,7 @@ namespace Project1
         {
             owner.email = input;
         }
+
         /// <summary>
         /// getOwnerEmail- gets the email of the owner in the list.
         /// </summary>
@@ -241,6 +255,7 @@ namespace Project1
         {
             return owner.email;
         }
+
         #endregion OwnerMethods
 
         #region Plus and Minus Operators
@@ -256,6 +271,7 @@ namespace Project1
             m.nameList.Add(name);
             return m;
         }
+
         /// <summary>
         /// Operator + adds a name to the list
         /// </summary>
@@ -280,7 +296,7 @@ namespace Project1
             for (int i = 0; i < n.Count(); i++)
             {
                 m.nameList.Add(n.getName(i));
-            }    
+            }
             return m;
         }
 

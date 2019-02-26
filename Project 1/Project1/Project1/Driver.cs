@@ -6,7 +6,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Tuesday, Feb 19 2019
-//  Modified:          Thursday, Feb 21 2019
+//  Modified:          Monday, Feb 25 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -230,9 +230,6 @@ namespace Project1
                     }
                 }
                 string fileName = OpenDlg.FileName;
-            }
-            else
-            {
             }
 
             return names;

@@ -41,10 +41,10 @@ namespace Project1
 
             int y = 0;
             while (y < strDelims.Length)
-             {
-                 int i = 0;
+            {
+                int i = 0;
                 while (i < strIn.Length)
-               {
+                {
                     string a = strIn[i].ToString();
                     string b = strDelims[y].ToString();
 
@@ -55,16 +55,14 @@ namespace Project1
                     }
 
                     i++;
-             }
-              y++;
+                }
+                y++;
             }
             List<string> outList = newString.Split('|').ToList();
             outList = outList.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
 
             return outList;
         }
-
-
 
         #endregion Tokenize
 
@@ -127,7 +125,7 @@ namespace Project1
         /// <summary>
         /// displayWelcome - displays a welcome message asking for user credentials, then verifies
         /// and returns the name phone and email of the person
-        /// 
+        ///
         /// </summary>
         /// <out name>the string that contains a persons name</out>
         /// <out phone>the phone number string</out>
@@ -137,7 +135,7 @@ namespace Project1
             string tempphone;
             string tempemail;
             Console.WriteLine("Welcome to the program!\n");
-            Console.WriteLine("Please enter your name.. ");
+            Console.WriteLine("Please enter your name..");
             name = (Console.ReadLine());
             phone = null;
             email = null;
@@ -145,8 +143,8 @@ namespace Project1
             bool phoneVerification = true;
             while (phoneVerification == true)
             {
-            Console.WriteLine("Please enter your phone number: ");
-            tempphone = (Console.ReadLine());
+                Console.WriteLine("Please enter your phone number: ");
+                tempphone = (Console.ReadLine());
 
                 try
                 {
@@ -171,7 +169,6 @@ namespace Project1
                             phoneVerification = true;
                         }
                     }
-
                 }
                 catch (Exception)
                 {
@@ -184,7 +181,6 @@ namespace Project1
             {
                 Console.WriteLine("Please enter your email address: ");
                 tempemail = (Console.ReadLine());
-
                 try
                 {
                     if (string.IsNullOrEmpty(tempemail))
@@ -208,7 +204,6 @@ namespace Project1
                             emailVerification = true;
                         }
                     }
-
                 }
                 catch (Exception)
                 {
@@ -219,7 +214,7 @@ namespace Project1
 
         /// <summary>
         /// displayExit - displays a message that shows the credentials. a name phone and email
-        /// 
+        ///
         /// </summary>
         /// <param name>the string that contains a persons name</param>
         /// <param phone>the phone number string</param>
@@ -227,10 +222,11 @@ namespace Project1
         public static void displayExit(string name, string phone, string email)
         {
             Skip();
-            Console.WriteLine("Goodbye " + name + "!"+ 
+            Console.WriteLine("Goodbye " + name + "!" +
                               "\nThank you for using the program!\n\n\n\nYour credentials:\nName: " + name +
                               "\nPhone: " + phone + "\nEmail: " + email);
         }
     }
+
     #endregion DisplayWelcomeExit
 }
