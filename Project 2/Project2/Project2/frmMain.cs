@@ -150,8 +150,9 @@ namespace Project2
         {
             nameList.clear();
             nameListBox.Items.Clear();
-            frmClear clear = new frmClear();
-            clear.Show();
+
+            label1.Text = null;
+
         }
 
         private void btnFNF_Click(object sender, EventArgs e)
