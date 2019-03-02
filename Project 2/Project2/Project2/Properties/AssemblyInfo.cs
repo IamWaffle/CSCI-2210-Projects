@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Project2")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Project 2 - NameList Forms")]
+[assembly: AssemblyDescription("The purpose of this assignment is to get experience with a Windows Forms application and to get additional practice with object oriented programming including the reuse of existing classes.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Project2")]
+[assembly: AssemblyCompany("Ryan Shupe , East Tennessee State University")]
+[assembly: AssemblyProduct("Project 2 - NameList Forms")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d6c4f875-b126-45b4-9e6e-b93e7ccec265")]
+[assembly: Guid("98bc62b2-4f21-4054-ae3e-05949942061f")]
 
 // Version information for an assembly consists of the following four values:
 //
