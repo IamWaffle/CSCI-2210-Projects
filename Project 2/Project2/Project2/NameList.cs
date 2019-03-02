@@ -133,6 +133,28 @@ namespace Project2
         }
 
         /// <summary>
+        /// getName- returns a name object using a string
+        /// </summary>
+        /// <param name="i"> the full name to look for</param>
+        /// <returns name="Name"> returns the name object at that position i</returns>
+        public Name getName(String i)
+        {
+            Name temp = new Name();
+            for (int x = 0; x < nameList.Count; x++)
+            {
+                if (nameList[x].firstNameFirst() == i)
+                {
+                    temp.personNameFull = nameList[x].ToString();
+                }
+                if (nameList[x].lastNameFirst() == i)
+                {
+                    temp.personNameFull = nameList[x].ToString();
+                }
+            }
+            return temp;
+        }
+
+        /// <summary>
         /// removeName - asks which contact to be removed, checks to see if the name is in the list, then removes the name from the list.
         /// </summary>
 

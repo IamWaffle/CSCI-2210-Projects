@@ -73,6 +73,18 @@
     <Compile Include="frmAboutbox.Designer.cs">
       <DependentUpon>frmAboutbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdd.Designer.cs">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClear.Designer.cs">
+      <DependentUpon>frmClear.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,12 @@
     <Compile Include="Tools.cs" />
     <EmbeddedResource Include="frmAboutbox.resx">
       <DependentUpon>frmAboutbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdd.resx">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClear.resx">
+      <DependentUpon>frmClear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
