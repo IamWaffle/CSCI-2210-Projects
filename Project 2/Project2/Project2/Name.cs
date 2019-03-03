@@ -41,6 +41,7 @@ namespace Project2
         {
             personNameFull = original.personNameFull;
             Tools.Tokenize(original.personNameFull, " ");
+            nameBreakdown(original.personNameFull);
         }
 
         /// <summary>
@@ -51,6 +52,7 @@ namespace Project2
         {
             personNameFull = inName;
             nameBreakdown(inName);
+            Tools.Tokenize(inName, " ");
         }
 
         #endregion Constructors

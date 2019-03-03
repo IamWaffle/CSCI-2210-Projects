@@ -112,6 +112,11 @@ namespace Project2
             nameList.Clear();
         }
 
+        public void add(Name name)
+        {
+            nameList.Add(name);
+        }
+
         /// <summary>
         /// remove - remove an item from the list.
         /// </summary>
@@ -122,6 +127,21 @@ namespace Project2
             nameList.Remove(nameList[i]);
         }
 
+        public void remove(string i)
+        {
+            for (int x = 0; x < nameList.Count; x++)
+            {
+                if (nameList[x].firstNameFirst() == i)
+                {
+                    nameList.Remove(getName(x));
+                }
+                if (nameList[x].lastNameFirst() == i)
+                {
+                    nameList.Remove(getName(x));
+                }
+            }
+        }
+
         /// <summary>
         /// getName- returns a name object at a position i.
         /// </summary>
@@ -130,6 +150,42 @@ namespace Project2
         public Name getName(int i)
         {
             return nameList[i];
+        }
+
+        /// <summary>
+        /// getName- returns a name object using a string
+        /// </summary>
+        /// <param name="i"> the full name to look for</param>
+        /// <returns name="Name"> returns the name object at that position i</returns>
+        public Name getName(String i)
+        {
+            Name temp = new Name();
+            for (int x = 0; x < nameList.Count; x++)
+            {
+                if (nameList[x].firstNameFirst() == i)
+                {
+                    temp.personNameFull = nameList[x].ToString();
+                    temp.nameBreakdown(temp.personNameFull);
+                }
+                if (nameList[x].lastNameFirst() == i)
+                {
+                    temp.personNameFull = nameList[x].ToString();
+                    temp.nameBreakdown(temp.personNameFull);
+                }
+            }
+            return temp;
+        }
+
+        /// <summary>
+        /// replace - replaces a name with another one in the same position
+        /// </summary>
+        public void replace(Name original, Name name)
+        {
+            int index = nameList.IndexOf(original);
+            if (index > 0)
+            {
+                nameList[index] = name;
+            }
         }
 
         /// <summary>
