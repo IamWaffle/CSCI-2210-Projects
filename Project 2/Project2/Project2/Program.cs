@@ -9,7 +9,7 @@ namespace Project2
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        private static void Main()
+        public static void Main()
         {
             //Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

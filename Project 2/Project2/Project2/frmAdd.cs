@@ -1,20 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project2
 {
     public partial class frmAdd : Form
     {
+        private String nameFull = "";
+
         public frmAdd()
         {
             InitializeComponent();
+        }
+
+        public string name
+        {
+            get
+            {
+                return nameFull;
+            }
+        }
+
+        private void btnAddName_Click(object sender, EventArgs e)
+        {
+            nameFull = txtBoxAdd.Text;
+            Close();
         }
     }
 }

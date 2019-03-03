@@ -112,6 +112,11 @@ namespace Project2
             nameList.Clear();
         }
 
+        public void add(Name name)
+        {
+            nameList.Add(name);
+        }
+
         /// <summary>
         /// remove - remove an item from the list.
         /// </summary>
@@ -120,6 +125,21 @@ namespace Project2
         public void remove(int i)
         {
             nameList.Remove(nameList[i]);
+        }
+
+        public void remove(string i)
+        {
+            for (int x = 0; x < nameList.Count; x++)
+            {
+                if (nameList[x].firstNameFirst() == i)
+                {
+                    nameList.Remove(getName(x));
+                }
+                if (nameList[x].lastNameFirst() == i)
+                {
+                    nameList.Remove(getName(x));
+                }
+            }
         }
 
         /// <summary>
@@ -145,13 +165,27 @@ namespace Project2
                 if (nameList[x].firstNameFirst() == i)
                 {
                     temp.personNameFull = nameList[x].ToString();
+                    temp.nameBreakdown(temp.personNameFull);
                 }
                 if (nameList[x].lastNameFirst() == i)
                 {
                     temp.personNameFull = nameList[x].ToString();
+                    temp.nameBreakdown(temp.personNameFull);
                 }
             }
             return temp;
+        }
+
+        /// <summary>
+        /// replace - replaces a name with another one in the same position
+        /// </summary>
+        public void replace(Name original, Name name)
+        {
+            int index = nameList.IndexOf(original);
+            if (index > 0)
+            {
+                nameList[index] = name;
+            }
         }
 
         /// <summary>

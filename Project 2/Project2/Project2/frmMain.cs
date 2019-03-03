@@ -8,11 +8,10 @@ namespace Project2
 {
     public partial class frmMain : Form
     {
-
-        string names = "";
-        NameList nameList = new NameList();
-        NameList fileList;
-        Name temp;
+        private string names = "";
+        private NameList nameList = new NameList();
+        private NameList fileList;
+        private Name tempName;
 
         public frmMain()
         {
@@ -33,28 +32,13 @@ namespace Project2
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAboutbox about = new frmAboutbox();
             about.Show();
-        }
-
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            nameListBox.Items.Clear();
-            nameList.clear();
-            names = OpenFileHandler();
-            fileList = new NameList(names);
-            nameList += fileList;
-
-            for (int i = 0; i < nameList.Count(); i++)
-            {
-                nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
-            }
         }
 
         private void nameListBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -72,6 +56,7 @@ namespace Project2
             e.Graphics.DrawString(nameListBox.Items[e.Index].ToString(), e.Font, Brushes.White, e.Bounds, StringFormat.GenericDefault);
             e.DrawFocusRectangle();
         }
+
         #region FileHandlers
 
         /// <summary>
@@ -114,7 +99,84 @@ namespace Project2
 
         #endregion FileHandlers
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameList.clear();
+            nameListBox.Items.Clear();
+
+            fullNameLabel.Text = null;
+        }
+
+        private void btnFNF_Click(object sender, EventArgs e)
+        {
+            List<String> tempSortedList = new List<String>();
+            tempSortedList = nameList.SortFNF();
+            nameListBox.Items.Clear();
+            for (int i = 0; i < tempSortedList.Count; i++)
+            {
+                nameListBox.Items.Add(tempSortedList[i].ToString());
+            }
+        }
+
+        private void btnLNF_Click(object sender, EventArgs e)
+        {
+            List<String> tempSortedList = new List<String>();
+            tempSortedList = nameList.SortLNF();
+            nameListBox.Items.Clear();
+            for (int i = 0; i < tempSortedList.Count; i++)
+            {
+                nameListBox.Items.Add(tempSortedList[i].ToString());
+            }
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdd add = new frmAdd();
+            add.Show();
+        }
+
+        private void nameListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tempName = new Name(nameListBox.SelectedItem.ToString());
+
+            txtboxFirstName.Text = tempName.firstName;
+            txtboxMiddleName.Text = tempName.middle;
+            txtboxLastName.Text = tempName.lastName;
+            txtboxEnd.Text = tempName.end;
+
+            fullNameLabel.Text = nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull;
+        }
+
+        private void addANameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdd add = new frmAdd();
+            add.ShowDialog();
+            tempName = new Name(add.name);
+            if (string.IsNullOrWhiteSpace(tempName.personNameFull))
+            {
+            }
+            else
+            {
+                nameList.add(tempName);
+                nameListBox.Items.Add(tempName.personNameFull);
+            }
+        }
+
+        private void openToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            nameListBox.Items.Clear();
+            nameList.clear();
+            names = OpenFileHandler();
+            fileList = new NameList(names);
+            nameList += fileList;
+
+            for (int i = 0; i < nameList.Count(); i++)
+            {
+                nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
+            }
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
 
@@ -145,48 +207,5 @@ namespace Project2
                 }
             }
         }
-
-        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            nameList.clear();
-            nameListBox.Items.Clear();
-
-            label1.Text = null;
-
-        }
-
-        private void btnFNF_Click(object sender, EventArgs e)
-        {
-            List<String> tempSortedList = new List<String>();
-            tempSortedList = nameList.SortFNF();
-            nameListBox.Items.Clear();
-            for (int i = 0; i < tempSortedList.Count; i++)
-            {
-                nameListBox.Items.Add(tempSortedList[i].ToString());
-            }
-        }
-
-        private void btnLNF_Click(object sender, EventArgs e)
-        {
-            List<String> tempSortedList = new List<String>();
-            tempSortedList = nameList.SortLNF();
-            nameListBox.Items.Clear();
-            for (int i = 0; i < tempSortedList.Count; i++)
-            {
-                nameListBox.Items.Add(tempSortedList[i].ToString());
-            }
-        }
-
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void nameListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label1.Text = nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull;
-        }
-
-        
     }
 }
