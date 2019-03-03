@@ -20,13 +20,14 @@ namespace Project2
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            dateLabel.Text = DateTime.Now.ToLongDateString();
-            timeLabel.Text = DateTime.Now.ToLongTimeString();
+            dateTimeBar.Text = DateTime.Now.ToLongDateString();
+            dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
         }
 
         private void dateTimer_Tick(object sender, EventArgs e)
         {
-            timeLabel.Text = DateTime.Now.ToLongTimeString();
+            dateTimeBar.Text = DateTime.Now.ToLongDateString();
+            dateTimeBar.Text +=  " " + DateTime.Now.ToLongTimeString();
             numNames.Text = "Number of names in List: " + nameListBox.Items.Count.ToString();
         }
 
@@ -206,6 +207,16 @@ namespace Project2
                     writer.Close();
                 }
             }
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dateLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

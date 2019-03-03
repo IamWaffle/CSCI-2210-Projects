@@ -33,9 +33,7 @@
             this.nameListBox = new System.Windows.Forms.ListBox();
             this.btnFNF = new System.Windows.Forms.Button();
             this.btnLNF = new System.Windows.Forms.Button();
-            this.dateLabel = new System.Windows.Forms.Label();
             this.tmrDateListItems = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +57,8 @@
             this.txtboxLastName = new System.Windows.Forms.TextBox();
             this.txtboxMiddleName = new System.Windows.Forms.TextBox();
             this.txtboxFirstName = new System.Windows.Forms.TextBox();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimeBar = new System.Windows.Forms.StatusBar();
             this.menuStrip1.SuspendLayout();
             this.nameContentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -100,31 +100,11 @@
             this.btnLNF.UseVisualStyleBackColor = false;
             this.btnLNF.Click += new System.EventHandler(this.btnLNF_Click);
             // 
-            // dateLabel
-            // 
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.ForeColor = System.Drawing.Color.White;
-            this.dateLabel.Location = new System.Drawing.Point(382, 329);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(28, 13);
-            this.dateLabel.TabIndex = 3;
-            this.dateLabel.Text = "date";
-            // 
             // tmrDateListItems
             // 
             this.tmrDateListItems.Enabled = true;
             this.tmrDateListItems.Interval = 200;
             this.tmrDateListItems.Tick += new System.EventHandler(this.dateTimer_Tick);
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.ForeColor = System.Drawing.Color.White;
-            this.timeLabel.Location = new System.Drawing.Point(417, 350);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(26, 13);
-            this.timeLabel.TabIndex = 4;
-            this.timeLabel.Text = "time";
             // 
             // menuStrip1
             // 
@@ -133,7 +113,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(553, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(550, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -142,7 +122,8 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearToolStripMenuItem,
             this.fileToolStripMenuItem1,
-            this.nameToolStripMenuItem});
+            this.nameToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.editToolStripMenuItem.Text = "Name List";
@@ -328,16 +309,30 @@
             this.txtboxFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtboxFirstName.TabIndex = 0;
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
+            // 
+            // dateTimeBar
+            // 
+            this.dateTimeBar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimeBar.Location = new System.Drawing.Point(0, 377);
+            this.dateTimeBar.Name = "dateTimeBar";
+            this.dateTimeBar.Size = new System.Drawing.Size(550, 22);
+            this.dateTimeBar.TabIndex = 10;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
-            this.ClientSize = new System.Drawing.Size(553, 382);
+            this.ClientSize = new System.Drawing.Size(550, 399);
+            this.Controls.Add(this.dateTimeBar);
             this.Controls.Add(this.nameContentPanel);
             this.Controls.Add(this.numNames);
-            this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.btnLNF);
             this.Controls.Add(this.btnFNF);
             this.Controls.Add(this.nameListBox);
@@ -364,9 +359,7 @@
         private System.Windows.Forms.ListBox nameListBox;
         private System.Windows.Forms.Button btnFNF;
         private System.Windows.Forms.Button btnLNF;
-        private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Timer tmrDateListItems;
-        private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -390,5 +383,7 @@
         private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addANameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeANameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.StatusBar dateTimeBar;
     }
 }
