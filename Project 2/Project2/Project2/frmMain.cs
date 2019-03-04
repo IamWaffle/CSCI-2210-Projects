@@ -12,7 +12,7 @@ namespace Project2
         private NameList nameList = new NameList();
         private NameList fileList;
         private Name tempName;
-        private Name tempNameEdit;
+        private bool edited = false;
 
         public frmMain()
         {
@@ -28,7 +28,7 @@ namespace Project2
         private void dateTimer_Tick(object sender, EventArgs e)
         {
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
-            dateTimeBar.Text +=  " " + DateTime.Now.ToLongTimeString();
+            dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
             numNames.Text = "Number of names in List: " + nameListBox.Items.Count.ToString();
         }
 
@@ -48,14 +48,15 @@ namespace Project2
             if (e.Index < 0) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e = new DrawItemEventArgs(e.Graphics,
-                                          e.Font,
-                                          e.Bounds,
-                                          e.Index,
-                                          e.State ^ DrawItemState.Selected,
-                                          e.ForeColor,
-                                          Color.FromArgb(254, 95, 85));
+                    e.Font,
+                    e.Bounds,
+                    e.Index,
+                    e.State ^ DrawItemState.Selected,
+                    e.ForeColor,
+                    Color.FromArgb(254, 95, 85));
             e.DrawBackground();
-            e.Graphics.DrawString(nameListBox.Items[e.Index].ToString(), e.Font, Brushes.White, e.Bounds, StringFormat.GenericDefault);
+            e.Graphics.DrawString(nameListBox.Items[e.Index].ToString(), e.Font, Brushes.White, e.Bounds,
+                StringFormat.GenericDefault);
             e.DrawFocusRectangle();
         }
 
@@ -93,6 +94,7 @@ namespace Project2
                         rdr.Close();
                     }
                 }
+
                 string fileName = OpenDlg.FileName;
             }
 
@@ -165,7 +167,7 @@ namespace Project2
 
 
         private void nameListBox_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+        {
 
             txtboxFirstName.Text = nameList.getName(nameListBox.SelectedItem.ToString()).firstName;
             txtboxMiddleName.Text = nameList.getName(nameListBox.SelectedItem.ToString()).middle;
@@ -260,11 +262,12 @@ namespace Project2
                     tempName.middle = txtboxMiddleName.Text;
                     tempName.lastName = txtboxLastName.Text;
                     tempName.end = txtboxEnd.Text;
-                    
+
                 }
 
                 tempName.personNameFull =
-                    txtboxFirstName.Text + " " + txtboxMiddleName.Text + " " + txtboxLastName.Text+ " " + txtboxEnd.Text;
+                    txtboxFirstName.Text + " " + txtboxMiddleName.Text + " " + txtboxLastName.Text + " " +
+                    txtboxEnd.Text;
 
                 nameList.replace(nameList.getName(nameListBox.SelectedItem.ToString()), tempName);
                 nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull);
@@ -275,12 +278,14 @@ namespace Project2
                 {
                     nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
                 }
+
             }
             catch (Exception NullReferenceException)
             {
                 Console.WriteLine("Something went wrong.. Is the list empty?");
             }
-            
+
         }
     }
 }
+

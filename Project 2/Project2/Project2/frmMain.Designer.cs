@@ -295,6 +295,7 @@
             this.txtboxEnd.Name = "txtboxEnd";
             this.txtboxEnd.Size = new System.Drawing.Size(151, 20);
             this.txtboxEnd.TabIndex = 3;
+
             // 
             // txtboxLastName
             // 
@@ -302,6 +303,7 @@
             this.txtboxLastName.Name = "txtboxLastName";
             this.txtboxLastName.Size = new System.Drawing.Size(151, 20);
             this.txtboxLastName.TabIndex = 2;
+
             // 
             // txtboxMiddleName
             // 
@@ -309,6 +311,7 @@
             this.txtboxMiddleName.Name = "txtboxMiddleName";
             this.txtboxMiddleName.Size = new System.Drawing.Size(151, 20);
             this.txtboxMiddleName.TabIndex = 1;
+
             // 
             // txtboxFirstName
             // 
@@ -316,6 +319,7 @@
             this.txtboxFirstName.Name = "txtboxFirstName";
             this.txtboxFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtboxFirstName.TabIndex = 0;
+
             // 
             // dateTimeBar
             // 
