@@ -25,5 +25,10 @@ namespace Project2
             nameFull = txtBoxAdd.Text;
             Close();
         }
+
+        private void txtBoxAdd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

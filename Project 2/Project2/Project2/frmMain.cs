@@ -12,6 +12,7 @@ namespace Project2
         private NameList nameList = new NameList();
         private NameList fileList;
         private Name tempName;
+        private Name tempNameEdit;
 
         public frmMain()
         {
@@ -162,20 +163,14 @@ namespace Project2
             }
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmAdd add = new frmAdd();
-            add.Show();
-        }
 
         private void nameListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tempName = new Name(nameList.getName(nameListBox.SelectedItem.ToString()));
+        { 
 
-            txtboxFirstName.Text = tempName.firstName;
-            txtboxMiddleName.Text = tempName.middle;
-            txtboxLastName.Text = tempName.lastName;
-            txtboxEnd.Text = tempName.end;
+            txtboxFirstName.Text = nameList.getName(nameListBox.SelectedItem.ToString()).firstName;
+            txtboxMiddleName.Text = nameList.getName(nameListBox.SelectedItem.ToString()).middle;
+            txtboxLastName.Text = nameList.getName(nameListBox.SelectedItem.ToString()).lastName;
+            txtboxEnd.Text = nameList.getName(nameListBox.SelectedItem.ToString()).end;
 
             fullNameLabel.Text = nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull;
         }
@@ -192,6 +187,13 @@ namespace Project2
             {
                 nameList.add(tempName);
                 nameListBox.Items.Add(tempName.personNameFull);
+
+                nameListBox.Items.Clear();
+
+                for (int i = 0; i < nameList.Count(); i++)
+                {
+                    nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
+                }
             }
         }
 
@@ -219,6 +221,66 @@ namespace Project2
             this.Close();
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tempName = new Name();
+                if (string.IsNullOrWhiteSpace(txtboxFirstName.Text))
+                {
+                    tempName.firstName = null;
+                    tempName.middle = txtboxMiddleName.Text;
+                    tempName.lastName = txtboxLastName.Text;
+                    tempName.end = txtboxEnd.Text;
+                }
+                else if (string.IsNullOrWhiteSpace(txtboxMiddleName.Text))
+                {
+                    tempName.firstName = txtboxFirstName.Text;
+                    tempName.middle = null;
+                    tempName.lastName = txtboxLastName.Text;
+                    tempName.end = txtboxEnd.Text;
+                }
+                else if (string.IsNullOrWhiteSpace(txtboxLastName.Text))
+                {
+                    tempName.firstName = txtboxFirstName.Text;
+                    tempName.middle = txtboxMiddleName.Text;
+                    tempName.lastName = null;
+                    tempName.end = txtboxEnd.Text;
+                }
+                else if (string.IsNullOrWhiteSpace(txtboxEnd.Text))
+                {
+                    tempName.firstName = txtboxFirstName.Text;
+                    tempName.middle = txtboxMiddleName.Text;
+                    tempName.lastName = txtboxLastName.Text;
+                    tempName.end = null;
+                }
+                else
+                {
+                    tempName.firstName = txtboxFirstName.Text;
+                    tempName.middle = txtboxMiddleName.Text;
+                    tempName.lastName = txtboxLastName.Text;
+                    tempName.end = txtboxEnd.Text;
+                    
+                }
 
+                tempName.personNameFull =
+                    txtboxFirstName.Text + " " + txtboxMiddleName.Text + " " + txtboxLastName.Text+ " " + txtboxEnd.Text;
+
+                nameList.replace(nameList.getName(nameListBox.SelectedItem.ToString()), tempName);
+                nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull);
+
+                nameListBox.Items.Clear();
+
+                for (int i = 0; i < nameList.Count(); i++)
+                {
+                    nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
+                }
+            }
+            catch (Exception NullReferenceException)
+            {
+                Console.WriteLine("Something went wrong.. Is the list empty?");
+            }
+            
+        }
     }
 }

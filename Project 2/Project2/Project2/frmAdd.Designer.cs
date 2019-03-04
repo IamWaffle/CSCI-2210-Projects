@@ -40,6 +40,7 @@
             this.txtBoxAdd.Size = new System.Drawing.Size(244, 20);
             this.txtBoxAdd.TabIndex = 0;
             this.txtBoxAdd.Text = "Type the name you would like to add";
+            this.txtBoxAdd.TextChanged += new System.EventHandler(this.txtBoxAdd_TextChanged);
             // 
             // btnAddName
             // 

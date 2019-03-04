@@ -184,7 +184,7 @@ namespace Project2
             int index = nameList.IndexOf(original);
             if (index > 0)
             {
-                nameList[index] = name;
+                nameList.Insert(index, name);
             }
         }
 
