@@ -98,6 +98,38 @@ namespace Project2
             return names;
         }
 
+        public void saveFileHandler()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+
+            dlg.InitialDirectory = Application.StartupPath;
+            dlg.Title = "Save this name list";
+            dlg.Filter = "text files|*.txt|all files|*.*";
+
+            if (dlg.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            StreamWriter writer = null;
+            try
+            {
+                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
+
+                for (int i = 0; i < nameList.Count(); i++)
+                {
+                    writer.WriteLine(nameList.getName(i) + "#");
+                }
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+            }
+        }
+
         #endregion FileHandlers
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -179,34 +211,7 @@ namespace Project2
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-
-            dlg.InitialDirectory = Application.StartupPath;
-            dlg.Title = "Save this name list";
-            dlg.Filter = "text files|*.txt|all files|*.*";
-
-            if (dlg.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-
-            StreamWriter writer = null;
-            try
-            {
-                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
-
-                for (int i = 0; i < nameList.Count(); i++)
-                {
-                    writer.WriteLine(nameList.getName(i) + "#");
-                }
-            }
-            finally
-            {
-                if (writer != null)
-                {
-                    writer.Close();
-                }
-            }
+            saveFileHandler();
         }
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
