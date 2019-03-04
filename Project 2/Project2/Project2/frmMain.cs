@@ -138,7 +138,7 @@ namespace Project2
 
         private void nameListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tempName = new Name(nameListBox.SelectedItem.ToString());
+            tempName = new Name(nameList.getName(nameListBox.SelectedItem.ToString()));
 
             txtboxFirstName.Text = tempName.firstName;
             txtboxMiddleName.Text = tempName.middle;
@@ -214,9 +214,6 @@ namespace Project2
             this.Close();
         }
 
-        private void dateLabel_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

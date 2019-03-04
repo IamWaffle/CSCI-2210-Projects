@@ -43,6 +43,7 @@
             this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullNameLabel = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.txtboxLastName = new System.Windows.Forms.TextBox();
             this.txtboxMiddleName = new System.Windows.Forms.TextBox();
             this.txtboxFirstName = new System.Windows.Forms.TextBox();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimeBar = new System.Windows.Forms.StatusBar();
             this.menuStrip1.SuspendLayout();
             this.nameContentPanel.SuspendLayout();
@@ -131,7 +131,7 @@
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -141,7 +141,7 @@
             this.openToolStripMenuItem1,
             this.saveToolStripMenuItem1});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // openToolStripMenuItem1
@@ -164,7 +164,7 @@
             this.addANameToolStripMenuItem,
             this.removeANameToolStripMenuItem});
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.nameToolStripMenuItem.Text = "Name";
             // 
             // addANameToolStripMenuItem
@@ -179,6 +179,13 @@
             this.removeANameToolStripMenuItem.Name = "removeANameToolStripMenuItem";
             this.removeANameToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.removeANameToolStripMenuItem.Text = "Remove a Name";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
             // helpToolStripMenuItem
             // 
@@ -308,13 +315,6 @@
             this.txtboxFirstName.Name = "txtboxFirstName";
             this.txtboxFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtboxFirstName.TabIndex = 0;
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
             // dateTimeBar
             // 
