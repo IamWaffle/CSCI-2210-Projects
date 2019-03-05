@@ -55,5 +55,38 @@ namespace Project2
         }
         #endregion Methods
 
+        #region KeyPress
+        private void txtboxFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtboxMiddleName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtboxLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtboxEnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion Keypress
     }
 }

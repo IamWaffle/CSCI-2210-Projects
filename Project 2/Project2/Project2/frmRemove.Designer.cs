@@ -54,7 +54,6 @@
             this.nameListBox2.Name = "nameListBox2";
             this.nameListBox2.Size = new System.Drawing.Size(251, 275);
             this.nameListBox2.TabIndex = 9;
-
             // 
             // btnRemove
             // 
@@ -98,9 +97,8 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.ListBox nameListBox2;
         public System.Windows.Forms.Button btnRemove;
         public System.Windows.Forms.Label selectLabel;
+        private System.Windows.Forms.ListBox nameListBox2;
     }
 }

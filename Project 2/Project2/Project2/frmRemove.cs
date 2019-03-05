@@ -18,9 +18,15 @@ namespace Project2
         private NameList nameList;
         private NameList tempList;
 
-        public frmRemove()
+        public frmRemove(string lol)
         {
-            InitializeComponent();
+            if (nameListBox2 == null)
+            {
+                nameListBox2.Items.Add(lol);
+            }
+            
+
+
         }
 
     }

@@ -139,6 +139,7 @@
             this.txtboxEnd.Name = "txtboxEnd";
             this.txtboxEnd.Size = new System.Drawing.Size(151, 20);
             this.txtboxEnd.TabIndex = 3;
+            this.txtboxEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtboxEnd_KeyPress);
             // 
             // txtboxLastName
             // 
@@ -146,6 +147,7 @@
             this.txtboxLastName.Name = "txtboxLastName";
             this.txtboxLastName.Size = new System.Drawing.Size(151, 20);
             this.txtboxLastName.TabIndex = 2;
+            this.txtboxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtboxLastName_KeyPress);
             // 
             // fullNameLabel
             // 
@@ -162,6 +164,7 @@
             this.txtboxMiddleName.Name = "txtboxMiddleName";
             this.txtboxMiddleName.Size = new System.Drawing.Size(151, 20);
             this.txtboxMiddleName.TabIndex = 1;
+            this.txtboxMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtboxMiddleName_KeyPress);
             // 
             // txtboxFirstName
             // 
@@ -169,7 +172,7 @@
             this.txtboxFirstName.Name = "txtboxFirstName";
             this.txtboxFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtboxFirstName.TabIndex = 0;
-
+            this.txtboxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtboxFirstName_KeyPress);
             // 
             // frmAdd
             // 

@@ -1,7 +1,7 @@
 remove name functionality
-remove name if the text box is blank
-fix being able to edit a name if it is added
-COMMENTS
-after ordering lst name first the text is wrong
+
+
+
+possibly implement owner?
 
 possibly some customization for the user.??

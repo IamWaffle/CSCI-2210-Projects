@@ -105,6 +105,10 @@ namespace Project2
             nameListBox.Items.Clear();
 
             fullNameLabel.Text = null;
+            txtboxFirstName.Text = null;
+            txtboxMiddleName.Text = null;
+            txtboxLastName.Text = null;
+            txtboxEnd.Text = null;
         }
 
         /// <summary>
@@ -295,6 +299,8 @@ namespace Project2
                     nameListBox.Items.Clear();
 
                     refresh();
+
+                    fullNameLabel.Text = tempName.personNameFull;
                 }
                 else
                 {
@@ -307,6 +313,8 @@ namespace Project2
                     nameList.insert(tempName, index);
 
                     refresh();
+
+                    fullNameLabel.Text = tempName.personNameFull;
                 }
                 edited = true;
             }
@@ -337,17 +345,14 @@ namespace Project2
         /// <param name="e"></param>
         private void removeANameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string nameListStrings;
 
-            nameListStrings = nameList.ToString();
+            string lol = "fsdfsdf";
 
-            frmRemove rmvDialog = new frmRemove();
-            for (int i = 0; i < nameList.Count(); i++)
-            {
-                rmvDialog.nameListBox2.Items.Add(nameList.getName(i).firstNameFirst());
-            }
+            frmRemove rmvDialog = new frmRemove(lol);
+
             rmvDialog.ShowDialog();
         }
+
 
         #endregion Methods
 
@@ -430,5 +435,38 @@ namespace Project2
 
         #endregion FileHandlers
 
+        #region KeyPress
+        private void txtboxFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtboxMiddleName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtboxLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtboxEnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion KeyPress
     }
 }
