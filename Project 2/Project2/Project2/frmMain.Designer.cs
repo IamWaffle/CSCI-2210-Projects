@@ -59,6 +59,9 @@
             this.txtboxMiddleName = new System.Windows.Forms.TextBox();
             this.txtboxFirstName = new System.Windows.Forms.TextBox();
             this.dateTimeBar = new System.Windows.Forms.StatusBar();
+            this.name = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.nameContentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -127,12 +130,11 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.editToolStripMenuItem.Text = "&Name List";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.clearToolStripMenuItem.Text = "&Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -142,20 +144,20 @@
             this.openToolStripMenuItem1,
             this.saveToolStripMenuItem1});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
             this.fileToolStripMenuItem1.Text = "&File";
             // 
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.openToolStripMenuItem1.Text = "&Open a file";
             this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.saveToolStripMenuItem1.Text = "&Save the list";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -165,27 +167,26 @@
             this.addANameToolStripMenuItem,
             this.removeANameToolStripMenuItem});
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.nameToolStripMenuItem.Text = "&Name";
-            this.nameToolStripMenuItem.Click += new System.EventHandler(this.nameToolStripMenuItem_Click);
             // 
             // addANameToolStripMenuItem
             // 
             this.addANameToolStripMenuItem.Name = "addANameToolStripMenuItem";
-            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.addANameToolStripMenuItem.Text = "Add a Name";
             this.addANameToolStripMenuItem.Click += new System.EventHandler(this.addANameToolStripMenuItem_Click);
             // 
             // removeANameToolStripMenuItem
             // 
             this.removeANameToolStripMenuItem.Name = "removeANameToolStripMenuItem";
-            this.removeANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeANameToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.removeANameToolStripMenuItem.Text = "Remove a Name";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
@@ -200,7 +201,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -235,7 +236,7 @@
             this.nameContentPanel.Controls.Add(this.fullNameLabel);
             this.nameContentPanel.Controls.Add(this.txtboxMiddleName);
             this.nameContentPanel.Controls.Add(this.txtboxFirstName);
-            this.nameContentPanel.Location = new System.Drawing.Point(317, 38);
+            this.nameContentPanel.Location = new System.Drawing.Point(311, 55);
             this.nameContentPanel.Name = "nameContentPanel";
             this.nameContentPanel.Size = new System.Drawing.Size(227, 226);
             this.nameContentPanel.TabIndex = 9;
@@ -327,13 +328,49 @@
             this.dateTimeBar.Size = new System.Drawing.Size(550, 22);
             this.dateTimeBar.TabIndex = 10;
             // 
+            // name
+            // 
+            this.name.AutoSize = true;
+            this.name.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.ForeColor = System.Drawing.Color.White;
+            this.name.Location = new System.Drawing.Point(357, 350);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(129, 14);
+            this.name.TabIndex = 14;
+            this.name.Text = "Ryan Shupe - CSCI 2210";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(328, 308);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 42);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "NameList";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(470, 330);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Project 2";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(550, 399);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimeBar);
+            this.Controls.Add(this.name);
             this.Controls.Add(this.nameContentPanel);
             this.Controls.Add(this.numNames);
             this.Controls.Add(this.btnLNF);
@@ -388,5 +425,8 @@
         private System.Windows.Forms.ToolStripMenuItem removeANameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.StatusBar dateTimeBar;
+        private System.Windows.Forms.Label name;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

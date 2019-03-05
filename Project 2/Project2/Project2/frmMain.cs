@@ -108,7 +108,7 @@ namespace Project2
             SaveFileDialog dlg = new SaveFileDialog();
 
             dlg.InitialDirectory = Application.StartupPath;
-            dlg.Title = "Save this name list"; 
+            dlg.Title = "Save this name list";
             dlg.Filter = "text files|*.txt|all files|*.*";
 
             if (dlg.ShowDialog() == DialogResult.Cancel)
@@ -182,7 +182,7 @@ namespace Project2
             frmAdd add = new frmAdd();
             add.ShowDialog();
             String personName = add.name;
-            
+
             if (string.IsNullOrWhiteSpace(personName))
             {
             }
@@ -193,6 +193,8 @@ namespace Project2
                 nameListBox.Items.Add(tempName.personNameFull);
 
                 refresh();
+
+                edited = true;
             }
         }
 
@@ -234,8 +236,6 @@ namespace Project2
             {
                 Close();
             }
-            
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -243,25 +243,60 @@ namespace Project2
             try
             {
                 tempNameEdit = new Name();
+                int index;
+                String editNameString;
                 tempNameEdit.firstName = txtboxFirstName.Text;
                 tempNameEdit.middle = txtboxMiddleName.Text;
                 tempNameEdit.lastName = txtboxLastName.Text;
                 tempNameEdit.end = txtboxEnd.Text;
 
-                String editNameString = tempNameEdit.firstName + " " + tempNameEdit.middle + " " + tempNameEdit.lastName +
-                                 " " + tempNameEdit.end;
-                tempName = new Name(editNameString);
-                int index = nameList.getIndex(nameList.getName(nameListBox.SelectedItem.ToString()));
+                if (tempNameEdit.firstName == null &&
+                    tempNameEdit.middle == null &&
+                    tempNameEdit.lastName == null && tempNameEdit.end == null)
+                {
+                    editNameString = null;
+                }
+                else
+                {
+                    editNameString = tempNameEdit.firstName + " " + tempNameEdit.middle + " " +
+                                        tempNameEdit.lastName +
+                                        " " + tempNameEdit.end;
+                }
 
-                nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).firstNameFirst());
+                    tempName = new Name(editNameString);
 
-                nameListBox.Items.Clear();
 
-                refresh();
+                if (nameList.Count() < 1)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index = nameList.getIndex(nameList.getName(nameListBox.SelectedItem.ToString()));
+                }
 
-                nameList.insert(tempName, index);
+                if(string.IsNullOrWhiteSpace(tempName.personNameFull))
+                {
+                    nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).firstNameFirst());
 
-                refresh();
+                    nameListBox.Items.Clear();
+
+                    refresh();
+                }
+                else
+                {
+                    nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).firstNameFirst());
+
+                    nameListBox.Items.Clear();
+
+                    refresh();
+
+                    nameList.insert(tempName, index);
+
+                    refresh();
+                }
+
+                
 
                 edited = true;
             }
@@ -279,16 +314,6 @@ namespace Project2
             {
                 nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
             }
-        }
-
-        private void nameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
