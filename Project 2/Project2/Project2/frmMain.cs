@@ -224,7 +224,6 @@ namespace Project2
                 if (saveDialog.save)
                 {
                     saveFileHandler();
-
                 }
                 else
                 {
