@@ -280,5 +280,15 @@ namespace Project2
                 nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
             }
         }
+
+        private void nameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
