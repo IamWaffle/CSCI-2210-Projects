@@ -5,7 +5,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
-//  Modified:          Monday, Feb 25 2019
+//  Modified:          Monday, Mar 04 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using System;
@@ -112,6 +112,10 @@ namespace Project2
             nameList.Clear();
         }
 
+        /// <summary>
+        /// add - add a name into the list.
+        /// </summary>
+        /// <param name="name"> the name to be added in the list</param>
         public void add(Name name)
         {
             nameList.Add(name);
@@ -126,7 +130,10 @@ namespace Project2
         {
             nameList.Remove(nameList[i]);
         }
-
+        /// <summary>
+        /// remove - remove an item from the list.
+        /// </summary>
+        /// <param name="i"> the string of which name that matches to be removed</param>
         public void remove(string i)
         {
             for (int x = 0; x < nameList.Count; x++)
@@ -189,6 +196,13 @@ namespace Project2
             }
         }
 
+        /// <summary>
+        /// insert - inserts a name at an index.
+        /// </summary>
+        /// <param name="name"> the name to be searched for</param>
+        /// <returns name = "nameList.IndexOf(name)">the index of the name</returns>
+
+
         public int getIndex(Name name)
         {
             return nameList.IndexOf(name);
@@ -197,6 +211,7 @@ namespace Project2
         /// <summary>
         /// removeName - asks which contact to be removed, checks to see if the name is in the list, then removes the name from the list.
         /// </summary>
+        /// <param name="remove"> the name to be removed</param>
 
         public void removeName(Name remove)
         {
@@ -242,7 +257,11 @@ namespace Project2
         {
             return nameList.Count;
         }
-
+        /// <summary>
+        /// insert - inserts a name at an index.
+        /// </summary>
+        /// <param name="tempName"> the name to be put into the list</param>
+        /// <param name="index"> the index of where to put the name in the list</param>
         internal void insert(Name tempName, int index)
         {
             nameList.Insert(index, tempName);
@@ -257,7 +276,7 @@ namespace Project2
             String output = "";
             for (int i = 0; i < nameList.Count; i++)
             {
-                output += (nameList[i].personNameFull + "\n");
+                output += (nameList[i].personNameFull + "#");
             }
             return output;
         }

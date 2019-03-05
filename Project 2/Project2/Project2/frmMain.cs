@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         frmMain.cs
+//	Description:
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Friday, Mar 01 2019
+//  Modified:          Monday, Mar 04 2019
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project2
 {
     public partial class frmMain : Form
@@ -16,17 +25,29 @@ namespace Project2
 
         private bool edited = false;
 
+
+        /// <summary>
+        ///  Basic constructor that does not take any parameters
+        /// </summary>
         public frmMain()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// frmMain_Load - this method executes when the form is initially loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
             dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
         }
-
+        /// <summary>
+        /// dateTimer_Tick - this method executes each time the timer ticks
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dateTimer_Tick(object sender, EventArgs e)
         {
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
@@ -34,17 +55,21 @@ namespace Project2
             numNames.Text = "Number of names in List: " + nameListBox.Items.Count.ToString();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+        /// <summary>
+        /// aboutToolStripMenuItem_Click - this method executes when the user clicks the about button and it displays an about box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAboutbox about = new frmAboutbox();
             about.Show();
         }
-
+        /// <summary>
+        /// nameListBox_DrawItem - this method is used to change the color of the highlighted object to fit the theme.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nameListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -103,6 +128,10 @@ namespace Project2
             return names;
         }
 
+        /// <summary>
+        /// saveFileHandler - this method uses the save file dialog to save a file then saves it in a format to be read by the program.
+        /// </summary>
+
         public void saveFileHandler()
         {
             SaveFileDialog dlg = new SaveFileDialog();
@@ -137,6 +166,11 @@ namespace Project2
 
         #endregion FileHandlers
 
+        /// <summary>
+        /// clearToolStripMenuItem_Click - this methods runs if the user clicks the clear button and it clears the list and the list box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nameList.clear();
@@ -144,7 +178,11 @@ namespace Project2
 
             fullNameLabel.Text = null;
         }
-
+        /// <summary>
+        /// btnFNF_Click - this methods runs if the first name first button is clicked and organizes the list into the format.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFNF_Click(object sender, EventArgs e)
         {
             List<String> tempSortedList = new List<String>();
@@ -156,6 +194,11 @@ namespace Project2
             }
         }
 
+        /// <summary>
+        /// btnLNF_Click - this methods runs if the last name first button is clicked and organizes the list into the format.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLNF_Click(object sender, EventArgs e)
         {
             List<String> tempSortedList = new List<String>();
@@ -166,7 +209,11 @@ namespace Project2
                 nameListBox.Items.Add(tempSortedList[i].ToString());
             }
         }
-
+        /// <summary>
+        /// nameListBox_SelectedIndexChanged - this methods runs if the selected object in the list box changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nameListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtboxFirstName.Text = nameList.getName(nameListBox.SelectedItem.ToString()).firstName;
@@ -176,7 +223,11 @@ namespace Project2
 
             fullNameLabel.Text = nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull;
         }
-
+        /// <summary>
+        /// addANameToolStripMenuItem_Click - this methods runs if the add a name button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addANameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdd add = new frmAdd();
@@ -197,7 +248,11 @@ namespace Project2
                 edited = true;
             }
         }
-
+        /// <summary>
+        /// openToolStripMenuItem1_Click - when the user clicks the open button it opens a file and populates the list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             nameListBox.Items.Clear();
@@ -211,12 +266,21 @@ namespace Project2
                 nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
             }
         }
-
+        /// <summary>
+        /// saveToolStripMenuItem1_Click - when the user clicks the save button it saves a file using the handler.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             saveFileHandler();
         }
 
+        /// <summary>
+        /// exitToolStripMenuItem1_Click - when the user clicks the exit button it checks to see if the data has been changed then quits
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (edited)
@@ -238,6 +302,11 @@ namespace Project2
             }
         }
 
+        /// <summary>
+        /// btnSave_Click - this methods run if the save button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -263,7 +332,7 @@ namespace Project2
                                         " " + tempNameEdit.end;
                 }
 
-                    tempName = new Name(editNameString);
+                tempName = new Name(editNameString);
 
 
                 if (nameList.Count() < 1)
@@ -295,9 +364,6 @@ namespace Project2
 
                     refresh();
                 }
-
-                
-
                 edited = true;
             }
             catch (Exception NullReferenceException)
@@ -305,6 +371,10 @@ namespace Project2
                 Console.WriteLine("Something went wrong.. Is the list empty?");
             }
         }
+
+        /// <summary>
+        /// refresh - refreshes the listbox
+        /// </summary>
 
         private void refresh()
         {
@@ -315,5 +385,25 @@ namespace Project2
                 nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
             }
         }
+
+        /// <summary>
+        /// removeANameToolStripMenuItem_Click - this methods runs if the remove a name button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void removeANameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string nameListStrings;
+
+            nameListStrings = nameList.ToString();
+
+            frmRemove rmvDialog = new frmRemove();
+            for (int i = 0; i < nameList.Count(); i++)
+            {
+                rmvDialog.nameListBox2.Items.Add(nameList.getName(i).firstNameFirst());
+            }
+            rmvDialog.ShowDialog();
+        }
+
     }
 }

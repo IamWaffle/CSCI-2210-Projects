@@ -85,6 +85,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRemove.Designer.cs">
+      <DependentUpon>frmRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRemove.resx">
+      <DependentUpon>frmRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSave.resx">
       <DependentUpon>frmSave.cs</DependentUpon>
