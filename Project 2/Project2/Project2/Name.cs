@@ -52,7 +52,7 @@ namespace Project2
         {
             personNameFull = inName;
             nameBreakdown(inName);
-            Tools.Tokenize(inName + "", " ");
+            Tools.Tokenize(inName, " ");
         }
 
         #endregion Constructors

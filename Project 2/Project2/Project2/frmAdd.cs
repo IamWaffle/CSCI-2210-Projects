@@ -22,13 +22,13 @@ namespace Project2
 
         private void btnAddName_Click(object sender, EventArgs e)
         {
-            nameFull = txtBoxAdd.Text;
-            Close();
+
+                nameFull = txtBoxAdd.Text;
+                this.Close();
         }
 
         private void txtBoxAdd_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

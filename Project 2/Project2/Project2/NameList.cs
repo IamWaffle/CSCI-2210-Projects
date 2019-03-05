@@ -184,18 +184,23 @@ namespace Project2
             int index = nameList.IndexOf(original);
             if (index > 0)
             {
+                nameList.RemoveAt(index);
                 nameList.Insert(index, name);
             }
+        }
+
+        public int getIndex(Name name)
+        {
+            return nameList.IndexOf(name);
         }
 
         /// <summary>
         /// removeName - asks which contact to be removed, checks to see if the name is in the list, then removes the name from the list.
         /// </summary>
 
-        public void removeName()
+        public void removeName(Name remove)
         {
-            Console.WriteLine("Enter the name of the contact you wish to remove:");
-            String name = Console.ReadLine().ToLower();
+            String name = remove.personNameFull;
 
             bool found = false;
             int looking = 1;
@@ -222,11 +227,10 @@ namespace Project2
             }
             if (found == true)
             {
-                Console.WriteLine("Name Removed!");
             }
             else
             {
-                Console.WriteLine("Unable to find name in the list!");
+                throw new Exception("Unable to find name in the list!");
             }
         }
 
@@ -237,6 +241,11 @@ namespace Project2
         public int Count()
         {
             return nameList.Count;
+        }
+
+        internal void insert(Name tempName, int index)
+        {
+            nameList.Insert(index, tempName);
         }
 
         /// <summary>
