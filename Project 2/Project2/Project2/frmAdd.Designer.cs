@@ -3,7 +3,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
     //	File Name:         frmAdd.Designer.cs
-    //	Description:
+    //	Description:        this is the designer class for the add form
     //	Course:            CSCI 2210 - Data Structures
     //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
     //	Created:           Friday, Mar 01 2019

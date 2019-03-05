@@ -4,7 +4,7 @@ using System.Collections.Generic;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Name.cs
-//	Description:
+//	Description:       Name class contains attributes of a persons name.
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019

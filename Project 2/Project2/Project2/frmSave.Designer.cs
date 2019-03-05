@@ -117,7 +117,6 @@
             this.Name = "frmSave";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Save?";
-            this.Load += new System.EventHandler(this.frmSave_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

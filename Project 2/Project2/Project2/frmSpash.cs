@@ -4,17 +4,19 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmSplash.cs
-//	Description:
+//	Description:        this is the form where the spash screen is displayed. It is programed to show until the progress bar reaches 100%
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 01 2019
-//  Modified:          Monday, Mar 04 2019
+//  Modified:           Friday, Mar 01 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project2
 {
     public partial class frmSpash : Form
     {
+
+        #region Constructors
         /// <summary>
         /// frmSpash - basic no arg constructor
         /// </summary>
@@ -23,7 +25,9 @@ namespace Project2
             InitializeComponent();
             progressBar.MarqueeAnimationSpeed = 30;
         }
+        #endregion Constructors
 
+        #region Methods
         /// <summary>
         /// showTime_Tick - this method executes when the showTime timer ticks
         /// </summary>
@@ -47,5 +51,7 @@ namespace Project2
                 progTimer.Stop();
             }
         }
+
+        #endregion Methods
     }
 }

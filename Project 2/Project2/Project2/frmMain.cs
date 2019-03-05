@@ -7,7 +7,7 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmMain.cs
-//	Description:
+//	Description:        this is where the main window of the program is held. It is programmed to control different aspects and can interact with the entire program.
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 01 2019
@@ -26,6 +26,7 @@ namespace Project2
 
         private bool edited = false;
 
+        #region Constructors
         /// <summary>
         ///  Basic constructor that does not take any parameters
         /// </summary>
@@ -33,7 +34,9 @@ namespace Project2
         {
             InitializeComponent();
         }
+        #endregion Constructors
 
+        #region Methods
         /// <summary>
         /// frmMain_Load - this method executes when the form is initially loaded
         /// </summary>
@@ -90,84 +93,6 @@ namespace Project2
             e.DrawFocusRectangle();
         }
 
-        #region FileHandlers
-
-        /// <summary>
-        /// File handler - Opens and reads a file.
-        /// </summary>
-        /// <param></param>
-        /// <returns name="names"> returns the contents of the file</returns>
-        private static string OpenFileHandler()
-        {
-            StreamReader rdr = null;
-
-            string names = "";
-            OpenFileDialog OpenDlg = new OpenFileDialog();
-            OpenDlg.Filter = "text files|*.txt;*.text";
-            OpenDlg.InitialDirectory = Application.StartupPath;
-            OpenDlg.Title = "Select a text file to insert into the list";
-            if (DialogResult.Cancel != OpenDlg.ShowDialog())
-            {
-                try
-                {
-                    rdr = new StreamReader(OpenDlg.FileName);
-
-                    while (!rdr.EndOfStream)
-                    {
-                        names += rdr.ReadLine();
-                    }
-                }
-                finally
-                {
-                    if (rdr != null)
-                    {
-                        rdr.Close();
-                    }
-                }
-
-                string fileName = OpenDlg.FileName;
-            }
-
-            return names;
-        }
-
-        /// <summary>
-        /// saveFileHandler - this method uses the save file dialog to save a file then saves it in a format to be read by the program.
-        /// </summary>
-
-        public void saveFileHandler()
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-
-            dlg.InitialDirectory = Application.StartupPath;
-            dlg.Title = "Save this name list";
-            dlg.Filter = "text files|*.txt|all files|*.*";
-
-            if (dlg.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-
-            StreamWriter writer = null;
-            try
-            {
-                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
-
-                for (int i = 0; i < nameList.Count(); i++)
-                {
-                    writer.WriteLine(nameList.getName(i) + "#");
-                }
-            }
-            finally
-            {
-                if (writer != null)
-                {
-                    writer.Close();
-                }
-            }
-        }
-
-        #endregion FileHandlers
 
         /// <summary>
         /// clearToolStripMenuItem_Click - this methods runs if the user clicks the clear button and it clears the list and the list box.
@@ -412,5 +337,87 @@ namespace Project2
             }
             rmvDialog.ShowDialog();
         }
+
+        #endregion Methods
+
+        #region FileHandlers
+
+        /// <summary>
+        /// File handler - Opens and reads a file.
+        /// </summary>
+        /// <param></param>
+        /// <returns name="names"> returns the contents of the file</returns>
+        private static string OpenFileHandler()
+        {
+            StreamReader rdr = null;
+
+            string names = "";
+            OpenFileDialog OpenDlg = new OpenFileDialog();
+            OpenDlg.Filter = "text files|*.txt;*.text";
+            OpenDlg.InitialDirectory = Application.StartupPath;
+            OpenDlg.Title = "Select a text file to insert into the list";
+            if (DialogResult.Cancel != OpenDlg.ShowDialog())
+            {
+                try
+                {
+                    rdr = new StreamReader(OpenDlg.FileName);
+
+                    while (!rdr.EndOfStream)
+                    {
+                        names += rdr.ReadLine();
+                    }
+                }
+                finally
+                {
+                    if (rdr != null)
+                    {
+                        rdr.Close();
+                    }
+                }
+
+                string fileName = OpenDlg.FileName;
+            }
+
+            return names;
+        }
+
+        /// <summary>
+        /// saveFileHandler - this method uses the save file dialog to save a file then saves it in a format to be read by the program.
+        /// </summary>
+
+        public void saveFileHandler()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+
+            dlg.InitialDirectory = Application.StartupPath;
+            dlg.Title = "Save this name list";
+            dlg.Filter = "text files|*.txt|all files|*.*";
+
+            if (dlg.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            StreamWriter writer = null;
+            try
+            {
+                writer = new StreamWriter(new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write));
+
+                for (int i = 0; i < nameList.Count(); i++)
+                {
+                    writer.WriteLine(nameList.getName(i) + "#");
+                }
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+            }
+        }
+
+        #endregion FileHandlers
+
     }
 }

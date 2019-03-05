@@ -10,7 +10,7 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmSave.cs
-//	Description:
+//	Description:        this form shows asking the user if they would like to save there work.
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 01 2019
@@ -22,13 +22,17 @@ namespace Project2
     public partial class frmSave : Form
     {
 
+        public bool save = false;
+
+        #region Constructors
         public frmSave()
         {
             InitializeComponent();
         }
 
-        public bool save = false;
+        #endregion Constructors
 
+        #region Methods
         private void btnYes_Click(object sender, EventArgs e)
         {
             save = true;
@@ -40,10 +44,6 @@ namespace Project2
 
             this.Close();
         }
-
-        private void frmSave_Load(object sender, EventArgs e)
-        {
-
-        }
+        #endregion Methods
     }
 }

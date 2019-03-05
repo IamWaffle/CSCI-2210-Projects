@@ -3,7 +3,7 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmAdd.cs
-//	Description:
+//	Description:        form to ask the user to type in a name. It reads in the name and puts it in a variable to be retrieved by main
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 01 2019
@@ -23,6 +23,7 @@ namespace Project2
             }
         }
 
+        #region Constructors
         /// <summary>
         /// frmAdd - basic no arg constructor.
         /// </summary>
@@ -31,8 +32,9 @@ namespace Project2
             InitializeComponent();
         }
 
+        #endregion Constructors
 
-
+        #region Methods
         /// <summary>
         /// btnAdd_Click - this methods runs if the user clicks the add button and it takes the text from the boxes and puts it into a variable.
         /// </summary>
@@ -51,6 +53,7 @@ namespace Project2
 
             this.Close();
         }
+        #endregion Methods
 
     }
 }

@@ -3,9 +3,20 @@ using System.Reflection;
 using System.Windows.Forms;
 
 namespace Project2
-{
+{    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmAboutbox.cs
+    //	Description:       this is where the contents of the about box is held. it retrieves its data from assembly info
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Friday, Mar 01 2019
+    //  Modified:          Monday, Mar 04 2019
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmAboutbox : Form
     {
+
+        #region Constructors
         /// <summary>
         /// frmAboutbox - basic no arg constructor
         /// </summary>
@@ -19,6 +30,8 @@ namespace Project2
             labelCompanyName.Text = AssemblyCompany;
             textBoxDescription.Text = AssemblyDescription;
         }
+
+        #endregion Constructors
 
         #region Assembly Attribute Accessors
 
@@ -101,6 +114,7 @@ namespace Project2
 
         #endregion Assembly Attribute Accessors
 
+        #region Methods 
         /// <summary>
         /// okButton_Click - this methods executes if the user clicks the OK button. It closes the window.</summary>
         /// <param name="sender"></param>
@@ -109,5 +123,6 @@ namespace Project2
         {
             Close();
         }
+        #endregion Methods
     }
 }

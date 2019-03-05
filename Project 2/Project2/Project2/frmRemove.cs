@@ -4,7 +4,7 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmRemove.cs
-//	Description:
+//	Description:       form that removes a name from the name list if it is found
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 01 2019
@@ -23,8 +23,5 @@ namespace Project2
             InitializeComponent();
         }
 
-        private void nameListBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
     }
 }
