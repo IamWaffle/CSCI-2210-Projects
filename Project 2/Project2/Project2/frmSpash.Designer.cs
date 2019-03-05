@@ -1,5 +1,15 @@
 ﻿namespace Project2
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmSplash.Designer.cs
+    //	Description:
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Friday, Mar 01 2019
+    //  Modified:          Friday, Mar 01 2019
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmSpash
     {
         /// <summary>

@@ -1,5 +1,15 @@
 ﻿namespace Project2
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmAdd.Designer.cs
+    //	Description:
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Friday, Mar 01 2019
+    //  Modified:          Monday, Mar 04 2019
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmAdd
     {
         /// <summary>
@@ -159,6 +169,7 @@
             this.txtboxFirstName.Name = "txtboxFirstName";
             this.txtboxFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtboxFirstName.TabIndex = 0;
+
             // 
             // frmAdd
             // 

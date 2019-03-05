@@ -1,5 +1,15 @@
 ﻿namespace Project2
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmRemove.Designer.cs
+    //	Description:
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Friday, Mar 01 2019
+    //  Modified:          Monday, Mar 04 2019
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmSave
     {
         /// <summary>
@@ -107,6 +117,7 @@
             this.Name = "frmSave";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Save?";
+            this.Load += new System.EventHandler(this.frmSave_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

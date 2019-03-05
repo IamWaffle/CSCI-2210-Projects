@@ -130,6 +130,7 @@ namespace Project2
         {
             nameList.Remove(nameList[i]);
         }
+
         /// <summary>
         /// remove - remove an item from the list.
         /// </summary>
@@ -202,7 +203,6 @@ namespace Project2
         /// <param name="name"> the name to be searched for</param>
         /// <returns name = "nameList.IndexOf(name)">the index of the name</returns>
 
-
         public int getIndex(Name name)
         {
             return nameList.IndexOf(name);
@@ -257,6 +257,7 @@ namespace Project2
         {
             return nameList.Count;
         }
+
         /// <summary>
         /// insert - inserts a name at an index.
         /// </summary>

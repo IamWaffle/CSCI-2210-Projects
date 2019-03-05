@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmMain.cs
@@ -25,7 +26,6 @@ namespace Project2
 
         private bool edited = false;
 
-
         /// <summary>
         ///  Basic constructor that does not take any parameters
         /// </summary>
@@ -33,6 +33,7 @@ namespace Project2
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// frmMain_Load - this method executes when the form is initially loaded
         /// </summary>
@@ -43,6 +44,7 @@ namespace Project2
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
             dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
         }
+
         /// <summary>
         /// dateTimer_Tick - this method executes each time the timer ticks
         /// </summary>
@@ -65,6 +67,7 @@ namespace Project2
             frmAboutbox about = new frmAboutbox();
             about.Show();
         }
+
         /// <summary>
         /// nameListBox_DrawItem - this method is used to change the color of the highlighted object to fit the theme.
         /// </summary>
@@ -178,6 +181,7 @@ namespace Project2
 
             fullNameLabel.Text = null;
         }
+
         /// <summary>
         /// btnFNF_Click - this methods runs if the first name first button is clicked and organizes the list into the format.
         /// </summary>
@@ -209,6 +213,7 @@ namespace Project2
                 nameListBox.Items.Add(tempSortedList[i].ToString());
             }
         }
+
         /// <summary>
         /// nameListBox_SelectedIndexChanged - this methods runs if the selected object in the list box changes.
         /// </summary>
@@ -223,6 +228,7 @@ namespace Project2
 
             fullNameLabel.Text = nameList.getName(nameListBox.SelectedItem.ToString()).personNameFull;
         }
+
         /// <summary>
         /// addANameToolStripMenuItem_Click - this methods runs if the add a name button is clicked.
         /// </summary>
@@ -239,15 +245,17 @@ namespace Project2
             }
             else
             {
+                fileList = new NameList();
                 tempName = new Name(personName);
-                nameList.add(tempName);
-                nameListBox.Items.Add(tempName.personNameFull);
+                fileList.add(tempName);
+                nameList += fileList;
 
                 refresh();
 
                 edited = true;
             }
         }
+
         /// <summary>
         /// openToolStripMenuItem1_Click - when the user clicks the open button it opens a file and populates the list.
         /// </summary>
@@ -266,6 +274,7 @@ namespace Project2
                 nameListBox.Items.Add(nameList.getName(i).firstNameFirst());
             }
         }
+
         /// <summary>
         /// saveToolStripMenuItem1_Click - when the user clicks the save button it saves a file using the handler.
         /// </summary>
@@ -334,7 +343,6 @@ namespace Project2
 
                 tempName = new Name(editNameString);
 
-
                 if (nameList.Count() < 1)
                 {
                     index = 0;
@@ -344,7 +352,7 @@ namespace Project2
                     index = nameList.getIndex(nameList.getName(nameListBox.SelectedItem.ToString()));
                 }
 
-                if(string.IsNullOrWhiteSpace(tempName.personNameFull))
+                if (string.IsNullOrWhiteSpace(tempName.personNameFull))
                 {
                     nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).firstNameFirst());
 
@@ -404,6 +412,5 @@ namespace Project2
             }
             rmvDialog.ShowDialog();
         }
-
     }
 }

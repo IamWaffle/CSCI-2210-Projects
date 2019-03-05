@@ -1,5 +1,15 @@
 ﻿namespace Project2
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmRemove.Designer.cs
+    //	Description:
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Friday, Mar 01 2019
+    //  Modified:          Monday, Mar 04 2019
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmRemove
     {
         /// <summary>
@@ -44,6 +54,7 @@
             this.nameListBox2.Name = "nameListBox2";
             this.nameListBox2.Size = new System.Drawing.Size(251, 275);
             this.nameListBox2.TabIndex = 9;
+            this.nameListBox2.SelectedIndexChanged += new System.EventHandler(this.nameListBox2_SelectedIndexChanged);
             // 
             // btnRemove
             // 

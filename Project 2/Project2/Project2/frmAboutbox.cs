@@ -6,6 +6,9 @@ namespace Project2
 {
     partial class frmAboutbox : Form
     {
+        /// <summary>
+        /// frmAboutbox - basic no arg constructor
+        /// </summary>
         public frmAboutbox()
         {
             InitializeComponent();
@@ -98,6 +101,10 @@ namespace Project2
 
         #endregion Assembly Attribute Accessors
 
+        /// <summary>
+        /// okButton_Click - this methods executes if the user clicks the OK button. It closes the window.</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
             Close();
