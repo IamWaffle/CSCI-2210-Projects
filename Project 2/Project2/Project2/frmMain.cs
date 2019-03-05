@@ -224,6 +224,7 @@ namespace Project2
                 if (saveDialog.save)
                 {
                     saveFileHandler();
+                    Close();
                 }
                 else
                 {
@@ -267,6 +268,7 @@ namespace Project2
                 }
 
                 tempName = new Name(editNameString);
+                
 
                 if (nameList.Count() < 1)
                 {
@@ -275,6 +277,15 @@ namespace Project2
                 else
                 {
                     index = nameList.getIndex(nameList.getName(nameListBox.SelectedItem.ToString()));
+                }
+
+                if (index == 0)
+                {
+                    nameList.remove(0);
+                }
+                else if (index == nameList.Count() - 1)
+                {
+                    nameList.remove(nameList.Count() - 1);
                 }
 
                 if (string.IsNullOrWhiteSpace(tempName.personNameFull))

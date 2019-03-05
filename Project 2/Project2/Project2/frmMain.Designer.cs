@@ -133,9 +133,9 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearToolStripMenuItem,
             this.fileToolStripMenuItem1,
             this.nameToolStripMenuItem,
+            this.clearToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
@@ -183,14 +183,14 @@
             // addANameToolStripMenuItem
             // 
             this.addANameToolStripMenuItem.Name = "addANameToolStripMenuItem";
-            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.addANameToolStripMenuItem.Text = "Add a Name";
             this.addANameToolStripMenuItem.Click += new System.EventHandler(this.addANameToolStripMenuItem_Click);
             // 
             // removeANameToolStripMenuItem
             // 
             this.removeANameToolStripMenuItem.Name = "removeANameToolStripMenuItem";
-            this.removeANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeANameToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.removeANameToolStripMenuItem.Text = "Remove a Name";
             this.removeANameToolStripMenuItem.Click += new System.EventHandler(this.removeANameToolStripMenuItem_Click);
             // 
@@ -212,7 +212,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -237,6 +237,7 @@
             // 
             // nameContentPanel
             // 
+            this.nameContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.nameContentPanel.Controls.Add(this.btnSave);
             this.nameContentPanel.Controls.Add(this.endLabel);
             this.nameContentPanel.Controls.Add(this.lastNameLabel);
@@ -247,9 +248,9 @@
             this.nameContentPanel.Controls.Add(this.fullNameLabel);
             this.nameContentPanel.Controls.Add(this.txtboxMiddleName);
             this.nameContentPanel.Controls.Add(this.txtboxFirstName);
-            this.nameContentPanel.Location = new System.Drawing.Point(311, 55);
+            this.nameContentPanel.Location = new System.Drawing.Point(315, 53);
             this.nameContentPanel.Name = "nameContentPanel";
-            this.nameContentPanel.Size = new System.Drawing.Size(227, 226);
+            this.nameContentPanel.Size = new System.Drawing.Size(189, 226);
             this.nameContentPanel.TabIndex = 9;
             // 
             // btnSave
@@ -344,7 +345,7 @@
             this.name.AutoSize = true;
             this.name.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name.ForeColor = System.Drawing.Color.White;
-            this.name.Location = new System.Drawing.Point(357, 350);
+            this.name.Location = new System.Drawing.Point(346, 342);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(129, 14);
             this.name.TabIndex = 14;
@@ -356,7 +357,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(328, 308);
+            this.label1.Location = new System.Drawing.Point(317, 300);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 42);
             this.label1.TabIndex = 16;
@@ -366,7 +367,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(470, 330);
+            this.label2.Location = new System.Drawing.Point(459, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 17;
