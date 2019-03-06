@@ -74,7 +74,7 @@ namespace Project2
                     txtboxEmail.Text = null;
                     invalidInfoLabel.Text = "Please enter in your information.";
                 }
-                 else if(name == null)
+                else if(name == null)
                 {
                     txtboxName.Text = null;
                     invalidInfoLabel.Text = "Please enter a valid name.";

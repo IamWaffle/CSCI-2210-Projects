@@ -49,6 +49,7 @@
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +76,6 @@
             this.ownerPhoneLabel = new System.Windows.Forms.Label();
             this.ownerEmailLabel = new System.Windows.Forms.Label();
             this.addNameButton = new System.Windows.Forms.Button();
-            this.addANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.nameContentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -157,16 +157,23 @@
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.openToolStripMenuItem1.Text = "&Import a list";
             this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.saveToolStripMenuItem1.Text = "&Export the list";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
+            // 
+            // addANameToolStripMenuItem
+            // 
+            this.addANameToolStripMenuItem.Name = "addANameToolStripMenuItem";
+            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addANameToolStripMenuItem.Text = "Add a name";
+            this.addANameToolStripMenuItem.Click += new System.EventHandler(this.addANameToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
@@ -419,13 +426,6 @@
             this.addNameButton.Text = "Add a name";
             this.addNameButton.UseVisualStyleBackColor = false;
             this.addNameButton.Click += new System.EventHandler(this.addNameButton_Click);
-            // 
-            // addANameToolStripMenuItem
-            // 
-            this.addANameToolStripMenuItem.Name = "addANameToolStripMenuItem";
-            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addANameToolStripMenuItem.Text = "Add a name";
-            this.addANameToolStripMenuItem.Click += new System.EventHandler(this.addANameToolStripMenuItem_Click);
             // 
             // frmMain
             // 

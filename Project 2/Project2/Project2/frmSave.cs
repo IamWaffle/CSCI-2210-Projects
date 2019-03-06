@@ -23,6 +23,7 @@ namespace Project2
     {
 
         public bool save = false;
+        public bool back = false;
 
         #region Constructors
 
@@ -56,8 +57,19 @@ namespace Project2
         private void btnNo_Click(object sender, EventArgs e)
         {
 
-            this.Close();
+            Application.Exit();
         }
         #endregion Methods
+
+        /// <summary>
+        /// btnBack_Click - this method checks to see if the user wants to go back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            back = true;
+            this.Close();
+        }
     }
 }

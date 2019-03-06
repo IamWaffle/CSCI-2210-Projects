@@ -29,6 +29,7 @@ namespace Project2
         private bool edited = false;
 
         #region Constructors
+
         /// <summary>
         ///  Basic constructor that does not take any parameters
         /// </summary>
@@ -36,9 +37,11 @@ namespace Project2
         {
             InitializeComponent();
         }
+
         #endregion Constructors
 
         #region Methods
+
         /// <summary>
         /// frmMain_Load - this method executes when the form is initially loaded
         /// </summary>
@@ -54,7 +57,7 @@ namespace Project2
             nameList.setOwnerEmail(owner.email);
 
             ownerNameLabel.Text = nameList.getOwnerName();
-            ownerPhoneLabel.Text = nameList.getOwnerPhone();
+            ownerPhoneLabel.Text = "(" + nameList.getOwnerPhone().Substring(0, 3) + ")" + nameList.getOwnerPhone().Substring(3, 3) + "-" + nameList.getOwnerPhone().Substring(6);
             ownerEmailLabel.Text = nameList.getOwnerEmail();
 
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
@@ -105,7 +108,6 @@ namespace Project2
                 StringFormat.GenericDefault);
             e.DrawFocusRectangle();
         }
-
 
         /// <summary>
         /// clearToolStripMenuItem_Click - this methods runs if the user clicks the clear button and it clears the list and the list box.
@@ -212,7 +214,7 @@ namespace Project2
         }
 
         /// <summary>
-        /// exitToolStripMenuItem1_Click - when the user clicks the exit button it checks to see if the data has been changed then quits
+        /// exitToolStripMenuItem1_Click - when the user clicks the exit button it will call the closing method to check if the list has been edited
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -227,9 +229,8 @@ namespace Project2
                     saveFileHandler();
                     Close();
                 }
-                else
+                else if (saveDialog.back)
                 {
-                    Close();
                 }
             }
             else
@@ -248,14 +249,12 @@ namespace Project2
             try
             {
                 int index;
-                
 
                 txtboxFirstName.Text = null;
                 txtboxMiddleName.Text = null;
                 txtboxLastName.Text = null;
                 txtboxEnd.Text = null;
                 fullNameLabel.Text = null;
-
 
                 if (nameList.Count() < 1)
                 {
@@ -288,13 +287,13 @@ namespace Project2
                     refresh();
                 }
 
+                edited = true;
             }
             catch
             {
                 Console.WriteLine("Something went wrong. The textboxes are probably null.");
             }
         }
-
 
         /// <summary>
         /// btnSave_Click - this methods run if the save button is clicked.
@@ -327,7 +326,6 @@ namespace Project2
                 }
 
                 tempName = new Name(editNameString);
-                
 
                 if (nameList.Count() < 1)
                 {
@@ -373,7 +371,7 @@ namespace Project2
                 }
                 edited = true;
             }
-            catch (Exception NullReferenceException)
+            catch (Exception)
             {
                 Console.WriteLine("Something went wrong.. Is the list empty?");
             }
@@ -524,6 +522,7 @@ namespace Project2
                 e.Handled = true;
             }
         }
+
         /// <summary>
         /// txtboxMiddleName_KeyPress - this method checks to see if the user is typing the right key
         /// </summary>
@@ -536,6 +535,7 @@ namespace Project2
                 e.Handled = true;
             }
         }
+
         /// <summary>
         /// txtboxLastName_KeyPress - this method checks to see if the user is typing the right key
         /// </summary>
@@ -548,6 +548,7 @@ namespace Project2
                 e.Handled = true;
             }
         }
+
         /// <summary>
         /// txtboxEnd_KeyPress - this method checks to see if the user is typing the right key
         /// </summary>
@@ -561,9 +562,6 @@ namespace Project2
             }
         }
 
-
         #endregion KeyPress
-
-
     }
 }
