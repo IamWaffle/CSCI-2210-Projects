@@ -241,6 +241,67 @@ namespace Project2
             }
         }
 
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index;
+                
+                tempNameEdit = new Name();
+                
+                String editNameString;
+                txtboxFirstName.Text = null;
+                txtboxMiddleName.Text = null;
+                txtboxLastName.Text = null;
+                txtboxEnd.Text = null;
+                tempNameEdit.firstName = txtboxFirstName.Text;
+                tempNameEdit.middle = txtboxMiddleName.Text;
+                tempNameEdit.lastName = txtboxLastName.Text;
+                tempNameEdit.end = txtboxEnd.Text;
+                
+
+                
+                    editNameString = null;
+                
+               
+
+                tempName = new Name(editNameString);
+                if (nameList.Count() < 1)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index = nameList.getIndex(nameList.getName(nameListBox.SelectedItem.ToString()));
+                }
+
+                if (index == 0)
+                {
+                    nameList.remove(0);
+                }
+                else if (index == nameList.Count() - 1)
+                {
+                    nameList.remove(nameList.Count() - 1);
+                }
+
+                if (string.IsNullOrWhiteSpace(tempName.personNameFull))
+                {
+                    nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).firstNameFirst());
+
+                    nameListBox.Items.Clear();
+
+                    refresh();
+
+                    fullNameLabel.Text = tempName.personNameFull;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Something went wrong. The textboxes are probably null.");
+            }
+        }
+
+
         /// <summary>
         /// btnSave_Click - this methods run if the save button is clicked.
         /// </summary>
@@ -468,5 +529,7 @@ namespace Project2
             }
         }
         #endregion KeyPress
+
+
     }
 }
