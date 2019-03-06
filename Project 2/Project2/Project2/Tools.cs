@@ -140,77 +140,69 @@ namespace Project2
 
             if (string.IsNullOrEmpty(inName))
             {
-               name = null;
-               throw new Exception("No Name");
-
+                name = null;
+                throw new Exception("No Name");
             }
             else
             {
                 name = inName;
-
             }
 
             tempphone = inPhone;
 
-                try
+            try
+            {
+                if (string.IsNullOrEmpty(tempphone))
                 {
-                    if (string.IsNullOrEmpty(tempphone))
+                    phone = null;
+                    throw new Exception("Phone number invalid");
+                }
+                else
+                {
+                    var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
+                    if (r.IsMatch(tempphone) == true)
+                    {
+                        phone = tempphone;
+                    }
+                    else
                     {
                         phone = null;
                         throw new Exception("Phone number invalid");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
+            tempemail = inEmail;
+            try
+            {
+                if (string.IsNullOrEmpty(tempemail))
+                {
+                    email = null;
+                    throw new Exception("Email not valid");
+                }
+                else
+                {
+                    var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
+
+                    if (r.IsMatch(tempemail) == true)
+                    {
+                        email = tempemail;
                     }
                     else
-                    {
-                        var r = new Regex(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$");
-                        if (r.IsMatch(tempphone) == true)
-                        {
-                            phone = tempphone;
-                        }
-                        else
-                        {
-                            phone = null;
-                            throw new Exception("Phone number invalid");
-
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                tempemail = inEmail;
-                try
-                {
-                    if (string.IsNullOrEmpty(tempemail))
                     {
                         email = null;
                         throw new Exception("Email not valid");
-
-                }
-                    else
-                    {
-                        var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
-
-                        if (r.IsMatch(tempemail) == true)
-                        {
-                            email = tempemail;
-
-                        }
-                        else
-                        {
-                            email = null;
-                            throw new Exception("Email not valid");
-
-                        }
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-            
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>

@@ -56,6 +56,12 @@ namespace Project2
         #endregion Methods
 
         #region KeyPress
+
+        /// <summary>
+        /// txtboxFirstName_KeyPress - this method executes when the user presses a button to make sure it is valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) &&(!char.IsPunctuation(e.KeyChar)))
@@ -63,7 +69,11 @@ namespace Project2
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// txtboxMiddleName_KeyPress - this method executes when the user presses a button to make sure it is valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxMiddleName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
@@ -71,7 +81,11 @@ namespace Project2
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// txtboxLastName_KeyPress - this method executes when the user presses a button to make sure it is valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxLastName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
@@ -79,7 +93,11 @@ namespace Project2
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// txtboxEnd_KeyPress - this method executes when the user presses a button to make sure it is valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxEnd_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))

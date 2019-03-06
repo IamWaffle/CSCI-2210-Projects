@@ -1,5 +1,15 @@
 ﻿namespace Project2
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmOwner.Designer.cs
+    //	Description:       This is the designer file for the owner form
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Wednesday, Mar 06 2019
+    //  Modified:          Wednesday, Mar 06 2019
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmOwner
     {
         /// <summary>

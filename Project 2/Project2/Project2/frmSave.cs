@@ -25,6 +25,10 @@ namespace Project2
         public bool save = false;
 
         #region Constructors
+
+        /// <summary>
+        ///  frmSave - Basic constructor that does not take any parameters
+        /// </summary>
         public frmSave()
         {
             InitializeComponent();
@@ -33,12 +37,22 @@ namespace Project2
         #endregion Constructors
 
         #region Methods
+        /// <summary>
+        /// btnYes_Click - this method checks to see if the user wants to save their work/ This will set save bool = true then close the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnYes_Click(object sender, EventArgs e)
         {
             save = true;
             this.Close();
         }
 
+        /// <summary>
+        /// btnNo_Click - this method checks to see if the user wants to save their work/ This will close the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNo_Click(object sender, EventArgs e)
         {
 

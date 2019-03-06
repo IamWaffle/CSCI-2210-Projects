@@ -40,7 +40,6 @@
         {
             this.changesLabel = new System.Windows.Forms.Label();
             this.saveLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnYes = new System.Windows.Forms.Button();
             this.btnNo = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -50,7 +49,7 @@
             this.changesLabel.AutoSize = true;
             this.changesLabel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changesLabel.ForeColor = System.Drawing.Color.White;
-            this.changesLabel.Location = new System.Drawing.Point(61, 21);
+            this.changesLabel.Location = new System.Drawing.Point(55, 9);
             this.changesLabel.Name = "changesLabel";
             this.changesLabel.Size = new System.Drawing.Size(175, 23);
             this.changesLabel.TabIndex = 0;
@@ -61,25 +60,16 @@
             this.saveLabel.AutoSize = true;
             this.saveLabel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveLabel.ForeColor = System.Drawing.Color.White;
-            this.saveLabel.Location = new System.Drawing.Point(52, 44);
+            this.saveLabel.Location = new System.Drawing.Point(46, 32);
             this.saveLabel.Name = "saveLabel";
             this.saveLabel.Size = new System.Drawing.Size(190, 23);
             this.saveLabel.TabIndex = 1;
             this.saveLabel.Text = "Would you like to save?";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
             // btnYes
             // 
             this.btnYes.BackColor = System.Drawing.Color.White;
-            this.btnYes.Location = new System.Drawing.Point(12, 85);
+            this.btnYes.Location = new System.Drawing.Point(12, 58);
             this.btnYes.Name = "btnYes";
             this.btnYes.Size = new System.Drawing.Size(127, 23);
             this.btnYes.TabIndex = 3;
@@ -91,7 +81,7 @@
             // btnNo
             // 
             this.btnNo.BackColor = System.Drawing.Color.White;
-            this.btnNo.Location = new System.Drawing.Point(145, 85);
+            this.btnNo.Location = new System.Drawing.Point(145, 58);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(127, 23);
             this.btnNo.TabIndex = 4;
@@ -105,11 +95,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
-            this.ClientSize = new System.Drawing.Size(282, 113);
+            this.ClientSize = new System.Drawing.Size(282, 90);
             this.ControlBox = false;
             this.Controls.Add(this.btnNo);
             this.Controls.Add(this.btnYes);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.saveLabel);
             this.Controls.Add(this.changesLabel);
             this.MaximizeBox = false;
@@ -126,7 +115,6 @@
 
         private System.Windows.Forms.Label changesLabel;
         private System.Windows.Forms.Label saveLabel;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnYes;
         private System.Windows.Forms.Button btnNo;
     }

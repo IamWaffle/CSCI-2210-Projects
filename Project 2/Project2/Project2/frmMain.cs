@@ -7,11 +7,13 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmMain.cs
-//	Description:        this is where the main window of the program is held. It is programmed to control different aspects and can interact with the entire program.
+//	Description:        This is where the main window of the program is held.
+//                      It is programmed to control different aspects and can interact with the entire program.
+//
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 01 2019
-//  Modified:          Monday, Mar 04 2019
+//  Modified:          Wednesday, Mar 06 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project2
@@ -236,6 +238,11 @@ namespace Project2
             }
         }
 
+        /// <summary>
+        /// btnRemove_Click - when the user clicks the remove button this method executes to remove a name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, EventArgs e)
         {
             try
