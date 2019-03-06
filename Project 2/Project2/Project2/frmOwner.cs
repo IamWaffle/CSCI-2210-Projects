@@ -33,6 +33,7 @@ namespace Project2
             get { return outPhone; }
         }
 
+
         public string email
         {
             get { return outEmail; }
@@ -58,7 +59,7 @@ namespace Project2
         private void btnContinue_Click(object sender, EventArgs e)
         {
             tempName = txtboxName.Text;
-            tempPhone = txtboxPhone.Text;
+            tempPhone = txtboxPhone.Text + "";
             tempEmail = txtboxEmail.Text;
             try
             {
@@ -123,6 +124,19 @@ namespace Project2
         private void txtboxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// txtboxPhone_KeyPress - this method checks to see if the user is typing the right key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtboxPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) )
             {
                 e.Handled = true;
             }

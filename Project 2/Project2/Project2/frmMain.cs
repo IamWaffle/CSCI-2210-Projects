@@ -55,10 +55,17 @@ namespace Project2
             nameList.setOwnerName(owner.name);
             nameList.setOwnerPhone(owner.phone);
             nameList.setOwnerEmail(owner.email);
-
-            ownerNameLabel.Text = nameList.getOwnerName();
-            ownerPhoneLabel.Text = "(" + nameList.getOwnerPhone().Substring(0, 3) + ")" + nameList.getOwnerPhone().Substring(3, 3) + "-" + nameList.getOwnerPhone().Substring(6);
-            ownerEmailLabel.Text = nameList.getOwnerEmail();
+   
+            try
+            {
+                ownerNameLabel.Text = nameList.getOwnerName();
+                ownerPhoneLabel.Text = "(" + nameList.getOwnerPhone().Substring(0, 3) + ")" + nameList.getOwnerPhone().Substring(3, 3) + "-" + nameList.getOwnerPhone().Substring(6);
+                ownerEmailLabel.Text = nameList.getOwnerEmail();
+            }
+            catch (Exception)
+            {
+                Application.Exit();
+            }
 
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
             dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
@@ -73,6 +80,7 @@ namespace Project2
         {
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
             dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
+            
             numNames.Text = "Number of names in List: " + nameListBox.Items.Count.ToString();
         }
 

@@ -108,6 +108,7 @@
             this.txtboxPhone.Name = "txtboxPhone";
             this.txtboxPhone.Size = new System.Drawing.Size(169, 20);
             this.txtboxPhone.TabIndex = 5;
+            this.txtboxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtboxPhone_KeyPress);
             // 
             // txtboxEmail
             // 
