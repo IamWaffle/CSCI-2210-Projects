@@ -49,9 +49,6 @@
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +56,7 @@
             this.fullNameLabel = new System.Windows.Forms.Label();
             this.numNames = new System.Windows.Forms.Label();
             this.nameContentPanel = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.endLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
@@ -69,11 +67,15 @@
             this.txtboxMiddleName = new System.Windows.Forms.TextBox();
             this.txtboxFirstName = new System.Windows.Forms.TextBox();
             this.dateTimeBar = new System.Windows.Forms.StatusBar();
+            this.nameListLabel = new System.Windows.Forms.Label();
+            this.project2 = new System.Windows.Forms.Label();
+            this.selectedNameLabel = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.ownerNameLabel = new System.Windows.Forms.Label();
+            this.ownerPhoneLabel = new System.Windows.Forms.Label();
+            this.ownerEmailLabel = new System.Windows.Forms.Label();
+            this.addNameButton = new System.Windows.Forms.Button();
+            this.addANameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.nameContentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -85,9 +87,9 @@
             this.nameListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.nameListBox.ForeColor = System.Drawing.Color.White;
             this.nameListBox.FormattingEnabled = true;
-            this.nameListBox.Location = new System.Drawing.Point(12, 38);
+            this.nameListBox.Location = new System.Drawing.Point(12, 51);
             this.nameListBox.Name = "nameListBox";
-            this.nameListBox.Size = new System.Drawing.Size(251, 262);
+            this.nameListBox.Size = new System.Drawing.Size(251, 249);
             this.nameListBox.TabIndex = 0;
             this.nameListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.nameListBox_DrawItem);
             this.nameListBox.SelectedIndexChanged += new System.EventHandler(this.nameListBox_SelectedIndexChanged);
@@ -136,7 +138,7 @@
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem1,
-            this.nameToolStripMenuItem,
+            this.addANameToolStripMenuItem,
             this.clearToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -155,39 +157,16 @@
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-            this.openToolStripMenuItem1.Text = "&Open a file";
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Text = "&Import a list";
             this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-            this.saveToolStripMenuItem1.Text = "&Save the list";
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Text = "&Export the list";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
-            // 
-            // nameToolStripMenuItem
-            // 
-            this.nameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addANameToolStripMenuItem,
-            this.removeANameToolStripMenuItem});
-            this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nameToolStripMenuItem.Text = "&Name";
-            // 
-            // addANameToolStripMenuItem
-            // 
-            this.addANameToolStripMenuItem.Name = "addANameToolStripMenuItem";
-            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addANameToolStripMenuItem.Text = "Add a Name";
-            this.addANameToolStripMenuItem.Click += new System.EventHandler(this.addANameToolStripMenuItem_Click);
-            // 
-            // removeANameToolStripMenuItem
-            // 
-            this.removeANameToolStripMenuItem.Name = "removeANameToolStripMenuItem";
-            this.removeANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.removeANameToolStripMenuItem.Text = "Remove a Name";
-            this.removeANameToolStripMenuItem.Click += new System.EventHandler(this.removeANameToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
@@ -251,15 +230,26 @@
             this.nameContentPanel.Controls.Add(this.fullNameLabel);
             this.nameContentPanel.Controls.Add(this.txtboxMiddleName);
             this.nameContentPanel.Controls.Add(this.txtboxFirstName);
-            this.nameContentPanel.Location = new System.Drawing.Point(315, 53);
+            this.nameContentPanel.Location = new System.Drawing.Point(298, 50);
             this.nameContentPanel.Name = "nameContentPanel";
-            this.nameContentPanel.Size = new System.Drawing.Size(189, 226);
+            this.nameContentPanel.Size = new System.Drawing.Size(214, 226);
             this.nameContentPanel.TabIndex = 9;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(104, 194);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(65, 23);
+            this.btnRemove.TabIndex = 14;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(18, 196);
+            this.btnSave.Location = new System.Drawing.Point(18, 194);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(65, 23);
             this.btnSave.TabIndex = 13;
@@ -342,76 +332,116 @@
             // dateTimeBar
             // 
             this.dateTimeBar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimeBar.Location = new System.Drawing.Point(0, 377);
+            this.dateTimeBar.Location = new System.Drawing.Point(0, 383);
             this.dateTimeBar.Name = "dateTimeBar";
             this.dateTimeBar.Size = new System.Drawing.Size(550, 22);
             this.dateTimeBar.TabIndex = 10;
             // 
+            // nameListLabel
+            // 
+            this.nameListLabel.AutoSize = true;
+            this.nameListLabel.BackColor = System.Drawing.Color.Transparent;
+            this.nameListLabel.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameListLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.nameListLabel.Location = new System.Drawing.Point(310, 270);
+            this.nameListLabel.Name = "nameListLabel";
+            this.nameListLabel.Size = new System.Drawing.Size(154, 42);
+            this.nameListLabel.TabIndex = 16;
+            this.nameListLabel.Text = "NameList";
+            // 
+            // project2
+            // 
+            this.project2.AutoSize = true;
+            this.project2.ForeColor = System.Drawing.Color.White;
+            this.project2.Location = new System.Drawing.Point(452, 292);
+            this.project2.Name = "project2";
+            this.project2.Size = new System.Drawing.Size(49, 13);
+            this.project2.TabIndex = 17;
+            this.project2.Text = "Project 2";
+            // 
+            // selectedNameLabel
+            // 
+            this.selectedNameLabel.AutoSize = true;
+            this.selectedNameLabel.ForeColor = System.Drawing.Color.White;
+            this.selectedNameLabel.Location = new System.Drawing.Point(306, 34);
+            this.selectedNameLabel.Name = "selectedNameLabel";
+            this.selectedNameLabel.Size = new System.Drawing.Size(81, 13);
+            this.selectedNameLabel.TabIndex = 18;
+            this.selectedNameLabel.Text = "Selected name:";
+            // 
             // name
             // 
             this.name.AutoSize = true;
-            this.name.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name.ForeColor = System.Drawing.Color.White;
-            this.name.Location = new System.Drawing.Point(346, 342);
+            this.name.Location = new System.Drawing.Point(338, 305);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(129, 14);
-            this.name.TabIndex = 14;
+            this.name.Size = new System.Drawing.Size(126, 13);
+            this.name.TabIndex = 19;
             this.name.Text = "Ryan Shupe - CSCI 2210";
             // 
-            // label1
+            // ownerNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(317, 300);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 42);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "NameList";
+            this.ownerNameLabel.AutoSize = true;
+            this.ownerNameLabel.ForeColor = System.Drawing.Color.White;
+            this.ownerNameLabel.Location = new System.Drawing.Point(314, 329);
+            this.ownerNameLabel.Name = "ownerNameLabel";
+            this.ownerNameLabel.Size = new System.Drawing.Size(13, 13);
+            this.ownerNameLabel.TabIndex = 21;
+            this.ownerNameLabel.Text = "1";
             // 
-            // label2
+            // ownerPhoneLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(459, 322);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Project 2";
+            this.ownerPhoneLabel.AutoSize = true;
+            this.ownerPhoneLabel.ForeColor = System.Drawing.Color.White;
+            this.ownerPhoneLabel.Location = new System.Drawing.Point(314, 342);
+            this.ownerPhoneLabel.Name = "ownerPhoneLabel";
+            this.ownerPhoneLabel.Size = new System.Drawing.Size(13, 13);
+            this.ownerPhoneLabel.TabIndex = 22;
+            this.ownerPhoneLabel.Text = "2";
             // 
-            // btnRemove
+            // ownerEmailLabel
             // 
-            this.btnRemove.BackColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(104, 196);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(65, 23);
-            this.btnRemove.TabIndex = 14;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = false;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.ownerEmailLabel.AutoSize = true;
+            this.ownerEmailLabel.ForeColor = System.Drawing.Color.White;
+            this.ownerEmailLabel.Location = new System.Drawing.Point(314, 355);
+            this.ownerEmailLabel.Name = "ownerEmailLabel";
+            this.ownerEmailLabel.Size = new System.Drawing.Size(13, 13);
+            this.ownerEmailLabel.TabIndex = 23;
+            this.ownerEmailLabel.Text = "3";
             // 
-            // label3
+            // addNameButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(317, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Selected name:";
+            this.addNameButton.BackColor = System.Drawing.Color.White;
+            this.addNameButton.Location = new System.Drawing.Point(12, 27);
+            this.addNameButton.Name = "addNameButton";
+            this.addNameButton.Size = new System.Drawing.Size(91, 22);
+            this.addNameButton.TabIndex = 15;
+            this.addNameButton.Text = "Add a name";
+            this.addNameButton.UseVisualStyleBackColor = false;
+            this.addNameButton.Click += new System.EventHandler(this.addNameButton_Click);
+            // 
+            // addANameToolStripMenuItem
+            // 
+            this.addANameToolStripMenuItem.Name = "addANameToolStripMenuItem";
+            this.addANameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addANameToolStripMenuItem.Text = "Add a name";
+            this.addANameToolStripMenuItem.Click += new System.EventHandler(this.addANameToolStripMenuItem_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
-            this.ClientSize = new System.Drawing.Size(550, 399);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimeBar);
+            this.ClientSize = new System.Drawing.Size(550, 405);
+            this.Controls.Add(this.addNameButton);
+            this.Controls.Add(this.ownerEmailLabel);
+            this.Controls.Add(this.ownerPhoneLabel);
+            this.Controls.Add(this.ownerNameLabel);
             this.Controls.Add(this.name);
+            this.Controls.Add(this.selectedNameLabel);
+            this.Controls.Add(this.project2);
+            this.Controls.Add(this.nameListLabel);
+            this.Controls.Add(this.dateTimeBar);
             this.Controls.Add(this.nameContentPanel);
             this.Controls.Add(this.numNames);
             this.Controls.Add(this.btnLNF);
@@ -461,15 +491,17 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addANameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeANameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.StatusBar dateTimeBar;
-        private System.Windows.Forms.Label name;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label nameListLabel;
+        private System.Windows.Forms.Label project2;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label selectedNameLabel;
+        private System.Windows.Forms.Label name;
+        private System.Windows.Forms.Label ownerNameLabel;
+        private System.Windows.Forms.Label ownerPhoneLabel;
+        private System.Windows.Forms.Label ownerEmailLabel;
+        private System.Windows.Forms.Button addNameButton;
+        private System.Windows.Forms.ToolStripMenuItem addANameToolStripMenuItem;
     }
 }

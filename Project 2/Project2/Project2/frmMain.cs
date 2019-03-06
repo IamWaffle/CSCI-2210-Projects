@@ -44,6 +44,17 @@ namespace Project2
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
+            frmOwner owner = new frmOwner();
+            owner.ShowDialog();
+
+            nameList.setOwnerName(owner.name);
+            nameList.setOwnerPhone(owner.phone);
+            nameList.setOwnerEmail(owner.email);
+
+            ownerNameLabel.Text = nameList.getOwnerName();
+            ownerPhoneLabel.Text = nameList.getOwnerPhone();
+            ownerEmailLabel.Text = nameList.getOwnerEmail();
+
             dateTimeBar.Text = DateTime.Now.ToLongDateString();
             dateTimeBar.Text += " " + DateTime.Now.ToLongTimeString();
         }
@@ -159,30 +170,14 @@ namespace Project2
         }
 
         /// <summary>
-        /// addANameToolStripMenuItem_Click - this methods runs if the add a name button is clicked.
+        /// addNameButton_Click - this methods runs if the add a name button is clicked.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void addANameToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void addNameButton_Click(object sender, EventArgs e)
         {
-            frmAdd add = new frmAdd();
-            add.ShowDialog();
-            String personName = add.name;
-
-            if (string.IsNullOrWhiteSpace(personName))
-            {
-            }
-            else
-            {
-                fileList = new NameList();
-                tempName = new Name(personName);
-                fileList.add(tempName);
-                nameList += fileList;
-
-                refresh();
-
-                edited = true;
-            }
+            addName();
         }
 
         /// <summary>
@@ -247,25 +242,14 @@ namespace Project2
             {
                 int index;
                 
-                tempNameEdit = new Name();
-                
-                String editNameString;
+
                 txtboxFirstName.Text = null;
                 txtboxMiddleName.Text = null;
                 txtboxLastName.Text = null;
                 txtboxEnd.Text = null;
-                tempNameEdit.firstName = txtboxFirstName.Text;
-                tempNameEdit.middle = txtboxMiddleName.Text;
-                tempNameEdit.lastName = txtboxLastName.Text;
-                tempNameEdit.end = txtboxEnd.Text;
-                
+                fullNameLabel.Text = null;
 
-                
-                    editNameString = null;
-                
-               
 
-                tempName = new Name(editNameString);
                 if (nameList.Count() < 1)
                 {
                     index = 0;
@@ -278,22 +262,25 @@ namespace Project2
                 if (index == 0)
                 {
                     nameList.remove(0);
+                    nameListBox.Items.Clear();
+
+                    refresh();
                 }
                 else if (index == nameList.Count() - 1)
                 {
                     nameList.remove(nameList.Count() - 1);
-                }
-
-                if (string.IsNullOrWhiteSpace(tempName.personNameFull))
-                {
-                    nameList.remove(nameList.getName(nameListBox.SelectedItem.ToString()).firstNameFirst());
-
                     nameListBox.Items.Clear();
 
                     refresh();
-
-                    fullNameLabel.Text = tempName.personNameFull;
                 }
+                else if (index < nameList.Count())
+                {
+                    nameList.remove(index);
+                    nameListBox.Items.Clear();
+
+                    refresh();
+                }
+
             }
             catch
             {
@@ -400,20 +387,40 @@ namespace Project2
         }
 
         /// <summary>
-        /// removeANameToolStripMenuItem_Click - this methods runs if the remove a name button is clicked.
+        /// addANameToolStripMenuItem_Click - this method calls another method to add a name to the list.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void removeANameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addANameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            string lol = "fsdfsdf";
-
-            frmRemove rmvDialog = new frmRemove(lol);
-
-            rmvDialog.ShowDialog();
+            addName();
         }
 
+        /// <summary>
+        /// addName - this method calls another form and addds a name to the list.
+        /// </summary>
+
+        private void addName()
+        {
+            frmAdd add = new frmAdd();
+            add.ShowDialog();
+            String personName = add.name;
+
+            if (string.IsNullOrWhiteSpace(personName))
+            {
+            }
+            else
+            {
+                fileList = new NameList();
+                tempName = new Name(personName);
+                fileList.add(tempName);
+                nameList += fileList;
+
+                refresh();
+
+                edited = true;
+            }
+        }
 
         #endregion Methods
 
@@ -497,6 +504,12 @@ namespace Project2
         #endregion FileHandlers
 
         #region KeyPress
+
+        /// <summary>
+        /// txtboxFirstName_KeyPress - this method checks to see if the user is typing the right key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
@@ -504,7 +517,11 @@ namespace Project2
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// txtboxMiddleName_KeyPress - this method checks to see if the user is typing the right key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxMiddleName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
@@ -512,7 +529,11 @@ namespace Project2
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// txtboxLastName_KeyPress - this method checks to see if the user is typing the right key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxLastName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
@@ -520,7 +541,11 @@ namespace Project2
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// txtboxEnd_KeyPress - this method checks to see if the user is typing the right key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtboxEnd_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (!char.IsControl(e.KeyChar)) && (!char.IsWhiteSpace(e.KeyChar)) && (!char.IsPunctuation(e.KeyChar)))
@@ -528,6 +553,8 @@ namespace Project2
                 e.Handled = true;
             }
         }
+
+
         #endregion KeyPress
 
 

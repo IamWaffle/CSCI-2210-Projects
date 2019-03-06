@@ -99,9 +99,9 @@
             this.endLabel.ForeColor = System.Drawing.Color.White;
             this.endLabel.Location = new System.Drawing.Point(15, 142);
             this.endLabel.Name = "endLabel";
-            this.endLabel.Size = new System.Drawing.Size(29, 13);
+            this.endLabel.Size = new System.Drawing.Size(36, 13);
             this.endLabel.TabIndex = 12;
-            this.endLabel.Text = "End:";
+            this.endLabel.Text = "Suffix:";
             // 
             // lastNameLabel
             // 

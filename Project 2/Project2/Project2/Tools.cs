@@ -7,7 +7,7 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Monday, Feb 04 2019
-//  Modified:          Sunday, Feb 24 2019
+//  Modified:          Wednesday, Mar 06 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,32 +127,38 @@ namespace Project2
         /// and returns the name phone and email of the person
         ///
         /// </summary>
+        /// <param name = "inName">the name string passed in</param>
+        /// <param name = "inPhone">the phone string passed in</param>
+        /// <param name = "inEmail">the email string passed in</param>
         /// <out name>the string that contains a persons name</out>
         /// <out phone>the phone number string</out>
         /// <out email>the email string</out>
-        public static void displayWelcome(out string name, out string phone, out string email)
+        public static void displayWelcome(out string name, out string phone, out string email, string inName, string inPhone, string inEmail)
         {
             string tempphone;
             string tempemail;
-            Console.WriteLine("Welcome to the program!\n");
-            Console.WriteLine("Please enter your name..");
-            name = (Console.ReadLine());
-            phone = null;
-            email = null;
 
-            bool phoneVerification = true;
-            while (phoneVerification == true)
+            if (string.IsNullOrEmpty(inName))
             {
-                Console.WriteLine("Please enter your phone number: ");
-                tempphone = (Console.ReadLine());
+               name = null;
+               throw new Exception("No Name");
+
+            }
+            else
+            {
+                name = inName;
+
+            }
+
+            tempphone = inPhone;
 
                 try
                 {
                     if (string.IsNullOrEmpty(tempphone))
                     {
-                        phone = "(XXX)-XXX-XXXX";
-                        Console.WriteLine("Please enter a valid phone number.");
-                        phoneVerification = true;
+                        phone = null;
+                        throw new Exception("Phone number invalid");
+
                     }
                     else
                     {
@@ -160,13 +166,12 @@ namespace Project2
                         if (r.IsMatch(tempphone) == true)
                         {
                             phone = tempphone;
-                            phoneVerification = false;
                         }
                         else
                         {
-                            phone = "(XXX)-XXX-XXXX";
-                            Console.WriteLine("Please enter a valid phone number.");
-                            phoneVerification = true;
+                            phone = null;
+                            throw new Exception("Phone number invalid");
+
                         }
                     }
                 }
@@ -174,34 +179,30 @@ namespace Project2
                 {
                     throw;
                 }
-            }
 
-            bool emailVerification = true;
-            while (emailVerification == true)
-            {
-                Console.WriteLine("Please enter your email address: ");
-                tempemail = (Console.ReadLine());
+                tempemail = inEmail;
                 try
                 {
                     if (string.IsNullOrEmpty(tempemail))
                     {
-                        email = "default@email.com";
-                        Console.WriteLine("Please enter a valid email.");
-                        emailVerification = true;
-                    }
+                        email = null;
+                        throw new Exception("Email not valid");
+
+                }
                     else
                     {
                         var r = new Regex(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$");
+
                         if (r.IsMatch(tempemail) == true)
                         {
                             email = tempemail;
-                            emailVerification = false;
+
                         }
                         else
                         {
-                            email = "default@email.com";
-                            Console.WriteLine("Please enter a valid email.");
-                            emailVerification = true;
+                            email = null;
+                            throw new Exception("Email not valid");
+
                         }
                     }
                 }
@@ -209,7 +210,7 @@ namespace Project2
                 {
                     throw;
                 }
-            }
+            
         }
 
         /// <summary>

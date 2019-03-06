@@ -180,6 +180,10 @@ namespace Project2
             return personNameFull;
         }
 
+        /// <summary>
+        ///  gethashCode - returns the hash code
+        /// </summary>
+        /// <return name="base.GetHashCode()">the hash code returned </return>
         public override int GetHashCode()
         {
             return base.GetHashCode();
