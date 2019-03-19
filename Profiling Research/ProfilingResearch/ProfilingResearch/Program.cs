@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Program.cs
@@ -17,16 +16,14 @@ using System.Threading.Tasks;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace ProfilingResearch
 {
-    class Program
+    internal class Program
     {
         private static int N = 100;
         private static Random ran = new Random();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-           List<int> intList = new List<int>(N);
-
-
+            List<int> intList = new List<int>(N);
         }
 
         private static void sinkSort(List<int> inList)
@@ -60,7 +57,7 @@ namespace ProfilingResearch
         private static void InsertionSort(List<int> inList)
         {
             int temp, j;
-            for(int i = 1; i < N; i++)
+            for (int i = 1; i < N; i++)
             {
                 temp = inList[i];
 
@@ -85,11 +82,9 @@ namespace ProfilingResearch
             if (list[max] != list[n - 1])
             {
                 Swap(list, max, n - 1);
-
             }
 
             SelectionSort(list, n - 1);
-
         }
 
         private static int Max(List<int> list, int n)
@@ -146,8 +141,6 @@ namespace ProfilingResearch
                 QuickSort(list, start, left - 1);  //sort left partition
                 QuickSort(list, right + 1, end);    //sort right partition
             }
-
-
         }
 
         private static void QuickmedianOfThreeSort(List<int> list)
@@ -162,7 +155,6 @@ namespace ProfilingResearch
             if (start + cutoff > end)
             {
                 InsertSort(list, start, end);
-
             }
             else
             {
@@ -170,7 +162,6 @@ namespace ProfilingResearch
                 if (list[middle] < list[start])
                 {
                     Swap(list, start, middle);
-
                 }
 
                 if (list[end] < list[start])
@@ -187,7 +178,7 @@ namespace ProfilingResearch
                 Swap(list, middle, end - 1);
 
                 int left, right;
-                for (left = start, right = end - 1;;)
+                for (left = start, right = end - 1; ;)
                 {
                     while (list[++left] < pivot)
                         ;
@@ -196,7 +187,6 @@ namespace ProfilingResearch
                     if (left < right)
                     {
                         Swap(list, left, right);
-
                     }
                     else
                     {
@@ -217,7 +207,7 @@ namespace ProfilingResearch
             for (int i = start + 1; i <= end; i++)
             {
                 temp = list[i];
-                for(j= i; j > start && temp < list[j - 1]; j--)
+                for (j = i; j > start && temp < list[j - 1]; j--)
                 {
                     list[j] = list[j - 1];
                 }
@@ -228,7 +218,7 @@ namespace ProfilingResearch
 
         private static void ShellSort(List<int> list)
         {
-            for (int gap = N / 2; gap > 0; gap = (gap == 2 ? 1 : (int) (gap / 2.2)))
+            for (int gap = N / 2; gap > 0; gap = (gap == 2 ? 1 : (int)(gap / 2.2)))
             {
                 int temp, j;
                 for (int i = gap; i < N; i++)
@@ -242,7 +232,7 @@ namespace ProfilingResearch
 
                     list[j] = temp;
                 }
-            } 
+            }
         }
 
         private static List<int> MergeSort(List<int> list)
@@ -254,14 +244,14 @@ namespace ProfilingResearch
 
             List<int> result = new List<int>();
             List<int> left = new List<int>();
-            List<int> right= new List<int>();
+            List<int> right = new List<int>();
 
             int middle = list.Count / 2;
             for (int i = 0; i < middle; i++)
             {
                 left.Add(list[i]);
             }
-            for(int i = middle; i < list.Count; i++)
+            for (int i = middle; i < list.Count; i++)
             {
                 right.Add(list[i]);
             }
@@ -276,8 +266,6 @@ namespace ProfilingResearch
 
             result = merge(left, right);
             return result;
-
-
         }
 
         private static List<int> merge(List<int> left, List<int> right)
@@ -308,7 +296,6 @@ namespace ProfilingResearch
             {
                 result.Add(right[0]);
                 right.RemoveAt(0);
-
             }
 
             return result;
@@ -355,7 +342,6 @@ namespace ProfilingResearch
             return newList;
         }
 
-
         private static List<int> Radix10LSDSort(List<int> list)
         {
             List<List<int>> bin = new List<List<int>>(10);
@@ -399,7 +385,7 @@ namespace ProfilingResearch
 
         private static int Digit(int value, int digitPosition)
         {
-            return (value / (int) Math.Pow(10, digitPosition) % 10);
+            return (value / (int)Math.Pow(10, digitPosition) % 10);
         }
     }
 }
