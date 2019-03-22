@@ -21,11 +21,20 @@ namespace ProfilingResearch
         private static int N = 100;
         private static Random ran = new Random();
 
+
+        /// <summary>
+        ///  This is the method where the program is ran
+        /// </summary>
         private static void Main(string[] args)
         {
             List<int> intList = new List<int>(N);
         }
 
+
+        /// <summary>
+        /// sinkSort- this method takes in a list and uses sink sort on it.
+        /// </summary>
+        /// <param name="inList">the list to be sorted</param>
         private static void sinkSort(List<int> inList)
         {
             bool sorted = false;
@@ -47,6 +56,12 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// Swap - this method swaps two positions in a list.
+        /// </summary>
+        /// <param name="inList">the list required</param>
+        /// <param name="n">position to be swaped</param>
+        /// <param name="m">position to be swaped #2</param>
         private static void Swap(List<int> inList, int n, int m)
         {
             int temp = inList[n];
@@ -54,6 +69,10 @@ namespace ProfilingResearch
             inList[m] = temp;
         }
 
+        /// <summary>
+        /// InsertionSort - this method accepts a list and uses insertion sorting.
+        /// </summary>
+        /// <param name="inList">the list required</param>
         private static void InsertionSort(List<int> inList)
         {
             int temp, j;
@@ -70,6 +89,11 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// SelectionSort - this method accepts a list and uses selection sorting.
+        /// </summary>
+        /// <param name="inList">the list required</param>
+        /// <param name="n">position</param>
         private static void SelectionSort(List<int> list, int n)
         {
             if (n <= 1)
@@ -87,6 +111,12 @@ namespace ProfilingResearch
             SelectionSort(list, n - 1);
         }
 
+        /// <summary>
+        /// Max - finds the max value.
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <param name="n">position</param>
+
         private static int Max(List<int> list, int n)
         {
             int max = 0;
@@ -101,11 +131,21 @@ namespace ProfilingResearch
             return max;
         }
 
+        /// <summary>
+        /// OriginalQuickSort - uses the original quick sort.
+        /// </summary>
+        /// <param name="list">the list required</param>
         private static void OriginalQuickSort(List<int> list)
         {
             QuickSort(list, 0, list.Count - 1);
         }
 
+        /// <summary>
+        /// QuickSort - takes in a list and two positions and uses quick sort.
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <param name="start">starting position</param>
+        /// <param name="end">end position</param>
         private static void QuickSort(List<int> list, int start, int end)
         {
             int left = start;
@@ -143,11 +183,21 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// QuickmedianOfThreeSort
+        /// </summary>
+        /// <param name="list">the list required</param>
         private static void QuickmedianOfThreeSort(List<int> list)
         {
             QuickMedOfThreeSort(list, 0, list.Count - 1);
         }
 
+        /// <summary>
+        /// QuickMedOfThreeSort - uses med of 3 sorting with a start and ending position
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <param name="start">starting position</param>
+        /// <param name="end">end position</param>
         private static void QuickMedOfThreeSort(List<int> list, int start, int end)
         {
             const int cutoff = 10;
@@ -201,6 +251,12 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// InsertSort - accepts a list and uses insert sorting
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <param name="start">starting position</param>
+        /// <param name="end">end position</param>
         private static void InsertSort(List<int> list, int start, int end)
         {
             int temp, j;
@@ -216,6 +272,10 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// ShellSort - accepts a list and uses shell sorting
+        /// </summary>
+        /// <param name="list">the list required</param>
         private static void ShellSort(List<int> list)
         {
             for (int gap = N / 2; gap > 0; gap = (gap == 2 ? 1 : (int)(gap / 2.2)))
@@ -235,6 +295,11 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// MergeSort - accepts a list and uses merge sorting
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <returns name="result"> the resulting list</returns>
         private static List<int> MergeSort(List<int> list)
         {
             if (list.Count <= 1)
@@ -268,6 +333,12 @@ namespace ProfilingResearch
             return result;
         }
 
+        /// <summary>
+        /// merge - merges two lists together into one.
+        /// </summary>
+        /// <param name="left">the left list required</param>
+        /// <param name="right">the right list required</param>
+        /// <returns name="result"> the resulting list</returns>
         private static List<int> merge(List<int> left, List<int> right)
         {
             List<int> result = new List<int>();
@@ -301,6 +372,13 @@ namespace ProfilingResearch
             return result;
         }
 
+
+        /// <summary>
+        /// append - accepts two lists and appends them together.
+        /// </summary>
+        /// <param name="left">the left list required</param>
+        /// <param name="right">the right list required</param>
+        /// <returns name="result"> the resulting list</returns>
         private static List<int> append(List<int> left, List<int> right)
         {
             List<int> result = new List<int>(left);
@@ -312,6 +390,12 @@ namespace ProfilingResearch
             return result;
         }
 
+
+        /// <summary>
+        /// CountingSort- accepts a list and uses counting sort. Returns a new sorted list.
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <returns name="result"> the resulting list</returns>
         private static List<int> CountingSort(List<int> list)
         {
             List<int> newList = new List<int>(list);
@@ -342,6 +426,12 @@ namespace ProfilingResearch
             return newList;
         }
 
+
+        /// <summary>
+        /// Radix10LSDSort- accepts a list and uses RadixSort 10 as an LSD.
+        /// </summary>
+        /// <param name="list">the list required</param>
+        /// <returns name="result"> the resulting list</returns>
         private static List<int> Radix10LSDSort(List<int> list)
         {
             List<List<int>> bin = new List<List<int>>(10);
@@ -371,6 +461,11 @@ namespace ProfilingResearch
             return list;
         }
 
+        /// <summary>
+        /// CopyToResult - accepts two lists and copys one to another.
+        /// </summary>
+        /// <param name="bin">the list required</param>
+        /// <param name="result">the result list required</param>
         private static void CopyToResult(List<List<int>> bin, List<int> result)
         {
             result.Clear();
@@ -383,6 +478,11 @@ namespace ProfilingResearch
             }
         }
 
+        /// <summary>
+        /// Digit - 
+        /// </summary>
+        /// <param name="value">the required value</param>
+        /// <returns name="digitPosition"> the digit positon of the value.</returns>
         private static int Digit(int value, int digitPosition)
         {
             return (value / (int)Math.Pow(10, digitPosition) % 10);
