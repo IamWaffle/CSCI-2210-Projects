@@ -28,6 +28,27 @@ namespace ProfilingResearch
         private static void Main(string[] args)
         {
             List<int> intList = new List<int>(N);
+
+            for(int i = 0; i < N; i++)
+            {
+                intList.Add(ran.Next(0,1000));
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+             sinkSort(intList);
+            // InsertionSort(intList);
+            // SelectionSort(intList, N);
+            // OriginalQuickSort(intList);
+            // QuickmedianOfThreeSort(intList);
+            // InsertSort(intList, 0, N);
+            // ShellSort(intList);
+
+            //intList = MergeSort(intList);
+            //intList = CountingSort(intList);
+            //intList = Radix10LSDSort(intList);
+
         }
 
 
@@ -260,7 +281,7 @@ namespace ProfilingResearch
         private static void InsertSort(List<int> list, int start, int end)
         {
             int temp, j;
-            for (int i = start + 1; i <= end; i++)
+            for (int i = start + 1; i < end; i++)
             {
                 temp = list[i];
                 for (j = i; j > start && temp < list[j - 1]; j--)
