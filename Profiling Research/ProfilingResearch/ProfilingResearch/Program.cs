@@ -18,7 +18,7 @@ namespace ProfilingResearch
 {
     internal class Program
     {
-        private static int N = 100;
+        private static int N = 10000;
         private static Random ran = new Random();
 
 
@@ -29,28 +29,31 @@ namespace ProfilingResearch
         {
             List<int> intList = new List<int>(N);
 
-            for(int i = 0; i < N; i++)
+
+            for (int i = 0; i < N; i++)
             {
-                intList.Add(ran.Next(0,1000));
+                if (i < 8000)
+                {
+                    intList.Add(i);
+                }
+                else
+                {
+                    intList.Add(ran.Next(0, 10000));
+                }
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-             sinkSort(intList);
-            // InsertionSort(intList);
-            // SelectionSort(intList, N);
-            // OriginalQuickSort(intList);
-            // QuickmedianOfThreeSort(intList);
-            // InsertSort(intList, 0, N);
-            // ShellSort(intList);
-
+            //sinkSort(intList);
+            //InsertionSort(intList);
+            //SelectionSort(intList, N);
+            //OriginalQuickSort(intList);
+            //QuickmedianOfThreeSort(intList);
+            //InsertSort(intList, 0, N);
+            //ShellSort(intList);
             //intList = MergeSort(intList);
             //intList = CountingSort(intList);
-            //intList = Radix10LSDSort(intList);
+            intList = Radix10LSDSort(intList);
 
         }
-
 
         /// <summary>
         /// sinkSort- this method takes in a list and uses sink sort on it.
@@ -449,7 +452,7 @@ namespace ProfilingResearch
 
 
         /// <summary>
-        /// Radix10LSDSort- accepts a list and uses RadixSort 10 as an LSD.
+        /// Radix10LSDSort- accepts a list and uses RadixSort base 10
         /// </summary>
         /// <param name="list">the list required</param>
         /// <returns name="result"> the resulting list</returns>
@@ -464,16 +467,16 @@ namespace ProfilingResearch
 
             int numDigits = list.Max().ToString().Length;
 
-            for (int i = 0; i < numDigits; i++)
+            for (int j = 0; j < numDigits; j++)
             {
                 for (int n = 0; n < list.Count; n++)
                 {
-                    bin[Digit(list[n], i)].Add(list[n]);
+                    bin[Digit(list[n], j)].Add(list[n]);
                 }
 
                 CopyToResult(bin, list);
 
-                for (int x = 0; x < 10; x++)
+                for (int i = 0; i < 10; i++)
                 {
                     bin[i].Clear();
                 }
