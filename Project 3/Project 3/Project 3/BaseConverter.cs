@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         BaseConverter.cs
@@ -14,7 +12,7 @@ using System.Threading.Tasks;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project_3
 {
-    class BaseConverter
+    internal class BaseConverter
     {
         /// <summary>
         ///  This method converts a number from a specified base to base 10 decimal
@@ -33,7 +31,7 @@ namespace Project_3
                 resultStack.Push(1);
                 resultStack.Push(0);
 
-                for(int i = 0;  i < resultStack.Count; i++)
+                for (int i = 0; i < resultStack.Count; i++)
                 {
                     result += resultStack.Pop();
                 }
@@ -58,25 +56,54 @@ namespace Project_3
             {
                 string result = "";
 
-                if (inBase < 11)
+                int Decimal = inValue;
+                int rem;
+                Stack<string> resultStack = new Stack<string>();
+
+                while (Decimal != 0)
                 {
-                    int Decimal = inValue;
-                    int rem;
-                    Stack<int> resultStack = new Stack<int>();
-                    
+                    rem = Decimal % inBase;
+                    Decimal /= inBase;
 
-                    while (Decimal != 0)
+                    if (rem >= 10)
                     {
-                        rem = Decimal % inBase;
-                        Decimal /= inBase;
-                        resultStack.Push(rem);
+                        if (rem == 10)
+                        {
+                            resultStack.Push('A'.ToString());
+                        }
+                        else if (rem == 11)
+                        {
+                            resultStack.Push('B'.ToString());
+                        }
+                        else if (rem == 12)
+                        {
+                            resultStack.Push('C'.ToString());
+                        }
+                        else if (rem == 13)
+                        {
+                            resultStack.Push('D'.ToString());
+                        }
+                        else if (rem == 14)
+                        {
+                            resultStack.Push('E'.ToString());
+                        }
+                        else if (rem == 15)
+                        {
+                            resultStack.Push('F'.ToString());
+                        }
+                        
                     }
-                    int count = resultStack.Count;
+                    else
+                    {
+                        resultStack.Push(rem.ToString());
+                    }
+                }
 
-                    for (int i = 0; i < count; i++)
-                    {
-                        result += resultStack.Pop();
-                    }
+                int count = resultStack.Count;
+
+                for (int i = 0; i < count; i++)
+                {
+                    result += resultStack.Pop();
                 }
 
                 return result;
@@ -85,7 +112,6 @@ namespace Project_3
             {
                 throw new Exception("Something went wrong!");
             }
-            
         }
     }
 }
