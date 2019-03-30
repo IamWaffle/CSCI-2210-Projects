@@ -1,4 +1,13 @@
-﻿namespace Project_3
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         frmMain.Designer.cs
+//	Description:       this is the designer file for the main window. 
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Friday, Mar 29 2019
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace Project_3
 {
     partial class frmMain
     {
@@ -39,7 +48,7 @@
             this.digitLabel = new System.Windows.Forms.Label();
             this.baseCounter = new System.Windows.Forms.NumericUpDown();
             this.placesInResult = new System.Windows.Forms.NumericUpDown();
-            this.txtBoxBase = new System.Windows.Forms.MaskedTextBox();
+            this.txtBoxBase = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.baseCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placesInResult)).BeginInit();
             this.SuspendLayout();
@@ -62,9 +71,9 @@
             this.baseLabel1.ForeColor = System.Drawing.Color.White;
             this.baseLabel1.Location = new System.Drawing.Point(243, 25);
             this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(175, 19);
+            this.baseLabel1.Size = new System.Drawing.Size(188, 19);
             this.baseLabel1.TabIndex = 1;
-            this.baseLabel1.Text = "Integer Value in Base:";
+            this.baseLabel1.Text = "Integer Value in Base: 2";
             // 
             // txtBoxDecimal
             // 
@@ -152,6 +161,7 @@
             0,
             0,
             0});
+            this.baseCounter.ValueChanged += new System.EventHandler(this.baseCounter_ValueChanged);
             this.baseCounter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.baseCounter_KeyPress);
             // 
             // placesInResult
@@ -172,18 +182,18 @@
             this.placesInResult.Size = new System.Drawing.Size(32, 16);
             this.placesInResult.TabIndex = 11;
             this.placesInResult.Value = new decimal(new int[] {
-            16,
+            8,
             0,
             0,
             0});
             // 
             // txtBoxBase
             // 
-            this.txtBoxBase.Location = new System.Drawing.Point(247, 47);
+            this.txtBoxBase.Location = new System.Drawing.Point(248, 47);
             this.txtBoxBase.Name = "txtBoxBase";
-            this.txtBoxBase.Size = new System.Drawing.Size(189, 20);
+            this.txtBoxBase.Size = new System.Drawing.Size(188, 20);
             this.txtBoxBase.TabIndex = 12;
-            this.txtBoxBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxBase_KeyPress);
+            this.txtBoxBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxBase_KeyPress_1);
             // 
             // frmMain
             // 
@@ -208,7 +218,6 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Number Converter";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placesInResult)).EndInit();
             this.ResumeLayout(false);
@@ -228,7 +237,7 @@
         private System.Windows.Forms.Label digitLabel;
         private System.Windows.Forms.NumericUpDown baseCounter;
         private System.Windows.Forms.NumericUpDown placesInResult;
-        private System.Windows.Forms.MaskedTextBox txtBoxBase;
+        private System.Windows.Forms.TextBox txtBoxBase;
     }
 }
 
