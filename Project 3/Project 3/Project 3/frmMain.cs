@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -19,15 +20,20 @@ namespace Project_3
         public string convertIntString;
         public int convertInt;
         public int convertBase;
-        public int result;
+        public double result;
         public string resultNumber;
         public int places;
+
+        public object KeyCode { get; private set; }
+
+
         /// <summary>
         /// basic no arg constructor
         /// </summary>
         public frmMain()
         {
             InitializeComponent();
+            this.Text = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
         }
         /// <summary>
         /// This method executes when the user clicks the about button
@@ -48,6 +54,7 @@ namespace Project_3
         {
             if (String.IsNullOrWhiteSpace(txtBoxBase.Text))
             {
+                txtBoxDecimal.Text = "Invalid!";
             }
             else
             {
@@ -71,13 +78,16 @@ namespace Project_3
         /// <param name="e"></param>
         private void fromDecBtn_Click(object sender, EventArgs e)
         {
+            
             if (String.IsNullOrWhiteSpace(txtBoxDecimal.Text))
             {
+                txtBoxBase.Text = "Invalid!";
             }
             else
             {
                 try
                 {
+
                     places = Convert.ToInt16(placesInResult.Value);
 
                     convertIntString = txtBoxDecimal.Text;
@@ -158,13 +168,15 @@ namespace Project_3
         /// <param name="e"></param>
         private void txtBoxBase_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }
+
+
         }
         /// <summary>
-        ///  This updates the label every time the user changes the base.
+        ///  This method changes a label when the user changes the base
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -172,5 +184,7 @@ namespace Project_3
         {
             baseLabel1.Text = "Integer Value in Base: " + baseCounter.Value;
         }
+
+
     }
 }

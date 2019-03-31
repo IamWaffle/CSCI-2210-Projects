@@ -20,20 +20,48 @@ namespace Project_3
         /// <param name="inValue">the value of the number to be converted</param>
         /// <param name="inBase">the base to convert from</param>
         /// <returns>result - the transtated integer</returns>
-        public static int toDecimal(string inValue, int inBase)
+        public static double toDecimal(string inValue, int inBase)
         {
             try
             {
-                int result = 0;
-                Stack<int> resultStack = new Stack<int>();
+                List<int> valArray = new List<int>();
+                double result = 0;
 
-                resultStack.Push(1);
-                resultStack.Push(1);
-                resultStack.Push(0);
-
-                for (int i = 0; i < resultStack.Count; i++)
+                for (int i = 0; i < inValue.Length; i ++)
                 {
-                    result += resultStack.Pop();
+                    if(inValue[i] == 'A')
+                    {
+                        valArray.Add(10);
+                    }
+                    else if (inValue[i] == 'B')
+                    {
+                        valArray.Add(11);
+                    }
+                    else if (inValue[i] == 'C')
+                    {
+                        valArray.Add(12);
+                    }
+                    else if (inValue[i] == 'D')
+                    {
+                        valArray.Add(13); 
+                    }
+                    else if (inValue[i] == 'E')
+                    {
+                        valArray.Add(14);
+                    }
+                    else if (inValue[i] == 'F')
+                    {
+                        valArray.Add(15);
+                    }
+                    else
+                    {
+                        valArray.Add(int.Parse(inValue[i].ToString()));
+                    }  
+                }
+
+                for(int i = 0; i < valArray.Count; i++)
+                {
+                    result += valArray[i] * Math.Pow(inBase , (valArray.Count - 1 - i));
                 }
 
                 return result;
@@ -90,8 +118,7 @@ namespace Project_3
                         else if (rem == 15)
                         {
                             resultStack.Push('F'.ToString());
-                        }
-                        
+                        }   
                     }
                     else
                     {
