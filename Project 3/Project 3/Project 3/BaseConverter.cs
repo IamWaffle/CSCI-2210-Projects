@@ -20,7 +20,7 @@ namespace Project_3
         /// <param name="inValue">the value of the number to be converted</param>
         /// <param name="inBase">the base to convert from</param>
         /// <returns>result - the transtated integer</returns>
-        public static double toDecimal(string inValue, int inBase)
+        public static int toDecimal(string inValue, int inBase)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Project_3
                     result += valArray[i] * Math.Pow(inBase , (valArray.Count - 1 - i));
                 }
 
-                return result;
+                return int.Parse(result.ToString());
             }
             catch (Exception)
             {

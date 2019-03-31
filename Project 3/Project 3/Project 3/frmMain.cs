@@ -20,7 +20,7 @@ namespace Project_3
         public string convertIntString;
         public int convertInt;
         public int convertBase;
-        public double result;
+        public int result;
         public string resultNumber;
         public int places;
 

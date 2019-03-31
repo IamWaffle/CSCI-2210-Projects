@@ -77,10 +77,11 @@ namespace Project_3
             // 
             // txtBoxDecimal
             // 
+            this.txtBoxDecimal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxDecimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxDecimal.Location = new System.Drawing.Point(52, 48);
             this.txtBoxDecimal.Name = "txtBoxDecimal";
-            this.txtBoxDecimal.Size = new System.Drawing.Size(189, 29);
+            this.txtBoxDecimal.Size = new System.Drawing.Size(189, 22);
             this.txtBoxDecimal.TabIndex = 2;
             this.txtBoxDecimal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDecimal_KeyPress);
             // 
@@ -194,10 +195,12 @@ namespace Project_3
             // 
             // txtBoxBase
             // 
+            this.txtBoxBase.BackColor = System.Drawing.Color.White;
+            this.txtBoxBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxBase.Location = new System.Drawing.Point(248, 47);
             this.txtBoxBase.Name = "txtBoxBase";
-            this.txtBoxBase.Size = new System.Drawing.Size(188, 29);
+            this.txtBoxBase.Size = new System.Drawing.Size(188, 22);
             this.txtBoxBase.TabIndex = 12;
             this.txtBoxBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxBase_KeyPress_1);
             // 
