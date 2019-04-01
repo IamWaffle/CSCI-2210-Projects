@@ -24,9 +24,7 @@ namespace Project_3
         public string resultNumber;
         public int places;
 
-        public object KeyCode { get; private set; }
-
-
+        #region Constructors
         /// <summary>
         /// basic no arg constructor
         /// </summary>
@@ -35,6 +33,10 @@ namespace Project_3
             InitializeComponent();
             this.Text = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
         }
+
+        #endregion Constructors
+
+        #region Methods
         /// <summary>
         /// This method executes when the user clicks the about button
         /// </summary>
@@ -124,6 +126,19 @@ namespace Project_3
                 catch (Exception) { }
             }
         }
+
+        /// <summary>
+        ///  This method changes a label when the user changes the base
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void baseCounter_ValueChanged(object sender, EventArgs e)
+        {
+            baseLabel1.Text = "Integer Value in Base: " + baseCounter.Value;
+        }
+        #endregion Methods
+
+        #region KeyPress
         /// <summary>
         ///  This makes sure the user is typing the right key
         /// </summary>
@@ -175,16 +190,9 @@ namespace Project_3
 
 
         }
-        /// <summary>
-        ///  This method changes a label when the user changes the base
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void baseCounter_ValueChanged(object sender, EventArgs e)
-        {
-            baseLabel1.Text = "Integer Value in Base: " + baseCounter.Value;
-        }
+
 
 
     }
+    #endregion Keypress
 }

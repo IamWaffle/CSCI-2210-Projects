@@ -14,12 +14,13 @@ namespace Project_3
 {
     internal class BaseConverter
     {
+        #region Methods
         /// <summary>
         ///  This method converts a number from a specified base to base 10 decimal
         /// </summary>
         /// <param name="inValue">the value of the number to be converted</param>
         /// <param name="inBase">the base to convert from</param>
-        /// <returns>result - the transtated integer</returns>
+        /// <returns>result - the translated integer</returns>
         public static int toDecimal(string inValue, int inBase)
         {
             try
@@ -77,7 +78,7 @@ namespace Project_3
         /// </summary>
         /// <param name="inValue">the value of the number to be converted</param>
         /// <param name="inBase">the base to convert to</param>
-        /// <returns>result - the transtated integer as a string</returns>
+        /// <returns>result - the translated integer as a string</returns>
         public static string fromDecimal(int inValue, int inBase)
         {
             try
@@ -141,4 +142,5 @@ namespace Project_3
             }
         }
     }
+    #endregion Methods
 }
