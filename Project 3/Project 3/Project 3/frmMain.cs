@@ -66,12 +66,13 @@ namespace Project_3
                 {
                     convertIntString = txtBoxBase.Text;
                     convertBase = Convert.ToInt16(baseCounter.Value);
-                    result = BaseConverter.toDecimal(convertIntString, convertBase);
+                    result = BaseConverter.toDecimal(convertIntString.ToUpper(), convertBase);
 
                     txtBoxDecimal.Text = result.ToString();
                 }
                 catch (Exception)
                 {
+                    txtBoxDecimal.Text = "Invalid!";
                 }
             }
         }
@@ -124,7 +125,9 @@ namespace Project_3
 
                     txtBoxBase.Text = resultNumber;
                 }
-                catch (Exception) { }
+                catch (Exception) {
+                    txtBoxBase.Text = "Invalid!";
+                }
             }
         }
 
