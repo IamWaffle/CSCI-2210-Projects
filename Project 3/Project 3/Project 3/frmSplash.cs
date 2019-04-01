@@ -14,8 +14,8 @@ namespace Project_3
 {
     public partial class frmSpash : Form
     {
-
         #region Constructors
+
         /// <summary>
         /// frmSpash - basic no arg constructor
         /// </summary>
@@ -24,9 +24,11 @@ namespace Project_3
             InitializeComponent();
             progressBar.MarqueeAnimationSpeed = 30;
         }
+
         #endregion Constructors
 
         #region Methods
+
         /// <summary>
         /// showTime_Tick - this method executes when the showTime timer ticks
         /// </summary>
@@ -52,6 +54,5 @@ namespace Project_3
         }
 
         #endregion Methods
-
     }
 }

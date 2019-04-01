@@ -15,6 +15,7 @@ namespace Project_3
     internal class BaseConverter
     {
         #region Methods
+
         /// <summary>
         ///  This method converts a number from a specified base to base 10 decimal
         /// </summary>
@@ -28,9 +29,9 @@ namespace Project_3
                 List<int> valArray = new List<int>();
                 double result = 0;
 
-                for (int i = 0; i < inValue.Length; i ++)
+                for (int i = 0; i < inValue.Length; i++)
                 {
-                    if(inValue[i] == 'A')
+                    if (inValue[i] == 'A')
                     {
                         valArray.Add(10);
                     }
@@ -44,7 +45,7 @@ namespace Project_3
                     }
                     else if (inValue[i] == 'D')
                     {
-                        valArray.Add(13); 
+                        valArray.Add(13);
                     }
                     else if (inValue[i] == 'E')
                     {
@@ -57,12 +58,12 @@ namespace Project_3
                     else
                     {
                         valArray.Add(int.Parse(inValue[i].ToString()));
-                    }  
+                    }
                 }
 
-                for(int i = 0; i < valArray.Count; i++)
+                for (int i = 0; i < valArray.Count; i++)
                 {
-                    result += valArray[i] * Math.Pow(inBase , (valArray.Count - 1 - i));
+                    result += valArray[i] * Math.Pow(inBase, (valArray.Count - 1 - i));
                 }
 
                 return int.Parse(result.ToString());
@@ -119,7 +120,7 @@ namespace Project_3
                         else if (rem == 15)
                         {
                             resultStack.Push('F'.ToString());
-                        }   
+                        }
                     }
                     else
                     {
@@ -142,5 +143,6 @@ namespace Project_3
             }
         }
     }
+
     #endregion Methods
 }

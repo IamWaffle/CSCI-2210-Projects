@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmMain.cs
-//	Description:       this is the class that holds the main window. 
+//	Description:       this is the class that holds the main window.
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Friday, Mar 29 2019
@@ -13,10 +14,8 @@ using System.Windows.Forms;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project_3
 {
-   
     public partial class frmMain : Form
     {
-        
         public string convertIntString;
         public int convertInt;
         public int convertBase;
@@ -25,18 +24,20 @@ namespace Project_3
         public int places;
 
         #region Constructors
+
         /// <summary>
         /// basic no arg constructor
         /// </summary>
         public frmMain()
         {
             InitializeComponent();
-            this.Text = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
+            Text = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
         }
 
         #endregion Constructors
 
         #region Methods
+
         /// <summary>
         /// This method executes when the user clicks the about button
         /// </summary>
@@ -47,6 +48,7 @@ namespace Project_3
             frmAboutbox about = new frmAboutbox();
             about.Show();
         }
+
         /// <summary>
         /// This method executes when the user clicks the to decimal button
         /// </summary>
@@ -73,6 +75,7 @@ namespace Project_3
                 }
             }
         }
+
         /// <summary>
         ///  This method executes when the user clicks the from decimal button
         /// </summary>
@@ -80,7 +83,6 @@ namespace Project_3
         /// <param name="e"></param>
         private void fromDecBtn_Click(object sender, EventArgs e)
         {
-            
             if (String.IsNullOrWhiteSpace(txtBoxDecimal.Text))
             {
                 txtBoxBase.Text = "Invalid!";
@@ -89,7 +91,6 @@ namespace Project_3
             {
                 try
                 {
-
                     places = Convert.ToInt16(placesInResult.Value);
 
                     convertIntString = txtBoxDecimal.Text;
@@ -136,9 +137,11 @@ namespace Project_3
         {
             baseLabel1.Text = "Integer Value in Base: " + baseCounter.Value;
         }
+
         #endregion Methods
 
         #region KeyPress
+
         /// <summary>
         ///  This makes sure the user is typing the right key
         /// </summary>
@@ -151,6 +154,7 @@ namespace Project_3
                 e.Handled = true;
             }
         }
+
         /// <summary>
         ///  This makes sure the user is typing the right key
         /// </summary>
@@ -164,6 +168,7 @@ namespace Project_3
                 e.Handled = true;
             }
         }
+
         /// <summary>
         ///  This makes sure the user is typing the right key
         /// </summary>
@@ -176,6 +181,7 @@ namespace Project_3
                 e.Handled = true;
             }
         }
+
         /// <summary>
         ///  This makes sure the user is typing the right key
         /// </summary>
@@ -187,12 +193,8 @@ namespace Project_3
             {
                 e.Handled = true;
             }
-
-
         }
-
-
-
     }
-    #endregion Keypress
+
+    #endregion KeyPress
 }
