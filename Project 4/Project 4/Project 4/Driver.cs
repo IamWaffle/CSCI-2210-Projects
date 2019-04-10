@@ -6,14 +6,11 @@
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
 //	Created:           Tuesday, Apr 09 2019
-//  
+//
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-
 
 namespace Project4
 {
@@ -22,6 +19,11 @@ namespace Project4
     /// </summary>
     internal class Program
     {
+
+        private static int customers, hours, registers, chkoutDuration, maxPresent;
+        private static Random r = new Random();
+        private static PriorityQueue<Evnt> PQ;
+            private static TimeSpan shortest, longest, totalTime;
         #region Main
 
         /// <summary>
@@ -35,43 +37,121 @@ namespace Project4
             Console.ForegroundColor = ConsoleColor.White;
             Console.Title = "Project 4: Supermarket Simulation";
 
+            PQ = new PriorityQueue<Evnt>();
 
+           
             Menu menu = new Menu("Simulation Menu");
             menu = menu + "Set the number of customers" +
-                "Set the number of hours of operation" + 
+                "Set the number of hours of operation" +
                 "Set the number of registers" +
                 "Set the expected checkout duration" +
                 "Run the simulation" + "End the program";
-
-            
 
             Choices choice = (Choices)menu.GetChoice();
             while (choice != Choices.END)
             {
                 switch (choice)
                 {
-                    case Choices.OPEN:
-                        
+                    case Choices.CUSTOMERS:
+
+                        bool loopExit = true;
+
+                        while (loopExit)
+                        {
+                            Console.WriteLine("How many customers will be served in a day?: ");
+                            int.TryParse(Console.ReadLine(), out customers);
+
+                            if (customers > 0)
+                            {
+                                loopExit = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
+                            }
+
+                            Tools.Skip();
+                        }
                         break;
 
-                    case Choices.ADD:
-                       
+                    case Choices.HOURS:
+                        bool loopExit2 = true;
+
+                        while (loopExit2)
+                        {
+                            Console.WriteLine("How many hours will the business be open?: ");
+                            int.TryParse(Console.ReadLine(), out hours);
+
+                            if (hours > 0)
+                            {
+                                loopExit2 = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
+                            }
+
+                            Tools.Skip();
+                        }
+
                         break;
 
-                    case Choices.REMOVE:
-                        
+                    case Choices.REGISTERS:
+                        bool loopExit3 = true;
+
+                        while (loopExit3)
+                        {
+                            Console.WriteLine("How many lines are to be simulated?: ");
+                            int.TryParse(Console.ReadLine(), out registers);
+
+                            if (registers > 0)
+                            {
+                                loopExit3 = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
+                            }
+
+                            Tools.Skip();
+                        }
+
                         break;
 
-                    case Choices.CLEAR:
-                        
+                    case Choices.DURATION:
+                        bool loopExit4 = true;
+
+                        while (loopExit4)
+                        {
+                            Console.WriteLine("????????: ");
+                            int.TryParse(Console.ReadLine(), out chkoutDuration);
+
+                            if (chkoutDuration > 0)
+                            {
+                                loopExit4 = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
+                            }
+
+                            Tools.Skip();
+                        }
+
                         break;
 
-                    case Choices.VIEW:
-                       
+                    case Choices.RUN:
+                        GeneratePatronEvents();
+                        DoSimulation();
+                        ShowStatistics();
                         break;
 
-                    case Choices.QUIT:
-                       
+                    case Choices.END:
+                        System.Environment.Exit(1);
                         break;
                 }  // end of switch
                 choice = (Choices)menu.GetChoice();
@@ -79,6 +159,25 @@ namespace Project4
         }
 
         #endregion Main
+        private static void DoSimulation()
+        {
+            int lineCount = 0;
+            maxPresent = 0;
+            int current = 0;
 
+            while(PQ.Count > 0)
+            {
+
+            }
+
+        }
+
+        public static void ShowStatistics()
+        {
+            Console.WriteLine("The maximum number in the museum at any time was {0}", maxPresent);
+            Console.WriteLine("The shortest stay by any customer was {0}", shortest);
+            Console.WriteLine("The longest stay by any customer was {0}", longest);
+            Tools.PressAnyKey();
+        }
     }
 }

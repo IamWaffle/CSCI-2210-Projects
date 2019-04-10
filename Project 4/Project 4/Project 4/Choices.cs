@@ -16,6 +16,6 @@ namespace Project4
     /// </summary>
     internal enum Choices
     {
-        OPEN = 1, ADD, REMOVE, CLEAR, VIEW, QUIT, END
+        CUSTOMERS = 1, HOURS, REGISTERS, DURATION, RUN, END
     }
 }
