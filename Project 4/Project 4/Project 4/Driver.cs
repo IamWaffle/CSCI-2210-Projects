@@ -21,9 +21,7 @@ namespace Project4
     {
 
         private static int customers, hours, registers, chkoutDuration, maxPresent;
-        private static Random r = new Random();
-        private static PriorityQueue<Evnt> PQ;
-            private static TimeSpan shortest, longest, totalTime;
+        
         #region Main
 
         /// <summary>
@@ -37,9 +35,6 @@ namespace Project4
             Console.ForegroundColor = ConsoleColor.White;
             Console.Title = "Project 4: Supermarket Simulation";
 
-            PQ = new PriorityQueue<Evnt>();
-
-           
             Menu menu = new Menu("Simulation Menu");
             menu = menu + "Set the number of customers" +
                 "Set the number of hours of operation" +
@@ -145,9 +140,7 @@ namespace Project4
                         break;
 
                     case Choices.RUN:
-                        GeneratePatronEvents();
-                        DoSimulation();
-                        ShowStatistics();
+                        
                         break;
 
                     case Choices.END:
@@ -159,25 +152,6 @@ namespace Project4
         }
 
         #endregion Main
-        private static void DoSimulation()
-        {
-            int lineCount = 0;
-            maxPresent = 0;
-            int current = 0;
 
-            while(PQ.Count > 0)
-            {
-
-            }
-
-        }
-
-        public static void ShowStatistics()
-        {
-            Console.WriteLine("The maximum number in the museum at any time was {0}", maxPresent);
-            Console.WriteLine("The shortest stay by any customer was {0}", shortest);
-            Console.WriteLine("The longest stay by any customer was {0}", longest);
-            Tools.PressAnyKey();
-        }
     }
 }

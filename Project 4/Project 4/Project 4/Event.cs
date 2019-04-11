@@ -3,26 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:        Event.cs
+//	Description:       The driver class is where the main method is stored.
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Tuesday, Apr 09 2019
+//
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project_4
 {
 
     enum EVENTTYPE { ENTER, LEAVE};
-    class Evnt : IComparable
+    class Event : IComparable
     {
         public EVENTTYPE Type { get; set;  }
         public DateTime Time { get; set; }
         public int Patron { get; set;  }
 
 
-        public Evnt()
+        public Event()
         {
             Type = EVENTTYPE.ENTER;
             Time = DateTime.Now;
             Patron = -1;
         }
 
-        public Evnt (EVENTTYPE type, DateTime time, int patron)
+        public Event (EVENTTYPE type, DateTime time, int patron)
         {
             Type = type;
             Time = time;
@@ -40,12 +50,12 @@ namespace Project_4
         }
         public int CompareTo(object obj)
         {
-            if (!(obj is Evnt))
+            if (!(obj is Event))
             {
-                throw new ArgumentException("The argument is not an Evnt object.");
+                throw new ArgumentException("The argument is not an Event object.");
             }
 
-            Evnt r = (Evnt)obj;
+            Event r = (Event)obj;
             return (r.Time.CompareTo(Time));
         }
     }
