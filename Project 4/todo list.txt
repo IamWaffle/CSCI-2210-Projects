@@ -1,0 +1,6 @@
+create a register class?
+register can have a queue of customers
+register size  method to determ if a customer should take that register.
+
+when a customer reaches the front of the line, exit event?
+register.ToString() will be how we generate what  and how many customers is in the register
