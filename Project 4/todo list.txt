@@ -1,6 +1,10 @@
 create a register class?   List < Queue <Customer> > 
 register can have a queue of customers
+
+
 	customers need to have a unique attribute (doesnt have to be names but that could work)
+	
+	
 	add customer method (enqueue dequeue basically) 
 register size  method to determ if a customer should take that register.
 
