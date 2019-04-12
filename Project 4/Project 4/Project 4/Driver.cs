@@ -19,9 +19,6 @@ namespace Project4
     /// </summary>
     internal class Program
     {
-
-        private static int customers, hours, registers, chkoutDuration, maxPresent;
-        
         #region Main
 
         /// <summary>
@@ -34,6 +31,9 @@ namespace Project4
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Title = "Project 4: Supermarket Simulation";
+
+            Supermarket market = new Supermarket();
+            int customers, hours, numRegisters, chkoutDuration;
 
             Menu menu = new Menu("Simulation Menu");
             menu = menu + "Set the number of customers" +
@@ -59,6 +59,7 @@ namespace Project4
                             if (customers > 0)
                             {
                                 loopExit = false;
+                                market.customers = customers;
                             }
                             else
                             {
@@ -81,6 +82,7 @@ namespace Project4
                             if (hours > 0)
                             {
                                 loopExit2 = false;
+                                market.hours = hours;
                             }
                             else
                             {
@@ -99,11 +101,12 @@ namespace Project4
                         while (loopExit3)
                         {
                             Console.WriteLine("How many lines are to be simulated?: ");
-                            int.TryParse(Console.ReadLine(), out registers);
+                            int.TryParse(Console.ReadLine(), out numRegisters);
 
-                            if (registers > 0)
+                            if (numRegisters > 0)
                             {
                                 loopExit3 = false;
+                                market.numRegisters = numRegisters;
                             }
                             else
                             {
@@ -121,12 +124,13 @@ namespace Project4
 
                         while (loopExit4)
                         {
-                            Console.WriteLine("????????: ");
+                            Console.WriteLine("Please write the average checkout duration in seconds: ");
                             int.TryParse(Console.ReadLine(), out chkoutDuration);
 
                             if (chkoutDuration > 0)
                             {
                                 loopExit4 = false;
+                                market.chkoutDuration = chkoutDuration;
                             }
                             else
                             {
@@ -140,7 +144,8 @@ namespace Project4
                         break;
 
                     case Choices.RUN:
-                        
+                        market.RunSimulation();
+                        market.ShowStatistics();
                         break;
 
                     case Choices.END:
@@ -152,6 +157,5 @@ namespace Project4
         }
 
         #endregion Main
-
     }
 }
