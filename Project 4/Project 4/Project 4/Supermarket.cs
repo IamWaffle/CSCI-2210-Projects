@@ -18,7 +18,17 @@ namespace Project_4
 {
     class Supermarket
     {
+        private List<Register> registers;
 
-        public static void
+        public Supermarket()
+        {
+
+        }
+
+        public void addRegister()
+        {
+            registers.Add(new Register ());
+        }
+  
     }
 }

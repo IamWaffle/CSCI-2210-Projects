@@ -18,5 +18,20 @@ namespace Project_4
 {
     class Customer
     {
+        String name = "";
+        Random rand = new Random();
+
+
+        public Customer()
+        {
+            name = rand.Next(500).ToString();
+
+        }
+
+        public string ToString()
+        {
+            return name;
+        }
+
     }
 }
