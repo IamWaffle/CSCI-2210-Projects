@@ -19,21 +19,24 @@ namespace Project4
         public static int NumPatrons { get; set; }
         public int hours { get; set; }
         public int numRegisters { get; set; }
-        public int chkoutDuration { get; set; }
 
+        
         private static Random r = new Random();
         private static PriorityQueue<Event> PQ;
+        private static PriorityQueue<Event> PQChkout;
+
         private static DateTime timeWeOpen;
         private static int maxPresent = 0;
+
         private static TimeSpan shortest, longest, totalTime;
 
-        private Queue<Customer> customerQueue;
-        private List<Register> registers;
+        
+        private List<Queue<Customer>> registers;
 
         public Supermarket()
         {
-            customerQueue = new Queue<Customer>();
-            registers = new List<Register>();
+            
+            registers = new List<Queue<Customer>>();
             PQ = new PriorityQueue<Event>();
 
             timeWeOpen = new DateTime(DateTime.Today.Year,
@@ -42,8 +45,15 @@ namespace Project4
 
         public Supermarket(int inCustomers, int inHours, int inRegisters, int inChkout)
         {
-            customerQueue = new Queue<Customer>();
-            registers = new List<Register>();
+            numRegisters = inRegisters;
+            registers = new List<Queue<Customer>>(inRegisters);
+            for(int i = 0; i < inRegisters; i++)
+            {
+                registers.Add(new Queue<Customer>());
+            }
+            
+
+
             PQ = new PriorityQueue<Event>();
 
             timeWeOpen = new DateTime(DateTime.Today.Year,
@@ -53,39 +63,9 @@ namespace Project4
             GeneratePatronEvents();
 
             hours = inHours;
-            numRegisters = inRegisters;
-            chkoutDuration = inChkout;
 
-            addRegister(numRegisters);
         }
 
-        public void fillList()
-        {
-            for(int i = 0; i < NumPatrons; i++)
-            {
-                customerQueue.Enqueue(new Customer(i + 1));
-            }
-        }
-
-        public void addRegister()
-        {
-            registers.Add(new Register());
-        }
-
-        public void addRegister(int num)
-        {
-            for (int i = 0; i < num; i++)
-            {
-                registers.Add(new Register());
-            }
-        }
-
-        public int findRegister()
-        {
-            int lowestRegister = 0;
-
-            return lowestRegister;
-        }
 
         public void GeneratePatronEvents()
         {
@@ -119,19 +99,17 @@ namespace Project4
             int seconds = (int)(totalTime.TotalSeconds / NumPatrons);
             TimeSpan avgTime = new TimeSpan(0, 0, seconds);
             Console.WriteLine("The average time customers spent shopping was {0}", avgTime);
-            Project4.Tools.PressAnyKey();
+            Tools.PressAnyKey();
         }
 
         public void DoSimulation()
         {
-            int lineCount = 0;
             maxPresent = 0;
             int current = 0;
+            int longestLine = 0;
 
             while (PQ.Count > 0)
             {
-                Console.Write(" {0}. ", (++lineCount).ToString().PadLeft(3));
-                Console.Write(" {0}", PQ.Peek());
 
                 if (PQ.Peek().Type == EVENTTYPE.ENTER)
                 {
@@ -139,30 +117,81 @@ namespace Project4
 
                     if (current > maxPresent)
                         maxPresent = current;
-
+                   
+                     
                 }
                 else
                 {
                     current--;
 
+                    Customer temp = new Customer(PQ.Peek().Patron);
+                    registers[getSmallestLine()].Enqueue(temp);
+                    
+                    
+
                 }
+                Console.Clear();
+                Tools.Skip();
 
-                Console.Write(" Customers Present: ");
-                Console.WriteLine(current.ToString().PadLeft(2));
 
+
+                Console.WriteLine(ToString());
+
+                Console.Write("Time: ");
+                Console.WriteLine(PQ.Peek().Time.ToString().PadLeft(2));
                 PQ.Dequeue();
+                Console.Write("Customers Shopping: ");
+                Console.WriteLine(current.ToString().PadLeft(2));
+                longestLine = getLargestLine();
+                Console.Write("Longest Line so far: ");
+                Console.WriteLine(longestLine.ToString().PadLeft(2));
 
 
             }
 
-            Project4.Tools.PressAnyKey();
+            Tools.PressAnyKey();
+        }
+
+        public int getLargestLine()
+        {
+            int firstLargestLineCount = registers[0].Count;
+            int firstLargestLine = 0;
+
+            for (int i = 0; i < registers.Count; i++)
+            {
+                if (registers[i].Count >= firstLargestLineCount)
+                {
+                    
+                    firstLargestLineCount = registers[i].Count;
+                    firstLargestLine = firstLargestLineCount;
+                }
+            }
+
+            return firstLargestLine;
+        }
+
+        public int getSmallestLine()
+        {
+            int firstSmallestLineCount = registers[0].Count;
+            int firstSmallestLine = 0;
+
+            for (int i = 0; i < registers.Count; i++)
+            {
+                if (registers[i].Count < firstSmallestLineCount)
+                {
+                    firstSmallestLine = i;
+                    firstSmallestLineCount = registers[i].Count;
+                }
+            }
+
+            return firstSmallestLine;
         }
 
         public void ShowStatistics()
         {
-            Console.WriteLine("The maximun number in the museum at any time was {0}", maxPresent);
+            Console.WriteLine("The maximum number of customers shopping any time was {0}", maxPresent);
             Console.WriteLine("The shortest stay by any customer was {0}", shortest);
-            Console.WriteLine("The lognest stay by any customer was {0}", longest);
+            Console.WriteLine("The longest stay by any customer was {0}", longest);
 
             Project4.Tools.PressAnyKey();
         }
@@ -176,12 +205,40 @@ namespace Project4
         {
             string output = "";
 
-            for(int i = 0; i < registers.Count; i++)
+            if(registers.Count == 0)
             {
-                output += registers[i].ToString();
+                for (int i = 0; i < numRegisters; i++)
+                {
+                    output += "[R" + i + "] " + "\n";
+                }
+                
+            }
+            else
+            {
+                for (int i = 0; i < registers.Count; i++)
+                {
+                    if(registers[i].Count == 0)
+                    {
+                        output += "[R" + i + "] " + "\n";
+                    }
+                    else
+                    {
+                        output += "[R" + i + "] " ;
+
+                        for (int n = 0; n < registers[i].Count; n++)
+                        {
+                            Customer[] temp = new Customer[registers[i].Count];
+                            temp = registers[i].ToArray();
+
+                            output += " " + temp[n].ToString() + " ";
+                        }
+
+                        output += "\n";
+                    }
+                    
+                }
             }
 
-            output += "\n\n Customers waiting: " + customerQueue.Count;
 
             return output;
         }

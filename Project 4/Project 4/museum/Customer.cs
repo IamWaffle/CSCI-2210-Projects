@@ -18,8 +18,9 @@ namespace Project4
 {
     class Customer
     {
-        String name = "";
+        String name { get; set; }
         Random rand = new Random();
+
 
 
         public Customer()

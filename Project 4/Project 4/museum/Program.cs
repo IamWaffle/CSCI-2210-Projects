@@ -143,6 +143,7 @@ namespace Project4
                                 if (chkoutDuration > 0)
                                 {
                                     loopExit4 = false;
+                                chkoutDuration /= 60;
                                 }
                                 else
                                 {
