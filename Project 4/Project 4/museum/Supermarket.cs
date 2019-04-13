@@ -14,12 +14,19 @@ using System.Collections.Generic;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project4
 {
-    internal class Supermarket
+    public class Supermarket
     {
-        public int customers { get; set; }
+        public static int NumPatrons { get; set; }
         public int hours { get; set; }
         public int numRegisters { get; set; }
         public int chkoutDuration { get; set; }
+
+        private static Random r = new Random();
+        private static PriorityQueue<Event> PQ;
+        private static DateTime timeWeOpen;
+        private static int maxPresent = 0;
+        private static TimeSpan shortest, longest, totalTime;
+
         private Queue<Customer> customerQueue;
         private List<Register> registers;
 
@@ -27,15 +34,23 @@ namespace Project4
         {
             customerQueue = new Queue<Customer>();
             registers = new List<Register>();
+            PQ = new PriorityQueue<Event>();
+
+            timeWeOpen = new DateTime(DateTime.Today.Year,
+                DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
         }
 
         public Supermarket(int inCustomers, int inHours, int inRegisters, int inChkout)
         {
             customerQueue = new Queue<Customer>();
             registers = new List<Register>();
+            PQ = new PriorityQueue<Event>();
 
-            customers = inCustomers;          
-            fillList();
+            timeWeOpen = new DateTime(DateTime.Today.Year,
+                DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
+
+            NumPatrons = inCustomers;
+            GeneratePatronEvents();
 
             hours = inHours;
             numRegisters = inRegisters;
@@ -46,7 +61,7 @@ namespace Project4
 
         public void fillList()
         {
-            for(int i = 0; i < customers; i++)
+            for(int i = 0; i < NumPatrons; i++)
             {
                 customerQueue.Enqueue(new Customer(i + 1));
             }
@@ -72,7 +87,7 @@ namespace Project4
             return lowestRegister;
         }
 
-        private static void GeneratePatronEvents()
+        public void GeneratePatronEvents()
         {
             TimeSpan start;
             TimeSpan interval;
@@ -107,10 +122,7 @@ namespace Project4
             Project4.Tools.PressAnyKey();
         }
 
-
-
-
-        public static void DoSimulation()
+        public void DoSimulation()
         {
             int lineCount = 0;
             maxPresent = 0;
@@ -146,7 +158,7 @@ namespace Project4
             Project4.Tools.PressAnyKey();
         }
 
-        private static void ShowStatistics()
+        public void ShowStatistics()
         {
             Console.WriteLine("The maximun number in the museum at any time was {0}", maxPresent);
             Console.WriteLine("The shortest stay by any customer was {0}", shortest);
@@ -159,6 +171,7 @@ namespace Project4
         {
             return -ExpectedValue * Math.Log(r.NextDouble(), Math.E);
         }
+
         public override string ToString()
         {
             string output = "";
@@ -173,12 +186,7 @@ namespace Project4
             return output;
         }
 
-        public void ShowStatistics()
-        {
-            Console.WriteLine(customers.ToString() + hours.ToString() + numRegisters.ToString() + chkoutDuration.ToString());
-            Tools.PressAnyKey();
-
-        }
+        
 
     }
 }

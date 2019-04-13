@@ -143,7 +143,7 @@ namespace Project4
 
                     case Choices.RUN:
                         market = new Supermarket(customers, hours, numRegisters, chkoutDuration);
-                        market.DoSimulation();
+                        market.RunSimulation();
                         market.ShowStatistics();
                         break;
 

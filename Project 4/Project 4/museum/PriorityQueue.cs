@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace museum
+namespace Project4
 {
     class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
     {

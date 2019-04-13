@@ -3,115 +3,175 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace museum
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         Driver.cs
+//	Description:       The driver class is where the main method is stored.
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Tuesday, Apr 09 2019
+//
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace Project4
 {
     class Program
     {
-        private const int NumPatrons = 100;
+        private static int NumPatrons = 100;
         private static Random r = new Random();
         private static PriorityQueue<Event> PQ;
         private static DateTime timeWeOpen;
         private static int maxPresent = 0;
         private static TimeSpan shortest, longest, totalTime;
 
-        static void Main(string[] args)
-        {
+        #region main
+
+        /// <summary>
+        /// Main - The method that drives the program.
+        /// </summary>
+        /// <param name="string[] args"></param>
+        [STAThread]
+            public static void Main(string[] args)
+            {
+
             PQ = new PriorityQueue<Event>();
-            
+
             timeWeOpen = new DateTime(DateTime.Today.Year,
                 DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
 
-            GeneratePatronEvents();
-            DoSimulation();
-            ShowStatistics();
-        }
 
-        private static void GeneratePatronEvents()
-        {
-            TimeSpan start;
-            TimeSpan interval;
-            shortest = new TimeSpan(0, 100000, 0);
-            longest = new TimeSpan(0, 0, 0);
-            totalTime = new TimeSpan(0, 0, 0);
+            Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Title = "Project 4: Supermarket Simulation";
 
-            for (int patron = 1; patron <= NumPatrons; patron++)
-            {
-                start = new TimeSpan(0, r.Next(10 * 60), 0);
+                Supermarket market;
+                int customers = 0;
+                int hours = 0;
+                int numRegisters = 0;
+                int chkoutDuration = 0;
 
-                interval = new TimeSpan(0, (int)(10.0 + NegExp(50)), 0);
-                totalTime += interval;
+                Menu menu = new Menu("Simulation Menu");
+                menu = menu + "Set the number of customers" +
+                    "Set the number of hours of operation" +
+                    "Set the number of registers" +
+                    "Set the expected checkout duration" +
+                    "Run the simulation" + "End the program";
 
-                if (shortest > interval)
-                    shortest = interval;
+                Choices choice = (Choices)menu.GetChoice();
+                while (choice != Choices.END)
+                {
+                    switch (choice)
+                    {
+                        case Choices.CUSTOMERS:
 
-                if (longest < interval)
-                    longest = interval;
+                            bool loopExit = true;
 
-                PQ.Enqueue(new Event(EVENTTYPE.ENTER, timeWeOpen.Add(start), patron));
+                            while (loopExit)
+                            {
+                                Console.WriteLine("How many customers will be served in a day?: ");
+                                int.TryParse(Console.ReadLine(), out customers);
 
-                PQ.Enqueue(new Event(EVENTTYPE.LEAVE, timeWeOpen.Add(start + interval), patron));
-  
+                                if (customers > 0)
+                                {
+                                    loopExit = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Must be a positive number greater than 0...");
+                                    Tools.PressAnyKey();
+                                }
+
+                                Tools.Skip();
+                            }
+                            break;
+
+                        case Choices.HOURS:
+                            bool loopExit2 = true;
+
+                            while (loopExit2)
+                            {
+                                Console.WriteLine("How many hours will the business be open?: ");
+                                int.TryParse(Console.ReadLine(), out hours);
+
+                                if (hours > 0)
+                                {
+                                    loopExit2 = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Must be a positive number greater than 0...");
+                                    Tools.PressAnyKey();
+                                }
+
+                                Tools.Skip();
+                            }
+
+                            break;
+
+                        case Choices.REGISTERS:
+                            bool loopExit3 = true;
+
+                            while (loopExit3)
+                            {
+                                Console.WriteLine("How many lines are to be simulated?: ");
+                                int.TryParse(Console.ReadLine(), out numRegisters);
+
+                                if (numRegisters > 0)
+                                {
+                                    loopExit3 = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Must be a positive number greater than 0...");
+                                    Tools.PressAnyKey();
+                                }
+
+                                Tools.Skip();
+                            }
+
+                            break;
+
+                        case Choices.DURATION:
+                            bool loopExit4 = true;
+
+                            while (loopExit4)
+                            {
+                                Console.WriteLine("Please write the average checkout duration in seconds: ");
+                                int.TryParse(Console.ReadLine(), out chkoutDuration);
+
+                                if (chkoutDuration > 0)
+                                {
+                                    loopExit4 = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Must be a positive number greater than 0...");
+                                    Tools.PressAnyKey();
+                                }
+
+                                Tools.Skip();
+                            }
+                            break;
+
+                        case Choices.RUN:
+                            market = new Supermarket(customers, hours, numRegisters, chkoutDuration);
+
+                            market.DoSimulation();
+                            market.ShowStatistics();
+
+                        break;
+
+                        case Choices.END:
+                            System.Environment.Exit(1);
+                            break;
+                    }  // end of switch
+                    choice = (Choices)menu.GetChoice();
+                }  // end of while
             }
 
-            
-
-            int seconds = (int)(totalTime.TotalSeconds / NumPatrons);
-            TimeSpan avgTime = new TimeSpan(0, 0, seconds);
-            Console.WriteLine("The average time customers spent in the museum was {0}", avgTime);
-            Project4.Tools.PressAnyKey();
-        }
-    
-
-
-
-        private static void DoSimulation()
-        {
-            int lineCount = 0;
-            maxPresent = 0;
-            int current = 0;
-
-            while(PQ.Count > 0)
-            {
-                Console.Write(" {0}. ", (++lineCount).ToString().PadLeft(3));
-                Console.Write( " {0}", PQ.Peek());
-
-                if (PQ.Peek().Type == EVENTTYPE.ENTER)
-                {
-                    current++;
-
-                    if (current > maxPresent)
-                        maxPresent = current;
-                    
-                }
-                else
-                {
-                    current--;
-
-                }
-
-                    Console.Write(" Customers Present: ");
-                    Console.WriteLine(current.ToString().PadLeft(2));
-
-                    PQ.Dequeue();
-                    
-                
-            }
-            
-                Project4.Tools.PressAnyKey();
+            #endregion Main
         }
 
-        private static void ShowStatistics() {
-            Console.WriteLine("The maximun number in the museum at any time was {0}", maxPresent);
-            Console.WriteLine("The shortest stay by any customer was {0}", shortest);
-            Console.WriteLine("The lognest stay by any customer was {0}", longest);
-
-            Project4.Tools.PressAnyKey();
-        }
-
-        private static double NegExp (double ExpectedValue)
-        {
-            return -ExpectedValue * Math.Log(r.NextDouble(), Math.E);
-        } 
     }
-}
+
