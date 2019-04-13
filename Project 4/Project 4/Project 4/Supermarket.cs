@@ -20,11 +20,36 @@ namespace Project4
         public int hours { get; set; }
         public int numRegisters { get; set; }
         public int chkoutDuration { get; set; }
-
-        private List<Register> registers = new List<Register>();
+        private Queue<Customer> customerQueue;
+        private List<Register> registers;
 
         public Supermarket()
         {
+            customerQueue = new Queue<Customer>();
+            registers = new List<Register>();
+        }
+
+        public Supermarket(int inCustomers, int inHours, int inRegisters, int inChkout)
+        {
+            customerQueue = new Queue<Customer>();
+            registers = new List<Register>();
+
+            customers = inCustomers;          
+            fillList();
+
+            hours = inHours;
+            numRegisters = inRegisters;
+            chkoutDuration = inChkout;
+
+            addRegister(numRegisters);
+        }
+
+        public void fillList()
+        {
+            for(int i = 0; i < customers; i++)
+            {
+                customerQueue.Enqueue(new Customer(i + 1));
+            }
         }
 
         public void addRegister()
@@ -40,10 +65,40 @@ namespace Project4
             }
         }
 
+        public int findRegister()
+        {
+            int lowestRegister = 0;
+
+            return lowestRegister;
+        }
+
         public void RunSimulation()
         {
-            Console.WriteLine("HAHAHAHH");
+            while(customerQueue.Count != 0)
+            {
+                for (int i = 0; i < registers.Count; i++)
+                {
+                    registers[i].addCustomer(customerQueue.Dequeue());
+                }
+            }
+            
+            Console.WriteLine(ToString());
+      
             Tools.PressAnyKey();
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+
+            for(int i = 0; i < registers.Count; i++)
+            {
+                output += registers[i].ToString();
+            }
+
+            output += "\n\n Customers waiting: " + customerQueue.Count;
+
+            return output;
         }
 
         public void ShowStatistics()

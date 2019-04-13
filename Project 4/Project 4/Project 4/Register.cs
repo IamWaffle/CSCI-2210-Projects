@@ -36,5 +36,20 @@ namespace Project4
         {
             return line.Count;
         }
+
+        public override string ToString()
+        {
+            string output = " [R] ";
+            Customer[] temp;
+            temp = line.ToArray();
+
+            for (int i = 0; i < Size(); i++)
+            {
+                output += temp[i].ToString() + " ";
+            }
+
+            output += "\n";
+            return output;
+        }
     }
 }

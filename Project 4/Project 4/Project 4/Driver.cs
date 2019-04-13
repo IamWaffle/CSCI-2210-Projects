@@ -32,8 +32,11 @@ namespace Project4
             Console.ForegroundColor = ConsoleColor.White;
             Console.Title = "Project 4: Supermarket Simulation";
 
-            Supermarket market = new Supermarket();
-            int customers, hours, numRegisters, chkoutDuration;
+            Supermarket market;
+            int customers = 0;
+            int hours = 0;
+            int numRegisters = 0;
+            int chkoutDuration = 0;
 
             Menu menu = new Menu("Simulation Menu");
             menu = menu + "Set the number of customers" +
@@ -59,7 +62,6 @@ namespace Project4
                             if (customers > 0)
                             {
                                 loopExit = false;
-                                market.customers = customers;
                             }
                             else
                             {
@@ -82,7 +84,6 @@ namespace Project4
                             if (hours > 0)
                             {
                                 loopExit2 = false;
-                                market.hours = hours;
                             }
                             else
                             {
@@ -106,7 +107,6 @@ namespace Project4
                             if (numRegisters > 0)
                             {
                                 loopExit3 = false;
-                                market.numRegisters = numRegisters;
                             }
                             else
                             {
@@ -130,7 +130,6 @@ namespace Project4
                             if (chkoutDuration > 0)
                             {
                                 loopExit4 = false;
-                                market.chkoutDuration = chkoutDuration;
                             }
                             else
                             {
@@ -140,10 +139,10 @@ namespace Project4
 
                             Tools.Skip();
                         }
-
                         break;
 
                     case Choices.RUN:
+                        market = new Supermarket(customers, hours, numRegisters, chkoutDuration);
                         market.RunSimulation();
                         market.ShowStatistics();
                         break;

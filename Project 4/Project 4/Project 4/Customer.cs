@@ -28,7 +28,12 @@ namespace Project4
 
         }
 
-        public string ToString()
+        public Customer(int n)
+        {
+            name = n.ToString();
+        }
+
+        public override string ToString()
         {
             return name;
         }
