@@ -30,12 +30,16 @@ namespace Project4
 
         private static DateTime timeWeOpen;
         private static DateTime timeWeClose;
-        private static DateTime currentTime;
         private static int maxPresent = 0;
+        private static int numberCheckedOut = 0;
 
         private TimeSpan start;
         private TimeSpan interval;
         private TimeSpan avgTimeShopping;
+        private TimeSpan avgCheckoutTime;
+        private TimeSpan avgRegisterTime;
+        private TimeSpan totalTimeInCheckout;
+        private TimeSpan totalTimeAtRegister;
         private static TimeSpan shortest, longest, totalTime;
 
         private List<Queue<Customer>> registers;
@@ -49,6 +53,8 @@ namespace Project4
                 DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
             timeWeClose = new DateTime(DateTime.Today.Year,
                  DateTime.Today.Month, DateTime.Today.Day, 23, 0, 0);
+            totalTimeInCheckout = new TimeSpan(0, 0, 0);
+            totalTimeAtRegister = new TimeSpan(0, 0, 0);
         }
 
         public Supermarket(int inCustomers, int inHours, int inRegisters, int inChkout)
@@ -66,9 +72,12 @@ namespace Project4
             }
 
             PQ = new PriorityQueue<Event>();
+            totalTimeInCheckout = new TimeSpan(0, 0, 0);
+            totalTimeAtRegister = new TimeSpan(0, 0, 0);
 
             timeWeOpen = new DateTime(DateTime.Today.Year,
                 DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
+
             if (hours != 0)
             {
                 TimeSpan temp = new TimeSpan(hours, 0, 0);
@@ -95,7 +104,7 @@ namespace Project4
             {
                 start = new TimeSpan(0, r.Next(hours * 60), 0);
 
-                interval = new TimeSpan(0, (int)(NegExp(50)), 0);
+                interval = new TimeSpan(0, (int)(NegExp(hours * 5)), 0);
                 totalTime += interval;
 
                 if (shortest > interval)
@@ -118,75 +127,99 @@ namespace Project4
             maxPresent = 0;
             current = 0;
             longestLine = 0;
+            numberCheckedOut = 0;
 
             while (PQ.Count > 0)
-            {
+            { 
                 if (PQ.Peek().Type == EVENTTYPE.ENTER)
-                {
+                { 
                     current++;
-
                     if (current > maxPresent)
                         maxPresent = current;
                 }
                 else
-                {
+                { 
                     current--;
-
                     Customer temp = new Customer(PQ.Peek().Patron, PQ.Peek().Time);
                     int pos = getSmallestLine();
                     temp.register = pos;
                     DateTime temptimestamp = DateTime.MinValue;
 
-                    if (atRegister.Count > 0)
-                    {
+                    if (atRegister.Count > 0) {
                         while ((atRegister.Count > 0) && (atRegister.Peek().exitTime < temp.checkoutArrive))
                         {
                             int x = atRegister.Peek().register;
-
                             if (registers[x].Count > 0)
                             {
                                 temptimestamp = atRegister.Peek().exitTime;
                                 registers[x].Dequeue();
                                 if (registers[x].Count > 0)
-                                {
+                                { 
                                     registers[x].Peek().registerArrive = temptimestamp;
                                     atRegister.Enqueue(new Customer(registers[x].Peek()));
                                 }
                             }
-
+                            totalTimeInCheckout += (atRegister.Peek().checkoutArrive - atRegister.Peek().exitTime);
+                            totalTimeAtRegister += (atRegister.Peek().registerArrive - atRegister.Peek().exitTime);
                             atRegister.Dequeue();
+                            numberCheckedOut += 1;
                         }
                     }
 
                     registers[pos].Enqueue(temp);
 
                     if (registers[pos].Count == 1)
-                    {
+                    { 
                         if (temptimestamp == DateTime.MinValue)
-                        {
+                        { 
                             registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
                         }
                         else
-                        {
+                        { 
                             if (temptimestamp > registers[pos].Peek().checkoutArrive)
-                            {
+                            { 
                                 registers[pos].Peek().registerArrive = temptimestamp;
                             }
                             else
-                            {
+                            { 
                                 registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
                             }
                         }
-
                         atRegister.Enqueue(new Customer(registers[pos].Peek()));
-
                     }
-
-                    
                 }
-
+                PQ.Dequeue();
                 WriteScreen();
             }
+
+            while (atRegister.Count > 0)
+            { 
+                int x = atRegister.Peek().register;
+
+                if (registers[x].Count > 0)
+                { 
+                    DateTime temptimestamp = atRegister.Peek().exitTime;
+                    registers[x].Dequeue();
+                    if (registers[x].Count > 0)
+                    { 
+                        registers[x].Peek().registerArrive = temptimestamp;
+                        atRegister.Enqueue(new Customer(registers[x].Peek()));
+                    }
+                }
+
+                totalTimeInCheckout += (atRegister.Peek().checkoutArrive - atRegister.Peek().exitTime);
+                totalTimeAtRegister += (atRegister.Peek().registerArrive - atRegister.Peek().exitTime);
+
+                atRegister.Dequeue();
+                numberCheckedOut += 1;
+                WriteScreen();
+            }
+
+            int seconds = ((int)(totalTimeInCheckout.TotalSeconds / numberCheckedOut)) * -1;
+            avgCheckoutTime = new TimeSpan(0, 0, seconds);
+
+            int secondsReg = ( (int)(totalTimeAtRegister.TotalSeconds / numberCheckedOut)) * -1;
+            avgRegisterTime = new TimeSpan(0, 0, secondsReg);
 
             Tools.PressAnyKey();
         }
@@ -198,14 +231,14 @@ namespace Project4
             Console.WriteLine(ToString());
 
             Console.Write("Customers Shopping: ");
-            PQ.Dequeue();
             numShoppers = current;
             Console.WriteLine(numShoppers.ToString().PadLeft(2));
             longestLine = getLargestLine();
-            Console.Write("Longest Line so far: ");
+            Console.Write("Longest Line encounterd: ");
             Console.WriteLine(longestLine.ToString().PadLeft(2));
-
-
+            Console.Write("Customers Checked Out: ");
+            Console.WriteLine(numberCheckedOut.ToString().PadLeft(2));
+            System.Threading.Thread.Sleep(250);   // pause the screen for monitoring for 1/4 second
         }
 
         public int getLargestLine()
@@ -240,10 +273,12 @@ namespace Project4
 
         public void ShowStatistics()
         {
-            Console.WriteLine("The maximum number of customers shopping any time was {0}", maxPresent);
-            Console.WriteLine("The shortest stay by any customer was {0}", shortest);
-            Console.WriteLine("The longest stay by any customer was {0}", longest);
+            Console.WriteLine("The maximum number of customers shopping at any time was {0}", maxPresent);
+            Console.WriteLine("The longest shopping time by any customer was {0}", longest);
             Console.WriteLine("The average time customers spent shopping was {0}", avgTimeShopping);
+
+            Console.WriteLine("\n\nThe average time customers spent in the checkout queue was {0}", avgCheckoutTime);
+            Console.WriteLine("The average time customers spent at the register was {0}", avgRegisterTime);
 
             Console.WriteLine("\n\nOpen Time: " + timeWeOpen + "\nClosingTime: " + timeWeClose);
 
