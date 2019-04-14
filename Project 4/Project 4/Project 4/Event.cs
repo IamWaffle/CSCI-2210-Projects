@@ -45,8 +45,7 @@ namespace Project_4
         /// </summary>
         /// <param name="type"> the type of the event</param>
         /// <param name="time"> the time the event occured</param>
-        /// <param name="patron">the number of the patron
-</param>
+        /// <param name="patron">the number of the patron</param>
         public Event(EVENTTYPE type, DateTime time, int patron)
         {
             Type = type;
