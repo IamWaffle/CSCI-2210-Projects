@@ -11,12 +11,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace Project4
+namespace Project_4
 {
     /// <summary>
     ///  This class has methods to assist the translator to complete translation. Such as formatting
@@ -24,7 +20,6 @@ namespace Project4
     /// </summary>
     internal static class Tools
     {
-
         #region PressAnyKey
 
         /// <summary>
@@ -33,12 +28,6 @@ namespace Project4
         /// <param name="strVerb">term in the Press Any Key to ... message; default: "continue . . ."</param>
         public static void PressAnyKey(string strVerb = "continue ...")
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            if (Console.CursorTop < Console.WindowHeight - 1)
-                Console.SetCursorPosition(0, Console.WindowHeight - 1);
-            else
-                Console.SetCursorPosition(0, Console.CursorTop + 2);
-
             Console.Write("Press any key to " + strVerb);
             Console.ReadKey();
             Console.Clear();

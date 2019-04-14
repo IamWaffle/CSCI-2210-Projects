@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:        Event.cs
-//	Description:       The driver class is where the main method is stored.
+//	Description:       The event class creates events for a customer entering and entering the checkout queue.
 //
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University

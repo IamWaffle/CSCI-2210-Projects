@@ -9,13 +9,13 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace Project4
+namespace Project_4
 {
     /// <summary>
     ///  This class implements a set of choices for the menu class.
     /// </summary>
     internal enum Choices
     {
-        CUSTOMERS = 1, HOURS, REGISTERS, DURATION, RUN, END
+        CUSTOMERS = 1, HOURS, REGISTERS, RUN, END
     }
 }

@@ -1,9 +1,11 @@
-﻿namespace Project4
+﻿using System;
+
+namespace Project_4
 {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
-    //	File Name:         IContainer.cs
-    //	Description:       This is a required class for a priority queue.
+    //	File Name:         Node.cs
+    //	Description:       This is a required class for a priority queue. Creates a node.
     //
     //	Course:            CSCI 2210 - Data Structures
     //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
@@ -11,12 +13,15 @@
     //
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public interface IContainer<T>
+    public class Node<T> where T : IComparable
     {
-        void Clear();
+        public T Item { get; set; }
+        public Node<T> Next { get; set; }
 
-        bool IsEmpty();
-
-        int Count { get; set; }
+        public Node(T value, Node<T> link)
+        {
+            Item = value;
+            Next = link;
+        }
     }
 }

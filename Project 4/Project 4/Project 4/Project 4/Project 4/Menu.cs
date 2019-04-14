@@ -13,7 +13,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Project4
+namespace Project_4
 {
     /// <summary>
     ///  This class creates a simple menu in the console

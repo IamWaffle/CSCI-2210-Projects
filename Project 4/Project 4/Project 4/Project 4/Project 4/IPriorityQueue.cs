@@ -1,8 +1,9 @@
-﻿namespace Project4
-{
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿using System;
+
+namespace Project_4
+{    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
-    //	File Name:         IContainer.cs
+    //	File Name:         IPriorityQueue.cs
     //	Description:       This is a required class for a priority queue.
     //
     //	Course:            CSCI 2210 - Data Structures
@@ -11,12 +12,12 @@
     //
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public interface IContainer<T>
+    public interface IPriorityQueue<T> : IContainer<T> where T : IComparable
     {
-        void Clear();
+        void Enqueue(T item);
 
-        bool IsEmpty();
+        void Dequeue();
 
-        int Count { get; set; }
+        T Peek();
     }
 }

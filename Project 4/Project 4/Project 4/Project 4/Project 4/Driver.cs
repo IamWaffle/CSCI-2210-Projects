@@ -1,4 +1,6 @@
-﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿using System;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Driver.cs
 //	Description:       The driver class is where the main method is stored.
@@ -9,17 +11,11 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using System;
-
-namespace Project4
+namespace Project_4
 {
-    /// <summary>
-    ///  This class is the main part of the program. It interacts with multiple classes to make an editable list of names
-    /// </summary>
-    internal class Program
+    internal class Driver
     {
-        #region Main
+        #region main
 
         /// <summary>
         /// Main - The method that drives the program.
@@ -36,13 +32,11 @@ namespace Project4
             int customers = 0;
             int hours = 0;
             int numRegisters = 0;
-            int chkoutDuration = 0;
 
             Menu menu = new Menu("Simulation Menu");
             menu = menu + "Set the number of customers" +
                 "Set the number of hours of operation" +
                 "Set the number of registers" +
-                "Set the expected checkout duration" +
                 "Run the simulation" + "End the program";
 
             Choices choice = (Choices)menu.GetChoice();
@@ -81,13 +75,13 @@ namespace Project4
                             Console.WriteLine("How many hours will the business be open?: ");
                             int.TryParse(Console.ReadLine(), out hours);
 
-                            if (hours > 0)
+                            if (hours > 0 && hours < 24)
                             {
                                 loopExit2 = false;
                             }
                             else
                             {
-                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Console.WriteLine("Must be between 0 and 24...");
                                 Tools.PressAnyKey();
                             }
 
@@ -119,32 +113,12 @@ namespace Project4
 
                         break;
 
-                    case Choices.DURATION:
-                        bool loopExit4 = true;
-
-                        while (loopExit4)
-                        {
-                            Console.WriteLine("Please write the average checkout duration in seconds: ");
-                            int.TryParse(Console.ReadLine(), out chkoutDuration);
-
-                            if (chkoutDuration > 0)
-                            {
-                                loopExit4 = false;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Must be a positive number greater than 0...");
-                                Tools.PressAnyKey();
-                            }
-
-                            Tools.Skip();
-                        }
-                        break;
-
                     case Choices.RUN:
-                        market = new Supermarket(customers, hours, numRegisters, chkoutDuration);
+                        market = new Supermarket(customers, hours, numRegisters);
+
                         market.DoSimulation();
                         market.ShowStatistics();
+
                         break;
 
                     case Choices.END:
@@ -155,6 +129,6 @@ namespace Project4
             }  // end of while
         }
 
-        #endregion Main
+        #endregion main
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5708548C-5FEA-45AB-8AA6-6E12F38AB537}</ProjectGuid>
+    <ProjectGuid>{9F05C100-28A5-443D-83D8-3A3334F1B253}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Project_4</RootNamespace>
     <AssemblyName>Project 4</AssemblyName>
@@ -47,9 +47,12 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="IContainer.cs" />
+    <Compile Include="IPriorityQueue.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.cs" />
     <Compile Include="Supermarket.cs" />
     <Compile Include="Tools.cs" />
   </ItemGroup>
