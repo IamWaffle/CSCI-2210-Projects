@@ -31,6 +31,7 @@ namespace Project_4
         private static Random r = new Random();
         private static PriorityQueue<Event> PQ;
         private static PriorityQueue<Customer> atRegister;
+        private List<Queue<Customer>> registers;
 
         private static DateTime timeWeOpen;
         private static DateTime timeWeClose;
@@ -46,8 +47,6 @@ namespace Project_4
         private TimeSpan totalTimeAtRegister;
         private static TimeSpan shortest, longest, totalTime;
         private Customer endTemp;
-
-        private List<Queue<Customer>> registers;
 
         #region Constructors
         /// <summary>
@@ -92,13 +91,16 @@ namespace Project_4
             totalTimeAtRegister = new TimeSpan(0, 0, 0);
 
             timeWeOpen = new DateTime(DateTime.Today.Year,
-                DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
+                DateTime.Today.Month, DateTime.Today.Day, 7, 0, 0);
 
-            if (hours != 0)
+            if (hours != 0 && hours < 17)
             {
-                TimeSpan temp = new TimeSpan(hours, 0, 0);
-                timeWeClose = new DateTime(DateTime.Today.Year,
-                    DateTime.Today.Month, DateTime.Today.Day, (8 + hours), 0, 0);
+
+                int timeClose = timeWeOpen.Hour + hours;
+             timeWeClose = new DateTime(DateTime.Today.Year,
+                DateTime.Today.Month, DateTime.Today.Day, timeClose, 0, 0);
+               
+                
             }
             else
             {
@@ -257,7 +259,7 @@ namespace Project_4
             int secondsReg = ((int)(totalTimeAtRegister.TotalSeconds / numberCheckedOut)) * -1;
             avgRegisterTime = new TimeSpan(0, 0, secondsReg);
 
-            Tools.PressAnyKey();
+            Tools.PressAnyKey("look at the statistics...");
         }
 
         /// <summary>
@@ -273,12 +275,12 @@ namespace Project_4
             numShoppers = current;
             Console.WriteLine(numShoppers.ToString().PadLeft(2));
             longestLine = getLargestLine();
-            Console.Write("Longest Line encounterd: ");
+            Console.Write("Longest Line encountered: ");
             Console.WriteLine(longestLine.ToString().PadLeft(2));
             Console.Write("Customers Checked Out: ");
-            Console.WriteLine(numberCheckedOut.ToString().PadLeft(2));
+            Console.WriteLine(numberCheckedOut.ToString().PadLeft(2) + "\n");
 
-            System.Threading.Thread.Sleep(175);   
+            //System.Threading.Thread.Sleep(175);   
         }
 
         /// <summary>
@@ -322,21 +324,22 @@ namespace Project_4
         }
 
         /// <summary>
-        /// ShowStatistics shows key information about the simulation that just occured.
+        /// ShowStatistics shows key information about the simulation that just occurred.
         /// </summary>
         public void ShowStatistics()
         {
-            Console.WriteLine("The maximum number of customers shopping at any time was {0}", maxPresent);
+            Console.WriteLine("The maximum number of customers shopping at any time was {0}\n", maxPresent);
             Console.WriteLine("The longest shopping time by any customer was {0}", longest);
             Console.WriteLine("The average time customers spent shopping was {0}", avgTimeShopping);
 
             Console.WriteLine("\n\nThe average time customers spent in the checkout queue was {0}", avgCheckoutTime);
             Console.WriteLine("The average time customers spent at the register was {0}", avgRegisterTime);
-
-            Console.WriteLine("\n\nThe last customer left at {0}", endTemp.registerArrive.ToShortTimeString());
+            Console.WriteLine("\n\nThe number of registers: {0}", numRegisters);
+            Console.WriteLine("The longest line encountered: {0}", longestLine.ToString()); 
+            Console.WriteLine("\n\nThe last customer left at {0}", endTemp.registerArrive.AddHours(1).ToShortTimeString());
             Console.WriteLine("The number of customers that shopped too long and never checked out was {0}", customersRejected);
 
-            Console.WriteLine("\n\nOpen Time: " + timeWeOpen.ToShortTimeString() + "\nClosing Time: " + timeWeClose.ToShortTimeString());
+            Console.WriteLine("\n\nOpen Time: " + timeWeOpen.AddHours(1).ToShortTimeString() + "\nClosing Time: " + timeWeClose.AddHours(1).ToShortTimeString() + "\n\n");
 
             Tools.PressAnyKey();
         }
@@ -344,7 +347,7 @@ namespace Project_4
         /// <summary>
         /// NegExp gets and returns a number using negative distribution
         /// </summary>
-        /// <param name="ExpectedValue">the expexted value passed into the method</param>
+        /// <param name="ExpectedValue">the expected value passed into the method</param>
         /// <returns>the returning result</returns>
         private static double NegExp(double ExpectedValue)
         {
@@ -354,7 +357,7 @@ namespace Project_4
 
         #region Override Methods
         /// <summary>
-        /// Tostring returns what the supermarket looks like currently showing
+        /// To string returns what the supermarket looks like currently showing
         /// the registers with the names of the customers in the line.
         /// </summary>
         /// <returns>string the returning formatted output string.</returns>
