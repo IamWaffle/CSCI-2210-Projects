@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:        Event.cs
@@ -16,14 +13,14 @@ using System.Threading.Tasks;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project4
 {
+    internal enum EVENTTYPE
+    { ENTER, LEAVE };
 
-    enum EVENTTYPE { ENTER, LEAVE};
-    class Event : IComparable
+    internal class Event : IComparable
     {
-        public EVENTTYPE Type { get; set;  }
+        public EVENTTYPE Type { get; set; }
         public DateTime Time { get; set; }
-        public int Patron { get; set;  }
-
+        public int Patron { get; set; }
 
         public Event()
         {
@@ -32,7 +29,7 @@ namespace Project4
             Patron = -1;
         }
 
-        public Event (EVENTTYPE type, DateTime time, int patron)
+        public Event(EVENTTYPE type, DateTime time, int patron)
         {
             Type = type;
             Time = time;
@@ -48,6 +45,7 @@ namespace Project4
 
             return str;
         }
+
         public int CompareTo(object obj)
         {
             if (!(obj is Event))

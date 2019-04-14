@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project4
 {
-    class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
+    internal class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
     {
         private Node<T> top;
         public int Count { get; set; }
@@ -34,7 +30,7 @@ namespace Project4
 
         public void Enqueue(T item)
         {
-            if(Count == 0)
+            if (Count == 0)
             {
                 top = new Node<T>(item, null);
             }
@@ -43,7 +39,7 @@ namespace Project4
                 Node<T> current = top;
                 Node<T> previous = null;
 
-                while(current != null && current.Item.CompareTo(item) >= 0)
+                while (current != null && current.Item.CompareTo(item) >= 0)
                 {
                     previous = current;
                     current = current.Next;
@@ -51,7 +47,7 @@ namespace Project4
 
                 Node<T> newNode = new Node<T>(item, current);
 
-                if(previous != null)
+                if (previous != null)
                 {
                     previous.Next = newNode;
                 }
@@ -80,7 +76,5 @@ namespace Project4
                 throw new InvalidOperationException("Cannot obtain top of empty priority queue");
             }
         }
-
-        
     }
 }

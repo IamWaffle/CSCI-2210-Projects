@@ -11,10 +11,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Project4
 {
@@ -24,7 +20,6 @@ namespace Project4
     /// </summary>
     internal static class Tools
     {
-
         #region PressAnyKey
 
         /// <summary>

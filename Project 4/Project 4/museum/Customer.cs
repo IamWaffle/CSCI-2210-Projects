@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Driver.cs
@@ -16,27 +13,24 @@ using System.Threading.Tasks;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project4
 {
-    class Customer : IComparable
+    internal class Customer : IComparable
     {
         public String name { get; set; }
         public int register { get; set; }
-        Random r = new Random();
+        private Random r = new Random();
         public DateTime registerArrive { get; set; }
         public DateTime checkoutArrive { get; set; }
         public DateTime exitTime { get; set; }
 
-
         public Customer()
         {
             name = r.Next(500).ToString();
-
         }
 
         public Customer(int n, DateTime inTime)
         {
             name = n.ToString();
             checkoutArrive = inTime;
-
         }
 
         public Customer(int n, DateTime inTime, int reg)
@@ -46,6 +40,7 @@ namespace Project4
             register = reg;
             generateExitTime();
         }
+
         public Customer(Customer original)
         {
             name = original.name;
@@ -75,8 +70,6 @@ namespace Project4
             Customer r = (Customer)obj;
 
             return (r.exitTime.CompareTo(exitTime));
-
         }
     }
-    
 }

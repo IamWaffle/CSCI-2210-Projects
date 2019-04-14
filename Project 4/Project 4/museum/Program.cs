@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Driver.cs
@@ -16,9 +13,8 @@ using System.Threading.Tasks;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project4
 {
-    class Program
+    internal class Program
     {
-
         #region main
 
         /// <summary>
@@ -26,142 +22,113 @@ namespace Project4
         /// </summary>
         /// <param name="string[] args"></param>
         [STAThread]
-            public static void Main(string[] args)
-            {
-
-
+        public static void Main(string[] args)
+        {
             Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Title = "Project 4: Supermarket Simulation";
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Title = "Project 4: Supermarket Simulation";
 
-                Supermarket market;
-                int customers = 0;
-                int hours = 0;
-                int numRegisters = 0;
-                int chkoutDuration = 0;
+            Supermarket market;
+            int customers = 0;
+            int hours = 0;
+            int numRegisters = 0;
 
-                Menu menu = new Menu("Simulation Menu");
-                menu = menu + "Set the number of customers" +
-                    "Set the number of hours of operation" +
-                    "Set the number of registers" +
-                    "Set the expected checkout duration" +
-                    "Run the simulation" + "End the program";
+            Menu menu = new Menu("Simulation Menu");
+            menu = menu + "Set the number of customers" +
+                "Set the number of hours of operation" +
+                "Set the number of registers" +
+                "Run the simulation" + "End the program";
 
-                Choices choice = (Choices)menu.GetChoice();
-                while (choice != Choices.END)
+            Choices choice = (Choices)menu.GetChoice();
+            while (choice != Choices.END)
+            {
+                switch (choice)
                 {
-                    switch (choice)
-                    {
-                        case Choices.CUSTOMERS:
+                    case Choices.CUSTOMERS:
 
-                            bool loopExit = true;
+                        bool loopExit = true;
 
-                            while (loopExit)
+                        while (loopExit)
+                        {
+                            Console.WriteLine("How many customers will be served in a day?: ");
+                            int.TryParse(Console.ReadLine(), out customers);
+
+                            if (customers > 0)
                             {
-                                Console.WriteLine("How many customers will be served in a day?: ");
-                                int.TryParse(Console.ReadLine(), out customers);
-
-                                if (customers > 0)
-                                {
-                                    loopExit = false;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Must be a positive number greater than 0...");
-                                    Tools.PressAnyKey();
-                                }
-
-                                Tools.Skip();
+                                loopExit = false;
                             }
-                            break;
-
-                        case Choices.HOURS:
-                            bool loopExit2 = true;
-
-                            while (loopExit2)
+                            else
                             {
-                                Console.WriteLine("How many hours will the business be open?: ");
-                                int.TryParse(Console.ReadLine(), out hours);
-
-                                if (hours > 0)
-                                {
-                                    loopExit2 = false;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Must be a positive number greater than 0...");
-                                    Tools.PressAnyKey();
-                                }
-
-                                Tools.Skip();
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
                             }
 
-                            break;
+                            Tools.Skip();
+                        }
+                        break;
 
-                        case Choices.REGISTERS:
-                            bool loopExit3 = true;
+                    case Choices.HOURS:
+                        bool loopExit2 = true;
 
-                            while (loopExit3)
+                        while (loopExit2)
+                        {
+                            Console.WriteLine("How many hours will the business be open?: ");
+                            int.TryParse(Console.ReadLine(), out hours);
+
+                            if (hours > 0)
                             {
-                                Console.WriteLine("How many lines are to be simulated?: ");
-                                int.TryParse(Console.ReadLine(), out numRegisters);
-
-                                if (numRegisters > 0)
-                                {
-                                    loopExit3 = false;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Must be a positive number greater than 0...");
-                                    Tools.PressAnyKey();
-                                }
-
-                                Tools.Skip();
+                                loopExit2 = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
                             }
 
-                            break;
-
-                        case Choices.DURATION:
-                            bool loopExit4 = true;
-
-                            while (loopExit4)
-                            {
-                                Console.WriteLine("Please write the average checkout duration in seconds: ");
-                                int.TryParse(Console.ReadLine(), out chkoutDuration);
-
-                                if (chkoutDuration > 0)
-                                {
-                                    loopExit4 = false;
-                                
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Must be a positive number greater than 0...");
-                                    Tools.PressAnyKey();
-                                }
-
-                                Tools.Skip();
-                            }
-                            break;
-
-                        case Choices.RUN:
-                            market = new Supermarket(customers, hours, numRegisters, chkoutDuration);
-
-                            market.DoSimulation();
-                            market.ShowStatistics();
+                            Tools.Skip();
+                        }
 
                         break;
 
-                        case Choices.END:
-                            System.Environment.Exit(1);
-                            break;
-                    }  // end of switch
-                    choice = (Choices)menu.GetChoice();
-                }  // end of while
-            }
+                    case Choices.REGISTERS:
+                        bool loopExit3 = true;
 
-            #endregion Main
+                        while (loopExit3)
+                        {
+                            Console.WriteLine("How many lines are to be simulated?: ");
+                            int.TryParse(Console.ReadLine(), out numRegisters);
+
+                            if (numRegisters > 0)
+                            {
+                                loopExit3 = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Tools.PressAnyKey();
+                            }
+
+                            Tools.Skip();
+                        }
+
+                        break;
+
+                    case Choices.RUN:
+                        market = new Supermarket(customers, hours, numRegisters);
+
+                        market.DoSimulation();
+                        market.ShowStatistics();
+
+                        break;
+
+                    case Choices.END:
+                        System.Environment.Exit(1);
+                        break;
+                }  // end of switch
+                choice = (Choices)menu.GetChoice();
+            }  // end of while
         }
 
+        #endregion main
     }
-
+}

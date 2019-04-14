@@ -22,7 +22,7 @@ namespace Project4
         public int numShoppers { get; set; }
         private int current;
         private int longestLine;
-        int largestLineCount = 0;
+        private int largestLineCount = 0;
 
         private static Random r = new Random();
         private static PriorityQueue<Event> PQ;
@@ -57,7 +57,7 @@ namespace Project4
             totalTimeAtRegister = new TimeSpan(0, 0, 0);
         }
 
-        public Supermarket(int inCustomers, int inHours, int inRegisters, int inChkout)
+        public Supermarket(int inCustomers, int inHours, int inRegisters)
         {
             numRegisters = inRegisters;
             registers = new List<Queue<Customer>>(inRegisters);
@@ -130,22 +130,23 @@ namespace Project4
             numberCheckedOut = 0;
 
             while (PQ.Count > 0)
-            { 
+            {
                 if (PQ.Peek().Type == EVENTTYPE.ENTER)
-                { 
+                {
                     current++;
                     if (current > maxPresent)
                         maxPresent = current;
                 }
                 else
-                { 
+                {
                     current--;
                     Customer temp = new Customer(PQ.Peek().Patron, PQ.Peek().Time);
                     int pos = getSmallestLine();
                     temp.register = pos;
                     DateTime temptimestamp = DateTime.MinValue;
 
-                    if (atRegister.Count > 0) {
+                    if (atRegister.Count > 0)
+                    {
                         while ((atRegister.Count > 0) && (atRegister.Peek().exitTime < temp.checkoutArrive))
                         {
                             int x = atRegister.Peek().register;
@@ -154,7 +155,7 @@ namespace Project4
                                 temptimestamp = atRegister.Peek().exitTime;
                                 registers[x].Dequeue();
                                 if (registers[x].Count > 0)
-                                { 
+                                {
                                     registers[x].Peek().registerArrive = temptimestamp;
                                     atRegister.Enqueue(new Customer(registers[x].Peek()));
                                 }
@@ -169,19 +170,19 @@ namespace Project4
                     registers[pos].Enqueue(temp);
 
                     if (registers[pos].Count == 1)
-                    { 
+                    {
                         if (temptimestamp == DateTime.MinValue)
-                        { 
+                        {
                             registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
                         }
                         else
-                        { 
+                        {
                             if (temptimestamp > registers[pos].Peek().checkoutArrive)
-                            { 
+                            {
                                 registers[pos].Peek().registerArrive = temptimestamp;
                             }
                             else
-                            { 
+                            {
                                 registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
                             }
                         }
@@ -193,15 +194,15 @@ namespace Project4
             }
 
             while (atRegister.Count > 0)
-            { 
+            {
                 int x = atRegister.Peek().register;
 
                 if (registers[x].Count > 0)
-                { 
+                {
                     DateTime temptimestamp = atRegister.Peek().exitTime;
                     registers[x].Dequeue();
                     if (registers[x].Count > 0)
-                    { 
+                    {
                         registers[x].Peek().registerArrive = temptimestamp;
                         atRegister.Enqueue(new Customer(registers[x].Peek()));
                     }
@@ -218,7 +219,7 @@ namespace Project4
             int seconds = ((int)(totalTimeInCheckout.TotalSeconds / numberCheckedOut)) * -1;
             avgCheckoutTime = new TimeSpan(0, 0, seconds);
 
-            int secondsReg = ( (int)(totalTimeAtRegister.TotalSeconds / numberCheckedOut)) * -1;
+            int secondsReg = ((int)(totalTimeAtRegister.TotalSeconds / numberCheckedOut)) * -1;
             avgRegisterTime = new TimeSpan(0, 0, secondsReg);
 
             Tools.PressAnyKey();
