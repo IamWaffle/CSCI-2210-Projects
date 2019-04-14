@@ -3,7 +3,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Driver.cs
-//	Description:       The driver class is where the main method is stored.
+//	Description:       The driver class is where the main method is stored. It is 
+//                     where the entire program is ran from
 //
 //	Course:            CSCI 2210 - Data Structures
 //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
@@ -13,9 +14,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project_4
 {
+    /// <summary>
+    /// This is where the entire program is executed from.  
+    /// </summary>
     internal class Driver
     {
-        #region main
+        #region Main
 
         /// <summary>
         /// Main - The method that drives the program.

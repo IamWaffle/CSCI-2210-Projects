@@ -14,6 +14,9 @@ using System.Collections.Generic;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project_4
 {
+    /// <summary>
+    /// Creates a super market that will be able to take in customers and sort them in registers
+    /// </summary>
     public class Supermarket
     {
         public static int NumPatrons { get; set; }
@@ -46,6 +49,10 @@ namespace Project_4
 
         private List<Queue<Customer>> registers;
 
+        #region Constructors
+        /// <summary>
+        /// Basic no arg constructor that defines key variables
+        /// </summary>
         public Supermarket()
         {
             registers = new List<Queue<Customer>>();
@@ -58,6 +65,13 @@ namespace Project_4
             totalTimeInCheckout = new TimeSpan(0, 0, 0);
             totalTimeAtRegister = new TimeSpan(0, 0, 0);
         }
+
+        /// <summary>
+        /// Arg Constructor that defines variables with the arguments passed in 
+        /// </summary>
+        /// <param name="inCustomers">the number of customers to be served</param>
+        /// <param name="inHours">the number of hours of operation</param>
+        /// <param name="inRegisters">the number of registers to make</param>
 
         public Supermarket(int inCustomers, int inHours, int inRegisters)
         {
@@ -96,6 +110,13 @@ namespace Project_4
             GeneratePatronEvents();
         }
 
+        #endregion Constructors
+
+        #region Methods
+        /// <summary>
+        /// GeneratePatronEvents creates enter times into the store and leave events for whenever
+        /// they are entering the checkout queue
+        /// </summary>
         public void GeneratePatronEvents()
         {
             shortest = new TimeSpan(0, 100000, 0);
@@ -123,7 +144,9 @@ namespace Project_4
             int seconds = (int)(totalTime.TotalSeconds / NumPatrons);
             avgTimeShopping = new TimeSpan(0, 0, seconds);
         }
-
+        /// <summary>
+        /// Do simulation simulates the supermarket. It checkout every customer until closing time. 
+        /// </summary>
         public void DoSimulation()
         {
             maxPresent = 0;
@@ -237,6 +260,9 @@ namespace Project_4
             Tools.PressAnyKey();
         }
 
+        /// <summary>
+        /// This method writes key information to the screen.
+        /// </summary>
         public void WriteScreen()
         {
             Console.Clear();
@@ -255,6 +281,11 @@ namespace Project_4
             System.Threading.Thread.Sleep(175);   
         }
 
+        /// <summary>
+        /// This method looks at the size of the register line and keeps track of the largest
+        /// known line.
+        /// </summary>
+        /// <returns> int largest line count</returns>
         public int getLargestLine()
         {
             for (int i = 0; i < registers.Count; i++)
@@ -268,6 +299,11 @@ namespace Project_4
             return largestLineCount;
         }
 
+        /// <summary>
+        /// get smallest line returns the position of the register that contains the smallest
+        /// line.
+        /// </summary>
+        /// <returns></returns>
         public int getSmallestLine()
         {
             int firstSmallestLineCount = registers[0].Count;
@@ -285,6 +321,9 @@ namespace Project_4
             return firstSmallestLine;
         }
 
+        /// <summary>
+        /// ShowStatistics shows key information about the simulation that just occured.
+        /// </summary>
         public void ShowStatistics()
         {
             Console.WriteLine("The maximum number of customers shopping at any time was {0}", maxPresent);
@@ -302,10 +341,23 @@ namespace Project_4
             Tools.PressAnyKey();
         }
 
+        /// <summary>
+        /// NegExp gets and returns a number using negative distribution
+        /// </summary>
+        /// <param name="ExpectedValue">the expexted value passed into the method</param>
+        /// <returns>the returning result</returns>
         private static double NegExp(double ExpectedValue)
         {
             return -ExpectedValue * Math.Log(r.NextDouble(), Math.E);
         }
+        #endregion Methods
+
+        #region Override Methods
+        /// <summary>
+        /// Tostring returns what the supermarket looks like currently showing
+        /// the registers with the names of the customers in the line.
+        /// </summary>
+        /// <returns>string the returning formatted output string.</returns>
 
         public override string ToString()
         {
@@ -352,5 +404,6 @@ namespace Project_4
 
             return output;
         }
+        #endregion Override Methods
     }
 }
