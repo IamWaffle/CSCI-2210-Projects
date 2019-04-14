@@ -18,12 +18,6 @@ namespace Project4
 {
     class Program
     {
-        private static int NumPatrons = 100;
-        private static Random r = new Random();
-        private static PriorityQueue<Event> PQ;
-        private static DateTime timeWeOpen;
-        private static int maxPresent = 0;
-        private static TimeSpan shortest, longest, totalTime;
 
         #region main
 
@@ -34,11 +28,6 @@ namespace Project4
         [STAThread]
             public static void Main(string[] args)
             {
-
-            PQ = new PriorityQueue<Event>();
-
-            timeWeOpen = new DateTime(DateTime.Today.Year,
-                DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
 
 
             Console.BackgroundColor = ConsoleColor.Black;
@@ -143,7 +132,7 @@ namespace Project4
                                 if (chkoutDuration > 0)
                                 {
                                     loopExit4 = false;
-                                chkoutDuration /= 60;
+                                
                                 }
                                 else
                                 {

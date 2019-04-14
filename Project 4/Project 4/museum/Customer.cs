@@ -16,22 +16,48 @@ using System.Threading.Tasks;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Project4
 {
-    class Customer
+    class Customer : IComparable
     {
-        String name { get; set; }
-        Random rand = new Random();
-
+        public String name { get; set; }
+        public int register { get; set; }
+        Random r = new Random();
+        public DateTime registerArrive { get; set; }
+        public DateTime checkoutArrive { get; set; }
+        public DateTime exitTime { get; set; }
 
 
         public Customer()
         {
-            name = rand.Next(500).ToString();
+            name = r.Next(500).ToString();
 
         }
 
-        public Customer(int n)
+        public Customer(int n, DateTime inTime)
         {
             name = n.ToString();
+            checkoutArrive = inTime;
+
+        }
+
+        public Customer(int n, DateTime inTime, int reg)
+        {
+            name = n.ToString();
+            checkoutArrive = inTime;
+            register = reg;
+            generateExitTime();
+        }
+        public Customer(Customer original)
+        {
+            name = original.name;
+            register = original.register;
+            checkoutArrive = original.checkoutArrive;
+            registerArrive = original.registerArrive;
+            generateExitTime();
+        }
+
+        public void generateExitTime()
+        {
+            exitTime = registerArrive + new TimeSpan(0, r.Next(2, 7), 0); ;
         }
 
         public override string ToString()
@@ -39,5 +65,18 @@ namespace Project4
             return name;
         }
 
+        int IComparable.CompareTo(object obj)
+        {
+            if (!(obj is Customer))
+            {
+                throw new ArgumentException("The argument is not an Customer object.");
+            }
+
+            Customer r = (Customer)obj;
+
+            return (r.exitTime.CompareTo(exitTime));
+
+        }
     }
+    
 }

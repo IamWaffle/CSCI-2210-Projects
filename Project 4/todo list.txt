@@ -1,11 +1,4 @@
-create a register class?   List < Queue <Customer> > 
-register can have a queue of customers
-
-
-	customers need to have a unique attribute (doesnt have to be names but that could work)
-	
-	
-	add customer method (enqueue dequeue basically) 
+ 
 register size  method to determ if a customer should take that register.
 
 when a customer reaches the front of the line, exit event
@@ -17,3 +10,103 @@ CONVERT ALL TIME TO SECONDSa
 
  A display that simply lists all events, the times they occurred, etc., 
  and leaves it to the reader to extract the useful information from the display would not be considered very helpful.
+
+
+
+
+
+if Peek == leaving then add customer to the list queue of customers.
+
+
+
+get middle of average checkout time
+use random number to generate checkout time
+
+
+add first person in lcheckout line to oprooority queue
+
+--------------------
+
+PriorityQueCount = 0 (define only once per prg run)
+PeopleInCheckoutAreaCount = 0 (define only once per prg run)
+MaxNumInRegLine"1" = 0 ...  (define only once per prg run for each register line)
+
+
+while (NumShoppers > 0 || PeopleInCheckoutAreaCount > 0) {
+   if NotPastClosingTime {
+      Event=>PersonEntersCheckoutArea
+      PeopleInCheckoutAreaCount += 1;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     Customer temp = new Customer(PQ.Peek().Patron, PQ.Peek().Time);
+     int pos = getSmallestLine();
+     temp.register = pos;  
+	temptimestamp = null;
+	
+   if (atRegister.Count > 0) {
+		
+      while ((atRegister.Count > 0) && (atRegister.Peek().exitTime < temp.checkoutArrive)) {
+		
+         int x = atRegisters.Peek().register;
+		 
+         if (registers[x].Count) > 0 {
+            temptimestamp = atRegister.Peek().exitTime;
+            registers[x].Dequeue;
+			if (registers[x].Count) > 0 {
+               registers[x].Peek().registerArrive = temptimestamp;
+			   atRegister.Enqueue (new Customer(registers[x].Peek()));
+			}  
+         }
+
+         atRegister.Dequeue;
+         PeopleInCheckoutAreaCount -= 1;
+      }
+    }
+
+   registers[pos].Enqueue(temp);
+   
+   if (registers[pos].Count == 1) {
+   
+	if (temptimestamp == null) {
+	   registers[pos].registerArrive = registers[pos].checkoutArrive;
+	   }
+	else {
+	   if(temptimestamp > registers[pos].checkoutArrive) {
+		  registers[pos].registerArrive = temptimestamp;
+	      }
+	   else{
+		  registers[pos].registerArrive = registers[pos].checkoutArrive;
+	      }
+     }
+
+	  atRegister.Enqueue (new Customer(registers[pos].Peek()));
+   }
+	  
+	  PQ.Dequeue();
+
+
+}
