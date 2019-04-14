@@ -251,7 +251,8 @@ namespace Project4
             Console.WriteLine(longestLine.ToString().PadLeft(2));
             Console.Write("Customers Checked Out: ");
             Console.WriteLine(numberCheckedOut.ToString().PadLeft(2));
-            //System.Threading.Thread.Sleep(250);   // pause the screen for monitoring for 1/4 second
+
+            System.Threading.Thread.Sleep(175);   
         }
 
         public int getLargestLine()
@@ -293,10 +294,10 @@ namespace Project4
             Console.WriteLine("\n\nThe average time customers spent in the checkout queue was {0}", avgCheckoutTime);
             Console.WriteLine("The average time customers spent at the register was {0}", avgRegisterTime);
 
-            Console.WriteLine("\n\nThe last customer left at {0}", endTemp.registerArrive);
+            Console.WriteLine("\n\nThe last customer left at {0}", endTemp.registerArrive.ToShortTimeString());
             Console.WriteLine("The number of customers that shopped too long and never checked out was {0}", customersRejected);
 
-            Console.WriteLine("\n\nOpen Time: " + timeWeOpen + "\nClosing Time: " + timeWeClose);
+            Console.WriteLine("\n\nOpen Time: " + timeWeOpen.ToShortTimeString() + "\nClosing Time: " + timeWeClose.ToShortTimeString());
 
             Project4.Tools.PressAnyKey();
         }
@@ -323,7 +324,7 @@ namespace Project4
                 {
                     if (registers[i].Count == 0)
                     {
-                        output += "[R" + (i + 1) + "] " + "\n";
+                        output += "[R" + (i + 1) + "] " + "\n\n";
                     }
                     else
                     {
@@ -344,7 +345,7 @@ namespace Project4
                             }
                         }
 
-                        output += "\n";
+                        output += "\n\n";
                     }
                 }
             }

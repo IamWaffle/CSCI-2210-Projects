@@ -75,13 +75,13 @@ namespace Project4
                             Console.WriteLine("How many hours will the business be open?: ");
                             int.TryParse(Console.ReadLine(), out hours);
 
-                            if (hours > 0)
+                            if (hours > 0 && hours < 24)
                             {
                                 loopExit2 = false;
                             }
                             else
                             {
-                                Console.WriteLine("Must be a positive number greater than 0...");
+                                Console.WriteLine("Must be between 0 and 24...");
                                 Tools.PressAnyKey();
                             }
 
