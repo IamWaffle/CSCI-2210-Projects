@@ -44,7 +44,7 @@ namespace Project_4
         /// Constructor that generates an event based on parameters
         /// </summary>
         /// <param name="type"> the type of the event</param>
-        /// <param name="time"> the time the event occured</param>
+        /// <param name="time"> the time the event occurred</param>
         /// <param name="patron">the number of the patron</param>
         public Event(EVENTTYPE type, DateTime time, int patron)
         {
