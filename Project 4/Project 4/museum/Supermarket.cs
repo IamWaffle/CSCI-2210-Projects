@@ -23,6 +23,7 @@ namespace Project4
         private int current;
         private int longestLine;
         private int largestLineCount = 0;
+        private int customersRejected = 0;
 
         private static Random r = new Random();
         private static PriorityQueue<Event> PQ;
@@ -41,6 +42,7 @@ namespace Project4
         private TimeSpan totalTimeInCheckout;
         private TimeSpan totalTimeAtRegister;
         private static TimeSpan shortest, longest, totalTime;
+        private Customer endTemp;
 
         private List<Queue<Customer>> registers;
 
@@ -104,7 +106,7 @@ namespace Project4
             {
                 start = new TimeSpan(0, r.Next(hours * 60), 0);
 
-                interval = new TimeSpan(0, (int)(NegExp(hours * 5)), 0);
+                interval = new TimeSpan(0, (int)(NegExp(hours)), 0);
                 totalTime += interval;
 
                 if (shortest > interval)
@@ -141,54 +143,64 @@ namespace Project4
                 {
                     current--;
                     Customer temp = new Customer(PQ.Peek().Patron, PQ.Peek().Time);
-                    int pos = getSmallestLine();
-                    temp.register = pos;
-                    DateTime temptimestamp = DateTime.MinValue;
-
-                    if (atRegister.Count > 0)
+                    if (temp.checkoutArrive < timeWeClose)
                     {
-                        while ((atRegister.Count > 0) && (atRegister.Peek().exitTime < temp.checkoutArrive))
+                        int pos = getSmallestLine();
+                        temp.register = pos;
+                        DateTime temptimestamp = DateTime.MinValue;
+
+                        if (atRegister.Count > 0)
                         {
-                            int x = atRegister.Peek().register;
-                            if (registers[x].Count > 0)
+                            while ((atRegister.Count > 0) && (atRegister.Peek().exitTime < temp.checkoutArrive))
                             {
-                                temptimestamp = atRegister.Peek().exitTime;
-                                registers[x].Dequeue();
+                                int x = atRegister.Peek().register;
                                 if (registers[x].Count > 0)
                                 {
-                                    registers[x].Peek().registerArrive = temptimestamp;
-                                    atRegister.Enqueue(new Customer(registers[x].Peek()));
+                                    temptimestamp = atRegister.Peek().exitTime;
+                                    registers[x].Dequeue();
+                                    if (registers[x].Count > 0)
+                                    {
+                                        registers[x].Peek().registerArrive = temptimestamp;
+                                        atRegister.Enqueue(new Customer(registers[x].Peek()));
+                                    }
                                 }
+                                totalTimeInCheckout += (atRegister.Peek().checkoutArrive - atRegister.Peek().exitTime);
+                                totalTimeAtRegister += (atRegister.Peek().registerArrive - atRegister.Peek().exitTime);
+                                atRegister.Dequeue();
+                                numberCheckedOut += 1;
                             }
-                            totalTimeInCheckout += (atRegister.Peek().checkoutArrive - atRegister.Peek().exitTime);
-                            totalTimeAtRegister += (atRegister.Peek().registerArrive - atRegister.Peek().exitTime);
-                            atRegister.Dequeue();
-                            numberCheckedOut += 1;
                         }
-                    }
 
-                    registers[pos].Enqueue(temp);
+                        registers[pos].Enqueue(temp);
 
-                    if (registers[pos].Count == 1)
-                    {
-                        if (temptimestamp == DateTime.MinValue)
+                        if (registers[pos].Count == 1)
                         {
-                            registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
-                        }
-                        else
-                        {
-                            if (temptimestamp > registers[pos].Peek().checkoutArrive)
-                            {
-                                registers[pos].Peek().registerArrive = temptimestamp;
-                            }
-                            else
+                            if (temptimestamp == DateTime.MinValue)
                             {
                                 registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
                             }
+                            else
+                            {
+                                if (temptimestamp > registers[pos].Peek().checkoutArrive)
+                                {
+                                    registers[pos].Peek().registerArrive = temptimestamp;
+                                }
+                                else
+                                {
+                                    registers[pos].Peek().registerArrive = registers[pos].Peek().checkoutArrive;
+                                }
+                            }
+                            atRegister.Enqueue(new Customer(registers[pos].Peek()));
                         }
-                        atRegister.Enqueue(new Customer(registers[pos].Peek()));
+                    }
+                    else
+                    {
+                        customersRejected++;
+
+                        temp.checkoutArrive -= interval;
                     }
                 }
+
                 PQ.Dequeue();
                 WriteScreen();
             }
@@ -210,7 +222,7 @@ namespace Project4
 
                 totalTimeInCheckout += (atRegister.Peek().checkoutArrive - atRegister.Peek().exitTime);
                 totalTimeAtRegister += (atRegister.Peek().registerArrive - atRegister.Peek().exitTime);
-
+                endTemp = new Customer(atRegister.Peek());
                 atRegister.Dequeue();
                 numberCheckedOut += 1;
                 WriteScreen();
@@ -239,7 +251,7 @@ namespace Project4
             Console.WriteLine(longestLine.ToString().PadLeft(2));
             Console.Write("Customers Checked Out: ");
             Console.WriteLine(numberCheckedOut.ToString().PadLeft(2));
-            System.Threading.Thread.Sleep(250);   // pause the screen for monitoring for 1/4 second
+            //System.Threading.Thread.Sleep(250);   // pause the screen for monitoring for 1/4 second
         }
 
         public int getLargestLine()
@@ -281,7 +293,10 @@ namespace Project4
             Console.WriteLine("\n\nThe average time customers spent in the checkout queue was {0}", avgCheckoutTime);
             Console.WriteLine("The average time customers spent at the register was {0}", avgRegisterTime);
 
-            Console.WriteLine("\n\nOpen Time: " + timeWeOpen + "\nClosingTime: " + timeWeClose);
+            Console.WriteLine("\n\nThe last customer left at {0}", endTemp.registerArrive);
+            Console.WriteLine("The number of customers that shopped too long and never checked out was {0}", customersRejected);
+
+            Console.WriteLine("\n\nOpen Time: " + timeWeOpen + "\nClosing Time: " + timeWeClose);
 
             Project4.Tools.PressAnyKey();
         }
