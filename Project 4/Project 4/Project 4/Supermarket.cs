@@ -280,7 +280,7 @@ namespace Project_4
             Console.Write("Customers Checked Out: ");
             Console.WriteLine(numberCheckedOut.ToString().PadLeft(2) + "\n");
 
-            //System.Threading.Thread.Sleep(175);   
+            System.Threading.Thread.Sleep(175);   
         }
 
         /// <summary>
@@ -329,8 +329,6 @@ namespace Project_4
         public void ShowStatistics()
         {
             Console.WriteLine("The maximum number of customers shopping at any time was {0}\n", maxPresent);
-            Console.WriteLine("The longest shopping time by any customer was {0}", longest);
-            Console.WriteLine("The average time customers spent shopping was {0}", avgTimeShopping);
 
             Console.WriteLine("\n\nThe average time customers spent in the checkout queue was {0}", avgCheckoutTime);
             Console.WriteLine("The average time customers spent at the register was {0}", avgRegisterTime);
