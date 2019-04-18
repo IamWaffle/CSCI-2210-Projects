@@ -43,10 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTree.cs" />
     <Compile Include="Choices.cs" />
+    <Compile Include="Index.cs" />
+    <Compile Include="INSERT.cs" />
+    <Compile Include="Leaf.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="Driver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
