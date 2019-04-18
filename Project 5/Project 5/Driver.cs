@@ -29,7 +29,7 @@ namespace Project_5
         public static void Main(string[] args)
         {
             BTree tree = new BTree(3);
-            int numNodes = 0;
+            int numNodes = 500;
             int nodeSize = 0;
 
             Console.BackgroundColor = ConsoleColor.Black;
@@ -37,7 +37,7 @@ namespace Project_5
             Console.Title = "Project 5: B-Tree";
 
             Menu menu = new Menu("B-Tree Menu");
-            menu = menu + "Set Size of Node and Create a new B-Tree" +
+            menu = menu + "Create a new B-Tree" +
                 "Display the B-Tree" +
                 "Add a value in the B-Tree" +
                 "Find a value in the B-Tree" + "End the program";
@@ -48,35 +48,46 @@ namespace Project_5
                 switch (choice)
                 {
                     case Choices.CREATE:
-
-                            Console.WriteLine("What is the arity of the tree to be created?\n");
-                            if (!int.TryParse(Console.ReadLine(), out nodeSize))
-                            {
-                                nodeSize = 3;
-                            }
-                            if ((nodeSize < 3) || (nodeSize > 0x19))
-                            {
-                                nodeSize = 3;
-                                Console.WriteLine("The arity you gave is invalid - it has been reset to 3");
-                            }
-                            tree = new BTree(nodeSize);
-                            int num2 = 0;
-                            int num = 0;
                         Random rand = new Random();
-                            while (true)
+                        try
+                        {
+                            Console.WriteLine("What is the arity of the tree to be created? (3 - 25): ");
+                            string str = Console.ReadLine();
+
+                            int.TryParse(str, out nodeSize);
+
+                            if (nodeSize >= 3 && nodeSize <= 25)
                             {
-                                if (num >= numNodes)
-                                {
-                                    Console.WriteLine("\nThe tree has been built; {0} values were added in {1} loops.", num, num2);
-                                    Tools.PressAnyKey();
-                                    return;
-                                }
-                                if (tree.AddValue(rand.Next(0x2710)))
-                                {
-                                    num++;
-                                }
-                                num2++;
+                                nodeSize = 3;
                             }
+                            else
+                            {
+                                throw new Exception("Not valid");
+                            }
+                        }
+                        catch
+                        {
+                            nodeSize = 3;
+                            Console.WriteLine("The input is invalid, default set to 3");
+                        }
+
+                        tree = new BTree(nodeSize);
+
+                        int n = 0;
+                        int i = 0;
+
+                        while (i < numNodes)
+                        {
+                            if (tree.AddValue(rand.Next(10000)))
+                            {
+                                i++;
+                            }
+
+                            n++;
+                        }
+
+                        Console.WriteLine("The tree has been created.  " + i + " values were added in " + n + " loops.");
+                        Tools.PressAnyKey();
 
                         break;
 
@@ -90,20 +101,27 @@ namespace Project_5
                         Console.WriteLine("Type a value you would like to add to the tree: ");
                         int.TryParse(Console.ReadLine(), out inNum);
 
-                        if (inNum <= 0 && inNum >= 9999)
+                        try
                         {
-                            Console.WriteLine("Invalid input. Must be between 0 and 9999...");
-                        }
-                        else
-                        {
-                            if (tree.addValue(inNum))
+                            if (inNum > 0 && inNum < 9999)
                             {
-                                Console.WriteLine(inNum + " was added to the tree.");
+                                if (tree.AddValue(inNum))
+                                {
+                                    Console.WriteLine(inNum + " was added to the tree.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("The tree already contains the value " + inNum);
+                                }
                             }
                             else
                             {
-                                Console.WriteLine("The tree already contains the value " + inNum);
+                                throw new Exception("Invalid Input");
                             }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Invalid input. Must be between 0 and 9999...");
                         }
 
                         Tools.PressAnyKey();
@@ -114,18 +132,29 @@ namespace Project_5
                         Console.WriteLine("Enter a value you want to search for: ");
                         int.TryParse(Console.ReadLine(), out found);
 
-                        if (found >= 0 && found <= 9999)
+                        try
                         {
-                            Console.WriteLine("Starting from the root, the nodes visited are: ");
-
-                            if (tree.findValue(found))
+                            if (found >= 0 && found <= 9999)
                             {
-                                Console.WriteLine(found + " was found in the tree.");
+                                Console.WriteLine("Starting from the root, the nodes visited are: ");
+
+                                if (tree.findValue(found))
+                                {
+                                    Console.WriteLine(found + " was found in the tree.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine(found + "was not found.");
+                                }
                             }
                             else
                             {
-                                Console.WriteLine(found + "was not found.");
+                                throw new Exception("Invalid Input");
                             }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Invalid input. Must be between 0 and 9999...");
                         }
 
                         Tools.PressAnyKey();
