@@ -48,40 +48,35 @@ namespace Project_5
                 switch (choice)
                 {
                     case Choices.CREATE:
-                        int i = 0;
-                        int x = 0;
 
-                        Console.WriteLine("What is the arity of the tree to be created?:\n");
-                        int.TryParse(Console.ReadLine(), out nodeSize);
-                        if (nodeSize == 0)
-                        {
-                            nodeSize = 3;
-                        }
-                        if (nodeSize < 3 || nodeSize > 25)
-                        {
-                            nodeSize = 3;
-                            Console.WriteLine("Invalid input. Setting the node size to 3.");
-                        }
-
-                        tree = new BTree(nodeSize);
-
-                        bool loop = true;
-
-                        while (loop == true)
-                        {
-                            if (i >= numNodes)
+                            Console.WriteLine("What is the arity of the tree to be created?\n");
+                            if (!int.TryParse(Console.ReadLine(), out nodeSize))
                             {
-                                Console.WriteLine("The tree has been created. " + i + " values were added in " + x + " loops.");
-                                Tools.PressAnyKey();
-                                loop = false; ;
+                                nodeSize = 3;
                             }
-                            Random rand = new Random();
-                            if (tree.addValue(rand.Next(10000)))
+                            if ((nodeSize < 3) || (nodeSize > 0x19))
                             {
-                                i++;
+                                nodeSize = 3;
+                                Console.WriteLine("The arity you gave is invalid - it has been reset to 3");
                             }
-                            x++;
-                        }
+                            tree = new BTree(nodeSize);
+                            int num2 = 0;
+                            int num = 0;
+                        Random rand = new Random();
+                            while (true)
+                            {
+                                if (num >= numNodes)
+                                {
+                                    Console.WriteLine("\nThe tree has been built; {0} values were added in {1} loops.", num, num2);
+                                    Tools.PressAnyKey();
+                                    return;
+                                }
+                                if (tree.AddValue(rand.Next(0x2710)))
+                                {
+                                    num++;
+                                }
+                                num2++;
+                            }
 
                         break;
 
@@ -91,7 +86,7 @@ namespace Project_5
                         break;
 
                     case Choices.ADD:
-                        int inNum = 0;
+                        int inNum;
                         Console.WriteLine("Type a value you would like to add to the tree: ");
                         int.TryParse(Console.ReadLine(), out inNum);
 
