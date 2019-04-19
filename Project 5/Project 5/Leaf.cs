@@ -33,6 +33,7 @@
         #endregion Constructors
 
         #region Methods
+
         public INSERT Insert(int inValue)
         {
             INSERT iNSERT;
@@ -52,6 +53,7 @@
             }
             return iNSERT;
         }
+
         #endregion Methods
     }
 }

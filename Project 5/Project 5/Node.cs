@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Project_5
 {
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
     //	File Name:         Node.cs
@@ -22,6 +21,7 @@ namespace Project_5
         public List<int> value { get; set; }
 
         #region Constructors
+
         /// <summary>
         /// basic no arg constructor
         /// </summary>
@@ -52,6 +52,7 @@ namespace Project_5
         #endregion Constructors
 
         #region ToString
+
         /// <summary>
         /// ToString returns a formattted string for console viewing.
         /// </summary>
@@ -68,6 +69,7 @@ namespace Project_5
             }
             return result5 + result2;
         }
+
         #endregion ToString
     }
 }

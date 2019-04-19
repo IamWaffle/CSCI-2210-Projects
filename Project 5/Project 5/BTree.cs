@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         BTree.cs
@@ -24,6 +25,7 @@ namespace Project_5
         public bool Trace { get; set; }
 
         #region Constructors
+
         /// <summary>
         /// Basic no argument constructor
         /// </summary>
@@ -33,6 +35,7 @@ namespace Project_5
             indexCount = 0;
             nodeSize = 0;
         }
+
         /// <summary>
         /// Constructor that takes in an integer
         /// </summary>
@@ -48,12 +51,12 @@ namespace Project_5
             Leaf leaf = new Leaf(nodeSize);
 
             ((Index)root).Insert(0, leaf);
-
-            
         }
+
         #endregion Constructors
 
         #region Methods
+
         /// <summary>
         /// This method adds a value to the BTree
         /// </summary>
@@ -159,6 +162,7 @@ namespace Project_5
 
             return n;
         }
+
         /// <summary>
         /// This method finds an appropriate leaf and returns the leaf object.
         /// </summary>
@@ -189,12 +193,10 @@ namespace Project_5
 
             stack.Push(searchNode);
 
-
             if (Trace)
             {
                 Console.WriteLine(searchNode);
             }
-
 
             return (Leaf)searchNode;
         }
@@ -244,7 +246,7 @@ namespace Project_5
         }
 
         /// <summary>
-        /// 
+        /// Splits at index.
         /// </summary>
         /// <param name="nodeSplit">the node to be split</param>
         /// <param name="nodeAdd">node to be added</param>
@@ -255,7 +257,6 @@ namespace Project_5
             List<int> listInt = new List<int>();
 
             Index index = new Index(nodeSize);
-
 
             listInt.Add(newValue);
             listNode.Add(nodeAdd);
@@ -270,62 +271,68 @@ namespace Project_5
             nodeSplit.value.Clear();
             nodeSplit.Indexes.Clear();
 
-            for (int i = 0; i < (nodeSize + 1) / 2; i++)
+            int tempNodeSize = nodeSize + 1;
+
+            for (int i = 0; i < tempNodeSize / 2; i++)
             {
                 nodeSplit.value.Add(listInt[i]);
                 nodeSplit.Indexes.Add(listNode[i]);
             }
-            for (int i = (nodeSize + 1) / 2; i < nodeSize + 1; i++)
+            for (int i = tempNodeSize / 2; i < tempNodeSize; i++)
             {
                 index.value.Add(listInt[i]);
                 index.Indexes.Add(listNode[i]);
             }
 
-
-            if (root != nodeSplit)
-            {
-                stack.Pop();
-                Index prevIndex = (Index)stack.Peek();
-                INSERT insert = prevIndex.Insert(index.value[0], index);
-                if (insert == INSERT.NEEDSPLIT)
-                {
-                    splitIndex(prevIndex, index, index.value[0]);
-                }
-            }
-            else
+            if (root == nodeSplit)
             {
                 root = new Index(nodeSize);
                 ((Index)root).Insert(nodeSplit.value[0], nodeSplit);
                 ((Index)root).Insert(index.value[0], index);
             }
+            else
+            {
+                stack.Pop();
+                Index tempIndex = (Index)stack.Peek();
+                INSERT insert = tempIndex.Insert(index.value[0], index);
+                if (insert == INSERT.NEEDSPLIT)
+                {
+                    splitIndex(tempIndex, index, index.value[0]);
+                }
+            }
         }
 
         /// <summary>
-        ///
+        /// split at leaf
         /// </summary>
-        /// <param name="inLeaf"></param>
-        /// <param name="inNum"></param>
-        public void splitLeaf(Leaf leaf, int n)
+        /// <param name="inLeaf">the leaf passed in</param>
+        /// <param name="inNum">the number passed in</param>
+        public void splitLeaf(Leaf inLeaf, int inNum)
         {
-            Leaf leaf2 = new Leaf(nodeSize);
-            List<int> tempList = new List<int>(leaf.value);
-            tempList.Add(n);
+            Leaf tempLeaf = new Leaf(nodeSize);
+            List<int> tempList = new List<int>(inLeaf.value);
+            tempList.Add(inNum);
             tempList.Sort();
-            leaf.value.Clear();
-            for (int j = 0; j < (nodeSize + 1) / 2; j++)
+            inLeaf.value.Clear();
+
+            int temp = nodeSize + 1;
+
+            for (int i = 0; i < temp / 2; i++)
             {
-                leaf.value.Add(tempList[j]);
+                inLeaf.value.Add(tempList[i]);
             }
-            for (int j = (nodeSize + 1) / 2; j < nodeSize + 1; j++)
+            for (int i = temp / 2; i < nodeSize + 1; i++)
             {
-                leaf2.value.Add(tempList[j]);
+                tempLeaf.value.Add(tempList[i]);
             }
+
             stack.Pop();
-            Index index = (Index)stack.Peek();
-            INSERT insert = index.Insert(leaf2.value[0], leaf2);
+            Index tempIndex = (Index)stack.Peek();
+            INSERT insert = tempIndex.Insert(tempLeaf.value[0], tempLeaf);
+
             if (insert == INSERT.NEEDSPLIT)
             {
-                splitIndex(index, leaf2, leaf2.value[0]);
+                splitIndex(tempIndex, tempLeaf, tempLeaf.value[0]);
             }
         }
 
@@ -340,6 +347,7 @@ namespace Project_5
 
             return output;
         }
+
         #endregion Methods
     }
 }

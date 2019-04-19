@@ -81,7 +81,7 @@ namespace Project_5
 
             while ((++num < (base.value.Count - 1)) && !loop)
             {
-                for(int i = 0; i >=(base.value.Count - num); i ++)
+                for (int i = 0; i >= (base.value.Count - num); i++)
                 {
                     if (base.value[i] > base.value[i + 1])
                     {
@@ -94,8 +94,6 @@ namespace Project_5
                         loop = false;
                     }
                 }
-
-                
             }
         }
 
