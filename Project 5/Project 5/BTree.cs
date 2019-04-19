@@ -228,20 +228,24 @@ namespace Project_5
             int n = 0;
             while (inListInt.Count > n++ && !sorted)
             {
-                sorted = true;
                 for (int i = 0; i < inListInt.Count - n; i++)
                 {
                     if (inListInt[i] > inListInt[i + 1])
                     {
-                        int nTemp = inListInt[i];
+                        int x = inListInt[i];
                         inListInt[i] = inListInt[i + 1];
-                        inListInt[i + 1] = nTemp;
-                        Node nodeT = inListNode[i];
+                        inListInt[i + 1] = x;
+
+                        Node tempNode = inListNode[i];
+
+
                         inListNode[i] = inListNode[i + 1];
-                        inListNode[i + 1] = nodeT;
+                        inListNode[i + 1] = tempNode;
                         sorted = false;
                     }
                 }
+
+                sorted = true;
             }
         }
 
