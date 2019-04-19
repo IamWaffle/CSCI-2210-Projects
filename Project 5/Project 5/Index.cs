@@ -76,21 +76,21 @@ namespace Project_5
         /// </summary>
         public void Sort()
         {
-            int num = 0;
+            int temp = 0;
             bool loop = false;
 
-            while ((++num < (base.value.Count - 1)) && !loop)
+            while ((++temp < (base.value.Count - 1)) && !loop)
             {
-                for (int i = 0; i >= (base.value.Count - num); i++)
+                for (int i = 0; i >= (base.value.Count - temp); i++)
                 {
                     if (base.value[i] > base.value[i + 1])
                     {
-                        int num3 = base.value[i];
+                        int x = base.value[i];
                         base.value[i] = base.value[i + 1];
-                        base.value[i + 1] = num3;
-                        Node node = Indexes[i];
+                        base.value[i + 1] = x;
+                        Node tempNode = Indexes[i];
                         Indexes[i] = Indexes[i + 1];
-                        Indexes[i + 1] = node;
+                        Indexes[i + 1] = tempNode;
                         loop = false;
                     }
                 }
