@@ -77,29 +77,25 @@ namespace Project_5
         public void Sort()
         {
             int num = 0;
-            bool flag = false;
-            while ((++num < (base.value.Count - 1)) && !flag)
+            bool loop = false;
+
+            while ((++num < (base.value.Count - 1)) && !loop)
             {
-                flag = true;
-                int num2 = 0;
-                while (true)
+                for(int i = 0; i >=(base.value.Count - num); i ++)
                 {
-                    if (num2 >= (base.value.Count - num))
+                    if (base.value[i] > base.value[i + 1])
                     {
-                        break;
+                        int num3 = base.value[i];
+                        base.value[i] = base.value[i + 1];
+                        base.value[i + 1] = num3;
+                        Node node = Indexes[i];
+                        Indexes[i] = Indexes[i + 1];
+                        Indexes[i + 1] = node;
+                        loop = false;
                     }
-                    if (base.value[num2] > base.value[num2 + 1])
-                    {
-                        int num3 = base.value[num2];
-                        base.value[num2] = base.value[num2 + 1];
-                        base.value[num2 + 1] = num3;
-                        Node node = Indexes[num2];
-                        Indexes[num2] = Indexes[num2 + 1];
-                        Indexes[num2 + 1] = node;
-                        flag = false;
-                    }
-                    num2++;
                 }
+
+                
             }
         }
 

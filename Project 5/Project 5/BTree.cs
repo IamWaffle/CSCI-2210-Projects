@@ -222,23 +222,22 @@ namespace Project_5
         /// <param name="inNodeList"></param>
         private void Sort(List<int> inListInt, List<Node> inListNode)
         {
-            bool sorted = false;
-            int temp = 0;
-
-            while (temp + 1 < inListInt.Count && sorted == false)
+            bool bSorted = false;
+            int nPass = 0;
+            while (++nPass < inListInt.Count && !bSorted)
             {
-                sorted = true;
-                for (int i = 0; i < inListInt.Count - temp; i++)
+                bSorted = true;
+                for (int i = 0; i < inListInt.Count - nPass; i++)
                 {
                     if (inListInt[i] > inListInt[i + 1])
                     {
-                        int temp2 = inListInt[i];
+                        int nTemp = inListInt[i];
                         inListInt[i] = inListInt[i + 1];
-                        inListInt[i + 1] = temp2;
+                        inListInt[i + 1] = nTemp;
                         Node nodeT = inListNode[i];
                         inListNode[i] = inListNode[i + 1];
                         inListNode[i + 1] = nodeT;
-                        sorted = false;
+                        bSorted = false;
                     }
                 }
             }
@@ -337,7 +336,7 @@ namespace Project_5
         public string Stats()
         {
             string output = "The number of Index nodes is : " + indexCount + "\nThe number of leaf nodes is: " + leafCount + " with an average of "
-                + (leafCount * nodeSize) + "% full." + "\nThe depth of the tree is: " + findDepth() + "\nThe total number of values in the tree is: " + count;
+                + (leafCount / nodeSize) + "% full." + "\nThe depth of the tree is: " + findDepth() + "\nThe total number of values in the tree is: " + count;
 
             return output;
         }
