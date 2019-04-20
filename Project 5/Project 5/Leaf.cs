@@ -34,24 +34,25 @@
 
         #region Methods
 
-        public INSERT Insert(int inValue)
+        public Insert Insert(int inValue)
         {
-            INSERT iNSERT;
-            if (base.value.Contains(inValue))
+            Insert temp;
+
+            if (base.value.Count == base.nodeSize)
             {
-                iNSERT = INSERT.DUPLICATE;
+                temp = Project_5.Insert.NEEDSPLIT;
             }
-            else if (base.value.Count == base.nodeSize)
+            else if (base.value.Contains(inValue))
             {
-                iNSERT = INSERT.NEEDSPLIT;
+                temp = Project_5.Insert.DUPLICATE;
             }
             else
             {
                 base.value.Add(inValue);
                 base.value.Sort();
-                iNSERT = INSERT.SUCCESS;
+                temp = Project_5.Insert.SUCCESS;
             }
-            return iNSERT;
+            return temp;
         }
 
         #endregion Methods

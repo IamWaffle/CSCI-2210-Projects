@@ -46,7 +46,7 @@
     <Compile Include="BTree.cs" />
     <Compile Include="Choices.cs" />
     <Compile Include="Index.cs" />
-    <Compile Include="INSERT.cs" />
+    <Compile Include="Insert.cs" />
     <Compile Include="Leaf.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Node.cs" />

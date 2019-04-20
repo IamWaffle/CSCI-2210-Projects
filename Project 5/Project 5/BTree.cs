@@ -67,16 +67,16 @@ namespace Project_5
             bool added = false; ;
 
             Leaf leaf = findLeaf(n);
-            INSERT insert = leaf.Insert(n);
+            Insert insert = leaf.Insert(n);
 
-            if (insert == INSERT.DUPLICATE)
+            if (insert == Insert.DUPLICATE)
             {
                 added = false;
             }
             else
             {
                 count++;
-                if (insert != INSERT.SUCCESS)
+                if (insert != Insert.SUCCESS)
                 {
                     splitLeaf(leaf, n);
                     added = true;
@@ -131,8 +131,9 @@ namespace Project_5
             if (node is Index)
             {
                 inNum++;
-                Console.WriteLine("Level in the BTree: " + inNum);
                 indexCount++;
+
+                Console.WriteLine("Level in the BTree: " + inNum);
 
                 for (int i = 0; i < ((Index)node).Indexes.Count; i++)
                 {
@@ -152,15 +153,15 @@ namespace Project_5
 
         public int findDepth()
         {
-            int n = 0;
+            int temp = 0;
             Node nodeRoot = root;
             while (nodeRoot is Index)
             {
                 nodeRoot = ((Index)nodeRoot).Indexes[0];
-                n++;
+                temp++;
             }
 
-            return n;
+            return temp;
         }
 
         /// <summary>
@@ -175,18 +176,15 @@ namespace Project_5
 
             while (searchNode is Index)
             {
-                if (Trace)
+                stack.Push(searchNode);
+                Index indexNode = (Index)searchNode;
+                if (Trace == true)
                 {
                     Console.WriteLine(searchNode);
                 }
 
-                stack.Push(searchNode);
-                Index indexNode = (Index)searchNode;
-
                 int i;
-                for (i = 1; i < indexNode.value.Count && inNumLeaf >= indexNode.value[i]; i++)
-                {
-                }
+                for (i = 1; i < indexNode.value.Count && inNumLeaf >= indexNode.value[i]; i++) { }
 
                 searchNode = indexNode.Indexes[i - 1];
             }
@@ -208,13 +206,23 @@ namespace Project_5
         /// <returns>returning result if it is found or not.</returns>
         public bool findValue(int n)
         {
+            int result = -1;
+            bool found;
+
             Trace = true;
-            int result = findLeaf(n).value.IndexOf(n);
+            result = findLeaf(n).value.IndexOf(n);
             Trace = false;
 
-            bool equal = (indexCount != -1);
+            if (result != -1)
+            {
+                found = true;
+            }
+            else
+            {
+                found = false;
+            }
 
-            return equal;
+            return found;
         }
 
         /// <summary>
@@ -238,7 +246,6 @@ namespace Project_5
 
                         Node tempNode = inListNode[i];
 
-
                         inListNode[i] = inListNode[i + 1];
                         inListNode[i + 1] = tempNode;
                         sorted = false;
@@ -259,7 +266,7 @@ namespace Project_5
         {
             List<Node> listNode = new List<Node>();
             List<int> listInt = new List<int>();
-
+            int tempNodeSize = nodeSize + 1;
             Index index = new Index(nodeSize);
 
             listInt.Add(newValue);
@@ -274,8 +281,6 @@ namespace Project_5
             Sort(listInt, listNode);
             nodeSplit.value.Clear();
             nodeSplit.Indexes.Clear();
-
-            int tempNodeSize = nodeSize + 1;
 
             for (int i = 0; i < tempNodeSize / 2; i++)
             {
@@ -298,8 +303,9 @@ namespace Project_5
             {
                 stack.Pop();
                 Index tempIndex = (Index)stack.Peek();
-                INSERT insert = tempIndex.Insert(index.value[0], index);
-                if (insert == INSERT.NEEDSPLIT)
+                Insert insert = tempIndex.Insert(index.value[0], index);
+
+                if (insert == Insert.NEEDSPLIT)
                 {
                     splitIndex(tempIndex, index, index.value[0]);
                 }
@@ -332,9 +338,9 @@ namespace Project_5
 
             stack.Pop();
             Index tempIndex = (Index)stack.Peek();
-            INSERT insert = tempIndex.Insert(tempLeaf.value[0], tempLeaf);
+            Insert insert = tempIndex.Insert(tempLeaf.value[0], tempLeaf);
 
-            if (insert == INSERT.NEEDSPLIT)
+            if (insert == Insert.NEEDSPLIT)
             {
                 splitIndex(tempIndex, tempLeaf, tempLeaf.value[0]);
             }
@@ -346,8 +352,11 @@ namespace Project_5
         /// <returns>output string</returns>
         public string Stats()
         {
-            string output = "The number of Index nodes is : " + indexCount + "\nThe number of leaf nodes is: " + leafCount + " with an average of "
-                + (leafCount / nodeSize) + "% full." + "\nThe depth of the tree is: " + findDepth() + "\nThe total number of values in the tree is: " + count;
+            string output = "The number of Index nodes is : " + indexCount 
+                + "\nThe number of leaf nodes is: " + leafCount 
+                + " with an average of " + (leafCount / nodeSize) 
+                + "% full." + "\nThe depth of the tree is: " + findDepth() 
+                + "\nThe total number of values in the tree is: " + count;
 
             return output;
         }

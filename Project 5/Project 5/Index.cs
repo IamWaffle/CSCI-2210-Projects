@@ -47,21 +47,21 @@ namespace Project_5
         /// <param name="inNode">the node passed in.</param>
         /// <returns></returns>
 
-        public INSERT Insert(int n, Node inNode)
+        public Insert Insert(int n, Node inNode)
         {
-            INSERT iNSERT;
+            Insert iNSERT;
 
             if (base.value.IndexOf(n) != -1)
             {
-                iNSERT = INSERT.DUPLICATE;
+                iNSERT = Project_5.Insert.DUPLICATE;
             }
             else if (base.value.Count == base.nodeSize)
             {
-                iNSERT = INSERT.NEEDSPLIT;
+                iNSERT = Project_5.Insert.NEEDSPLIT;
             }
             else
             {
-                iNSERT = INSERT.SUCCESS;
+                iNSERT = Project_5.Insert.SUCCESS;
 
                 base.value.Add(n);
                 Indexes.Add(inNode);
@@ -79,7 +79,7 @@ namespace Project_5
             int temp = 0;
             bool loop = false;
 
-            while ((++temp < (base.value.Count - 1)) && !loop)
+            while ((base.value.Count - 1) > ++temp && !loop)
             {
                 for (int i = 0; i >= (base.value.Count - temp); i++)
                 {
@@ -88,7 +88,9 @@ namespace Project_5
                         int x = base.value[i];
                         base.value[i] = base.value[i + 1];
                         base.value[i + 1] = x;
+
                         Node tempNode = Indexes[i];
+
                         Indexes[i] = Indexes[i + 1];
                         Indexes[i + 1] = tempNode;
                         loop = false;

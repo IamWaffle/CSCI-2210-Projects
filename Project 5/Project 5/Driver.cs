@@ -73,20 +73,21 @@ namespace Project_5
 
                         tree = new BTree(nodeSize);
 
-                        int n = 0;
-                        int i = 0;
-
-                        while (i < numNodes)
+                        int values = 0;
+                        int loops = 0;
+                        
+                        while (values < numNodes)
                         {
-                            if (tree.AddValue(rand.Next(10000)))
+                            if (tree.AddValue(rand.Next(1000)))
                             {
-                                i++;
+                                values++;
                             }
 
-                            n++;
+                            loops++;
                         }
 
-                        Console.WriteLine("The tree has been created.  " + i + " values were added in " + n + " loops.");
+                        Console.WriteLine("The tree has been created.  " + values 
+                            + " values were added in " + loops + " loops.");
                         Tools.PressAnyKey();
 
                         break;
@@ -134,7 +135,7 @@ namespace Project_5
 
                         try
                         {
-                            if (found >= 0 && found <= 9999)
+                            if (found >= 0 && found <= 999)
                             {
                                 Console.WriteLine("Starting from the root, the nodes visited are: ");
 
@@ -144,7 +145,7 @@ namespace Project_5
                                 }
                                 else
                                 {
-                                    Console.WriteLine(found + "was not found.");
+                                    Console.WriteLine(found + " was not found.");
                                 }
                             }
                             else

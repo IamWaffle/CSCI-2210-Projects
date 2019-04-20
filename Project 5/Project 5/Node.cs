@@ -59,15 +59,38 @@ namespace Project_5
         /// <returns></returns>
         public override string ToString()
         {
-            string result5 = "\nNode Type: " + ((this is Leaf) ? "Leaf" : "Index");
-            result5 = result5 + "\nNumber of values: " + value.Count;
-            result5 += $" (Node is {(decimal)value.Count * 100m / (decimal)nodeSize:#}% full)\nValues:\n";
-            string result2 = "";
+            string output = "";
+            string values = "";
+            string tempString = "";
+
+            if (this is Leaf)
+            {
+                tempString = "Leaf";
+            }
+            else
+            {
+                tempString = "Index";
+            }
+
+            output = "\nType: " + tempString;
+            output = output + "\nNumber of values: " + value.Count;
+            output += "  " + Math.Round((decimal)value.Count * 100m / (decimal)nodeSize) + "% full)" +
+                "\nValues:\n";
+
             for (int i = 0; i < value.Count; i++)
             {
-                result2 = ((!(this is Index) || i != 0) ? (result2 + value[i] + "  ") : (result2 + "   **     "));
+                if((!(this is Index) || i != 0))
+                {
+                    values += value[i] + "  "; 
+                }
+                else
+                {
+                    values += "   **   ";
+                }
             }
-            return result5 + result2;
+
+            output += values;
+            return output;
         }
 
         #endregion ToString
