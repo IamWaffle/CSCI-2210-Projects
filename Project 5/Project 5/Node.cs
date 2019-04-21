@@ -79,7 +79,11 @@ namespace Project_5
 
             for (int i = 0; i < value.Count; i++)
             {
-                if ((!(this is Index) || i != 0))
+                if (!(this is Index))
+                {
+                    values += value[i] + "  ";
+                }
+                else if (i != 0)
                 {
                     values += value[i] + "  ";
                 }

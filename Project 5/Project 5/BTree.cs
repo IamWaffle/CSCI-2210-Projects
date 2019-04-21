@@ -163,7 +163,7 @@ namespace Project_5
 
             while (loop == true)
             {
-                if(nodeRoot is Index)
+                if (nodeRoot is Index)
                 {
                     nodeRoot = ((Index)nodeRoot).Indexes[0];
                     temp++;
