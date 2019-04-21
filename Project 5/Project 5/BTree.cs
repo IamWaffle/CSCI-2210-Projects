@@ -361,22 +361,26 @@ namespace Project_5
         /// <param name="inNodeList"></param>
         private void Sort(List<int> inListInt, List<Node> inListNode)
         {
+            Node tempNode = new Node();
             bool sorted = false;
             int y = 0;
+            int x;
+
             while (inListInt.Count > y++ && !sorted)
             {
                 for (int i = 0; i < inListInt.Count - y; i++)
                 {
                     if (inListInt[i] > inListInt[i + 1])
                     {
-                        int x = inListInt[i];
+                        x = inListInt[i];
                         inListInt[i] = inListInt[i + 1];
                         inListInt[i + 1] = x;
 
-                        Node tempNode = inListNode[i];
+                        tempNode = inListNode[i];
 
                         inListNode[i] = inListNode[i + 1];
                         inListNode[i + 1] = tempNode;
+
                         sorted = false;
                     }
                 }

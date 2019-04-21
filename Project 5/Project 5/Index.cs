@@ -78,6 +78,7 @@ namespace Project_5
         {
             int temp = 0;
             bool loop = false;
+            Node tempNode = new Node();
 
             while ((base.value.Count - 1) > ++temp && !loop)
             {
@@ -89,7 +90,7 @@ namespace Project_5
                         base.value[i] = base.value[i + 1];
                         base.value[i + 1] = x;
 
-                        Node tempNode = Indexes[i];
+                        tempNode = Indexes[i];
 
                         Indexes[i] = Indexes[i + 1];
                         Indexes[i + 1] = tempNode;
