@@ -54,7 +54,7 @@ namespace Project_5
         #region ToString
 
         /// <summary>
-        /// ToString returns a formattted string for console viewing.
+        /// ToString returns a formatted string for console viewing.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -65,7 +65,7 @@ namespace Project_5
 
             try
             {
-                if(this is Leaf)
+                if (this is Leaf)
                 {
                     tempString = "Leaf";
                 }
@@ -78,7 +78,6 @@ namespace Project_5
             {
                 tempString = "Index";
             }
-            
 
             output = "\nType: " + tempString;
             output = output + "\nValues: " + value.Count;
@@ -87,17 +86,20 @@ namespace Project_5
 
             for (int i = 0; i < value.Count; i++)
             {
-                if (!(this is Index))
+                try
                 {
-                    values += value[i] + "  ";
+                    if (i != 0 || this is Leaf)
+                    {
+                        values += value[i] + "  ";
+                    }
+                    else
+                    {
+                        throw new Exception("is index or == to 0");
+                    }
                 }
-                else if (i != 0)
+                catch (Exception)
                 {
-                    values += value[i] + "  ";
-                }
-                else
-                {
-                    values += "   **   ";
+                    values += " ** ";
                 }
             }
 

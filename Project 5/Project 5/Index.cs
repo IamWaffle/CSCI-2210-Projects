@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -51,15 +52,22 @@ namespace Project_5
         {
             Insert iNSERT;
 
-            if (base.value.IndexOf(n) != -1)
+            try
             {
-                iNSERT = Project_5.Insert.DUPLICATE;
+                if (base.value.IndexOf(n) != -1)
+                {
+                    iNSERT = Project_5.Insert.DUPLICATE;
+                }
+                else if (base.value.Count == base.nodeSize)
+                {
+                    iNSERT = Project_5.Insert.NEEDSPLIT;
+                }
+                else
+                {
+                    throw new Exception("Success");
+                }
             }
-            else if (base.value.Count == base.nodeSize)
-            {
-                iNSERT = Project_5.Insert.NEEDSPLIT;
-            }
-            else
+            catch (Exception)
             {
                 iNSERT = Project_5.Insert.SUCCESS;
 
@@ -67,7 +75,6 @@ namespace Project_5
                 Indexes.Add(inNode);
                 Sort();
             }
-
             return iNSERT;
         }
 

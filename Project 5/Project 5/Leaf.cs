@@ -1,4 +1,6 @@
-﻿namespace Project_5
+﻿using System;
+
+namespace Project_5
 {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
@@ -13,6 +15,8 @@
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     internal class Leaf : Node
     {
+        private Insert tempInsert;
+
         #region Constructors
 
         /// <summary>
@@ -20,6 +24,7 @@
         /// </summary>
         public Leaf()
         {
+            tempInsert = new Insert();
         }
 
         /// <summary>
@@ -28,6 +33,7 @@
         /// <param name="nodeSize">The size of the node passed in</param>
         public Leaf(int nodeSize) : base(nodeSize)
         {
+            tempInsert = new Insert();
         }
 
         #endregion Constructors
@@ -41,23 +47,28 @@
         /// <returns>the returning insert value.</returns>
         public Insert Insert(int inValue)
         {
-            Insert temp;
-
-            if (base.value.Count == base.nodeSize)
+            try
             {
-                temp = Project_5.Insert.NEEDSPLIT;
+                if (base.value.Count == base.nodeSize)
+                {
+                    tempInsert = Project_5.Insert.NEEDSPLIT;
+                }
+                else if (base.value.Contains(inValue))
+                {
+                    tempInsert = Project_5.Insert.DUPLICATE;
+                }
+                else
+                {
+                    throw new Exception("Success");
+                }
             }
-            else if (base.value.Contains(inValue))
+            catch (Exception)
             {
-                temp = Project_5.Insert.DUPLICATE;
-            }
-            else
-            {
+                tempInsert = Project_5.Insert.SUCCESS;
                 base.value.Add(inValue);
                 base.value.Sort();
-                temp = Project_5.Insert.SUCCESS;
             }
-            return temp;
+            return tempInsert;
         }
 
         #endregion Methods

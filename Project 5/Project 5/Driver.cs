@@ -86,7 +86,6 @@ namespace Project_5
                             }
                             catch (Exception)
                             {
-
                             }
 
                             loops++;

@@ -22,7 +22,8 @@ namespace Project_5
         public int nodeSize { get; set; }
         public Node root { get; set; }
         public bool searchLeaf { get; set; }
-        public Stack<Node> stack { get; set; }
+        public Stack<Node> nodeStack { get; set; }
+
         #region Constructors
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace Project_5
             count = 0;
             nodeSize = arity;
 
-            stack = new Stack<Node>();
+            nodeStack = new Stack<Node>();
             root = new Index(nodeSize);
             Leaf leaf = new Leaf(nodeSize);
 
@@ -66,7 +67,7 @@ namespace Project_5
             Leaf leaf = findLeaf(inValue);
             Insert insert = leaf.Insert(inValue);
             int temp;
-            bool completed = false; 
+            bool completed = false;
 
             try
             {
@@ -77,14 +78,10 @@ namespace Project_5
                 else
                 {
                     count++;
-                    if (insert != Insert.SUCCESS)
+                    if (insert == Insert.SUCCESS)
                     {
-                        splitLeaf(leaf, inValue);
-                    }
-                    else
-                    {
-                        stack.Pop();
-                        index = (Index)stack.Peek();
+                        nodeStack.Pop();
+                        index = (Index)nodeStack.Peek();
                         temp = 0;
                         completed = false;
 
@@ -105,6 +102,10 @@ namespace Project_5
 
                             temp++;
                         }
+                    }
+                    else
+                    {
+                        splitLeaf(leaf, inValue);
                     }
                 }
             }
@@ -195,14 +196,14 @@ namespace Project_5
             Leaf output = new Leaf();
             int i;
 
-            stack.Clear();
+            nodeStack.Clear();
             try
             {
                 while (loop == true)
                 {
                     if (searchNode is Index)
                     {
-                        stack.Push(searchNode);
+                        nodeStack.Push(searchNode);
                         indexNode = (Index)searchNode;
 
                         i = 1;
@@ -231,7 +232,7 @@ namespace Project_5
                 Console.WriteLine("An error has occurred.");
             }
 
-            stack.Push(searchNode);
+            nodeStack.Push(searchNode);
             output = (Leaf)searchNode;
 
             return output;
@@ -312,7 +313,7 @@ namespace Project_5
 
             try
             {
-                if(root == nodeSplit)
+                if (root == nodeSplit)
                 {
                     root = new Index(nodeSize);
                     ((Index)root).Insert(nodeSplit.value[0], nodeSplit);
@@ -325,16 +326,16 @@ namespace Project_5
             }
             catch (Exception)
             {
-                stack.Pop();
+                nodeStack.Pop();
 
-                tempIndex = (Index)stack.Peek();
+                tempIndex = (Index)nodeStack.Peek();
                 insert = tempIndex.Insert(index.value[0], index);
 
                 if (insert == Insert.NEEDSPLIT)
                 {
                     splitIndex(tempIndex, index, index.value[0]);
                 }
-            }           
+            }
         }
 
         /// <summary>
@@ -354,7 +355,6 @@ namespace Project_5
             tempList.Add(inNum);
             tempList.Sort();
 
-
             for (int i = 0; i < nodeSize2 + 1; i++)
             {
                 inLeaf.value.Add(tempList[i]);
@@ -364,8 +364,8 @@ namespace Project_5
                 tempLeaf.value.Add(tempList[i]);
             }
 
-            stack.Pop();
-            tempIndex = (Index)stack.Peek();
+            nodeStack.Pop();
+            tempIndex = (Index)nodeStack.Peek();
             insert = tempIndex.Insert(tempLeaf.value[pos], tempLeaf);
 
             if (insert == Insert.NEEDSPLIT)
@@ -424,7 +424,6 @@ namespace Project_5
 
                     sorted = true;
                 }
-                
             }
         }
 
