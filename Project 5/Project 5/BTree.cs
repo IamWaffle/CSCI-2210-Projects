@@ -155,6 +155,7 @@ namespace Project_5
         {
             int temp = 0;
             Node nodeRoot = root;
+
             while (nodeRoot is Index)
             {
                 nodeRoot = ((Index)nodeRoot).Indexes[0];
@@ -233,10 +234,10 @@ namespace Project_5
         private void Sort(List<int> inListInt, List<Node> inListNode)
         {
             bool sorted = false;
-            int n = 0;
-            while (inListInt.Count > n++ && !sorted)
+            int y = 0;
+            while (inListInt.Count > y++ && !sorted)
             {
-                for (int i = 0; i < inListInt.Count - n; i++)
+                for (int i = 0; i < inListInt.Count - y; i++)
                 {
                     if (inListInt[i] > inListInt[i + 1])
                     {

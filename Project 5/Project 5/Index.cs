@@ -41,7 +41,7 @@ namespace Project_5
         #region Methods
 
         /// <summary>
-        /// Insert INserts a node.
+        /// Insert Inserts a node.
         /// </summary>
         /// <param name="n">integer passed in</param>
         /// <param name="inNode">the node passed in.</param>
