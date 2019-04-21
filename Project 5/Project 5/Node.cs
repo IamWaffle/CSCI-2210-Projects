@@ -63,14 +63,22 @@ namespace Project_5
             string values = "";
             string tempString = "";
 
-            if (this is Leaf)
+            try
             {
-                tempString = "Leaf";
+                if(this is Leaf)
+                {
+                    tempString = "Leaf";
+                }
+                else
+                {
+                    throw new Exception("Index");
+                }
             }
-            else
+            catch (Exception)
             {
                 tempString = "Index";
             }
+            
 
             output = "\nType: " + tempString;
             output = output + "\nValues: " + value.Count;

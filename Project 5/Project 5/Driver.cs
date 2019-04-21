@@ -78,9 +78,15 @@ namespace Project_5
 
                         while (values < numNodes)
                         {
-                            if (tree.AddValue(rand.Next(9999)))
+                            try
                             {
+                                tree.AddValue(rand.Next(9999));
+
                                 values++;
+                            }
+                            catch (Exception)
+                            {
+
                             }
 
                             loops++;
@@ -106,11 +112,12 @@ namespace Project_5
                         {
                             if (inNum > 0 && inNum < 9999)
                             {
-                                if (tree.AddValue(inNum))
+                                try
                                 {
+                                    tree.AddValue(inNum);
                                     Console.WriteLine(inNum + " was added to the tree.");
                                 }
-                                else
+                                catch (Exception)
                                 {
                                     Console.WriteLine("The tree already contains the value " + inNum);
                                 }
