@@ -39,12 +39,12 @@ namespace Project_5
         /// <summary>
         /// Constructor that takes in an integer
         /// </summary>
-        /// <param name="n">the node side to be set </param>
-        public BTree(int n)
+        /// <param name="arity">the node side to be set </param>
+        public BTree(int arity)
         {
             indexCount = 0;
             count = 0;
-            nodeSize = n;
+            nodeSize = arity;
 
             stack = new Stack<Node>();
             root = new Index(nodeSize);
