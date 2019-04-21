@@ -127,12 +127,13 @@ namespace Project_5
         /// <param name="inNum"></param>
         public void Display(Node node, int inNum)
         {
-            int tempIndex = ((Index)node).Indexes.Count;
+            int tempIndex; 
             Node nodeTemp = new Node();
             Console.WriteLine(node);
 
             if (node is Index)
             {
+                tempIndex = ((Index)node).Indexes.Count;
                 inNum++;
                 indexCount++;
 
@@ -140,6 +141,7 @@ namespace Project_5
 
                 for (int i = 0; i < tempIndex; i++)
                 {
+                    
                     nodeTemp = ((Index)node).Indexes[i];
                     Display(nodeTemp, inNum);
                 }
