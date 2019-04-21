@@ -73,9 +73,9 @@ namespace Project_5
             }
 
             output = "\nType: " + tempString;
-            output = output + "\nNumber of values: " + value.Count;
-            output += "  " + Math.Round((decimal)value.Count * 100m / (decimal)nodeSize) + "% full)" +
-                "\nValues:\n";
+            output = output + "\nValues: " + value.Count;
+            output += "  (" + Math.Round((decimal)value.Count * 100m / (decimal)nodeSize) + "% full)" +
+                "\n";
 
             for (int i = 0; i < value.Count; i++)
             {
