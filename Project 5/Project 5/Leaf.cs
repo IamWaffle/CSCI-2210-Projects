@@ -33,8 +33,9 @@
         #endregion Constructors
 
         #region Methods
+
         /// <summary>
-        /// returns an insert value 
+        /// returns an insert value
         /// </summary>
         /// <param name="inValue"></param>
         /// <returns>the returning insert value.</returns>

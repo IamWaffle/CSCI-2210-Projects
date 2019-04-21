@@ -60,25 +60,21 @@ namespace Project_5
         /// <summary>
         /// This method adds a value to the BTree
         /// </summary>
-        /// <param name="n">The value that will be added to the tree.</param>
+        /// <param name="inValue">The value that will be added to the tree.</param>
         /// <returns>bool that says if the operation is successful</returns>
-        public bool AddValue(int n)
+        public bool AddValue(int inValue)
         {
             bool added = false; ;
 
-            Leaf leaf = findLeaf(n);
-            Insert insert = leaf.Insert(n);
+            Leaf leaf = findLeaf(inValue);
+            Insert insert = leaf.Insert(inValue);
 
-            if (insert == Insert.DUPLICATE)
-            {
-                added = false;
-            }
-            else
+            if (insert != Insert.DUPLICATE)
             {
                 count++;
                 if (insert != Insert.SUCCESS)
                 {
-                    splitLeaf(leaf, n);
+                    splitLeaf(leaf, inValue);
                     added = true;
                 }
                 else
@@ -102,6 +98,10 @@ namespace Project_5
                         temp++;
                     }
                 }
+            }
+            else
+            {
+                added = false;
             }
             return added;
         }
@@ -353,10 +353,10 @@ namespace Project_5
         /// <returns>output string</returns>
         public string Stats()
         {
-            string output = "The number of Index nodes is : " + indexCount 
-                + "\nThe number of leaf nodes is: " + leafCount 
-                + " with an average of " + (leafCount / nodeSize) 
-                + "% full." + "\nThe depth of the tree is: " + findDepth() 
+            string output = "The number of Index nodes is : " + indexCount
+                + "\nThe number of leaf nodes is: " + leafCount
+                + " with an average of " + (leafCount / nodeSize)
+                + "% full." + "\nThe depth of the tree is: " + findDepth()
                 + "\nThe total number of values in the tree is: " + count;
 
             return output;

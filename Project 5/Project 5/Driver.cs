@@ -75,10 +75,10 @@ namespace Project_5
 
                         int values = 0;
                         int loops = 0;
-                        
+
                         while (values < numNodes)
                         {
-                            if (tree.AddValue(rand.Next(1000)))
+                            if (tree.AddValue(rand.Next(9999)))
                             {
                                 values++;
                             }
@@ -86,7 +86,7 @@ namespace Project_5
                             loops++;
                         }
 
-                        Console.WriteLine("The tree has been created.  " + values 
+                        Console.WriteLine("The tree has been created.  " + values
                             + " values were added in " + loops + " loops.");
                         Tools.PressAnyKey();
 
@@ -135,7 +135,7 @@ namespace Project_5
 
                         try
                         {
-                            if (found >= 0 && found <= 999)
+                            if (found >= 0 && found <= 9999)
                             {
                                 Console.WriteLine("Starting from the root, the nodes visited are: ");
 
@@ -162,11 +162,15 @@ namespace Project_5
                         break;
 
                     case Choices.END:
-                        System.Environment.Exit(1);
+
                         break;
                 }  // end of switch
                 choice = (Choices)menu.GetChoice();
             }  // end of while
+
+            Console.WriteLine("Thank you for a challenging semester!");
+            Tools.PressAnyKey();
+            System.Environment.Exit(1);
         }
 
         #endregion Main
