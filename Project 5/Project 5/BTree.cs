@@ -296,21 +296,22 @@ namespace Project_5
                 listInt.Add(nodeSplit.value[i]);
             }
 
-            Sort(listInt, listNode);
             nodeSplit.Indexes.Clear();
             nodeSplit.value.Clear();
+            Sort(listInt, listNode);
+
 
             for (int i = 0; i < nodeSizeinc / 2; i++)
             {
                 nodeSplit.value.Add(listInt[i]);
                 nodeSplit.Indexes.Add(listNode[i]);
             }
+
             for (int i = nodeSizeinc / 2; i < nodeSizeinc; i++)
             {
                 index.value.Add(listInt[i]);
                 index.Indexes.Add(listNode[i]);
             }
-
             try
             {
                 if (root == nodeSplit)
@@ -336,6 +337,7 @@ namespace Project_5
                     splitIndex(tempIndex, index, index.value[0]);
                 }
             }
+
         }
 
         /// <summary>
@@ -368,7 +370,20 @@ namespace Project_5
             tempIndex = (Index)nodeStack.Peek();
             insert = tempIndex.Insert(tempLeaf.value[pos], tempLeaf);
 
-            if (insert == Insert.NEEDSPLIT)
+            try
+            {
+                if (insert == Insert.SUCCESS)
+                {
+                }
+                else if (insert == Insert.DUPLICATE)
+                {
+                }
+                else
+                {
+                    throw new Exception("insert needs splitting");
+                }
+            }
+            catch (Exception)
             {
                 splitIndex(tempIndex, tempLeaf, tempLeaf.value[pos]);
             }
@@ -397,32 +412,24 @@ namespace Project_5
         private void Sort(List<int> inListInt, List<Node> inListNode)
         {
             Node tempNode = new Node();
-            bool sorted = false;
+
             int y = 0;
             int x = 0;
 
             while (inListInt.Count > y++)
             {
-                if (!sorted)
+                for (int i = 0; i < inListInt.Count - y; i++)
                 {
-                    for (int i = 0; i < inListInt.Count - y; i++)
+                    if (inListInt[i] > inListInt[i + 1])
                     {
-                        if (inListInt[i] > inListInt[i + 1])
-                        {
-                            x = inListInt[i];
-                            inListInt[i] = inListInt[i + 1];
-                            inListInt[i + 1] = x;
+                        tempNode = inListNode[i];
+                        x = inListInt[i];
 
-                            tempNode = inListNode[i];
-
-                            inListNode[i] = inListNode[i + 1];
-                            inListNode[i + 1] = tempNode;
-
-                            sorted = false;
-                        }
+                        inListInt[i] = inListInt[i + 1];
+                        inListInt[i + 1] = x;
+                        inListNode[i] = inListNode[i + 1];
+                        inListNode[i + 1] = tempNode;
                     }
-
-                    sorted = true;
                 }
             }
         }

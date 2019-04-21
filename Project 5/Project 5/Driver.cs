@@ -72,6 +72,7 @@ namespace Project_5
                         }
 
                         tree = new BTree(nodeSize);
+                        Console.WriteLine("Building tree. Please wait...");
 
                         int values = 0;
                         int loops = 0;

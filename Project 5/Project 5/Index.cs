@@ -84,24 +84,23 @@ namespace Project_5
         public void Sort()
         {
             int temp = 0;
-            bool loop = false;
+            int x;
+
             Node tempNode = new Node();
 
-            while ((base.value.Count - 1) > ++temp && !loop)
+            while ((base.value.Count - 1) > ++temp)
             {
                 for (int i = 0; i >= (base.value.Count - temp); i++)
                 {
                     if (base.value[i] > base.value[i + 1])
                     {
-                        int x = base.value[i];
+                        tempNode = Indexes[i];
+                        x = base.value[i];
+
                         base.value[i] = base.value[i + 1];
                         base.value[i + 1] = x;
-
-                        tempNode = Indexes[i];
-
                         Indexes[i] = Indexes[i + 1];
                         Indexes[i + 1] = tempNode;
-                        loop = false;
                     }
                 }
             }
