@@ -12,7 +12,7 @@ using System.Collections.Generic;
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-namespace Project_5
+namespace Project_5_BTree
 {
     internal class BTree
     {
@@ -118,11 +118,14 @@ namespace Project_5
         /// <summary>
         /// This method displays the entire tree. Calling another display method to get the index and leaves.
         /// </summary>
-        public void Display()
+        /// <Returns>string output</Returns>
+        public string Display()
         {
-            Console.WriteLine("Root node:");
-            Display(root, 0);
-            Console.WriteLine("\n\n" + Stats());
+            string output = "";
+            output +="Root node:";
+            output += "\n" + Display(root, 0);
+            
+            return output;
         }
 
         /// <summary>
@@ -130,30 +133,33 @@ namespace Project_5
         /// </summary>
         /// <param name="node">node to be displayed</param>
         /// <param name="inNum"></param>
-        public void Display(Node node, int inNum)
+        public string Display(Node node, int inNum)
         {
             int tempIndex;
             Node nodeTemp = new Node();
+            string output = " ";
 
             try
             {
-                Console.WriteLine(node);
+                output += node;
                 tempIndex = ((Index)node).Indexes.Count;
                 inNum++;
                 indexCount++;
 
-                Console.WriteLine("Level in the BTree: " + inNum);
+                output += "\nLevel in the BTree: " + inNum;
 
                 for (int i = 0; i < tempIndex; i++)
                 {
                     nodeTemp = ((Index)node).Indexes[i];
-                    Display(nodeTemp, inNum);
+                    output += "\n" + Display(nodeTemp, inNum) + "\n";
                 }
             }
             catch (Exception)
             {
                 leafCount++;
             }
+
+            return output;
         }
 
         /// <summary>

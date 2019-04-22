@@ -12,7 +12,7 @@ using System.Collections.Generic;
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-namespace Project_5
+namespace Project_5_BTree
 {
     internal class Index : Node
     {
@@ -57,11 +57,11 @@ namespace Project_5
             {
                 if (base.value.IndexOf(n) != -1)
                 {
-                    iNSERT = Project_5.Insert.DUPLICATE;
+                    iNSERT = Project_5_BTree.Insert.DUPLICATE;
                 }
                 else if (base.value.Count == base.nodeSize)
                 {
-                    iNSERT = Project_5.Insert.NEEDSPLIT;
+                    iNSERT = Project_5_BTree.Insert.NEEDSPLIT;
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace Project_5
             }
             catch (Exception)
             {
-                iNSERT = Project_5.Insert.SUCCESS;
+                iNSERT = Project_5_BTree.Insert.SUCCESS;
 
                 base.value.Add(n);
                 Indexes.Add(inNode);

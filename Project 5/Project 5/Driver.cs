@@ -136,23 +136,23 @@ namespace Project_5
                         break;
 
                     case Choices.FIND:
-                        int found = 0;
+                        int searchInt = 0;
                         Console.WriteLine("Enter a value you want to search for: ");
-                        int.TryParse(Console.ReadLine(), out found);
+                        int.TryParse(Console.ReadLine(), out searchInt);
 
                         try
                         {
-                            if (found >= 0 && found <= 9999)
+                            if (searchInt >= 0 && searchInt <= 9999)
                             {
                                 Console.WriteLine("Starting from the root, the nodes visited are: ");
 
-                                if (tree.findValue(found))
+                                if (tree.findValue(searchInt))
                                 {
-                                    Console.WriteLine(found + " was found in the tree.");
+                                    Console.WriteLine(searchInt + " was found in the tree.");
                                 }
                                 else
                                 {
-                                    Console.WriteLine(found + " was not found.");
+                                    Console.WriteLine(searchInt + " was not found.");
                                 }
                             }
                             else
