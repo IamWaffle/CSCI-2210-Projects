@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BTree.cs" />
-    <Compile Include="Choices.cs" />
     <Compile Include="frmAboutbox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +89,6 @@
     <Compile Include="Index.cs" />
     <Compile Include="INSERT.cs" />
     <Compile Include="Leaf.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -151,7 +151,7 @@ namespace Project_5_BTree
                 for (int i = 0; i < tempIndex; i++)
                 {
                     nodeTemp = ((Index)node).Indexes[i];
-                    output += "\n" + Display(nodeTemp, inNum) + "\n";
+                    output += "\n" + Display(nodeTemp, inNum);
                 }
             }
             catch (Exception)

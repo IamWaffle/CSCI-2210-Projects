@@ -1,23 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         frmFind.cs
+//	Description:       This class is the window to verify the value to be found
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Wednesday Apr 17, 2019
+//
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace Project_5_BTree
 {
     public partial class frmFind : Form
     {
-        int searchFind { get; set; }
+        private int searchFind { get; set; }
+
+        #region Constructor
+
+        /// <summary>
+        /// basic no arg constructor
+        /// </summary>
         public frmFind()
         {
             InitializeComponent();
         }
 
+        #endregion Constructor
+
+        #region Methods
+
+        /// <summary>
+        /// this method checks to see if the user is typing the right stuff
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxSize_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar))
@@ -25,6 +45,12 @@ namespace Project_5_BTree
                 e.Handled = true;
             }
         }
+
+        /// <summary>
+        /// this method executes when the user clicks the ok button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -39,11 +65,19 @@ namespace Project_5_BTree
                 MessageBox.Show("The input is invalid");
                 txtBoxFind.Clear();
             }
-            this.Close();
+            Close();
         }
+
+        /// <summary>
+        /// this method returns the value in search find variable
+        /// </summary>
+        /// <returns></returns>
         public int getNum()
         {
             return searchFind;
         }
+
+        #endregion Methods
+
     }
 }

@@ -1,5 +1,16 @@
 ﻿namespace Project_5_BTree
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //	File Name:         frmAdd.Designer.cs
+    //	Description:       This is the designer class for frmAdd
+    //
+    //	Course:            CSCI 2210 - Data Structures
+    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+    //	Created:           Wednesday Apr 17, 2019
+    //
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmAdd
     {
         /// <summary>

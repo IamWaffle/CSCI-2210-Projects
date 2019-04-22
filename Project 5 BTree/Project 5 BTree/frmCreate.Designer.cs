@@ -1,5 +1,15 @@
 ﻿namespace Project_5_BTree
-{
+{///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ //	File Name:         frmCreate.Designer.cs
+ //	Description:       This is the designer class for the create class
+ //
+ //	Course:            CSCI 2210 - Data Structures
+ //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+ //	Created:           Wednesday Apr 17, 2019
+ //
+ //
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     partial class frmCreate
     {
         /// <summary>

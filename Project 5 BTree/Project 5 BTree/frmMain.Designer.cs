@@ -34,21 +34,24 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtBoxInfo = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtboxTree
             // 
-            this.txtboxTree.Location = new System.Drawing.Point(12, 12);
+            this.txtboxTree.Location = new System.Drawing.Point(12, 27);
             this.txtboxTree.Name = "txtboxTree";
             this.txtboxTree.ReadOnly = true;
-            this.txtboxTree.Size = new System.Drawing.Size(317, 426);
+            this.txtboxTree.Size = new System.Drawing.Size(317, 411);
             this.txtboxTree.TabIndex = 0;
             this.txtboxTree.Text = "";
             // 
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(335, 12);
+            this.btnCreate.Location = new System.Drawing.Point(335, 27);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(241, 23);
             this.btnCreate.TabIndex = 1;
@@ -59,7 +62,7 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(336, 42);
+            this.btnAdd.Location = new System.Drawing.Point(336, 57);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(240, 23);
             this.btnAdd.TabIndex = 2;
@@ -70,7 +73,7 @@
             // btnFind
             // 
             this.btnFind.BackColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(336, 72);
+            this.btnFind.Location = new System.Drawing.Point(336, 87);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(240, 23);
             this.btnFind.TabIndex = 3;
@@ -80,12 +83,29 @@
             // 
             // txtBoxInfo
             // 
-            this.txtBoxInfo.Location = new System.Drawing.Point(335, 102);
+            this.txtBoxInfo.Location = new System.Drawing.Point(335, 116);
             this.txtBoxInfo.Name = "txtBoxInfo";
             this.txtBoxInfo.ReadOnly = true;
-            this.txtBoxInfo.Size = new System.Drawing.Size(241, 336);
+            this.txtBoxInfo.Size = new System.Drawing.Size(241, 322);
             this.txtBoxInfo.TabIndex = 4;
             this.txtBoxInfo.Text = "";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(591, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -98,13 +118,19 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.txtboxTree);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project 5 - BTree";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -115,5 +141,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.RichTextBox txtBoxInfo;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
