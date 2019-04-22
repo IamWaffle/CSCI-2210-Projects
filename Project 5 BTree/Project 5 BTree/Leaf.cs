@@ -1,18 +1,22 @@
-﻿using System;
+﻿
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         Leaf.cs
+//	Description:       This class creates and manages a leaf
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Wednesday Apr 17, 2019
+//
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
 
 namespace Project_5_BTree
 {
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //	File Name:         Leaf.cs
-    //	Description:       This class creates and manages a leaf
-    //
-    //	Course:            CSCI 2210 - Data Structures
-    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
-    //	Created:           Wednesday Apr 17, 2019
-    //
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
+    /// This is the type leaf that extends off of a node.
+    /// </summary>
     internal class Leaf : Node
     {
         private Insert tempInsert;

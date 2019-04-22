@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         BTree.cs
 //	Description:       This class creates and manages a BTree
@@ -12,8 +9,15 @@ using System.Collections.Generic;
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+
+
 namespace Project_5_BTree
 {
+    /// <summary>
+    /// This is the main class that handles the B-Tree.
+    /// </summary>
     internal class BTree
     {
         public int count { get; set; }
@@ -64,7 +68,9 @@ namespace Project_5_BTree
         public void AddValue(int inValue)
         {
             Index index = new Index();
-            Leaf leaf = findLeaf(inValue);
+            string throwAway = "";
+            Leaf leaf;
+            findLeaf(inValue, out leaf, out throwAway);
             Insert insert = leaf.Insert(inValue);
             int temp;
             bool completed = false;
@@ -167,13 +173,13 @@ namespace Project_5_BTree
         /// </summary>
         /// <param name="inNumLeaf">leaf to look for</param>
         /// <returns>the returning leaf node.</returns>
-        public Leaf findLeaf(int inNumLeaf)
+        public void findLeaf(int inNumLeaf, out Leaf outLeaf, out string outString)
         {
             bool loop = true;
             Node searchNode = root;
             Index index = new Index();
-            Leaf output = new Leaf();
             int i;
+            outString = "";
 
             
             try
@@ -195,7 +201,7 @@ namespace Project_5_BTree
                         searchNode = index.Indexes[(i - 1)];
                         if (searchLeaf == true)
                         {
-                            Console.WriteLine(searchNode);
+                            outString += (searchNode);
                         }
                         else
                         {
@@ -207,16 +213,18 @@ namespace Project_5_BTree
                         loop = false;
                     }
                 }
+                outLeaf = new Leaf();
+                nodeStack.Push(searchNode);
+                
             }
             catch (Exception)
             {
-                Console.WriteLine("An error has occurred.");
+                outString += ("An error has occurred.");
             }
 
-            nodeStack.Push(searchNode);
-            output = (Leaf)searchNode;
+            outLeaf = (Leaf)searchNode;
 
-            return output;
+
         }
 
         /// <summary>
@@ -230,7 +238,14 @@ namespace Project_5_BTree
             bool found;
 
             searchLeaf = true;
-            result = findLeaf(inValue).value.IndexOf(inValue);
+            Leaf leaf = new Leaf();
+            string throwAway = "";
+
+            findLeaf(inValue, out leaf, out throwAway);
+
+            result = leaf.value.IndexOf(inValue);
+
+            
             searchLeaf = false;
 
             try
@@ -364,13 +379,7 @@ namespace Project_5_BTree
 
             try
             {
-                if (insert == Insert.SUCCESS)
-                {
-                }
-                else if (insert == Insert.DUPLICATE)
-                {
-                }
-                else
+                if (insert == Insert.NEEDSPLIT)
                 {
                     throw new Exception("insert needs splitting");
                 }

@@ -1,20 +1,23 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         Node.cs
+//	Description:       This class creates and manages a Node
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Wednesday Apr 17, 2019
+//
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 
 namespace Project_5_BTree
 {
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //	File Name:         Node.cs
-    //	Description:       This class creates and manages a Node
-    //
-    //	Course:            CSCI 2210 - Data Structures
-    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
-    //	Created:           Wednesday Apr 17, 2019
-    //
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///
+    /// <summary>
+    /// Class node.
+    /// </summary>
     internal class Node
     {
         public int nodeSize { get; set; }

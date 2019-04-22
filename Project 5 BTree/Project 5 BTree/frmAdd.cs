@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmAdd.cs
 //	Description:       This is the window that adds a value to the tree
@@ -18,9 +9,21 @@ using System.Windows.Forms;
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 namespace Project_5_BTree
 {
-
+    /// <summary>
+    /// This is the window that shows up when the user is trying to add a value to the tree.
+    /// </summary>
     public partial class frmAdd : Form
     {
         int addNum { get; set; }
@@ -44,6 +47,7 @@ namespace Project_5_BTree
         private void btnOk_Click(object sender, EventArgs e)
         {
             string str = txtBoxAdd.Text;
+           
 
             try
             {

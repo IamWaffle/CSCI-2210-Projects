@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System;
-using System.Windows.Forms;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         Program.cs
 //	Description:       This is where the main method is stored.
@@ -14,8 +7,19 @@ using System.Windows.Forms;
 //	Created:           Sunday Apr 21, 2019
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System;
+using System.Windows.Forms;
+
 namespace Project_5_BTree
 {
+    /// <summary>
+    /// This is the main entry point for the application
+    /// </summary>
     static class Program
     {
         /// <summary>

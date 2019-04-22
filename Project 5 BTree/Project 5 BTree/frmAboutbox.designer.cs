@@ -1,15 +1,16 @@
-﻿namespace Project_5_BTree
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         frmAboutbox.Designer.cs
+//	Description:        this is the designer class for the about box
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Friday, Mar 01 2019
+//  Modified:          Monday, Mar 04 2019
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace Project_5_BTree
 {
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //	File Name:         frmAboutbox.Designer.cs
-    //	Description:        this is the designer class for the about box
-    //	Course:            CSCI 2210 - Data Structures
-    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
-    //	Created:           Friday, Mar 01 2019
-    //  Modified:          Monday, Mar 04 2019
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
     partial class frmAboutbox
     {
         /// <summary>

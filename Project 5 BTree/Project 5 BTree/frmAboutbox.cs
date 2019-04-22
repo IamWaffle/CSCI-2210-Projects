@@ -1,18 +1,22 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         frmAboutbox.cs
+//	Description:       this is where the contents of the about box is held. it retrieves its data from assembly info
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Friday, Mar 01 2019
+//  Modified:          Monday, Mar 04 2019
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace Project_5_BTree
-{    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //	File Name:         frmAboutbox.cs
-    //	Description:       this is where the contents of the about box is held. it retrieves its data from assembly info
-    //	Course:            CSCI 2210 - Data Structures
-    //	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
-    //	Created:           Friday, Mar 01 2019
-    //  Modified:          Monday, Mar 04 2019
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+{   
+    /// <summary>
+    /// This is the about box that shows information about the program when the user clicks the about button on the main form.
+    /// </summary>
     partial class frmAboutbox : Form
     {
 

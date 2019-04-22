@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmCreate.cs
 //	Description:       This is the window to specify the arity and create a new tree
@@ -12,8 +9,15 @@ using System.Windows.Forms;
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Windows.Forms;
+
+
 namespace Project_5_BTree
 {
+    /// <summary>
+    /// This is the window that shows up when the user is trying to create a new tree.
+    /// </summary>
     public partial class frmCreate : Form
     {
         private int nodeSize { get; set; }
@@ -49,6 +53,7 @@ namespace Project_5_BTree
         private void btnOk_Click(object sender, EventArgs e)
         {
             string str = txtBoxSize.Text;
+            Cursor.Current = Cursors.WaitCursor;
 
             try
             {

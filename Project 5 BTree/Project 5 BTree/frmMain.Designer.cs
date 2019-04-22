@@ -1,4 +1,15 @@
-﻿namespace Project_5_BTree
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	File Name:         frmMain.Designer.cs
+//	Description:       This is the designer file for the main form.
+//
+//	Course:            CSCI 2210 - Data Structures
+//	Author:            Ryan Shupe, shuper@etsu.edu, East Tennessee State University
+//	Created:           Wednesday Apr 17, 2019
+//
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace Project_5_BTree
 {
     partial class frmMain
     {

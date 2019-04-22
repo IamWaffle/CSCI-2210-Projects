@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	File Name:         frmMain.cs
 //	Description:       The main form where the program an ran and managed from.
@@ -12,8 +9,15 @@ using System.Windows.Forms;
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Windows.Forms;
+
+
 namespace Project_5_BTree
 {
+    /// <summary>
+    /// This is the main window form.
+    /// </summary>
     public partial class frmMain : Form
     {
         private BTree tree = new BTree(3);
@@ -71,6 +75,8 @@ namespace Project_5_BTree
 
                     loops++;
                 }
+
+                Cursor.Current = Cursors.Default;
                 txtboxTree.Text = tree.Display();
                 txtBoxInfo.Text = tree.Stats();
                 txtBoxInfo.Text += ("\n\nThe tree has been created.  " + values
@@ -107,6 +113,7 @@ namespace Project_5_BTree
                         MessageBox.Show("The tree already contains the value " + addNum);
                     }
 
+                   
                     txtboxTree.Text = tree.Display();
                     txtBoxInfo.Text = tree.Stats();
                 }
