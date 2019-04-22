@@ -12,7 +12,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Project_5_BTree
 {
     /// <summary>
@@ -128,9 +127,9 @@ namespace Project_5_BTree
         public string Display()
         {
             string output = "";
-            output +="Root node:";
+            output += "Root node:";
             output += "\n" + Display(root, 0);
-            
+
             return output;
         }
 
@@ -169,10 +168,11 @@ namespace Project_5_BTree
         }
 
         /// <summary>
-        /// This method finds an appropriate leaf and returns the leaf object.
+        /// This method finds a leaf and outputs a leaf and the string
         /// </summary>
-        /// <param name="inNumLeaf">leaf to look for</param>
-        /// <returns>the returning leaf node.</returns>
+        /// <param name="inNumLeaf">in number leaf</param>
+        /// <param name="outLeaf">output leaf</param>
+        /// <param name="outString">the leaf's string</param>
         public void findLeaf(int inNumLeaf, out Leaf outLeaf, out string outString)
         {
             bool loop = true;
@@ -181,7 +181,6 @@ namespace Project_5_BTree
             int i;
             outString = "";
 
-            
             try
             {
                 nodeStack.Clear();
@@ -201,7 +200,7 @@ namespace Project_5_BTree
                         searchNode = index.Indexes[(i - 1)];
                         if (searchLeaf == true)
                         {
-                            outString = (searchNode.ToString());
+                            outString += (searchNode.ToString() + "\n");
                         }
                         else
                         {
@@ -213,7 +212,6 @@ namespace Project_5_BTree
                         loop = false;
                     }
                 }
-
             }
             catch (Exception)
             {
@@ -224,30 +222,29 @@ namespace Project_5_BTree
             nodeStack.Push(searchNode);
 
             outLeaf = (Leaf)searchNode;
-
-
         }
 
         /// <summary>
-        /// This method checks to see if a value is in the tree
+        /// this method takes in a value and searches the entire tree using it.
         /// </summary>
-        /// <param name="inValue">value to find</param>
-        /// <returns>returning result if it is found or not.</returns>
-        public bool findValue(int inValue)
+        /// <param name="inValue">the value to look for</param>
+        /// <param name="outputString"> outputs the nodes visited</param>
+        /// <param name="found">outputs a bool is the number is not found</param>
+
+        public void findValue(int inValue, out string outputString, out bool found)
         {
             int result = -1;
-            bool found;
+            outputString = "";
+            Leaf leaf = new Leaf();
+            string leafString = "";
 
             searchLeaf = true;
-            Leaf leaf = new Leaf();
-            string throwAway = "";
-
-            findLeaf(inValue, out leaf, out throwAway);
+            findLeaf(inValue, out leaf, out leafString);
+            searchLeaf = false;
 
             result = leaf.value.IndexOf(inValue);
 
-            
-            searchLeaf = false;
+            outputString += leafString;
 
             try
             {
@@ -264,8 +261,6 @@ namespace Project_5_BTree
             {
                 found = false;
             }
-
-            return found;
         }
 
         /// <summary>
@@ -432,7 +427,6 @@ namespace Project_5_BTree
                         inListInt[i + 1] = x;
                         inListNode[i + 1] = tempNode;
                         inListNode[i] = inListNode[i + 1];
-                        
                     }
                 }
             }

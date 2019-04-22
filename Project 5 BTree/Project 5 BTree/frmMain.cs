@@ -138,6 +138,8 @@ namespace Project_5_BTree
         {
             frmFind find = new frmFind();
             find.ShowDialog();
+            String outString = "";
+            bool found;
 
             try
             {
@@ -147,13 +149,17 @@ namespace Project_5_BTree
                 {
                     txtBoxInfo.Text = ("Starting from the root, the nodes visited are: \n");
 
-                    if (tree.findValue(findNum))
+                    tree.findValue(findNum, out outString, out found);
+
+                    if (found == true) 
                     {
-                        txtBoxInfo.Text += (findNum + " was found in the tree.");
+                        txtBoxInfo.Text += outString;
+                        txtBoxInfo.Text += ("\n\n" + findNum + " was found in the tree.");
                     }
                     else
                     {
-                        txtBoxInfo.Text += (findNum + " was not found.");
+                        txtBoxInfo.Text += outString;
+                        txtBoxInfo.Text += ("\n\n" +  findNum + " was not found.");
                     }
                 }
                 else
