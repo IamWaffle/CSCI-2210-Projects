@@ -54,6 +54,7 @@ namespace Project_5_BTree
             nodeSize = create.getNodeSize();
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 tree = new BTree(nodeSize);
 
                 txtboxTree.Text = "Tree is building. Please Wait...";
@@ -76,11 +77,12 @@ namespace Project_5_BTree
                     loops++;
                 }
 
-                Cursor.Current = Cursors.Default;
+                
                 txtboxTree.Text = tree.Display();
                 txtBoxInfo.Text = tree.Stats();
                 txtBoxInfo.Text += ("\n\nThe tree has been created.  " + values
                     + " values were added in " + loops + " loops.");
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception)
             {

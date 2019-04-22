@@ -201,7 +201,7 @@ namespace Project_5_BTree
                         searchNode = index.Indexes[(i - 1)];
                         if (searchLeaf == true)
                         {
-                            outString += (searchNode);
+                            outString = (searchNode.ToString());
                         }
                         else
                         {
@@ -213,14 +213,15 @@ namespace Project_5_BTree
                         loop = false;
                     }
                 }
-                outLeaf = new Leaf();
-                nodeStack.Push(searchNode);
-                
+
             }
             catch (Exception)
             {
                 outString += ("An error has occurred.");
             }
+
+            outLeaf = new Leaf();
+            nodeStack.Push(searchNode);
 
             outLeaf = (Leaf)searchNode;
 

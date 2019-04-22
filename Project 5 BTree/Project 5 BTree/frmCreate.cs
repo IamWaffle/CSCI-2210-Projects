@@ -62,6 +62,7 @@ namespace Project_5_BTree
             catch (Exception)
             {
                 MessageBox.Show("The input is invalid, default set to 3");
+                Cursor.Current = Cursors.WaitCursor;
                 txtBoxSize.Clear();
             }
 
@@ -71,6 +72,7 @@ namespace Project_5_BTree
             else
             {
                 nodeSize = 3;
+                Cursor.Current = Cursors.WaitCursor;
                 MessageBox.Show("The input is invalid, default set to 3");
             }
 

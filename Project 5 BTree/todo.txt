@@ -1,0 +1,2 @@
+edit find value to work in the stats text box
+fix displaying duplicate? leaves
