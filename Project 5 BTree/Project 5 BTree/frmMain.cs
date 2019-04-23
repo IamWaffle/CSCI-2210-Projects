@@ -77,8 +77,10 @@ namespace Project_5_BTree
                     loops++;
                 }
 
-                
+
                 txtboxTree.Text = tree.Display();
+
+
                 txtBoxInfo.Text = tree.Stats();
                 txtBoxInfo.Text += ("\n\nThe tree has been created.  " + values
                     + " values were added in " + loops + " loops.");
@@ -108,6 +110,7 @@ namespace Project_5_BTree
                     try
                     {
                         tree.AddValue(addNum);
+                        Cursor.Current = Cursors.WaitCursor;
                         MessageBox.Show(addNum + " was added to the tree.");
                     }
                     catch (Exception)
@@ -115,13 +118,16 @@ namespace Project_5_BTree
                         MessageBox.Show("The tree already contains the value " + addNum);
                     }
 
-                   
                     txtboxTree.Text = tree.Display();
+
                     txtBoxInfo.Text = tree.Stats();
+
+
+                    Cursor.Current = Cursors.Default;
                 }
                 else
                 {
-                    throw new Exception("Invalid Input");
+                    MessageBox.Show(addNum + " is an invalid input. Must be between 0 and 9999 ");
                 }
             }
             catch (Exception)
@@ -151,7 +157,7 @@ namespace Project_5_BTree
 
                     tree.findValue(findNum, out outString, out found);
 
-                    if (found == true) 
+                    if (found == true)
                     {
                         txtBoxInfo.Text += outString;
                         txtBoxInfo.Text += ("\n\n" + findNum + " was found in the tree.");
@@ -159,7 +165,7 @@ namespace Project_5_BTree
                     else
                     {
                         txtBoxInfo.Text += outString;
-                        txtBoxInfo.Text += ("\n\n" +  findNum + " was not found.");
+                        txtBoxInfo.Text += ("\n\n" + findNum + " was not found.");
                     }
                 }
                 else

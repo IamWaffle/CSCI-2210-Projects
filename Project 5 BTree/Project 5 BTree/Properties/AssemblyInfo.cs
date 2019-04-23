@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Project 5 BTree")]
-[assembly: AssemblyDescription("Create and manage a B-Tree")]
+[assembly: AssemblyDescription("build B-Trees, populate them, display them, and collect some statistics about retrieval characteristics.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ryan Shupe ETSU 2210")]
 [assembly: AssemblyProduct("Project 5 BTree")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]

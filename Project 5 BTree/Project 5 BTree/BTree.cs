@@ -45,9 +45,9 @@ namespace Project_5_BTree
         /// <param name="arity">the node side to be set </param>
         public BTree(int arity)
         {
+            nodeSize = arity;
             indexCount = 0;
             count = 0;
-            nodeSize = arity;
 
             nodeStack = new Stack<Node>();
             root = new Index(nodeSize);
@@ -146,34 +146,49 @@ namespace Project_5_BTree
 
             try
             {
-                output += node;
-                tempIndex = ((Index)node).Indexes.Count;
-                inNum++;
-                indexCount++;
 
-                output += "\nLevel in the BTree: " + inNum;
+                output = node.ToString();
 
-                for (int i = 0; i < tempIndex; i++)
+                if (node is Index)
                 {
-                    nodeTemp = ((Index)node).Indexes[i];
-                    output += "\n" + Display(nodeTemp, inNum);
+                    inNum++;
+
+
+                    tempIndex = ((Index)node).Indexes.Count;
+
+                    output += "\nLevel in the BTree: " + inNum;
+                    indexCount++;
+
+                    for (int i = 0; i < tempIndex; i++)
+                    {
+                        nodeTemp = ((Index)node).Indexes[i];
+                        output += "\n" + Display(nodeTemp, inNum);
+                    }
                 }
+                else
+                {
+
+                    throw new Exception();
+                }
+
+
             }
             catch (Exception)
             {
                 leafCount++;
+
             }
 
             return output;
         }
 
-        /// <summary>
-        /// This method finds a leaf and outputs a leaf and the string
-        /// </summary>
-        /// <param name="inNumLeaf">in number leaf</param>
-        /// <param name="outLeaf">output leaf</param>
-        /// <param name="outString">the leaf's string</param>
-        public void findLeaf(int inNumLeaf, out Leaf outLeaf, out string outString)
+            /// <summary>
+            /// This method finds a leaf and outputs a leaf and the string
+            /// </summary>
+            /// <param name="inNumLeaf">in number leaf</param>
+            /// <param name="outLeaf">output leaf</param>
+            /// <param name="outString">the leaf's string</param>
+            public void findLeaf(int inNumLeaf, out Leaf outLeaf, out string outString)
         {
             bool loop = true;
             Node searchNode = root;
@@ -211,7 +226,6 @@ namespace Project_5_BTree
                     {
                         loop = false;
                     }
-                    
                 }
                 outLeaf = new Leaf();
                 nodeStack.Push(searchNode);
@@ -220,8 +234,6 @@ namespace Project_5_BTree
             {
                 outString += ("An error has occurred.");
             }
-
-           
 
             outLeaf = (Leaf)searchNode;
         }

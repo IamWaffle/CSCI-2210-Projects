@@ -47,15 +47,17 @@ namespace Project_5_BTree
             this.txtBoxInfo = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelBTree = new System.Windows.Forms.Label();
+            this.labelStats = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtboxTree
             // 
-            this.txtboxTree.Location = new System.Drawing.Point(12, 27);
+            this.txtboxTree.Location = new System.Drawing.Point(12, 46);
             this.txtboxTree.Name = "txtboxTree";
             this.txtboxTree.ReadOnly = true;
-            this.txtboxTree.Size = new System.Drawing.Size(317, 411);
+            this.txtboxTree.Size = new System.Drawing.Size(317, 392);
             this.txtboxTree.TabIndex = 0;
             this.txtboxTree.Text = "";
             // 
@@ -94,10 +96,10 @@ namespace Project_5_BTree
             // 
             // txtBoxInfo
             // 
-            this.txtBoxInfo.Location = new System.Drawing.Point(335, 116);
+            this.txtBoxInfo.Location = new System.Drawing.Point(338, 136);
             this.txtBoxInfo.Name = "txtBoxInfo";
             this.txtBoxInfo.ReadOnly = true;
-            this.txtBoxInfo.Size = new System.Drawing.Size(241, 322);
+            this.txtBoxInfo.Size = new System.Drawing.Size(241, 302);
             this.txtBoxInfo.TabIndex = 4;
             this.txtBoxInfo.Text = "";
             // 
@@ -118,12 +120,34 @@ namespace Project_5_BTree
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // labelBTree
+            // 
+            this.labelBTree.AutoSize = true;
+            this.labelBTree.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelBTree.Location = new System.Drawing.Point(12, 30);
+            this.labelBTree.Name = "labelBTree";
+            this.labelBTree.Size = new System.Drawing.Size(76, 13);
+            this.labelBTree.TabIndex = 6;
+            this.labelBTree.Text = "Whole B-Tree:";
+            // 
+            // labelStats
+            // 
+            this.labelStats.AutoSize = true;
+            this.labelStats.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelStats.Location = new System.Drawing.Point(338, 117);
+            this.labelStats.Name = "labelStats";
+            this.labelStats.Size = new System.Drawing.Size(69, 13);
+            this.labelStats.TabIndex = 7;
+            this.labelStats.Text = "B-Tree Stats:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(591, 450);
+            this.Controls.Add(this.labelStats);
+            this.Controls.Add(this.labelBTree);
             this.Controls.Add(this.txtBoxInfo);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.btnAdd);
@@ -154,5 +178,7 @@ namespace Project_5_BTree
         private System.Windows.Forms.RichTextBox txtBoxInfo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label labelBTree;
+        private System.Windows.Forms.Label labelStats;
     }
 }
