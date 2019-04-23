@@ -10,13 +10,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project_5_BTree
@@ -26,9 +19,10 @@ namespace Project_5_BTree
     /// </summary>
     public partial class frmAdd : Form
     {
-        int addNum { get; set; }
+        private int addNum { get; set; }
 
         #region Constructor
+
         /// <summary>
         /// basic no arg constructor
         /// </summary>
@@ -36,9 +30,11 @@ namespace Project_5_BTree
         {
             InitializeComponent();
         }
+
         #endregion Constructor
 
         #region Methods
+
         /// <summary>
         /// this method executes when the user clicks the ok button
         /// </summary>
@@ -47,7 +43,6 @@ namespace Project_5_BTree
         private void btnOk_Click(object sender, EventArgs e)
         {
             string str = txtBoxAdd.Text;
-           
 
             try
             {
@@ -58,8 +53,9 @@ namespace Project_5_BTree
                 MessageBox.Show("The input is invalid");
                 txtBoxAdd.Clear();
             }
-            this.Close();
+            Close();
         }
+
         /// <summary>
         /// this method returns the value in addnum
         /// </summary>
@@ -81,7 +77,7 @@ namespace Project_5_BTree
                 e.Handled = true;
             }
         }
-        #endregion
 
+        #endregion Methods
     }
 }

@@ -13,14 +13,14 @@ using System.Reflection;
 using System.Windows.Forms;
 
 namespace Project_5_BTree
-{   
+{
     /// <summary>
     /// This is the about box that shows information about the program when the user clicks the about button on the main form.
     /// </summary>
     partial class frmAboutbox : Form
     {
-
         #region Constructors
+
         /// <summary>
         /// frmAboutbox - basic no arg constructor
         /// </summary>
@@ -118,7 +118,8 @@ namespace Project_5_BTree
 
         #endregion Assembly Attribute Accessors
 
-        #region Methods 
+        #region Methods
+
         /// <summary>
         /// okButton_Click - this methods executes if the user clicks the OK button. It closes the window.</summary>
         /// <param name="sender"></param>
@@ -127,7 +128,7 @@ namespace Project_5_BTree
         {
             Close();
         }
-        #endregion Methods
 
+        #endregion Methods
     }
 }

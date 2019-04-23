@@ -12,8 +12,6 @@
 using System;
 using System.Windows.Forms;
 
-
-
 namespace Project_5_BTree
 {
     /// <summary>
@@ -82,6 +80,5 @@ namespace Project_5_BTree
         }
 
         #endregion Methods
-
     }
 }

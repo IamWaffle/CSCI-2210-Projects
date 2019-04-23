@@ -64,7 +64,7 @@ namespace Project_5_BTree
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(335, 27);
+            this.btnCreate.Location = new System.Drawing.Point(338, 30);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(241, 23);
             this.btnCreate.TabIndex = 1;
@@ -75,7 +75,7 @@ namespace Project_5_BTree
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(336, 57);
+            this.btnAdd.Location = new System.Drawing.Point(339, 60);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(240, 23);
             this.btnAdd.TabIndex = 2;
@@ -86,7 +86,7 @@ namespace Project_5_BTree
             // btnFind
             // 
             this.btnFind.BackColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(336, 87);
+            this.btnFind.Location = new System.Drawing.Point(339, 90);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(240, 23);
             this.btnFind.TabIndex = 3;
@@ -136,16 +136,16 @@ namespace Project_5_BTree
             this.labelStats.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.labelStats.Location = new System.Drawing.Point(338, 117);
             this.labelStats.Name = "labelStats";
-            this.labelStats.Size = new System.Drawing.Size(69, 13);
+            this.labelStats.Size = new System.Drawing.Size(113, 13);
             this.labelStats.TabIndex = 7;
-            this.labelStats.Text = "B-Tree Stats:";
+            this.labelStats.Text = "B-Tree Stats and Find:";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
-            this.ClientSize = new System.Drawing.Size(591, 450);
+            this.ClientSize = new System.Drawing.Size(591, 446);
             this.Controls.Add(this.labelStats);
             this.Controls.Add(this.labelBTree);
             this.Controls.Add(this.txtBoxInfo);

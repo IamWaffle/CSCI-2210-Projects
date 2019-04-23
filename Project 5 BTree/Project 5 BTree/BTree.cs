@@ -128,7 +128,10 @@ namespace Project_5_BTree
         {
             string output = "";
             output += "Root node:";
-            output += "\n" + Display(root, 0);
+            string tempString = "";
+
+            tempString = Display(root, 0);
+            output += "\n" + tempString;
 
             return output;
         }
@@ -140,55 +143,50 @@ namespace Project_5_BTree
         /// <param name="inNum"></param>
         public string Display(Node node, int inNum)
         {
-            int tempIndex;
-            Node nodeTemp = new Node();
             string output = " ";
+
+            Node nodeTemp = new Node();
 
             try
             {
-
                 output = node.ToString();
-
+                inNum++;
                 if (node is Index)
                 {
-                    inNum++;
-
-
-                    tempIndex = ((Index)node).Indexes.Count;
-
-                    output += "\nLevel in the BTree: " + inNum;
                     indexCount++;
+                    output += "\nLevel in the BTree: " + inNum;
 
-                    for (int i = 0; i < tempIndex; i++)
+                    for (int i = 0; i < ((Index)node).Indexes.Count; i++)
                     {
-                        nodeTemp = ((Index)node).Indexes[i];
-                        output += "\n" + Display(nodeTemp, inNum);
+                        if (((Index)node).Indexes[i] != null)
+                        {
+                            nodeTemp = ((Index)node).Indexes[i];
+                            string tempString = Display(nodeTemp, inNum);
+
+                            output += "\n" + tempString;
+                        }
                     }
                 }
                 else
                 {
-
                     throw new Exception();
                 }
-
-
             }
             catch (Exception)
             {
                 leafCount++;
-
             }
 
             return output;
         }
 
-            /// <summary>
-            /// This method finds a leaf and outputs a leaf and the string
-            /// </summary>
-            /// <param name="inNumLeaf">in number leaf</param>
-            /// <param name="outLeaf">output leaf</param>
-            /// <param name="outString">the leaf's string</param>
-            public void findLeaf(int inNumLeaf, out Leaf outLeaf, out string outString)
+        /// <summary>
+        /// This method finds a leaf and outputs a leaf and the string
+        /// </summary>
+        /// <param name="inNumLeaf">in number leaf</param>
+        /// <param name="outLeaf">output leaf</param>
+        /// <param name="outString">the leaf's string</param>
+        public void findLeaf(int inNumLeaf, out Leaf outLeaf, out string outString)
         {
             bool loop = true;
             Node searchNode = root;

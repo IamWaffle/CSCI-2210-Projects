@@ -12,7 +12,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Project_5_BTree
 {
     /// <summary>
@@ -21,7 +20,7 @@ namespace Project_5_BTree
     internal class Index : Node
     {
         public List<Node> Indexes { get; set; }
-        Node tempNode = new Node();
+        private Node tempNode = new Node();
 
         #region Constructors
 

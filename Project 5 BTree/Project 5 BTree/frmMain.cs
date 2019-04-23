@@ -12,7 +12,6 @@
 using System;
 using System.Windows.Forms;
 
-
 namespace Project_5_BTree
 {
     /// <summary>
@@ -77,9 +76,7 @@ namespace Project_5_BTree
                     loops++;
                 }
 
-
                 txtboxTree.Text = tree.Display();
-
 
                 txtBoxInfo.Text = tree.Stats();
                 txtBoxInfo.Text += ("\n\nThe tree has been created.  " + values
@@ -121,7 +118,6 @@ namespace Project_5_BTree
                     txtboxTree.Text = tree.Display();
 
                     txtBoxInfo.Text = tree.Stats();
-
 
                     Cursor.Current = Cursors.Default;
                 }
