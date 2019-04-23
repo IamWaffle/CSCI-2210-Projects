@@ -211,15 +211,17 @@ namespace Project_5_BTree
                     {
                         loop = false;
                     }
+                    
                 }
+                outLeaf = new Leaf();
+                nodeStack.Push(searchNode);
             }
             catch (Exception)
             {
                 outString += ("An error has occurred.");
             }
 
-            outLeaf = new Leaf();
-            nodeStack.Push(searchNode);
+           
 
             outLeaf = (Leaf)searchNode;
         }

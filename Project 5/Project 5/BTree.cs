@@ -64,6 +64,7 @@ namespace Project_5
         public void AddValue(int inValue)
         {
             Index index = new Index();
+            string throwaway = "";
             Leaf leaf = findLeaf(inValue);
             Insert insert = leaf.Insert(inValue);
             int temp;
@@ -130,31 +131,40 @@ namespace Project_5
         /// </summary>
         /// <param name="node">node to be displayed</param>
         /// <param name="inNum"></param>
-        public void Display(Node node, int inNum)
-        {
-            int tempIndex;
-            Node nodeTemp = new Node();
 
-            try
+            public void Display(Node node, int nLevel)
             {
-                Console.WriteLine(node);
-                tempIndex = ((Index)node).Indexes.Count;
-                inNum++;
-                indexCount++;
-
-                Console.WriteLine("Level in the BTree: " + inNum);
-
-                for (int i = 0; i < tempIndex; i++)
+                if (node == null)
                 {
-                    nodeTemp = ((Index)node).Indexes[i];
-                    Display(nodeTemp, inNum);
+                    return;
+                }
+                if (node is Leaf)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                }
+                Console.WriteLine(node);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                if (node is Index)
+                {
+                    nLevel++;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Level of Index in BTree : {0}\n", nLevel);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    count++;
+                    for (int i = 0; i < ((Index)node).Indexes.Count; i++)
+                    {
+                        if (((Index)node).Indexes[i] != null)
+                        {
+                            Display(((Index)node).Indexes[i], nLevel);
+                        }
+                    }
+                }
+                else
+                {
+                    leafCount++;
                 }
             }
-            catch (Exception)
-            {
-                leafCount++;
-            }
-        }
+        
 
         /// <summary>
         /// This method finds an appropriate leaf and returns the leaf object.
@@ -168,8 +178,10 @@ namespace Project_5
             Index index = new Index();
             Leaf output = new Leaf();
             int i;
-
             
+
+
+
             try
             {
                 nodeStack.Clear();
@@ -189,7 +201,7 @@ namespace Project_5
                         searchNode = index.Indexes[(i - 1)];
                         if (searchLeaf == true)
                         {
-                            Console.WriteLine(searchNode);
+                            Console.WriteLine (searchNode);
                         }
                         else
                         {
@@ -218,32 +230,13 @@ namespace Project_5
         /// </summary>
         /// <param name="inValue">value to find</param>
         /// <returns>returning result if it is found or not.</returns>
-        public bool findValue(int inValue)
+        public bool FindValue(int nValue)
         {
-            int result = -1;
-            bool found;
-
             searchLeaf = true;
-            result = findLeaf(inValue).value.IndexOf(inValue);
+            Leaf pLeaf = findLeaf(nValue);
+            int foundIt = pLeaf.value.IndexOf(nValue);
             searchLeaf = false;
-
-            try
-            {
-                if (result > -1 || result < -1)
-                {
-                    found = true;
-                }
-                else
-                {
-                    throw new Exception("not found");
-                }
-            }
-            catch (Exception)
-            {
-                found = false;
-            }
-
-            return found;
+            return foundIt != -1;
         }
 
         /// <summary>

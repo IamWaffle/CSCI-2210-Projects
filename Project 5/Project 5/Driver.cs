@@ -146,7 +146,7 @@ namespace Project_5
                             {
                                 Console.WriteLine("Starting from the root, the nodes visited are: ");
 
-                                if (tree.findValue(searchInt))
+                                if (tree.FindValue(searchInt))
                                 {
                                     Console.WriteLine(searchInt + " was found in the tree.");
                                 }
