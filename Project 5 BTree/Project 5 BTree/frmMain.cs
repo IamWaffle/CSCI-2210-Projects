@@ -43,7 +43,7 @@ namespace Project_5_BTree
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void BtnCreate_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
             frmCreate create = new frmCreate();
@@ -93,7 +93,7 @@ namespace Project_5_BTree
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             int addNum;
             frmAdd add = new frmAdd();
@@ -136,12 +136,11 @@ namespace Project_5_BTree
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnFind_Click(object sender, EventArgs e)
+        private void BtnFind_Click(object sender, EventArgs e)
         {
             frmFind find = new frmFind();
             find.ShowDialog();
             String outString = "";
-            bool found;
 
             try
             {
@@ -151,7 +150,7 @@ namespace Project_5_BTree
                 {
                     txtBoxInfo.Text = ("Starting from the root, the nodes visited are: \n");
 
-                    tree.findValue(findNum, out outString, out found);
+                    tree.FindValue(findNum, out outString, out bool found);
 
                     if (found == true)
                     {
@@ -179,7 +178,7 @@ namespace Project_5_BTree
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAboutbox about = new frmAboutbox();
             about.ShowDialog();

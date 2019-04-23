@@ -41,7 +41,7 @@ namespace Project_5_BTree
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtboxTree = new System.Windows.Forms.RichTextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
+            this.BtnCreate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtBoxInfo = new System.Windows.Forms.RichTextBox();
@@ -61,16 +61,16 @@ namespace Project_5_BTree
             this.txtboxTree.TabIndex = 0;
             this.txtboxTree.Text = "";
             // 
-            // btnCreate
+            // BtnCreate
             // 
-            this.btnCreate.BackColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(338, 30);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(241, 23);
-            this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Create a new Tree";
-            this.btnCreate.UseVisualStyleBackColor = false;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.BtnCreate.BackColor = System.Drawing.Color.White;
+            this.BtnCreate.Location = new System.Drawing.Point(338, 30);
+            this.BtnCreate.Name = "BtnCreate";
+            this.BtnCreate.Size = new System.Drawing.Size(241, 23);
+            this.BtnCreate.TabIndex = 1;
+            this.BtnCreate.Text = "Create a new Tree";
+            this.BtnCreate.UseVisualStyleBackColor = false;
+            this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // btnAdd
             // 
@@ -81,7 +81,7 @@ namespace Project_5_BTree
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add a value to the tree";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // btnFind
             // 
@@ -92,7 +92,7 @@ namespace Project_5_BTree
             this.btnFind.TabIndex = 3;
             this.btnFind.Text = "Find a value in the tree";
             this.btnFind.UseVisualStyleBackColor = false;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.btnFind.Click += new System.EventHandler(this.BtnFind_Click);
             // 
             // txtBoxInfo
             // 
@@ -118,7 +118,7 @@ namespace Project_5_BTree
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // labelBTree
             // 
@@ -151,7 +151,7 @@ namespace Project_5_BTree
             this.Controls.Add(this.txtBoxInfo);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.BtnCreate);
             this.Controls.Add(this.txtboxTree);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -172,7 +172,7 @@ namespace Project_5_BTree
         #endregion
 
         private System.Windows.Forms.RichTextBox txtboxTree;
-        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button BtnCreate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.RichTextBox txtBoxInfo;

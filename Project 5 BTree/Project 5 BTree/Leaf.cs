@@ -52,11 +52,11 @@ namespace Project_5_BTree
         {
             try
             {
-                if (base.value.Count == base.nodeSize)
+                if (base.Value.Count == base.NodeSize)
                 {
                     tempInsert = Project_5_BTree.Insert.NEEDSPLIT;
                 }
-                else if (base.value.Contains(inValue))
+                else if (base.Value.Contains(inValue))
                 {
                     tempInsert = Project_5_BTree.Insert.DUPLICATE;
                 }
@@ -68,8 +68,8 @@ namespace Project_5_BTree
             catch (Exception)
             {
                 tempInsert = Project_5_BTree.Insert.SUCCESS;
-                base.value.Add(inValue);
-                base.value.Sort();
+                base.Value.Add(inValue);
+                base.Value.Sort();
             }
             return tempInsert;
         }

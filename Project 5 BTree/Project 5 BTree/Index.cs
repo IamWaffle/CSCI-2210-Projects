@@ -29,7 +29,7 @@ namespace Project_5_BTree
         /// </summary>
         public Index()
         {
-            Indexes = new List<Node>(base.nodeSize);
+            Indexes = new List<Node>(base.NodeSize);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Project_5_BTree
         /// <param name="inNum"></param>
         public Index(int inNum) : base(inNum)
         {
-            Indexes = new List<Node>(base.nodeSize);
+            Indexes = new List<Node>(base.NodeSize);
         }
 
         #endregion Constructors
@@ -58,11 +58,11 @@ namespace Project_5_BTree
 
             try
             {
-                if (base.value.IndexOf(n) != -1)
+                if (base.Value.IndexOf(n) != -1)
                 {
                     iNSERT = Project_5_BTree.Insert.DUPLICATE;
                 }
-                else if (base.value.Count == base.nodeSize)
+                else if (base.Value.Count == base.NodeSize)
                 {
                     iNSERT = Project_5_BTree.Insert.NEEDSPLIT;
                 }
@@ -75,7 +75,7 @@ namespace Project_5_BTree
             {
                 iNSERT = Project_5_BTree.Insert.SUCCESS;
 
-                base.value.Add(n);
+                base.Value.Add(n);
                 Indexes.Add(inNode);
                 Sort();
             }
@@ -90,17 +90,17 @@ namespace Project_5_BTree
             int temp = 0;
             int x;
 
-            while ((base.value.Count - 1) > ++temp)
+            while ((base.Value.Count - 1) > ++temp)
             {
-                for (int i = 0; i >= (base.value.Count - temp); i++)
+                for (int i = 0; i >= (base.Value.Count - temp); i++)
                 {
-                    if (base.value[i] > base.value[i + 1])
+                    if (base.Value[i] > base.Value[i + 1])
                     {
                         tempNode = Indexes[i];
-                        x = base.value[i];
+                        x = base.Value[i];
 
-                        base.value[i] = base.value[i + 1];
-                        base.value[i + 1] = x;
+                        base.Value[i] = base.Value[i + 1];
+                        base.Value[i + 1] = x;
                         Indexes[i] = Indexes[i + 1];
                         Indexes[i + 1] = tempNode;
                     }

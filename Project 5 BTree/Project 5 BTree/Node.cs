@@ -20,8 +20,8 @@ namespace Project_5_BTree
     /// </summary>
     internal class Node
     {
-        public int nodeSize { get; set; }
-        public List<int> value { get; set; }
+        public int NodeSize { get; set; }
+        public List<int> Value { get; set; }
 
         #region Constructors
 
@@ -30,9 +30,9 @@ namespace Project_5_BTree
         /// </summary>
         public Node()
         {
-            value = new List<int>(3);
+            Value = new List<int>(3);
 
-            nodeSize = 3;
+            NodeSize = 3;
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Project_5_BTree
             }
             else
             {
-                nodeSize = size;
-                value = new List<int>(nodeSize);
+                NodeSize = size;
+                Value = new List<int>(NodeSize);
             }
         }
 
@@ -83,17 +83,17 @@ namespace Project_5_BTree
             }
 
             output = "\nType: " + tempString;
-            output = output + "\nValues: " + value.Count;
-            output += "  (" + Math.Round((decimal)value.Count * 100m / (decimal)nodeSize) + "% full)" +
+            output = output + "\nValues: " + Value.Count;
+            output += "  (" + Math.Round((decimal)Value.Count * 100m / (decimal)NodeSize) + "% full)" +
                 "\n";
 
-            for (int i = 0; i < value.Count; i++)
+            for (int i = 0; i < Value.Count; i++)
             {
                 try
                 {
                     if (i != 0 || this is Leaf)
                     {
-                        values += value[i] + "  ";
+                        values += Value[i] + "  ";
                     }
                     else
                     {
